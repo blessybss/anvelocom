@@ -42,27 +42,8 @@
     <div class="container">
     
     <header id="header" role="banner">
-      <hgroup>
-        <h1>
-          <a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-            <?php bloginfo('name'); ?>
-          </a>
-        </h1>
-        <p>
-          <a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-            <?php bloginfo('description'); ?>
-          </a>
-        </p>
-      </hgroup>
-      
-      <nav>
-        <h3>Navigation</h3>
-        
-        <?php wp_nav_menu(array(
-          'menu' => 'navbar',
-          'container' => false,
-         )); ?> 
-      </nav>
+      <?php include '_logo.php'; ?>
+      <?php include '_navigation.php'; ?>
     </header>
     
     <main id="main">

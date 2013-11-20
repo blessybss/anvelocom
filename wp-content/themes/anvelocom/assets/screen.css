@@ -342,6 +342,10 @@ html body .container main section article.thumb:nth-of-type(95) {
 html body .container main section article.thumb:nth-of-type(100) {
   margin-right: 0;
 }
+html body .container #footer {
+  width: 100%;
+  float: left;
+}
 
 /* The final design
   - A theme applied to the wireframes / templates

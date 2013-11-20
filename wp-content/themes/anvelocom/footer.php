@@ -1,5 +1,12 @@
-</div> <!-- main -->
+</main>
+
 <footer id="footer">
+  <?php include '_logo.php'; ?>
+  <?php include '_navigation.php'; ?>
+  
+  <aside>
+    <?php echo get_date_firma(); ?>
+  </aside>
 </footer>
 
 

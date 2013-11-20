@@ -81,8 +81,8 @@ function get_anvelopes($how_many) {
 
 
 /* Get the content of About Us */
-function get_about_us() {
-  $about_us = get_page_by_title( 'About Us' ); 
+function get_date_firma() {
+  $about_us = get_page_by_title( 'Date firma' ); 
   $page_data = get_page($about_us);
   return $page_data->post_content;
 }

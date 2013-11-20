@@ -40,6 +40,10 @@ html {
           }
         }
       }
+      
+      #footer {
+        @include block;
+      }
     }
   }
 }
