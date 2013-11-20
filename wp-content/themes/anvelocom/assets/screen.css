@@ -342,7 +342,12 @@ html body .container main section article.thumb:nth-of-type(100) {
 html body .container #footer {
   width: 100%;
   float: left;
-  display: none;
+  margin: 1.25em 0;
+}
+html body .container #footer address {
+  font-size: small;
+  color: #bebebe;
+  max-width: 21.875em;
 }
 html body.home #intro figure img {
   width: 100%;
@@ -369,13 +374,30 @@ html body .container main {
 }
 html body.home #intro figure figcaption {
   position: relative;
-  top: -1.5625em;
+  top: -2.8125em;
   background: #f1f1f1;
-  font-size: normal;
-  font-size: 20px;
-  font-size: 1.25rem;
-  font-weight: bold;
   display: inline-block;
   padding: 0.625em;
   border: 1px solid;
+  border-width: 0.3125em;
+  padding: 1.25em;
+  background: #1f1f1f;
+  color: #f1f1f1;
+  opacity: .9;
+}
+html body.home #intro figure figcaption a {
+  color: #f1f1f1;
+}
+html body.home #anvelope article figure img, html body.home #reduceri article figure img {
+  max-height: 176px;
+}
+html body.home #anvelope article aside, html body.home #reduceri article aside {
+  display: none;
+}
+html body.home #anvelope article.c0 h1, html body.home #reduceri article.c0 h1 {
+  padding: 0.625em;
+  border: 1px solid;
+}
+html body.home #bestsellers article figure figcaption {
+  display: none;
 }

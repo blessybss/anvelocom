@@ -18,6 +18,14 @@
 /* Typographic elements
 */
 
+@mixin address {
+  address {
+    font-size: small;
+    color: $gray;
+    max-width: $body-text-width / 2;
+  }
+}
+
 @mixin q {
   blockquote, q {
     

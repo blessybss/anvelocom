@@ -46,13 +46,47 @@ html {
         figure {
           figcaption {
             position: relative;
-            top: -$pad - $pad/4;
+            top: -$pad*2 - $pad/4;
             background: $background;
-            font-size: normal;
-            @include h1;
             display: inline-block;
             
             @include bordered;
+            border-width: $pad/4;
+            padding: $pad;
+            @include color(invert);
+            
+            opacity: .9;
+          }
+        }
+      }
+      
+      
+      #anvelope, #reduceri {
+        article {
+          figure {
+            img {
+              max-height: 176px;
+            }
+          }
+          
+          aside {
+            display: none;
+          }
+          
+          &.c0 {
+            h1 {
+              @include bordered;
+            }
+          }
+        }
+      }
+      
+      #bestsellers {
+        article {
+          figure {
+            figcaption {
+              display: none;
+            }
           }
         }
       }

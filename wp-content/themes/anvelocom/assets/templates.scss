@@ -38,7 +38,8 @@ html {
       
       #footer {
         @include block;
-        display: none;
+        @include address;
+        margin: $pad 0;
       }
     }
     
