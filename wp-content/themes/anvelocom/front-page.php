@@ -3,7 +3,7 @@
 <section id="anvelope">
   <h2>Anvelope noi</h2>
   <?php 
-    $anvelopes = get_anvelopes(15);  
+    $anvelopes = get_anvelopes(10);  
     if ($anvelopes) {
       foreach ($anvelopes as $index=>$article) { ?>
       <article class="thumb c<?php echo $index + 1 ?>">
