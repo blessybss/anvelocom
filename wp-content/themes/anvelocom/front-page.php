@@ -11,7 +11,7 @@
           $image_size = 'medium';
           include '_article.php';
         ?>
-      </article>
+     </article>
     <?php } ?>
   <?php } ?>
 </section>
