@@ -26,7 +26,7 @@ html {
         
         section {
           @include block;
-          margin-bottom: $pad;
+          margin-bottom: $pad*2;
           
           article {
             &.thumb {

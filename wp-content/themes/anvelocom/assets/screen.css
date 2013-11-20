@@ -272,7 +272,7 @@ html body .container main {
 html body .container main section {
   width: 100%;
   float: left;
-  margin-bottom: 1.25em;
+  margin-bottom: 2.5em;
 }
 html body .container main section article.thumb {
   width: 18%;
@@ -400,4 +400,12 @@ html body.home #anvelope article.c0 h1, html body.home #reduceri article.c0 h1 {
 }
 html body.home #bestsellers article figure figcaption {
   display: none;
+}
+html body.home #bestsellers article.c0 h1 {
+  padding: 0.625em;
+  border: 1px solid;
+  color: #f3aaaa;
+}
+html body.home #bestsellers article.c0 h1 a {
+  color: #f3aaaa;
 }

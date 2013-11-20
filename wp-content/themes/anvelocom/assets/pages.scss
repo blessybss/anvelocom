@@ -88,6 +88,16 @@ html {
               display: none;
             }
           }
+          
+          &.c0 {
+            h1 {
+              @include bordered;
+              color: $highlight;
+              a {
+                color: $highlight;
+              }
+            }
+          }
         }
       }
     }
