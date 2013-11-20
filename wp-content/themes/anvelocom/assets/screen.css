@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -52,4 +53,250 @@ a img {
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
   display: block;
+}
+
+/* Basic building blocks and definitions
+*/
+/* Grid
+*/
+/* Default unit for horizontal and vertical spacing
+  - Combined from $font-size and $line-height
+*/
+/* Long texts cannot span the entire screen, they have to be organized into lines containing 50-80 characters only
+  - See http://www.kaikkonendesign.fi/typography/#section/3
+  - Depends on $font-size
+*/
+/* 700px / 16px */
+/* Responsive breakpoints
+*/
+/* 320px */
+/* 640px, iPhone 5 */
+/* 768px */
+/* 1024px */
+/* This is not a best practice but sometimes is very useful
+  - for example this can tell jQuery we are in mobile mode
+*/
+.mobile {
+  display: none;
+}
+@media only screen and (max-width: 47.999em) {
+  .mobile {
+    display: block;
+  }
+}
+
+.desktop {
+  display: block;
+}
+@media only screen and (max-width: 47.999em) {
+  .desktop {
+    display: none;
+  }
+}
+
+/* Typography
+*/
+/* The basic body font size
+  - See http://lamb.cc/typograph/
+*/
+/* 16px, 1em */
+/* 20px, 1.25em */
+/* This is to convert em to rem
+  - it depends on font-size
+  - font-size: 100% => this value is 1, font-size: 65% => this value is .65
+*/
+/* Line heights for headers and body text
+  - See http://www.kaikkonendesign.fi/typography/#section/4
+*/
+/* Font sizing for headers
+  - We employ modern typography where headers differ by design not by font size
+  - We size fonts by REM instead of EM
+  - We use Traditional / em scaling from http://lamb.cc/typograph/
+*/
+/* Letter spacing for uppercase text
+  - adjusted based on font-type
+*/
+/* Font families
+*/
+/* Colors
+*/
+/* Animations, decorations
+*/
+/* Groups of atoms which function together as a unit
+  -  “do one thing and do it well” 
+*/
+/* Grid elements
+*/
+/* Float left child elements like in inline lists
+  - it selects only the direct descendants of the parent element
+*/
+/* Typographic elements
+*/
+/* <dl>
+*/
+/* <ul> and <ol> lists
+  - they display a custom bullet / number via $before
+  - the text of the list is aligned right related to the bullet / number
+*/
+/* Set links
+*/
+/* Set the font-size and decoration for headings
+  - These setting will be used universally, inside a body text or let's say in the header
+*/
+/* The <dt> in <dl> can look look like a <h1>, <h2> or <h3>
+*/
+/* When uppercasing fonts the letter spacing must be enlarged */
+/* Set the font size
+  - 'body' goes from non text elements, it is the default setting put in <body>
+  - 'text' goes for long texts like blog posts, articles, etc;
+  - 'headings' goes for <h1>, etc
+*/
+/* Set the background and font color
+  - 'invert' inverts this color scheme
+*/
+/* Various mixins
+*/
+/* An inline list
+*/
+/* Stretching child element to fill parent's width
+*/
+/* Rem Unit font sizes with relative fallback http:/seesparkbox.com/foundry/scss_rem_mixin_now_with_a_better_fallback  
+	Usage: @include font-size(1, large);
+*/
+/* Groups of molecules (and possibly atoms) joined together to form distinct section of an interface.
+*/
+/* Highlight current menu item
+*/
+/* A classic, horizontal menu for <nav> elements
+*/
+/* A classic, centered container
+  - adapts to small screens 
+*/
+/* Default font, color, typography settings for non text elements
+*/
+/* Vertical spacing of all typographic elements
+*/
+/* Settings for long text content like articles, blog posts
+*/
+/* Templates mostly focus on content structure (such as character length, image size, etc) rather than the actual content.
+  - they are wireframes describing the layout
+*/
+html body {
+  background: #f1f1f1;
+  color: #1f1f1f;
+  font-size: 100%;
+  line-height: 1.25;
+  font-family: "HelveticaNeue", "Helvetica", "Arial", sans-serif;
+}
+html body h1, html body h2, html body h3 {
+  font-size: 20px;
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+html body h1 {
+  font-weight: bold;
+}
+html body h2 {
+  text-transform: uppercase;
+  letter-spacing: 0.15625em;
+}
+html body h4, html body h5, html body h6 {
+  font-size: larger;
+}
+html body a {
+  color: #1f1f1f;
+  text-decoration: none;
+  outline: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.15625em;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+html body a:hover, html body a:focus {
+  color: #f3aaaa;
+}
+html body img {
+  max-width: 100%;
+  height: auto;
+}
+html body .container {
+  width: 80%;
+  margin: 0 auto;
+}
+@media only screen and (max-width: 64em) {
+  html body .container {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+html body .container #header {
+  width: 100%;
+  float: left;
+  margin-top: 2.5em;
+}
+html body .container #header hgroup {
+  width: 100%;
+  float: left;
+}
+html body .container #header hgroup > * {
+  width: auto;
+  float: left;
+  margin-right: 1.25em;
+}
+html body .container #header nav {
+  width: 100%;
+  float: left;
+  margin-top: 1.25em;
+}
+html body .container #header nav h3 {
+  display: none;
+}
+html body .container #header nav ul {
+  margin: 0;
+  display: block;
+  list-style-type: none;
+}
+html body .container #header nav ul li {
+  display: inline-block;
+  float: left;
+  margin-right: 1.25em;
+}
+html body .container #header nav ul li:last-of-type {
+  margin-right: 0;
+}
+html body .container main {
+  width: 100%;
+  float: left;
+  margin-top: 2.5em;
+}
+html body .container main article {
+  width: 100%;
+  float: left;
+  margin-bottom: 2.5em;
+}
+
+/* The final design
+  - A theme applied to the wireframes / templates
+*/
+html body {
+  font-family: 'Montserrat', sans-serif;
+}
+html body .container #header hgroup h1 {
+  padding: 0.625em;
+  border: 1px solid;
+}
+html body .container #header hgroup h2 {
+  font-size: 16px;
+  font-size: 1rem;
+  font-weight: normal;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 20px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  padding: 0.625em;
+  padding-left: 0;
+  border: 1px solid #f1f1f1;
 }
