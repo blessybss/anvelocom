@@ -71,8 +71,10 @@ function get_post_attachments($post_id) {
 function get_anvelopes($how_many) {
   $c = get_category_by_slug('anvelope-auto-offroad');
   $category_id = $c->term_id;
+  
+  $p = get_cat_ID('Produs');
   return get_posts(array(
-    'category' => $category_id,
+    'category__and' => array($category_id, $p),
     'posts_per_page' => $how_many,
   ));
 }
@@ -109,7 +111,6 @@ add_theme_support( 'post-thumbnails' );
 
 /* The main menu is now manageable via the Wordpress Admin Panel */
 register_nav_menus();
-
 
 
 
