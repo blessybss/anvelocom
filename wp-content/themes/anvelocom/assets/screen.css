@@ -346,6 +346,9 @@ html body .container #footer {
   width: 100%;
   float: left;
 }
+html body .container main, html body .container footer {
+  display: none;
+}
 
 /* The final design
   - A theme applied to the wireframes / templates

@@ -1,0 +1,21 @@
+
+/* TEAM */
+Csongor Bartus
+Site: http://www.anvelocom.com
+Twitter: metamn
+Location: Csihanyos.
+
+
+/* THANKS */
+For the Jeep photo: http://www.flickr.com/photos/rvc/
+Original Flickr URL: http://www.flickr.com/photos/rvc/9051903658/sizes/o/in/set-72157630027458241/
+
+
+/* SITE */
+Last update: YYYY/MM/DD
+Standards: HTML5, CSS3,..
+Components: Modernizr, jQuery, etc.
+Software: Software used for the development
+
+
+                    

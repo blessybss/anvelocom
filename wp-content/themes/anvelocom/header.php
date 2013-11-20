@@ -34,7 +34,7 @@
     <!-- Fonts -->
     <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     
-	  
+	  <link rel="author" href="humans.txt" />
 	  <?php wp_head(); ?>
   </head>
   
@@ -43,6 +43,20 @@
     
     <header id="header" role="banner">
       <?php include '_logo.php'; ?>
+      
+      <figure>
+        <?php 
+          $img = get_template_directory_uri() . "/assets/jeep.jpg";
+          $title = esc_attr(get_bloginfo('name','display')); 
+          $retina = false;
+          include '_responsive-images.php';
+        ?>
+        <figcaption>
+          <?php echo $title; ?>
+        </figcaption>
+      </figure>
+      
+      
       <?php include '_navigation.php'; ?>
     </header>
     

@@ -26,6 +26,7 @@ html {
         }
       }
       
+      
       main {
         @include block;
         margin-top: $article-pad;
@@ -43,6 +44,10 @@ html {
       
       #footer {
         @include block;
+      }
+      
+      main, footer {
+        display: none;
       }
     }
   }
