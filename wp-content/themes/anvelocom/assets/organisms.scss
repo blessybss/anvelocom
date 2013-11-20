@@ -21,6 +21,21 @@
   }
 }
 
+/* Float left child elements like in inline lists
+  - it selects only the direct descendants of the parent element
+  - its a free-form grid
+*/
+@mixin float-left {
+  @include block;
+  
+  > * {
+    width: auto;
+    float: left;
+    margin-right: $pad;
+  }
+}
+
+
 
 /* Highlight current menu item
 */

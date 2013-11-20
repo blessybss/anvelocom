@@ -32,7 +32,7 @@
     <script src="<?php echo get_template_directory_uri(); ?>/assets/picturefill.js"></script>
     
     <!-- Fonts -->
-    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
     
 	  <link rel="author" href="humans.txt" />
 	  <?php wp_head(); ?>
@@ -42,20 +42,11 @@
     <div class="container">
     
     <header id="header" role="banner">
-      <?php include '_logo.php'; ?>
-      
-      <figure>
-        <?php 
-          $img = get_template_directory_uri() . "/assets/jeep.jpg";
-          $title = esc_attr(get_bloginfo('name','display')); 
-          $retina = false;
-          include '_responsive-images.php';
-        ?>
-        <figcaption>
-          <?php echo $title; ?>
-        </figcaption>
-      </figure>
-      
+      <h1>
+        <a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+          <?php bloginfo('name'); ?>
+        </a>
+      </h1>
       
       <?php include '_navigation.php'; ?>
     </header>

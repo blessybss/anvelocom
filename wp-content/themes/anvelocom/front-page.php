@@ -1,5 +1,19 @@
 <?php get_header(); ?>
 
+<section id="intro">
+  <figure>
+    <?php 
+      $img = get_template_directory_uri() . "/assets/jeep.jpg";
+      $title = esc_attr(get_bloginfo('name','display')); 
+      $retina = false;
+      include '_responsive-images.php';
+    ?>
+    <figcaption>
+      <?php echo esc_attr( get_bloginfo( 'description', 'display' ) ); ?>
+    </figcaption>
+  </figure>
+</section>
+
 <section id="anvelope">
   <h2>Anvelope noi</h2>
   <?php 

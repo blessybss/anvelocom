@@ -3,6 +3,14 @@
 */
 
 
+/* Add border to text
+*/
+@mixin bordered {
+  padding: $pad/2;
+  border: 1px solid;
+}
+
+
 
 html {
   body {
@@ -10,18 +18,41 @@ html {
     
     .container {
       #header {
-        hgroup {
-          h1 {
-            padding: $pad/2;
-            border: 1px solid;
+        h1 {
+          @include bordered;
+        }
+        
+        nav {
+          ul {
+            li {
+              &:nth-of-type(3) {
+                &:after {
+                  content: '\2022';
+                  padding-left: $pad;
+                }
+              }
+            }
           }
-          
-          h2 {
-            @include font-normal;
+        }
+      }
+      
+      main {
+        font-family: 'Open Sans', sans-serif;
+      }
+    }
+    
+    &.home {
+      #intro {
+        figure {
+          figcaption {
+            position: relative;
+            top: -$pad - $pad/4;
+            background: $background;
+            font-size: normal;
             @include h1;
-            padding: $pad/2;
-            padding-left: 0;
-            border: 1px solid $background;
+            display: inline-block;
+            
+            @include bordered;
           }
         }
       }

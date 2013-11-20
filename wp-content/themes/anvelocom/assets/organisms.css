@@ -2,6 +2,10 @@
 */
 /* Columns for the grid
 */
+/* Float left child elements like in inline lists
+  - it selects only the direct descendants of the parent element
+  - its a free-form grid
+*/
 /* Highlight current menu item
 */
 /* A classic, horizontal menu for <nav> elements

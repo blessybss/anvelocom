@@ -12,18 +12,6 @@
   margin: 0 auto;
 }
 
-/* Float left child elements like in inline lists
-  - it selects only the direct descendants of the parent element
-*/
-@mixin float-left {
-  @include block;
-  
-  > * {
-    width: auto;
-    float: left;
-    margin-right: $pad;
-  }
-}
 
 
 
@@ -347,6 +335,10 @@
 @mixin fluid-image {
   max-width: 100%;
   height: auto;
+}
+
+@mixin full-width-image {
+  width: 100%;
 }
 
 

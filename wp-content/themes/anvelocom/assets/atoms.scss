@@ -69,6 +69,11 @@ $breakpoint-small-screen: 64em !default; /* 1024px */
 	}
 }
 
+@mixin below-small-screen {
+	@media only screen and (max-width: $breakpoint-small-screen - 0.001) {
+		@content;
+	}
+}
 @mixin below-and-small-screen {
 	@media only screen and (max-width: $breakpoint-small-screen) {
 		@content;

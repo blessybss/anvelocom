@@ -12,27 +12,21 @@ html {
       
       #header {
         @include block;
-        margin-top: $article-pad;
-        
-        hgroup {
-          @include float-left;
-        }
+        margin: $pad 0;
+        @include float-left;
         
         nav {
-          @include block;
-          
           @include menu;
-          margin-top: $pad;
+          margin-top: $pad - $pad/4;
         }
       }
-      
-      
+            
       main {
         @include block;
-        margin-top: $article-pad;
         
         section {
           @include block;
+          margin-bottom: $pad;
           
           article {
             &.thumb {
@@ -44,11 +38,20 @@ html {
       
       #footer {
         @include block;
-      }
-      
-      main, footer {
         display: none;
       }
+    }
+    
+    
+    &.home {
+      #intro {
+        figure {
+          img {
+            @include full-width-image;
+          }
+        }
+      }
+      
     }
   }
 }

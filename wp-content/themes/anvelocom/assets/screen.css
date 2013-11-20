@@ -127,9 +127,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 */
 /* Grid elements
 */
-/* Float left child elements like in inline lists
-  - it selects only the direct descendants of the parent element
-*/
 /* Typographic elements
 */
 /* <dl>
@@ -166,6 +163,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* Groups of molecules (and possibly atoms) joined together to form distinct section of an interface.
 */
 /* Columns for the grid
+*/
+/* Float left child elements like in inline lists
+  - it selects only the direct descendants of the parent element
+  - its a free-form grid
 */
 /* Highlight current menu item
 */
@@ -236,21 +237,17 @@ html body .container {
 html body .container #header {
   width: 100%;
   float: left;
-  margin-top: 2.5em;
-}
-html body .container #header hgroup {
+  margin: 1.25em 0;
   width: 100%;
   float: left;
 }
-html body .container #header hgroup > * {
+html body .container #header > * {
   width: auto;
   float: left;
   margin-right: 1.25em;
 }
 html body .container #header nav {
-  width: 100%;
-  float: left;
-  margin-top: 1.25em;
+  margin-top: 0.9375em;
 }
 html body .container #header nav h3 {
   display: none;
@@ -271,11 +268,11 @@ html body .container #header nav ul li:last-of-type {
 html body .container main {
   width: 100%;
   float: left;
-  margin-top: 2.5em;
 }
 html body .container main section {
   width: 100%;
   float: left;
+  margin-bottom: 1.25em;
 }
 html body .container main section article.thumb {
   width: 18%;
@@ -345,31 +342,40 @@ html body .container main section article.thumb:nth-of-type(100) {
 html body .container #footer {
   width: 100%;
   float: left;
-}
-html body .container main, html body .container footer {
   display: none;
+}
+html body.home #intro figure img {
+  width: 100%;
 }
 
 /* The final design
   - A theme applied to the wireframes / templates
 */
+/* Add border to text
+*/
 html body {
   font-family: 'Montserrat', sans-serif;
 }
-html body .container #header hgroup h1 {
+html body .container #header h1 {
   padding: 0.625em;
   border: 1px solid;
 }
-html body .container #header hgroup h2 {
-  font-size: 16px;
-  font-size: 1rem;
-  font-weight: normal;
-  text-transform: none;
-  letter-spacing: 0;
+html body .container #header nav ul li:nth-of-type(3):after {
+  content: '\2022';
+  padding-left: 1.25em;
+}
+html body .container main {
+  font-family: 'Open Sans', sans-serif;
+}
+html body.home #intro figure figcaption {
+  position: relative;
+  top: -1.5625em;
+  background: #f1f1f1;
+  font-size: normal;
   font-size: 20px;
   font-size: 1.25rem;
   font-weight: bold;
+  display: inline-block;
   padding: 0.625em;
-  padding-left: 0;
-  border: 1px solid #f1f1f1;
+  border: 1px solid;
 }
