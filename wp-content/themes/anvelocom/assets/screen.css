@@ -165,6 +165,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 */
 /* Groups of molecules (and possibly atoms) joined together to form distinct section of an interface.
 */
+/* Columns for the grid
+*/
 /* Highlight current menu item
 */
 /* A classic, horizontal menu for <nav> elements
@@ -271,10 +273,74 @@ html body .container main {
   float: left;
   margin-top: 2.5em;
 }
-html body .container main article {
+html body .container main section {
   width: 100%;
   float: left;
-  margin-bottom: 2.5em;
+}
+html body .container main section article.thumb {
+  width: 18%;
+  margin-right: 2.5%;
+  float: left;
+}
+html body .container main section article.thumb:nth-of-type(5) {
+  margin-right: 0;
+}
+html body .container main section article.thumb:nth-of-type(10) {
+  margin-right: 0;
+}
+html body .container main section article.thumb:nth-of-type(15) {
+  margin-right: 0;
+}
+html body .container main section article.thumb:nth-of-type(20) {
+  margin-right: 0;
+}
+html body .container main section article.thumb:nth-of-type(25) {
+  margin-right: 0;
+}
+html body .container main section article.thumb:nth-of-type(30) {
+  margin-right: 0;
+}
+html body .container main section article.thumb:nth-of-type(35) {
+  margin-right: 0;
+}
+html body .container main section article.thumb:nth-of-type(40) {
+  margin-right: 0;
+}
+html body .container main section article.thumb:nth-of-type(45) {
+  margin-right: 0;
+}
+html body .container main section article.thumb:nth-of-type(50) {
+  margin-right: 0;
+}
+html body .container main section article.thumb:nth-of-type(55) {
+  margin-right: 0;
+}
+html body .container main section article.thumb:nth-of-type(60) {
+  margin-right: 0;
+}
+html body .container main section article.thumb:nth-of-type(65) {
+  margin-right: 0;
+}
+html body .container main section article.thumb:nth-of-type(70) {
+  margin-right: 0;
+}
+html body .container main section article.thumb:nth-of-type(75) {
+  margin-right: 0;
+}
+html body .container main section article.thumb:nth-of-type(80) {
+  margin-right: 0;
+}
+html body .container main section article.thumb:nth-of-type(85) {
+  margin-right: 0;
+}
+html body .container main section article.thumb:nth-of-type(90) {
+  margin-right: 0;
+}
+html body .container main section article.thumb:nth-of-type(95) {
+  margin-right: 0;
+}
+html body .container main section article.thumb:nth-of-type(100) {
+  margin-right: 0;
 }
 
 /* The final design

@@ -67,18 +67,10 @@ function get_post_attachments($post_id) {
 
 
 
-/* Get the latest ideas */
-function get_ideas($how_many) {
-  $category_id = get_cat_ID('Featured Ideas');
-  return get_posts(array(
-    'category' => $category_id,
-    'posts_per_page' => $how_many,
-  ));
-}
-
-/* Get the latest news */
-function get_news($how_many) {
-  $category_id = get_cat_ID('Featured News');
+/* Get the latest anvelopes */
+function get_anvelopes($how_many) {
+  $c = get_category_by_slug('anvelope-auto-offroad');
+  $category_id = $c->term_id;
   return get_posts(array(
     'category' => $category_id,
     'posts_per_page' => $how_many,
@@ -93,17 +85,6 @@ function get_about_us() {
   return $page_data->post_content;
 }
 
-
-
-
-/* Get posts for the slider on the frontpage */
-function get_posts_for_slider() {
-  $category_id = get_cat_ID('Slider');
-  return get_posts(array(
-    'category' => $category_id,
-    'posts_per_page' => -1,
-  ));
-}
 
 
 

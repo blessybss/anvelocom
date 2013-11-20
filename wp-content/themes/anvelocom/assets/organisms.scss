@@ -1,0 +1,155 @@
+/* Groups of molecules (and possibly atoms) joined together to form distinct section of an interface.
+*/
+
+
+/* Columns for the grid
+*/
+@mixin col($how-many) {
+  $column-width: 90% / $how-many;
+  $gutter: 10% / ($how-many - 1);
+  
+  width: $column-width;
+  margin-right: $gutter;
+  float: left;
+  
+  @for $i from 2 through 100 {
+    @if (($i % $how-many) == 0) {
+      &:nth-of-type(#{$i}) {
+         margin-right: 0;
+      }
+    }
+  }
+}
+
+
+/* Highlight current menu item
+*/
+@mixin highlight-menu($index) {
+  #header nav ul li:nth-of-type(#{$index}) a {
+    @include color(highlight);
+  }
+}
+
+
+/* A classic, horizontal menu for <nav> elements
+*/
+@mixin menu {
+  h3 {
+    display: none;
+  }
+  
+  ul {
+    @include list-inline;
+  }
+}
+
+
+/* A classic, centered container
+  - adapts to small screens 
+*/
+@mixin container {
+  @include m_container($container-desktop);
+  
+  @include below-and-small-screen {
+    @include m_container($container-mobile);
+  }
+}
+
+
+
+
+/* Default font, color, typography settings for non text elements
+*/
+@mixin defaults {
+  @include color;
+  @include font;
+  
+  a {
+    @include link;
+  }
+  
+  img {
+    @include fluid-image;
+  }
+}
+
+
+
+/* Vertical spacing of all typographic elements
+*/
+@mixin vertical-rhythm {
+  /* Padding of individual elements
+  */
+  ul, ol, dl, table, figure, form, q {
+    margin: $pad 0;
+  }
+  
+  figure {
+    margin-top: $pad*2;
+  }
+  
+  
+  /* Padding of consecutive elements
+  */
+  dd + dt {
+    margin-top: $pad;
+  }
+  
+  p + p {
+    margin-top: $pad;
+  }
+  
+  h1 + h2, h2 + h3 {
+    padding-top: 0;
+  }
+  
+  
+  h1 + ul, h2 + ul, h3 + ul,
+  h1 + ol, h2 + ol, h3 + ol {
+    margin-top: 0;
+  }
+  
+  
+  li ul, li ol {
+    margin-top: 0;
+  }
+  
+}
+
+
+/* Settings for long text content like articles, blog posts
+*/
+@mixin body-text {
+  max-width: $body-text-width; 
+  @include line-height(text);
+  
+  /* Headings
+  */
+  @include headings;
+  h1, h2, h3 {
+    @include line-height(headings);
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: $h1-padding 0; 
+  }
+  
+  /* Elements
+  */
+  em, i {
+    font-style: italic;
+  }
+  
+  strong, b {
+    font-weight: bold;
+  }
+  
+  @include ul;
+  @include ol;
+  @include dl;
+  @include table;
+  @include figure;
+  @include form;
+  @include q;
+  
+  @include vertical-rhythm;
+}

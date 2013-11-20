@@ -1,0 +1,67 @@
+/* Basic building blocks and definitions
+*/
+/* Grid
+*/
+/* Default unit for horizontal and vertical spacing
+  - Combined from $font-size and $line-height
+*/
+/* Long texts cannot span the entire screen, they have to be organized into lines containing 50-80 characters only
+  - See http://www.kaikkonendesign.fi/typography/#section/3
+  - Depends on $font-size
+*/
+/* 700px / 16px */
+/* Responsive breakpoints
+*/
+/* 320px */
+/* 640px, iPhone 5 */
+/* 768px */
+/* 1024px */
+/* This is not a best practice but sometimes is very useful
+  - for example this can tell jQuery we are in mobile mode
+*/
+.mobile {
+  display: none;
+}
+@media only screen and (max-width: 47.999em) {
+  .mobile {
+    display: block;
+  }
+}
+
+.desktop {
+  display: block;
+}
+@media only screen and (max-width: 47.999em) {
+  .desktop {
+    display: none;
+  }
+}
+
+/* Typography
+*/
+/* The basic body font size
+  - See http://lamb.cc/typograph/
+*/
+/* 16px, 1em */
+/* 20px, 1.25em */
+/* This is to convert em to rem
+  - it depends on font-size
+  - font-size: 100% => this value is 1, font-size: 65% => this value is .65
+*/
+/* Line heights for headers and body text
+  - See http://www.kaikkonendesign.fi/typography/#section/4
+*/
+/* Font sizing for headers
+  - We employ modern typography where headers differ by design not by font size
+  - We size fonts by REM instead of EM
+  - We use Traditional / em scaling from http://lamb.cc/typograph/
+*/
+/* Letter spacing for uppercase text
+  - adjusted based on font-type
+*/
+/* Font families
+*/
+/* Colors
+*/
+/* Animations, decorations
+*/

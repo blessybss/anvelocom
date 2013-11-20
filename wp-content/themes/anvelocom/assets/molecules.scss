@@ -1,0 +1,389 @@
+/* Groups of atoms which function together as a unit
+  -  “do one thing and do it well” 
+*/
+
+
+
+/* Grid elements
+*/
+
+@mixin m_container($width : null) {
+  width: $width;
+  margin: 0 auto;
+}
+
+/* Float left child elements like in inline lists
+  - it selects only the direct descendants of the parent element
+*/
+@mixin float-left {
+  @include block;
+  
+  > * {
+    width: auto;
+    float: left;
+    margin-right: $pad;
+  }
+}
+
+
+
+/* Typographic elements
+*/
+
+@mixin q {
+  blockquote, q {
+    
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    
+    /* Making room to the " sign 
+    */
+    position: relative;
+    float: left;
+    padding: $pad*10 0 $pad*2 $pad*4;
+    
+    
+    /* Fill the parent block
+    */
+    @include block;
+    text-align: right;
+    width: calc(#{$body-text-width} - #{$pad*4});
+    
+    /*
+    @include below-and-small-screen {
+      width: calc(100% - #{$pad*4});
+    }
+    */
+    
+    &:before {
+      content: '\201C';
+      font-size: 1400%;
+      
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}
+
+@mixin form {
+  form {
+    
+    /* Reset */
+    input, textarea, select {
+	    border: none;
+	    outline: 0;
+	    background: $background;
+	
+	    appearance: none;
+	    -webkit-appearance: none;
+	    -moz-appearance: none;
+    }
+    
+
+    /* Text */
+    input[type='text'], input[type='email'], input[type='password'], textarea {
+	    border: 1px solid $color;
+	    font-style: italic;
+    }
+    
+
+    /* Button */
+    input[type='submit'] {	
+      @include uppercase;	
+	    border: 1px solid $color;
+	    cursor: pointer;
+	    
+	    @include transition($easing);
+	    &:hover {
+	      background: $highlight;
+	    }
+    }
+    
+    /* Stretching and padding */
+    label, input, textarea {
+      @include block;
+    }
+    
+    input, textarea {
+      padding: $list-pad;
+      width: calc(100% - #{$list-pad*2});
+    }
+    
+  }
+}
+
+
+@mixin figure {
+  figure {
+    img {
+      @include box-shadow($shadow);
+    }
+    
+    figcaption {
+      font-size: smaller;
+    }
+    
+  }
+}
+
+
+
+@mixin table {
+  table {
+    width: 100%;
+    display: table !important;
+    
+    thead {
+      @include color(invert);
+    }
+    
+    thead th, tbody td {
+      padding: $pad;
+      padding-left: 0;
+    }
+    
+    tbody {
+      td {
+        border-bottom: 1px solid $gray;
+      }
+    }
+  }
+}
+
+/* <dl>
+*/
+@mixin dl {
+  dl {
+    dt {
+      @include h2;
+    }
+  }
+}
+
+
+
+
+/* <ul> and <ol> lists
+  - they display a custom bullet / number via $before
+  - the text of the list is aligned right related to the bullet / number
+*/
+@mixin ol-ul($before : null) {
+  list-style: none outside;
+  
+  li {
+    /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
+      - this way we can perfectly align the bullets / numbering to the list content
+    */
+    position: relative;
+    padding-left: $pad;
+    
+    &:before {
+      content: $before;
+      
+      /* making the content of the list perfectly align with numbering
+        - <li> is relatively positioned
+        - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
+        - the the <li> content has a padding-left to not overlap the numbering
+      */
+      position: absolute;
+      left: 0;
+    }
+  }
+}
+
+@mixin ul {
+  ul {
+    @include ol-ul('\271A');
+  }
+}
+
+@mixin ol {
+  ol {
+    @include ol-ul;
+    counter-reset: ol-counter;
+    
+    li {
+      counter-increment: ol-counter;
+      
+      &:before {
+        content: counter(ol-counter, decimal);
+      }
+    }
+  }
+}
+
+
+
+/* Set links
+*/
+@mixin link {
+  color: $color;
+  text-decoration: none;
+  outline: 0;
+  @include uppercase;
+  
+  @include transition($easing);
+  &:hover, &:focus {
+    color: $highlight;
+  }
+}
+
+
+
+/* Set the font-size and decoration for headings
+  - These setting will be used universally, inside a body text or let's say in the header
+*/
+
+@mixin headings {
+  h1, h2, h3 {
+    @include font-size($h1);
+    font-weight: normal;
+  }
+  
+  h1 {
+    font-weight: bold;
+  }
+  
+  h2 {
+    @include uppercase;
+  }
+  
+  h4, h5, h6 {
+    @include font-size(1, larger);
+  }
+}
+
+/* The <dt> in <dl> can look look like a <h1>, <h2> or <h3>
+*/
+@mixin h1 {
+  @include font-size($h1);
+  font-weight: bold;
+}
+@mixin h2 {
+  @include font-size($h1);
+  font-weight: normal;
+  @include uppercase;
+}
+@mixin h3 {
+  @include font-size($h1);
+  font-weight: normal;
+}
+@mixin h4 {
+  @include font-size(1, larger);
+  font-weight: normal;
+}
+@mixin font-normal {
+  @include font-size(1);
+  font-weight: normal;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+
+
+
+/* When uppercasing fonts the letter spacing must be enlarged */
+@mixin uppercase {
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing;
+}
+
+
+@mixin font {
+  font-size: $font-size;
+  line-height: $line-height;
+  
+  font-family: $font-family-primary;
+  @include headings;
+}
+
+
+/* Set the font size
+  - 'body' goes from non text elements, it is the default setting put in <body>
+  - 'text' goes for long texts like blog posts, articles, etc;
+  - 'headings' goes for <h1>, etc
+*/
+@mixin line-height($type) {
+  @if ($type == body) {
+    line-height: $line-height;
+  } @elseif ($type == text) {
+    line-height: $line-height-body-text;
+  } @elseif ($type == headings) {
+    line-height: $line-height-headings;
+  }
+}
+
+
+/* Set the background and font color
+  - 'invert' inverts this color scheme
+*/
+@mixin color($type : normal) {
+  @if ($type == normal) {
+    background: $background;
+    color: $color;
+  } @elseif ($type == invert) {
+    background: $color;
+    color: $background;
+    
+    a {
+      color: $background;
+    }
+  } @elseif ($type == highlight) {
+    background: $background;
+    color: $highlight;
+  }
+}
+
+
+
+
+
+
+/* Various mixins
+*/
+
+
+@mixin fluid-image {
+  max-width: 100%;
+  height: auto;
+}
+
+
+/* An inline list
+*/
+@mixin list-inline {
+  margin: 0;
+  display: block;
+  list-style-type: none;
+  
+  li {
+    display: inline-block;
+    float: left;
+    margin-right: $pad;
+    
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}
+
+/* Stretching child element to fill parent's width
+*/
+@mixin block {
+  width: 100%;
+  float: left;
+}
+
+
+/* Rem Unit font sizes with relative fallback http:/seesparkbox.com/foundry/scss_rem_mixin_now_with_a_better_fallback  
+	Usage: @include font-size(1, large);
+*/
+@mixin font-size( $decimal-size, $keyword: null ) {
+  @if $keyword { 
+    font-size: $keyword; 
+  } @else { 
+    font-size: $decimal-size * $base-font-multiplier * 16px;
+    font-size: $decimal-size * 1rem;
+  }
+}

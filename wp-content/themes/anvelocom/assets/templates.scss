@@ -1,0 +1,45 @@
+/* Templates mostly focus on content structure (such as character length, image size, etc) rather than the actual content.
+  - they are wireframes describing the layout
+*/
+
+
+html {
+  body {
+    @include defaults;
+    
+    .container {
+      @include container;
+      
+      #header {
+        @include block;
+        margin-top: $article-pad;
+        
+        hgroup {
+          @include float-left;
+        }
+        
+        nav {
+          @include block;
+          
+          @include menu;
+          margin-top: $pad;
+        }
+      }
+      
+      main {
+        @include block;
+        margin-top: $article-pad;
+        
+        section {
+          @include block;
+          
+          article {
+            &.thumb {
+              @include col(5);
+            }
+          }
+        }
+      }
+    }
+  }
+}

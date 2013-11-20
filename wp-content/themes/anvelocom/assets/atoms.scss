@@ -1,0 +1,165 @@
+/* Basic building blocks and definitions
+*/
+
+
+
+
+
+/* Grid
+*/
+
+/* Default unit for horizontal and vertical spacing
+  - Combined from $font-size and $line-height
+*/
+$pad: 1.25em;
+$list-pad: $pad/2;
+$article-pad: $pad*2;
+
+/* Long texts cannot span the entire screen, they have to be organized into lines containing 50-80 characters only
+  - See http://www.kaikkonendesign.fi/typography/#section/3
+  - Depends on $font-size
+*/
+$body-text-width: 43.75em; /* 700px / 16px */
+
+
+$container-desktop: 80%;
+$container-mobile: 90%;
+
+
+
+
+/* Responsive breakpoints
+*/
+
+$breakpoint-mobile: 20em !default; /* 320px */
+$breakpoint-mobile-landscape: 40em !default; /* 640px, iPhone 5 */
+$breakpoint-tablet: 48em !default; /* 768px */
+$breakpoint-small-screen: 64em !default; /* 1024px */
+
+@mixin portrait {
+	@media only screen and (orientation : portrait) {
+		@content;
+	}
+}
+
+@mixin mobile {
+	@media only screen and (max-width: $breakpoint-mobile) {
+		@content;
+	}
+} 
+@mixin below-mobile-landscape {
+	@media only screen and (max-width: $breakpoint-mobile-landscape) {
+		@content;
+	}
+}
+
+@mixin below-tablet {
+	@media only screen and (max-width: $breakpoint-tablet - 0.001) {
+		@content;
+	}
+}
+@mixin below-tablet-landscape {
+	@media only screen and (max-width: $breakpoint-tablet - 0.001) and (orientation : landscape) {
+		@content;
+	}
+}
+@mixin tablet-and-above {
+  @media only screen and (min-width: $breakpoint-tablet) {
+		@content;
+	}
+}
+
+@mixin below-and-small-screen {
+	@media only screen and (max-width: $breakpoint-small-screen) {
+		@content;
+	}
+}
+@mixin small-screen {
+	@media only screen and (min-width: $breakpoint-tablet + 0.001) and (max-width: $breakpoint-small-screen) {
+		@content;
+	}
+}
+
+/* This is not a best practice but sometimes is very useful
+  - for example this can tell jQuery we are in mobile mode
+*/
+.mobile {
+  display: none;
+  
+  @include below-tablet {
+    display: block;
+  }
+}
+
+.desktop {
+  display: block;
+  
+  @include below-tablet {
+    display: none;
+  }
+}
+
+
+
+
+
+/* Typography
+*/
+
+/* The basic body font size
+  - See http://lamb.cc/typograph/
+*/
+$font-size: 100%; /* 16px, 1em */
+$line-height: 1.25; /* 20px, 1.25em */
+
+/* This is to convert em to rem
+  - it depends on font-size
+  - font-size: 100% => this value is 1, font-size: 65% => this value is .65
+*/
+$base-font-multiplier: 1; 
+
+/* Line heights for headers and body text
+  - See http://www.kaikkonendesign.fi/typography/#section/4
+*/
+$line-height-body-text: 1.75;
+$line-height-headings: 1.1;
+
+
+/* Font sizing for headers
+  - We employ modern typography where headers differ by design not by font size
+  - We size fonts by REM instead of EM
+  - We use Traditional / em scaling from http://lamb.cc/typograph/
+*/
+$h1: 1.25;
+$h1-padding: 1.45833em;
+
+
+/* Letter spacing for uppercase text
+  - adjusted based on font-type
+*/
+$letter-spacing: $pad/8;
+
+
+
+/* Font families
+*/
+$font-family-primary : "HelveticaNeue", "Helvetica", "Arial", sans-serif;
+$font-family-secondary : Georgia, Times, "Times New Roman", serif;
+
+
+/* Colors
+*/
+
+$background: #f1f1f1;
+$color: #1f1f1f;
+$highlight: #f3aaaa;
+$gray: #BEBEBE;
+
+
+
+/* Animations, decorations
+*/
+
+$easing: all 0.5s ease-in-out;
+$shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+

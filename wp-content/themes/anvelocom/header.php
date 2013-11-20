@@ -43,17 +43,10 @@
     
     <header id="header" role="banner">
       <hgroup>
-        <figure>
-          <?php 
-            $img = get_template_directory_uri() . "/assets/logo.png";
-            $svg = get_template_directory_uri() . "/assets/logo.svg";
-            $title = esc_attr(get_bloginfo('name','display')); 
-            $link = esc_url(home_url( '/' ));
-            include '_svg.php';
-          ?>
-        </figure>
         <h1>
-          <?php bloginfo('name'); ?>
+          <a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+            <?php bloginfo('name'); ?>
+          </a>
         </h1>
         <p>
           <a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
