@@ -4,6 +4,9 @@
   <figure>
     <?php
       $img = get_post_featured_image_url($article->ID, $image_size);
+      
+      $img = 'http://placehold.it/350x250';
+      
       $title = $article->post_title;
       $link = get_permalink($article->ID);
       $retina = false;

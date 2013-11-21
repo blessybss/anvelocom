@@ -23,6 +23,7 @@
     <a href="<?php echo $link ?>" title="<?php echo $title ?>">
   <?php } ?>
   
+  
   <?php 
     if ($retina) {
       /* If the image is retina ready we can halve for normal desktops */

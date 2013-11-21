@@ -7,7 +7,7 @@ $(document).ready(function() {
   // - which is initialized below in the window.onload() event
   
   // Cache container
-  var $container = $('#anvelope');
+  var $container = $('.page #anvelope');
   
   // Filter items when filter link is clicked
   filters = {};
