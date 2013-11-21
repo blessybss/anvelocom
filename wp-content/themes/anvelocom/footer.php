@@ -24,7 +24,7 @@
 <script src="<?php echo get_template_directory_uri(); ?>/assets/jquery.isotope.min.js"></script>
 
 <!-- Site specific scripts built on jQuery -->
-<script src="<?php echo get_template_directory_uri(); ?>/assets/jquery.reboot.js"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/assets/jquery.anvelocom.js"></script>
  
  
    

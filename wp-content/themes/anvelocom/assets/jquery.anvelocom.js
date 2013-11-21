@@ -7,7 +7,7 @@ $(document).ready(function() {
   // - which is initialized below in the window.onload() event
   
   // Cache container
-  var $container = $('#posts');
+  var $container = $('#anvelope');
   
   // Filter items when filter link is clicked
   filters = {};
@@ -61,9 +61,6 @@ $(document).ready(function() {
          queue: false
        }
     });
-    
-    // Unfilter all posts which are displayed by default
-    $container.isotope({ filter: '.unfilter-all' });
   });
   
 });

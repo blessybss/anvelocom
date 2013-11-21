@@ -365,6 +365,9 @@ html body .container #header h1 {
   padding: 0.625em;
   border: 1px solid;
 }
+html body .container #header nav ul li.current-menu-item a {
+  color: #f3aaaa;
+}
 html body .container #header nav ul li:nth-of-type(3):after {
   content: '\2022';
   padding-left: 1.25em;

@@ -1,6 +1,131 @@
 <?php
 
 
+
+// Get posts, categories, and so on
+
+
+/* Get anvelope brands */
+function get_anvelope_brands() {
+  $c = get_category_by_slug('anvelope-auto-offroad');
+  $category_id = $c->term_id;
+  
+  return get_categories(array(
+    'child_of' => $category_id,
+  ));
+}
+
+
+/* Get the latest anvelopes */
+function get_anvelopes($how_many) {
+  $c = get_category_by_slug('anvelope-auto-offroad');
+  $category_id = $c->term_id;
+  
+  $p = get_cat_ID('Produs');
+  return get_posts(array(
+    'category__and' => array($category_id, $p),
+    'posts_per_page' => $how_many,
+  ));
+}
+
+
+/* Get the content of About Us */
+function get_date_firma() {
+  $about_us = get_page_by_title( 'Date firma' ); 
+  $page_data = get_page($about_us);
+  return $page_data->post_content;
+}
+
+
+
+
+
+
+
+
+// Filter anvelopes
+
+function get_dimensions($posts) {
+  $ret = array();
+  
+  if ($posts) {
+    foreach ($posts as $post) {
+      $ret = array_merge($ret, get_dimension($post));
+    }
+  }
+  
+  return array_unique($ret);
+}
+
+function get_latimes($posts) {
+  $ret = array();
+  
+  if ($posts) {
+    foreach ($posts as $post) {
+      $ret = array_merge($ret, get_latime($post));
+    }
+  }
+  
+  return array_unique($ret);
+}
+
+function get_inaltimes($posts) {
+  $ret = array();
+  
+  if ($posts) {
+    foreach ($posts as $post) {
+      $ret = array_merge($ret, get_inaltime($post));
+    }
+  }
+  
+  return array_unique($ret);
+}
+
+function get_dimension($post) {
+  $ret = array();
+  
+  if ($post) {
+    $ret = get_post_meta($post->ID, 'Dimensiune janta');
+  }
+  
+  return $ret;
+}
+
+function get_latime($post) {
+  $ret = array();
+  
+  if ($post) {
+    $ret = get_post_meta($post->ID, 'latime');
+  }
+  
+  return $ret;
+}
+
+function get_inaltime($post) {
+  $ret = array();
+  
+  if ($post) {
+    $ret = get_post_meta($post->ID, 'inaltime');
+  }
+  
+  return $ret;
+}
+
+
+function get_article_class($post) {
+  $klass = array();
+  $klass = array_merge($klass, get_dimension($post));
+  $klass = array_merge($klass, get_inaltime($post));
+  $klass = array_merge($klass, get_latime($post));
+  $klass = array_map("string_to_classname", $klass);
+  return $klass;
+}
+
+
+
+
+
+
 // Get post images
 // - the largest images are retrieved
 // - returns an array of urls
@@ -60,32 +185,6 @@ function get_post_attachments($post_id) {
   return $attachments;
 }
 
-
-
-
-
-
-
-
-/* Get the latest anvelopes */
-function get_anvelopes($how_many) {
-  $c = get_category_by_slug('anvelope-auto-offroad');
-  $category_id = $c->term_id;
-  
-  $p = get_cat_ID('Produs');
-  return get_posts(array(
-    'category__and' => array($category_id, $p),
-    'posts_per_page' => $how_many,
-  ));
-}
-
-
-/* Get the content of About Us */
-function get_date_firma() {
-  $about_us = get_page_by_title( 'Date firma' ); 
-  $page_data = get_page($about_us);
-  return $page_data->post_content;
-}
 
 
 
