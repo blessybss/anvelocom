@@ -1,6 +1,14 @@
 /* Groups of molecules (and possibly atoms) joined together to form distinct section of an interface.
 */
+/* Columns for Isotope
+  - since Isotope filters out elements we don't know which element will be the last in a row,
+  so we can't make it's righ margin 0
+  - in this grid all elements in a row will have the same right margin
+*/
 /* Columns for the grid
+  - calculates automatically the columns size and margin
+  - the right margin of the last element in a row is set to zero
+  - $maximum sets how many articles will be displayed on a single page 
 */
 /* Float left child elements like in inline lists
   - it selects only the direct descendants of the parent element

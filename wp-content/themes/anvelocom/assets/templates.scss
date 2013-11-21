@@ -12,8 +12,8 @@ html {
       
       #header {
         @include block;
-        margin: $pad 0;
         @include float-left;
+        margin: $pad 0;
         
         nav {
           @include menu;
@@ -27,12 +27,6 @@ html {
         section {
           @include block;
           margin-bottom: $pad*2;
-          
-          article {
-            &.thumb {
-              @include col(5);
-            }
-          }
         }
       }
       
@@ -44,15 +38,63 @@ html {
     }
     
     
+    /* Frontpage
+    */
     &.home {
-      #intro {
-        figure {
-          img {
-            @include full-width-image;
+      main {
+        section {
+          @include thumbs(normal, title);
+        }
+      }
+    }
+    
+    
+    /* Archives
+    */
+    &.page {
+      main {
+        section {
+          @include thumbs(isotope);
+          
+          &#filters {
+            h1, select {
+              @include isotope(5);
+            }
           }
         }
       }
-      
+    }
+    
+    
+    /* Single product
+    */
+    &.single-post {
+      main {
+        section {
+          &#article {
+            article {
+              @include figure(null, hide);
+              
+              #content {
+                @include block;
+                @include float-left;
+                
+                aside {
+                  @include body-text;
+                  
+                  img {
+                    display: none;
+                  }
+                }
+              }
+            }
+          }
+          
+          &#variations, &#brands {
+            @include thumbs;
+          }
+        }
+      }
     }
   }
 }

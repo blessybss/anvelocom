@@ -3,14 +3,6 @@
 */
 
 
-/* Add border to text
-*/
-@mixin bordered {
-  padding: $pad/2;
-  border: 1px solid;
-}
-
-
 
 html {
   body {
@@ -50,58 +42,18 @@ html {
     &.home {
       #intro {
         figure {
-          figcaption {
-            position: relative;
-            top: -$pad*2 - $pad/4;
-            background: $background;
-            display: inline-block;
-            
-            @include bordered;
-            border-width: $pad/4;
-            padding: $pad;
-            @include color(invert);
-            
-            opacity: .9;
-          }
+          @include figure(full-width, black-background);
         }
       }
       
-      
-      #anvelope, #reduceri {
-        article {
-          figure {
-            img {
-              max-height: 176px;
-            }
-          }
-          
-          aside {
-            display: none;
-          }
-          
-          &.c0 {
-            h1 {
-              @include bordered;
-            }
-          }
-        }
-      }
       
       #bestsellers {
         article {
-          figure {
-            figcaption {
-              display: none;
-            }
-          }
+          @include thumb(normal, hide, true, true, false);
           
           &.c0 {
             h1 {
-              @include bordered;
-              color: $highlight;
-              a {
-                color: $highlight;
-              }
+              @include highlight;
             }
           }
         }

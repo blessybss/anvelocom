@@ -12,6 +12,14 @@
   margin: 0 auto;
 }
 
+/* Left aligned column
+*/
+@mixin m_column($width, $margin) {
+  width: $width;
+  margin-right: $margin;
+  float: left;
+}
+
 
 
 
@@ -213,8 +221,8 @@
 
 /* Set links
 */
-@mixin link {
-  color: $color;
+@mixin link($c: $color) {
+  color: $c;
   text-decoration: none;
   outline: 0;
   @include uppercase;
@@ -321,7 +329,6 @@
   } @elseif ($type == invert) {
     background: $color;
     color: $background;
-    
     a {
       color: $background;
     }
