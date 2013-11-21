@@ -12,7 +12,7 @@
               //$img = z_taxonomy_image_url($article->term_id);
               $img = 'http://placehold.it/250x150';
               $title = $article->name;
-              $link = $article->slug;
+              $link = get_category_link($article->term_id);
               $retina = false;
               include '_responsive-images.php';
             }
