@@ -101,5 +101,19 @@ html {
         }
       }
     }
+    
+    /* Content pages
+    */
+    &.page {
+      main {
+        #page {
+          @include content;
+        }
+        
+        #sidebar {
+          @include sidebar;
+        }
+      }
+    }
   }
 }

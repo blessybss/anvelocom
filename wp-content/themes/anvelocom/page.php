@@ -7,9 +7,33 @@
     if (have_posts()) {
       while ( have_posts() ) : the_post(); ?>
         
-        page
+        <div id="content">
+          <?php the_content() ?>
+        </div>
+        <?php comments_template(); ?> 
         
-        <?php
+      <?php endwhile;
+		} else {
+		  include '_not-found.php';
+		}
+	?>
+</section>
+
+<nav id="sidebar">
+  <h3>Produse</h3>
+  <ul>
+    <?php wp_list_categories(array(
+      'title_li' => '',
+      'exclude' => '467',
+    )); ?>  
+  </ul>
+</nav>
+
+<?php get_footer(); ?>
+
+
+<!--
+<?php
 	        $mypages = get_pages( array( 'child_of' => $post->ID, 'sort_column' => 'post_date', 'sort_order' => 'desc' ) );
 
 	        foreach( $mypages as $page ) {		
@@ -24,19 +48,4 @@
 	        <?php
 	        }	
         ?>
-        
-      <?php endwhile;
-		} else {
-		  include '_not-found.php';
-		}
-	?>
-</section>
-
-<section id="sidebar">
-  <?php wp_list_categories(array(
-    'title_li' => '',
-    'exclude' => '467',
-  )); ?>  
-</section>
-
-<?php get_footer(); ?>
+-->

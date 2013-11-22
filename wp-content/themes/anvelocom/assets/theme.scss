@@ -2,6 +2,90 @@
 */
 
 
+/* Display page content
+*/
+@mixin content {
+  width: $major;
+  float: left;
+  
+  #content {
+    @include block;
+    @include body-text;
+  }
+  
+  #comments {
+    @include block;
+    max-width: $body-text-width;
+    margin: $pad 0;
+    
+    @include color(invert);
+    padding: $pad;
+    width: calc(100% - #{$pad*2});
+    
+    @include form;
+    
+    h3, h2 {
+      margin-bottom: $pad;
+    }
+    
+    ol {
+      li {
+        margin-bottom: $pad;
+        padding-bottom: $pad;
+        border-bottom: 1px solid $gray;
+        
+        a {
+          @include link($highlight);
+        }
+        
+        .reply {
+          margin: $pad/2 0;
+        }
+        
+        .vcard {
+          display: none;
+        }
+      }
+      
+      &.children {
+        margin: $pad;
+      }
+    }
+    
+    
+    form {
+      width: 60%;
+      
+      input, textarea {
+        margin-bottom: $pad/2;
+        
+        &#submit {
+          width: 15em;
+        }
+      }
+    }
+  }
+}
+
+/* Th sidebar
+*/
+@mixin sidebar {
+  @include bordered;
+  padding: $pad*2;
+  width: calc(#{$minor} - #{$pad*4} - 2px);
+  float: left;
+  @include ul;
+  
+  h3 {
+    display: none;
+  }
+  
+  ul {
+    li {
+      margin: $pad/2 0;
+    }
+  }
+}
 
 
 /* Displays a product thumb in different ways
