@@ -1,9 +1,7 @@
+<h1>Toate marcile</h1>
 <?php
   $brands = get_anvelope_brands();
   if ($brands) { ?>
-    <article class="thumb c0">
-      <h1><a href="">Toate marcile</a></h1>
-    </article>
     <?php foreach ($brands as $index=>$article) { ?>
       <article class="thumb c<?php echo $index + 1 ?>">
         <figure>

@@ -8,10 +8,6 @@
       while ( have_posts() ) : the_post(); 
         $post_id = $post->ID; ?>
         <article>
-          <h1>
-            <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a>
-          </h1>
-          
           <div id="content">
             <figure>
               <?php
@@ -27,6 +23,9 @@
             </figure>
             
             <aside>
+              <h1>
+                <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a>
+              </h1>
               <?php the_content(); ?>
             </aside>
           </div>
@@ -39,13 +38,10 @@
 </section>
 
 <section id="variations">
+  <h1>Variatii</h1>  
   <?php
     $related_posts = MRP_get_related_posts($post_id, true);
     if ($related_posts) { ?>
-      <article class="thumb c0">
-        <h1><a href="">Variatii</a></h1>
-      </article>
-      
       <?php foreach ($related_posts as $index=>$article) { ?>
       <article class="thumb c<?php echo $index + 1 ?>">
         <?php 
