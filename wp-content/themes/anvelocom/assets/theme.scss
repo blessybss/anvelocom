@@ -2,6 +2,99 @@
 */
 
 
+
+
+/* Displays a product thumb in different ways
+*/
+@mixin thumb($img: null, $figcaption: null, $aside: true, $title: false, $details: true) {
+  @include figure($img, $figcaption);
+  
+  @if ($aside == false) {
+    aside {
+      display: none;
+    }
+  } @else {
+    aside {
+      display: block;
+      
+      @if ($title == false) {
+        #title {
+          display: none;
+        }
+      } @else {
+        #title {
+          display: block;
+        }
+      }
+      
+      @if ($details == false) {
+        #details {
+          display: none;
+        }
+      } @else {
+        #details {
+          display: block;
+        }
+      }
+    }
+  }
+  
+  #price {
+    @include price;
+  }
+}
+
+
+
+/* Creates a section displaying product thumbs
+  - if thumbs are filtered by Isotope the standard grid is replaced by an isotope grid
+*/
+@mixin thumbs($type: normal, $title: null) {
+  article {
+    &.thumb {
+      @if ($type == normal) {
+        @include col(5);
+      } @elseif ($type == isotope) {
+        @include isotope(5);
+      }
+    }
+    
+    @if ($title != null) {
+      &.c0 {
+        h1 {
+          @include bordered;
+        }
+      }
+    }
+    
+    @include thumb;
+  }
+}
+
+
+/* Display price
+*/
+@mixin price {
+  ul {
+    @include list-inline;
+    
+    li {
+      margin-right: $pad/2;
+      
+      &:first-of-type {
+        text-decoration: none;
+        font-weight: bold;
+      }
+      
+      &:nth-of-type(2) {
+        text-decoration: line-through;
+        font-weight: normal;
+      }
+    }
+  }
+}
+
+
 /* A white text on a black, opaque background
 */
 @mixin black-background {
@@ -40,72 +133,6 @@
     }
   }
 }
-
-
-/* Displays a product thumb in different ways
-*/
-@mixin thumb($img: null, $figcaption: null, $aside: false, $title: false, $details: false) {
-  @include figure($img, $figcaption);
-  
-  @if ($aside == false) {
-    aside {
-      display: none;
-    }
-  } @else {
-    aside {
-      display: block;
-      
-      @if ($title == false) {
-        #title {
-          display: none;
-        }
-      } @else {
-        #title {
-          display: block;
-        }
-      }
-      
-      @if ($details == false) {
-        #details {
-          display: none;
-        }
-      } @else {
-        #details {
-          display: block;
-        }
-      }
-    }
-  }
-}
-
-
-
-/* Creates a section displaying product thumbs
-  - if thumbs are filtered by Isotope the standard grid is replaced by an isotope grid
-*/
-@mixin thumbs($type: normal, $title: null) {
-  article {
-    &.thumb {
-      @if ($type == normal) {
-        @include col(5);
-      } @elseif ($type == isotope) {
-        @include isotope(5);
-      }
-    }
-    
-    @if ($title != null) {
-      &.c0 {
-        h1 {
-          @include bordered;
-        }
-      }
-    }
-    
-    @include thumb;
-  }
-}
-
-
 
 /* Highlight a text, even if it is a link
 */

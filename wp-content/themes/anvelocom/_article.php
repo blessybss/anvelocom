@@ -23,9 +23,12 @@
     </div>
     
     <div id="details">
-      <a href="<?php echo $link ?>" title="<?php echo $title ?>">
-        <?php echo $article->post_excerpt; ?>
-      </a>
+      <div id="price">
+        <ul>
+          <li>390 RON</li>
+          <li>490 RON</li>
+        </ul>
+      </div>
     </div>
   </aside>
 <?php } ?>

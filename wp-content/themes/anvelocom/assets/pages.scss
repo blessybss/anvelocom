@@ -49,7 +49,7 @@ html {
       
       #bestsellers {
         article {
-          @include thumb(normal, hide, true, true, false);
+          @include thumb(normal, hide, true, true, true);
           
           &.c0 {
             h1 {
