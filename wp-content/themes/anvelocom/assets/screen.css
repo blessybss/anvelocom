@@ -960,6 +960,202 @@ html body.page main #page #comments ol li {
   margin-bottom: 1.25em;
   padding-bottom: 1.25em;
   border-bottom: 1px solid #bebebe;
+  max-width: 43.75em;
+  line-height: 1.75;
+  /* Headings
+  */
+  /* Elements
+  */
+  /* Padding of individual elements
+  */
+  /* Padding of consecutive elements
+  */
+}
+html body.page main #page #comments ol li h1, html body.page main #page #comments ol li h2, html body.page main #page #comments ol li h3 {
+  font-size: 20px;
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+html body.page main #page #comments ol li h1 {
+  font-weight: bold;
+}
+html body.page main #page #comments ol li h2 {
+  text-transform: uppercase;
+  letter-spacing: 0.15625em;
+}
+html body.page main #page #comments ol li h4, html body.page main #page #comments ol li h5, html body.page main #page #comments ol li h6 {
+  font-size: larger;
+}
+html body.page main #page #comments ol li h1, html body.page main #page #comments ol li h2, html body.page main #page #comments ol li h3 {
+  line-height: 1.1;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 1.45833em 0;
+}
+html body.page main #page #comments ol li em, html body.page main #page #comments ol li i {
+  font-style: italic;
+}
+html body.page main #page #comments ol li strong, html body.page main #page #comments ol li b {
+  font-weight: bold;
+}
+html body.page main #page #comments ol li ul {
+  list-style: none outside;
+}
+html body.page main #page #comments ol li ul li {
+  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
+    - this way we can perfectly align the bullets / numbering to the list content
+  */
+  position: relative;
+  padding-left: 1.25em;
+}
+html body.page main #page #comments ol li ul li:before {
+  content: "\271A";
+  /* making the content of the list perfectly align with numbering
+    - <li> is relatively positioned
+    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
+    - the the <li> content has a padding-left to not overlap the numbering
+  */
+  position: absolute;
+  left: 0;
+}
+html body.page main #page #comments ol li ol {
+  list-style: none outside;
+  counter-reset: ol-counter;
+}
+html body.page main #page #comments ol li ol li {
+  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
+    - this way we can perfectly align the bullets / numbering to the list content
+  */
+  position: relative;
+  padding-left: 1.25em;
+}
+html body.page main #page #comments ol li ol li:before {
+  /* making the content of the list perfectly align with numbering
+    - <li> is relatively positioned
+    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
+    - the the <li> content has a padding-left to not overlap the numbering
+  */
+  position: absolute;
+  left: 0;
+}
+html body.page main #page #comments ol li ol li {
+  counter-increment: ol-counter;
+}
+html body.page main #page #comments ol li ol li:before {
+  content: counter(ol-counter,decimal);
+}
+html body.page main #page #comments ol li dl dt {
+  font-size: 20px;
+  font-size: 1.25rem;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.15625em;
+}
+html body.page main #page #comments ol li table {
+  width: 100%;
+  display: table !important;
+}
+html body.page main #page #comments ol li table thead {
+  background: #1f1f1f;
+  color: #f1f1f1;
+}
+html body.page main #page #comments ol li table thead a {
+  color: #f1f1f1;
+}
+html body.page main #page #comments ol li table thead th, html body.page main #page #comments ol li table tbody td {
+  padding: 1.25em;
+  padding-left: 0;
+}
+html body.page main #page #comments ol li table tbody td {
+  border-bottom: 1px solid #bebebe;
+}
+html body.page main #page #comments ol li form {
+  /* Reset */
+  /* Text */
+  /* Button */
+  /* Stretching and padding */
+}
+html body.page main #page #comments ol li form input, html body.page main #page #comments ol li form textarea, html body.page main #page #comments ol li form select {
+  border: none;
+  outline: 0;
+  background: #f1f1f1;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+html body.page main #page #comments ol li form input[type='text'], html body.page main #page #comments ol li form input[type='email'], html body.page main #page #comments ol li form input[type='password'], html body.page main #page #comments ol li form textarea {
+  border: 1px solid #1f1f1f;
+  font-style: italic;
+}
+html body.page main #page #comments ol li form input[type='submit'] {
+  text-transform: uppercase;
+  letter-spacing: 0.15625em;
+  border: 1px solid #1f1f1f;
+  cursor: pointer;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+html body.page main #page #comments ol li form input[type='submit']:hover {
+  background: #f3aaaa;
+}
+html body.page main #page #comments ol li form label, html body.page main #page #comments ol li form input, html body.page main #page #comments ol li form textarea {
+  width: 100%;
+  float: left;
+}
+html body.page main #page #comments ol li form input, html body.page main #page #comments ol li form textarea {
+  padding: 0.625em;
+  width: calc(100% - 1.25em);
+}
+html body.page main #page #comments ol li blockquote, html body.page main #page #comments ol li q {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  /* Making room to the " sign 
+  */
+  position: relative;
+  float: left;
+  padding: 12.5em 0 2.5em 5em;
+  /* Fill the parent block
+  */
+  width: 100%;
+  float: left;
+  text-align: right;
+  width: calc(43.75em - 5em);
+  /*
+  @include below-and-small-screen {
+    width: calc(100% - 5em);
+  }
+  */
+}
+html body.page main #page #comments ol li blockquote:before, html body.page main #page #comments ol li q:before {
+  content: '\201C';
+  font-size: 1400%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+html body.page main #page #comments ol li ul, html body.page main #page #comments ol li ol, html body.page main #page #comments ol li dl, html body.page main #page #comments ol li table, html body.page main #page #comments ol li figure, html body.page main #page #comments ol li form, html body.page main #page #comments ol li q {
+  margin: 1.25em 0;
+}
+html body.page main #page #comments ol li figure {
+  margin-top: 2.5em;
+}
+html body.page main #page #comments ol li dd + dt {
+  margin-top: 1.25em;
+}
+html body.page main #page #comments ol li p + p {
+  margin-top: 1.25em;
+}
+html body.page main #page #comments ol li h1 + h2, html body.page main #page #comments ol li h2 + h3 {
+  padding-top: 0;
+}
+html body.page main #page #comments ol li h1 + ul, html body.page main #page #comments ol li h2 + ul, html body.page main #page #comments ol li h3 + ul,
+html body.page main #page #comments ol li h1 + ol, html body.page main #page #comments ol li h2 + ol, html body.page main #page #comments ol li h3 + ol {
+  margin-top: 0;
+}
+html body.page main #page #comments ol li li ul, html body.page main #page #comments ol li li ol {
+  margin-top: 0;
 }
 html body.page main #page #comments ol li a {
   color: #f3aaaa;
