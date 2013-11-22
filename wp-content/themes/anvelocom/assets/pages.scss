@@ -36,17 +36,16 @@ html {
       
       main {
         font-family: 'Open Sans', sans-serif;
+        
+        #intro {
+          figure {
+            @include figure(full-width, black-background);
+          }
+        }
       }
     }
     
     &.home {
-      #intro {
-        figure {
-          @include figure(full-width, black-background);
-        }
-      }
-      
-      
       #bestsellers {
         article {
           @include thumb(normal, hide, true, true, true);

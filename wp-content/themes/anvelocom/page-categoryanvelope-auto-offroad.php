@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<h1>Anvelope</h1>
+<?php include '_intro.php' ?>
 
 <section id="brands">
   <?php include '_brands.php' ?>

@@ -54,7 +54,7 @@ html {
     &.page {
       main {
         section {
-          @include thumbs(isotope);
+          @include thumbs(isotope, null, $pad);
           
           &#filters {
             h1, select {
@@ -91,7 +91,7 @@ html {
           }
           
           &#variations, &#brands {
-            @include thumbs;
+            @include thumbs(normal, null, $pad);
           }
         }
       }

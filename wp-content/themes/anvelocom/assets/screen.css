@@ -319,6 +319,9 @@ html body .container #footer address {
   color: #bebebe;
   max-width: 21.875em;
 }
+html body.home main section article {
+  margin-bottom: 0;
+}
 html body.home main section article.thumb {
   width: 18%;
   margin-right: 2.5%;
@@ -366,6 +369,9 @@ html body.home main section article #price ul li:first-of-type {
 html body.home main section article #price ul li:nth-of-type(2) {
   text-decoration: line-through;
   font-weight: normal;
+}
+html body.page main section article {
+  margin-bottom: 1.25em;
 }
 html body.page main section article.thumb {
   /* The margin will be the 10% of the column width
@@ -633,6 +639,9 @@ html body.single-post main section#article article #content aside li ul, html bo
 html body.single-post main section#article article #content aside img {
   display: none;
 }
+html body.single-post main section#variations article, html body.single-post main section#brands article {
+  margin-bottom: 1.25em;
+}
 html body.single-post main section#variations article.thumb, html body.single-post main section#brands article.thumb {
   width: 18%;
   margin-right: 2.5%;
@@ -698,10 +707,10 @@ html body .container #header nav ul li:nth-of-type(3):after {
 html body .container main {
   font-family: 'Open Sans', sans-serif;
 }
-html body.home #intro figure img {
+html body .container main #intro figure img {
   width: 100%;
 }
-html body.home #intro figure figcaption {
+html body .container main #intro figure figcaption {
   position: relative;
   top: -2.8125em;
   background: #f1f1f1;
@@ -714,7 +723,7 @@ html body.home #intro figure figcaption {
   color: #f1f1f1;
   opacity: .9;
 }
-html body.home #intro figure figcaption a {
+html body .container main #intro figure figcaption a {
   color: #f1f1f1;
 }
 html body.home #bestsellers article figcaption {

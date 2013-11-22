@@ -1,5 +1,7 @@
 <?php get_header(); ?>
 
+<?php include '_intro.php' ?>
+
 <section id="page">
   <?php 
     if (have_posts()) {
