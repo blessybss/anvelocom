@@ -47,67 +47,92 @@ function get_date_firma() {
 
 function get_dimensions($posts) {
   $ret = array();
-  
   if ($posts) {
     foreach ($posts as $post) {
       $ret = array_merge($ret, get_dimension($post));
     }
   }
-  
   return array_unique($ret);
 }
 
 function get_latimes($posts) {
   $ret = array();
-  
   if ($posts) {
     foreach ($posts as $post) {
       $ret = array_merge($ret, get_latime($post));
     }
   }
-  
   return array_unique($ret);
 }
 
 function get_inaltimes($posts) {
   $ret = array();
-  
   if ($posts) {
     foreach ($posts as $post) {
       $ret = array_merge($ret, get_inaltime($post));
     }
   }
-  
   return array_unique($ret);
 }
 
+function get_brands($posts) {
+  $ret = array();
+  if ($posts) {
+    foreach ($posts as $post) {
+      $ret = array_merge($ret, get_brand($post));
+    }
+  }
+  return array_unique($ret);
+}
+
+function get_profs($posts) {
+  $ret = array();
+  if ($posts) {
+    foreach ($posts as $post) {
+      $ret = array_merge($ret, get_prof($post));
+    }
+  }
+  return array_unique($ret);
+}
+
+
 function get_dimension($post) {
   $ret = array();
-  
   if ($post) {
     $ret = get_post_meta($post->ID, 'Dimensiune janta');
   }
-  
   return $ret;
 }
 
 function get_latime($post) {
   $ret = array();
-  
   if ($post) {
     $ret = get_post_meta($post->ID, 'latime');
   }
-  
   return $ret;
 }
 
 function get_inaltime($post) {
   $ret = array();
-  
   if ($post) {
     $ret = get_post_meta($post->ID, 'inaltime');
   }
-  
+  return $ret;
+}
+
+function get_brand($post) {
+  $ret = array();
+  if ($post) {
+    //$ret = get_post_meta($post->ID, 'brandi');
+  }
+  return $ret;
+}
+
+function get_prof($post) {
+  $ret = array();
+  if ($post) {
+    $ret = get_post_meta($post->ID, 'profil');
+  }
   return $ret;
 }
 
@@ -117,6 +142,8 @@ function get_article_class($post) {
   $klass = array_merge($klass, get_dimension($post));
   $klass = array_merge($klass, get_inaltime($post));
   $klass = array_merge($klass, get_latime($post));
+  $klass = array_merge($klass, get_brand($post));
+  $klass = array_merge($klass, get_prof($post));
   $klass = array_map("string_to_classname", $klass);
   return $klass;
 }

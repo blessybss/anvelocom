@@ -2,6 +2,10 @@
 /* Groups of atoms which function together as a unit
   -  “do one thing and do it well” 
 */
+/* Navigational elements
+*/
+/* An arrow to scroll top of the page
+*/
 /* Grid elements
 */
 /* Left aligned column
@@ -31,6 +35,8 @@
   - 'invert' inverts this color scheme
 */
 /* Various mixins
+*/
+/* Draws a CSS circle around something
 */
 /* An inline list
 */

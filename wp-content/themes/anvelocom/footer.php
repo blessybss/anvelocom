@@ -1,17 +1,23 @@
 </main>
 
 <footer id="footer">
-  <h1>
-    <a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
-      <?php bloginfo('name'); ?>
-    </a>
-  </h1>
-  <p>
-    <?php bloginfo('description'); ?>
-  </p>
-  <address>
-    <?php echo get_date_firma(); ?>
-  </address>
+  <div id="company">
+    <h1>
+      <a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+        <?php bloginfo('name'); ?>
+      </a>
+    </h1>
+    <p>
+      <?php bloginfo('description'); ?>
+    </p>
+    <address>
+      <?php echo get_date_firma(); ?>
+    </address>
+  </div>
+  
+  <nav>
+    <h3></h3>
+  </nav>
 </footer>
 
 

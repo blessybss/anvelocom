@@ -3,6 +3,24 @@
 */
 
 
+/* Navigational elements
+*/
+
+/* An arrow to scroll top of the page
+*/
+@mixin go-top($arrow: $arrow-top) {
+  cursor: pointer;
+  
+  &:before {
+    content: $arrow;
+    @include circle($pad);
+    font-size: $before-font-size;
+    display: block;
+  }
+}
+
+
+
 
 /* Grid elements
 */
@@ -19,7 +37,6 @@
   margin-right: $margin;
   float: left;
 }
-
 
 
 
@@ -114,7 +131,6 @@
       padding: $list-pad;
       width: calc(100% - #{$list-pad*2});
     }
-    
   }
 }
 
@@ -346,6 +362,17 @@
 
 /* Various mixins
 */
+
+
+/* Draws a CSS circle around something
+*/
+@mixin circle($size) {
+  width: $size;
+  height: $size;
+  @include border-radius($size/2);
+  border: 2px solid;
+  text-align: center;
+}
 
 
 @mixin fluid-image {
