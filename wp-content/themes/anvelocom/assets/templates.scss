@@ -74,10 +74,13 @@ html {
           @include thumbs(isotope, null, $pad);
           
           &#filters {
-            select, label {
+            @include select;
+            
+            .select {
               @include isotope(5);
             }
             
+            /*
             label {
               @include color(invert);
               margin-top: $pad;
@@ -85,6 +88,7 @@ html {
               padding-right: 0;
               width: calc(17% - #{$pad/4});
             }
+            */
           }
         }
       }

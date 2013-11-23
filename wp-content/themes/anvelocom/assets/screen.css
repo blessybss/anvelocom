@@ -137,6 +137,11 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 */
 /* Typographic elements
 */
+/* Select box
+  - put <select> inside a <label class="select">
+  - label:after is positioned over the original selectbox arrow
+  - label after must have a background color to hide the default arrow
+*/
 /* <dl>
 */
 /* <ul> and <ol> lists
@@ -462,7 +467,45 @@ html body.page main section article #price ul li:nth-of-type(2) {
   text-decoration: line-through;
   font-weight: normal;
 }
-html body.page main section#filters select, html body.page main section#filters label {
+html body.page main section#filters {
+  /*
+  label {
+    @include color(invert);
+    margin-top: $pad;
+    padding: $pad/4;
+    padding-right: 0;
+    width: calc(17% - 0.3125em);
+  }
+  */
+}
+html body.page main section#filters label.select:after {
+  content: "\21E3";
+  float: right;
+  display: inline-block;
+  padding: 0 .45em;
+  position: relative;
+  left: 0;
+  background: #f1f1f1;
+  border: 1px solid;
+  font-size: 140%;
+  top: -1.35em;
+  pointer-events: none;
+  /* this is a must */
+  cursor: pointer;
+}
+html body.page main section#filters select {
+  border: none;
+  outline: 0;
+  background: #f1f1f1;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 1px solid;
+  cursor: pointer;
+  width: 100%;
+  padding: 0.3125em;
+}
+html body.page main section#filters .select {
   /* The margin will be the 10% of the column width
     - in a 5 column grid we would have width=18%, margin=2%
     - since isotope cannot handle this 100% full row (?) we will have to reduce column with with 1% to 17%
@@ -470,17 +513,6 @@ html body.page main section#filters select, html body.page main section#filters 
   width: 17%;
   margin-right: 2%;
   float: left;
-}
-html body.page main section#filters label {
-  background: #1f1f1f;
-  color: #f1f1f1;
-  margin-top: 1.25em;
-  padding: 0.3125em;
-  padding-right: 0;
-  width: calc(17% - 0.3125em);
-}
-html body.page main section#filters label a {
-  color: #f1f1f1;
 }
 html body.single-post main section#article article figcaption {
   display: none;

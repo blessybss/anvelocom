@@ -8,7 +8,7 @@
 
 /* An arrow to scroll top of the page
 */
-@mixin go-top($arrow: $arrow-top) {
+@mixin go-top($arrow: $arrow-up) {
   cursor: pointer;
   
   &:before {
@@ -88,18 +88,58 @@
   }
 }
 
+/* Select box
+  - put <select> inside a <label class="select">
+  - label:after is positioned over the original selectbox arrow
+  - label after must have a background color to hide the default arrow
+*/
+
+@mixin select {    
+  label.select {
+    &:after {
+      content: $arrow-down;
+      float: right;
+      
+      display: inline-block;
+      padding: 0 .45em;
+      position: relative;
+      left: 0;
+      background: $background;
+      border: 1px solid;
+      
+      font-size: 140%;
+      top: -1.35em;
+      
+      pointer-events: none; /* this is a must */
+      cursor: pointer;
+    }
+  }
+  
+  select {
+    @include reset-form;
+    border: 1px solid;
+    cursor: pointer;
+    width: 100%;
+    padding: $pad/4;
+  }
+}
+
+@mixin reset-form {
+  border: none;
+  outline: 0;
+  background: $background;
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
 @mixin form {
   form {
     
     /* Reset */
     input, textarea, select {
-	    border: none;
-	    outline: 0;
-	    background: $background;
-	
-	    appearance: none;
-	    -webkit-appearance: none;
-	    -moz-appearance: none;
+	    @include reset-form;
     }
     
 

@@ -12,6 +12,11 @@
 */
 /* Typographic elements
 */
+/* Select box
+  - put <select> inside a <label class="select">
+  - label:after is positioned over the original selectbox arrow
+  - label after must have a background color to hide the default arrow
+*/
 /* <dl>
 */
 /* <ul> and <ol> lists
