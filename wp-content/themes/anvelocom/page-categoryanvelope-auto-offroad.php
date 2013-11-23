@@ -6,15 +6,14 @@
 <section id="filters">
   <h1>Configurator</h1>
   
-  <!--
-  <div id="labels">
-    <label>Latime anvelopa</label>
-    <label>Inaltime anvelopa</label>
-    <label>Diametru janta</label>
-    <label>Marca</label>
-    <label>Profil</label>
-  </div>
-  -->
+  <ul id="labels">
+    <li>Latime anvelopa</li>
+    <li>Inaltime anvelopa</li>
+    <li>Diametru janta</li>
+    <li>Marca</li>
+    <li>Profil</li>
+  </ul>
+  
   
   <?php
     $anvelopes = get_anvelopes(-1); 

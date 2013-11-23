@@ -76,19 +76,17 @@ html {
           &#filters {
             @include select;
             
-            .select {
+            ul li, .select {
               @include isotope(5);
             }
             
-            /*
-            label {
+            ul li {
               @include color(invert);
               margin-top: $pad;
               padding: $pad/4;
               padding-right: 0;
               width: calc(17% - #{$pad/4});
             }
-            */
           }
         }
       }
