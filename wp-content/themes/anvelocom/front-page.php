@@ -3,7 +3,7 @@
 <section id="intro">
   <figure>
     <?php 
-      $img = get_template_directory_uri() . "/assets/jeep.jpg";
+      $img = get_template_directory_uri() . "/assets/jeep-smaller.jpg";
       $title = esc_attr(get_bloginfo('name','display')); 
       $retina = false;
       include '_responsive-images.php';
@@ -18,7 +18,7 @@
   <?php 
     $anvelopes = get_anvelopes(4);  
     if ($anvelopes) { ?>
-      <article class="thumb c0">
+      <article class="thumb c0 title">
         <h1><a href="">Produse noi</a></h1>
       </article>
       
@@ -37,7 +37,7 @@
   <?php 
     $anvelopes = get_anvelopes(4);  
     if ($anvelopes) { ?>
-      <article class="thumb c0">
+      <article class="thumb c0 title">
         <h1><a href="">Reduceri</a></h1>
       </article>
       
@@ -57,7 +57,7 @@
   <?php 
     $anvelopes = get_anvelopes(4);  
     if ($anvelopes) { ?>
-      <article class="thumb c0">
+      <article class="thumb c0 title">
         <h1><a href="">Cele mai vandute</a></h1>
       </article>
       

@@ -53,14 +53,12 @@
     <?php }
     }
   ?>
-</section>
-
-
-<section id="back">
-  <article class="thumb c0">
+  <article class="thumb title">
     <h1><a href="">&larr; Inapoi la configurator</a></h1>
   </article>
 </section>
+
+
 
 <section id="brands">
   <?php include '_brands.php' ?>

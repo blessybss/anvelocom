@@ -135,8 +135,9 @@
 
 /* Creates a section displaying product thumbs
   - if thumbs are filtered by Isotope the standard grid is replaced by an isotope grid
+  - if an article has .title class it will be displayed as section title
 */
-@mixin thumbs($type: normal, $title: null, $margin-bottom: 0) {
+@mixin thumbs($type: normal, $margin-bottom: 0) {
   article {
     &.thumb {
       @if ($type == normal) {
@@ -146,11 +147,9 @@
       }
     }
     
-    @if ($title != null) {
-      &.c0 {
-        h1 {
-          @include bordered;
-        }
+    &.title {
+      h1 {
+        @include bordered;
       }
     }
     

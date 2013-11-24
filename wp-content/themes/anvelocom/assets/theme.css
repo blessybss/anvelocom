@@ -8,6 +8,7 @@
 */
 /* Creates a section displaying product thumbs
   - if thumbs are filtered by Isotope the standard grid is replaced by an isotope grid
+  - if an article has .title class it will be displayed as section title
 */
 /* Display price
 */

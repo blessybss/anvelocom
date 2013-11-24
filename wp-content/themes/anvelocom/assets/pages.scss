@@ -23,7 +23,7 @@ html {
                 }
               }
               
-              &:nth-of-type(3), &:nth-of-type(5) {
+              &:nth-of-type(3) {
                 &:after {
                   content: '\2022';
                   padding-left: $pad;

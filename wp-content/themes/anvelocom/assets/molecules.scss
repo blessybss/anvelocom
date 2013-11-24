@@ -23,6 +23,7 @@
 
 
 /* Grid elements
+  - the $width is coming from the layer above, organisms
 */
 
 @mixin m_container($width : null) {

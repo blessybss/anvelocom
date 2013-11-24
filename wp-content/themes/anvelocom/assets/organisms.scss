@@ -89,10 +89,10 @@
   - adapts to small screens 
 */
 @mixin container {
-  @include m_container($container-desktop);
+  @include m_container($container-mobile);
   
-  @include below-and-small-screen {
-    @include m_container($container-mobile);
+  @include large-screen-and-above {
+    @include m_container($container-desktop);
   }
 }
 

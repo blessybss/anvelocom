@@ -19,6 +19,10 @@ html {
           @include menu;
           margin-top: $pad - $pad/4;
           
+          &:last-of-type {
+            float: right;
+            margin-right: 0;
+          }
         }
       }
             
@@ -29,7 +33,7 @@ html {
           @include block;
           
           /* There are 4 sections on each page
-            - only the third sections sets the margin 
+            - the third sections sets the margins for all others
           */
           &:nth-of-type(3) {
             margin: $pad*2 0;
@@ -60,7 +64,7 @@ html {
     &.home {
       main {
         section {
-          @include thumbs(normal, title);
+          @include thumbs(normal);
         }
       }
     }
@@ -71,7 +75,7 @@ html {
     &.page {
       main {
         section {
-          @include thumbs(isotope, null, $pad);
+          @include thumbs(isotope, $pad);
           
           &#filters {
             @include select;
@@ -87,6 +91,10 @@ html {
               padding-right: 0;
               width: calc(17% - #{$pad/4});
             }
+          }
+          
+          &:nth-of-type(3) {
+            margin-top: 0;
           }
         }
       }
@@ -109,7 +117,7 @@ html {
                 aside {
                   @include body-text;
                   
-                  img {
+                  img, h1 {
                     display: none;
                   }
                 }
@@ -118,11 +126,21 @@ html {
           }
           
           &#variations, &#brands {
-            @include thumbs(normal, null, $pad);
+            @include thumbs(normal, $pad);
           }
           
-          &#back {
-            @include thumbs(normal, title, $pad);
+          &#variations {
+            article {
+              &.title {
+                h1 {
+                  @include black-background;
+                  border: none;
+                  top: 0;
+                  text-align: center;
+                  padding: $pad 0;
+                }
+              }
+            }
           }
         }
       }
