@@ -15,9 +15,7 @@
     </address>
   </div>
   
-  <nav>
-    <h3></h3>
-  </nav>
+  <span></span>
 </footer>
 
 

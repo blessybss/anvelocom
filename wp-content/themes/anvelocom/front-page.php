@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 
 <section id="intro">
+  <h2>Intro</h2>
   <figure>
     <?php 
       $img = get_template_directory_uri() . "/assets/jeep-smaller.jpg";
@@ -14,14 +15,12 @@
   </figure>
 </section>
 
+
 <section id="anvelope">
+  <h2><a href="">Produse noi</a></h2>
   <?php 
     $anvelopes = get_anvelopes(4);  
     if ($anvelopes) { ?>
-      <article class="thumb c0 title">
-        <h1><a href="">Produse noi</a></h1>
-      </article>
-      
       <?php foreach ($anvelopes as $index=>$article) { ?>
       <article class="thumb c<?php echo $index + 1 ?>">
         <?php 
@@ -34,13 +33,10 @@
 </section>
 
 <section id="reduceri">
+  <h2><a href="">Reduceri</a></h2>
   <?php 
     $anvelopes = get_anvelopes(4);  
     if ($anvelopes) { ?>
-      <article class="thumb c0 title">
-        <h1><a href="">Reduceri</a></h1>
-      </article>
-      
       <?php foreach ($anvelopes as $index=>$article) { ?>
       <article class="thumb c<?php echo $index + 1 ?>">
         <?php 
@@ -54,13 +50,10 @@
 
 
 <section id="bestsellers">
+  <h2><a href="">Cele mai vandute</a></h2>
   <?php 
     $anvelopes = get_anvelopes(4);  
     if ($anvelopes) { ?>
-      <article class="thumb c0 title">
-        <h1><a href="">Cele mai vandute</a></h1>
-      </article>
-      
       <?php foreach ($anvelopes as $index=>$article) { ?>
       <article class="thumb c<?php echo $index + 1 ?>">
         <?php 

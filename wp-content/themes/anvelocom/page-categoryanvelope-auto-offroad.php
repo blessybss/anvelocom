@@ -4,7 +4,7 @@
 
 
 <section id="filters">
-  <h1>Configurator</h1>
+  <h2>Configurator</h2>
   
   <ul id="labels">
     <li>Latime anvelopa</li>
@@ -72,6 +72,7 @@
 
 
 <section id="anvelope">
+  <h2>Rezultate</h2>
   <?php 
     if ($anvelopes) { ?>
       <?php foreach ($anvelopes as $index=>$article) { ?>
@@ -86,9 +87,6 @@
   <?php } ?>
 </section>
 
-
-<section id="brands">
-  <?php include '_brands.php' ?>
-</section>
+<?php include '_brands.php' ?>
 
 <?php get_footer(); ?>
