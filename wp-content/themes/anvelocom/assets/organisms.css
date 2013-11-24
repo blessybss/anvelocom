@@ -19,6 +19,13 @@
   - the right margin of the last element in a row is set to zero
   - $maximum sets how many articles will be displayed on a single page 
 */
+/* Returns the with of a column in a grid
+  - This is useful to resize other elements to the grid
+  - The formula is taken and must be in sync with the mixin col
+*/
+/* When decorations and padding is added to a column in a grid these must be removed from the original column width
+  - params can be any of %, em, px
+*/
 /* Float left child elements like in inline lists
   - it selects only the direct descendants of the parent element
   - its a free-form grid

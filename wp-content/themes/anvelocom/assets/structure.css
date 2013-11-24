@@ -1,11 +1,11 @@
 /*
 Syntax error: Undefined mixin 'default-settings'.
-        on line 53 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/structure.scss, in `default-settings'
-        from line 53 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/structure.scss
+        on line 42 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/structure.scss, in `default-settings'
+        from line 42 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/structure.scss
 
 Backtrace:
-/home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/structure.scss:53:in `default-settings'
-/home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/structure.scss:53
+/home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/structure.scss:42:in `default-settings'
+/home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/structure.scss:42
 /var/lib/gems/1.9.1/gems/sass-3.2.9/lib/sass/tree/visitors/perform.rb:253:in `visit_mixin'
 /var/lib/gems/1.9.1/gems/sass-3.2.9/lib/sass/tree/visitors/base.rb:37:in `visit'
 /var/lib/gems/1.9.1/gems/sass-3.2.9/lib/sass/tree/visitors/perform.rb:100:in `visit'
@@ -90,4 +90,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined mixin 'default-settings'.\A         on line 53 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/structure.scss, in `default-settings'\A         from line 53 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/structure.scss"; }
+  content: "Syntax error: Undefined mixin 'default-settings'.\A         on line 42 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/structure.scss, in `default-settings'\A         from line 42 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/structure.scss"; }

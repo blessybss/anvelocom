@@ -1,13 +1,5 @@
-/* Special constructs for this site
+/* Special decorations for this site
 */
-
-
-
-
-
-
-
-
 
 
 
@@ -15,10 +7,7 @@
 /* Display page content
 */
 @mixin content {
-  width: $major;
-  float: left;
-  
-  #content {
+  #body {
     @include block;
     @include body-text;
   }
@@ -86,7 +75,6 @@
   @include bordered;
   padding: $pad*2;
   width: calc(#{$minor} - #{$pad*4} - 2px);
-  float: left;
   @include ul;
   
   h3 {
@@ -100,73 +88,6 @@
   }
 }
 
-
-/* Displays a product thumb in different ways
-*/
-@mixin thumb($img: null, $figcaption: null, $aside: true, $title: false, $details: true) {
-  @include figure($img, $figcaption);
-  
-  @if ($aside == false) {
-    aside {
-      display: none;
-    }
-  } @else {
-    aside {
-      display: block;
-      
-      @if ($title == false) {
-        #title {
-          display: none;
-        }
-      } @else {
-        #title {
-          display: block;
-        }
-      }
-      
-      @if ($details == false) {
-        #details {
-          display: none;
-        }
-      } @else {
-        #details {
-          display: block;
-        }
-      }
-    }
-  }
-  
-  #price {
-    @include price;
-  }
-}
-
-
-
-/* Creates a section displaying product thumbs
-  - if thumbs are filtered by Isotope the standard grid is replaced by an isotope grid
-  - if an article has .title class it will be displayed as section title
-*/
-@mixin thumbs($type: normal, $margin-bottom: 0) {
-  article {
-    &.thumb {
-      @if ($type == normal) {
-        @include col(5);
-      } @elseif ($type == isotope) {
-        @include isotope(5);
-      }
-    }
-    
-    &.title {
-      h1 {
-        @include bordered;
-      }
-    }
-    
-    @include thumb;
-    margin-bottom: $margin-bottom;
-  }
-}
 
 
 /* Display price
@@ -209,27 +130,6 @@
 }
 
 
-/* Displays a figure in different ways
-  - $img width can be set to 100% 
-  - $figcaption can be hidden or decorated
-*/
-@mixin figure($img: null, $figcaption: null) {
-  @if ($img == full-width) {
-    img {
-      @include full-width-image;
-    }
-  }
-  
-  @if ($figcaption == hide) {
-    figcaption {
-      display: none;
-    }
-  } @elseif ($figcaption == black-background) {
-    figcaption {
-      @include black-background;
-    }
-  }
-}
 
 /* Highlight a text, even if it is a link
 */
@@ -248,4 +148,112 @@
   border: 1px solid;
 }
 
+
+
+
+html {
+  body {
+    .container {
+      #header {
+        h1 {
+          @include bordered;
+        }
+        /* Nav must be adjusted to the bordered header
+        */
+        nav {
+          margin-top: $pad - $pad/4;
+        }
+      }
+      
+      main {
+        section {
+          h2 {
+            @include bordered;
+            width: col-resize(col-width(5), $pad, 2px);   
+            margin-bottom: $pad;
+          }
+          
+          &#intro {
+            figure {
+              figcaption {
+                @include black-background;
+              }
+            }
+            /* Figcaption has relative positioning with negative top margin 
+            */
+            margin-bottom: 0; 
+          }
+        }
+      }
+    }
+  
+    /* Archives
+    */
+    &.page {
+      .container {
+        main {
+          section {
+            h2 {
+              width: col-resize(isotope-col-width(5), $pad, 2px);
+            }
+          
+            &#filters {
+              ul {
+                li {
+                  @include color(invert);
+                  padding: $pad/4;
+                  width: col-resize(isotope-col-width(5), $pad/2, 0px);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    /* Single product
+    */
+    &.single-post {
+      main {
+        article.product {
+          header {
+            display: none;
+          }
+          
+          figure {
+            figcaption {
+              display: none;
+            }
+          }
+        }
+        
+        section {
+          nav {
+            h2 {
+              width: col-resize(col-width(5), $pad, 2px);   
+            }
+          }
+        }
+      }
+    }
+    
+    
+    /* Content page
+    */
+    &.page {
+      main {
+        #content {
+          article.page {
+            @include content;
+          }
+          
+          #sidebar {
+            @include sidebar;
+          }
+        }
+      }
+    }
+  
+  }
+}
 

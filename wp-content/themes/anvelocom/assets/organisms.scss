@@ -73,8 +73,6 @@
     $gutter: $modulo;
     $column-width: $divident - $gutter;
   }
-  
-  
 }
 
 /* Columns for the grid
@@ -96,6 +94,41 @@
     }
   }
 }
+
+/* Returns the with of a column in a grid
+  - This is useful to resize other elements to the grid
+  - The formula is taken and must be in sync with the mixin col
+*/
+@function col-width($how-many) {
+  @return 90% / $how-many;
+}
+
+@function isotope-col-width($how-many) {
+  $modulo: 100 % $how-many;
+  $divident: 100 / $how-many;
+  
+  @if ($modulo == 0) {
+    /* The margin will be the 10% of the column width
+      - in a 5 column grid we would have width=18%, margin=2%
+      - since isotope cannot handle this 100% full row (?) we will have to reduce column with with 1% to 17%
+    */
+    $gutter: $divident / 10;
+    $column-width: $divident - $gutter - 1;
+    @return percentage($column-width/100);
+  } @else {
+    $gutter: $modulo;
+    $column-width: $divident - $gutter;
+    @return percentage($column-width/100);
+  }
+}
+
+/* When decorations and padding is added to a column in a grid these must be removed from the original column width
+  - params can be any of %, em, px
+*/
+@function col-resize($width: 100%, $padding: 0, $border: 0) {
+  @return calc(#{$width} - #{$padding} - #{$border});
+}
+
 
 /* Float left child elements like in inline lists
   - it selects only the direct descendants of the parent element

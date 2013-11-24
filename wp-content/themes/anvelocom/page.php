@@ -8,12 +8,12 @@
     <?php  
       if (have_posts()) {
         while ( have_posts() ) : the_post(); 
-          $post_id = $post->ID; 
-          $article = $post;
-          $image_size = 'full';
-          include '_article.php';
+          $post_id = $post->ID; ?> 
+          <div id="body">
+            <?php the_content(); ?>
+          </div>
           
-          comments_template();
+          <?php comments_template();
         endwhile;
 	    } else {
 	      include '_not-found.php';

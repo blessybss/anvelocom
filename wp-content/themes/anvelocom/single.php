@@ -18,7 +18,10 @@
 </article>
 
 <section id="variations">
-  <h2>Alte variante la dimensiunea 205/R16/60</h2>  
+  <nav>
+    <h2>Alte variante pt. 205/R16/60</h2>
+    <h2><a href="">&larr; Inapoi la configurator</a></h2>
+  </nav>
   <?php
     $related_posts = MRP_get_related_posts($post_id, true);
     if ($related_posts) { ?>
@@ -32,11 +35,9 @@
     <?php }
     }
   ?>
-  
-  <article class="thumb title">
-    <h3><a href="">&larr; Inapoi la configurator</a></h3>
-  </article>
 </section>
+
+  
 
 
 <?php include '_brands.php' ?>

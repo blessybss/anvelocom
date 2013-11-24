@@ -5,14 +5,13 @@
 
 /* The golden ration on pages
 */
-@mixin golden-ratio {
-  article{
-    @include m_column($major);
+@mixin golden-ratio($first: $major, $last: $minor) {
+  article, figure {
+    @include m_column($first);
   }
   
-  aside {
-    @include m_column($minor);
-    @include remove-title;
+  aside, #sidebar {
+    @include m_column($last);
   }
 }
 
@@ -23,16 +22,6 @@
   
   ul li, .select {
     @include isotope(5);
-  }
-  
-  ul li {
-    /*
-    @include color(invert);
-    margin-top: $pad;
-    padding: $pad/4;
-    padding-right: 0;
-    width: calc(17% - #{$pad/4});
-   */
   }
 }
 
@@ -62,6 +51,8 @@ html {
       }
       
       #header {
+        margin-bottom: 0;
+        
         nav {
           @include menu;
           
@@ -137,8 +128,18 @@ html {
     */
     &.single-post {
       main {
+        article.product {
+          @include golden-ratio($minor, $major);
+        }
         section {
-          @include thumbs(normal);
+          nav {
+            @include block;
+            h2 {
+              @include col(5);
+            }
+          } 
+          
+          @include thumbs(normal, $pad);
         }
       }
     }
