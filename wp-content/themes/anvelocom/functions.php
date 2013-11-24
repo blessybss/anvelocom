@@ -52,7 +52,7 @@ function get_dimensions($posts) {
       $ret = array_merge($ret, get_dimension($post));
     }
   }
-  return array_unique($ret);
+  return array_filter(array_unique($ret));
 }
 
 function get_latimes($posts) {
@@ -62,7 +62,7 @@ function get_latimes($posts) {
       $ret = array_merge($ret, get_latime($post));
     }
   }
-  return array_unique($ret);
+  return array_filter(array_unique($ret));
 }
 
 function get_inaltimes($posts) {
@@ -72,7 +72,7 @@ function get_inaltimes($posts) {
       $ret = array_merge($ret, get_inaltime($post));
     }
   }
-  return array_unique($ret);
+  return array_filter(array_unique($ret));
 }
 
 function get_brands($posts) {
@@ -82,7 +82,7 @@ function get_brands($posts) {
       $ret = array_merge($ret, get_brand($post));
     }
   }
-  return array_unique($ret);
+  return array_filter(array_unique($ret));
 }
 
 function get_profs($posts) {
@@ -92,7 +92,7 @@ function get_profs($posts) {
       $ret = array_merge($ret, get_prof($post));
     }
   }
-  return array_unique($ret);
+  return array_filter(array_unique($ret));
 }
 
 

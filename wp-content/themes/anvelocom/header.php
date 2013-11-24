@@ -4,7 +4,8 @@
     <meta charset="<?php bloginfo( 'charset' ); ?>">
 	  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	  
-	  <title><?php wp_title( '|', true, 'right' ); ?></title>
+	  <!-- http://perishablepress.com/how-to-generate-perfect-wordpress-title-tags-without-a-plugin/ -->
+	  <title><?php if (function_exists('is_tag') && is_tag()) { echo 'Arhiva etichete &quot;'.$tag.'&quot; - '; } elseif (is_archive()) { wp_title(''); echo ' - '; } elseif (is_search()) { echo 'Rezultatul cautarii pentru &quot;'.wp_specialchars($s).'&quot; - '; } elseif (!(is_404()) && (is_single()) || (is_page())) { wp_title(''); echo ' - '; } elseif (is_404()) { echo 'Pagina inexistenta - '; } bloginfo('name'); ?></title>
 	  
 	  <link rel="profile" href="http://gmpg.org/xfn/11">
 	  <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
