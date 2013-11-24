@@ -1,0 +1,157 @@
+/* Templates mostly focus on content structure (such as character length, image size, etc) rather than the actual content.
+  - they are wireframes describing the layout
+*/
+
+
+/* The golden ration on pages
+*/
+@mixin golden-ratio {
+  article{
+    @include m_column($major);
+  }
+  
+  aside {
+    @include m_column($minor);
+    @include remove-title;
+  }
+}
+
+/* The filters
+*/
+@mixin filters {
+  @include select;
+  
+  ul li, .select {
+    @include isotope(5);
+  }
+  
+  ul li {
+    /*
+    @include color(invert);
+    margin-top: $pad;
+    padding: $pad/4;
+    padding-right: 0;
+    width: calc(17% - #{$pad/4});
+   */
+  }
+}
+
+
+/* Remove a section or nav title required by HTML5 outliner
+*/
+@mixin remove-title {
+  h2, h3 {
+    display: none;
+  }
+}
+
+
+
+
+html {
+  body {
+    @include default-settings;
+    
+    .container {
+      @include container;
+      
+      #header, #footer {
+        @include block;
+        @include float-left;
+        margin: $pad 0;
+      }
+      
+      #header {
+        nav {
+          @include menu;
+          
+          &:last-of-type {
+            float: right;
+            margin-right: 0;
+          }
+        }
+      }
+            
+      main {
+        @include block;
+        
+        section {
+          @include block;
+          margin: $pad 0;
+          
+          &#intro {
+            @include remove-title;
+            @include figure(100%);
+          }
+        }
+      }
+      
+      #footer {
+        nav {
+          float: right;
+          margin-right: 0;
+          
+          h3 {
+            @include go-top;
+          }  
+        }
+      }
+    }
+    
+    
+    /* Frontpage
+    */
+    &.home {
+      main {
+        section {
+          @include thumbs(normal);
+        }
+      }
+    }
+    
+    
+    /* Archives
+    */
+    &.page {
+      main {
+        section {
+          @include thumbs(isotope, $pad);
+          
+          &#filters {
+            @include filters;
+            margin-bottom: 0;
+          }
+          /* The filters have relative posistioning with a negative top margin
+            - it's container bottom margin and the next container's top margin must be reset 
+          */
+          &#results {
+            @include remove-title;
+            margin-top: 0;
+          }
+        }
+      }
+    }
+    
+    
+    /* Single product
+    */
+    &.single-post {
+      main {
+        section {
+          @include thumbs(normal);
+        }
+      }
+    }
+    
+    /* Content pages
+    */
+    &.page {
+      main {
+        #content {
+          @include remove-title;
+          @include golden-ratio;
+        }
+      }
+    }
+  }
+}

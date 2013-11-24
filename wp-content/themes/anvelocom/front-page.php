@@ -19,7 +19,7 @@
 <section id="anvelope">
   <h2><a href="">Produse noi</a></h2>
   <?php 
-    $anvelopes = get_anvelopes(4);  
+    $anvelopes = get_anvelopes(5);  
     if ($anvelopes) { ?>
       <?php foreach ($anvelopes as $index=>$article) { ?>
       <article class="thumb c<?php echo $index + 1 ?>">
@@ -35,7 +35,7 @@
 <section id="reduceri">
   <h2><a href="">Reduceri</a></h2>
   <?php 
-    $anvelopes = get_anvelopes(4);  
+    $anvelopes = get_anvelopes(5);  
     if ($anvelopes) { ?>
       <?php foreach ($anvelopes as $index=>$article) { ?>
       <article class="thumb c<?php echo $index + 1 ?>">
@@ -52,7 +52,7 @@
 <section id="bestsellers">
   <h2><a href="">Cele mai vandute</a></h2>
   <?php 
-    $anvelopes = get_anvelopes(4);  
+    $anvelopes = get_anvelopes(5);  
     if ($anvelopes) { ?>
       <?php foreach ($anvelopes as $index=>$article) { ?>
       <article class="thumb c<?php echo $index + 1 ?>">

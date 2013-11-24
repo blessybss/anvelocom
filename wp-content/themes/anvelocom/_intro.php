@@ -1,5 +1,5 @@
 <section id="intro">
-  <h3>Intro</h3>
+  <h2>Intro</h2>
   <figure>
     <?php 
       $img = get_template_directory_uri() . "/assets/jeep-for-title.jpg";

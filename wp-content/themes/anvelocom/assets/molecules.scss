@@ -33,7 +33,7 @@
 
 /* Left aligned column
 */
-@mixin m_column($width, $margin) {
+@mixin m_column($width, $margin: 0) {
   width: $width;
   margin-right: $margin;
   float: left;
@@ -176,16 +176,16 @@
 }
 
 
-@mixin figure {
+@mixin figure($width: auto) {
   figure {
     img {
       @include box-shadow($shadow);
+      width: $width;
     }
     
     figcaption {
       font-size: smaller;
     }
-    
   }
 }
 

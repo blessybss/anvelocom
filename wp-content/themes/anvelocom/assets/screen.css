@@ -179,6 +179,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 */
 /* Groups of molecules (and possibly atoms) joined together to form distinct section of an interface.
 */
+/* Displays a product thumb in different ways
+  - thumb structure is:
+  - <header> with <h3> title
+  - <figure>
+  - <aside> with details
+*/
+/* Displaying product / article thumbs
+  - if thumbs are filtered by Isotope the standard grid is replaced by an isotope grid
+*/
 /* Columns for Isotope
   - since Isotope filters out elements we don't know which element will be the last in a row,
   so we can't make it's righ margin 0
@@ -206,32 +215,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 */
 /* Settings for long text content like articles, blog posts
 */
-/* Special constructs for this site
-*/
-/* Display page content
-*/
-/* The sidebar
-*/
-/* Displays a product thumb in different ways
-*/
-/* Creates a section displaying product thumbs
-  - if thumbs are filtered by Isotope the standard grid is replaced by an isotope grid
-  - if an article has .title class it will be displayed as section title
-*/
-/* Display price
-*/
-/* A white text on a black, opaque background
-*/
-/* Displays a figure in different ways
-  - $img width can be set to 100% 
-  - $figcaption can be hidden or decorated
-*/
-/* Highlight a text, even if it is a link
-*/
-/* Add border to text
-*/
 /* Templates mostly focus on content structure (such as character length, image size, etc) rather than the actual content.
   - they are wireframes describing the layout
+*/
+/* The golden ration on pages
+*/
+/* The filters
+*/
+/* Remove a section or nav title required by HTML5 outliner
 */
 html body {
   background: #f1f1f1;
@@ -291,20 +282,17 @@ html body .container {
     margin: 0 auto;
   }
 }
-html body .container #header {
+html body .container #header, html body .container #footer {
   width: 100%;
   float: left;
   width: 100%;
   float: left;
   margin: 1.25em 0;
 }
-html body .container #header > * {
+html body .container #header > *, html body .container #footer > * {
   width: auto;
   float: left;
   margin-right: 1.25em;
-}
-html body .container #header nav {
-  margin-top: 0.9375em;
 }
 html body .container #header nav h3 {
   display: none;
@@ -333,29 +321,19 @@ html body .container main {
 html body .container main section {
   width: 100%;
   float: left;
-  /* There are 4 sections on each page
-    - the third sections sets the margins for all others
-  */
-}
-html body .container main section:nth-of-type(3) {
-  margin: 2.5em 0;
-}
-html body .container #footer {
-  width: 100%;
-  float: left;
   margin: 1.25em 0;
+}
+html body .container main section#intro h2, html body .container main section#intro h3 {
+  display: none;
+}
+html body .container main section#intro figure img {
+  -webkit-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
   width: 100%;
-  float: left;
 }
-html body .container #footer address {
-  font-size: small;
-  color: #bebebe;
-  max-width: 21.875em;
-}
-html body .container #footer > * {
-  width: auto;
-  float: left;
-  margin-right: 1.25em;
+html body .container main section#intro figure figcaption {
+  font-size: smaller;
 }
 html body .container #footer nav {
   float: right;
@@ -392,42 +370,16 @@ html body.home main section article.thumb:nth-of-type(5) {
 html body.home main section article.thumb:nth-of-type(10) {
   margin-right: 0;
 }
-html body.home main section article.title h1 {
-  padding: 0.625em;
-  border: 1px solid;
-}
-html body.home main section article aside {
-  display: block;
-}
-html body.home main section article aside #title {
+html body.home main section article header, html body.home main section article figure, html body.home main section article aside {
   display: none;
 }
-html body.home main section article aside #details {
+html body.home main section article figure {
   display: block;
 }
-html body.home main section article #price ul {
-  margin: 0;
-  display: block;
-  list-style-type: none;
-}
-html body.home main section article #price ul li {
-  display: inline-block;
-  float: left;
-  margin-right: 1.25em;
-}
-html body.home main section article #price ul li:last-of-type {
-  margin-right: 0;
-}
-html body.home main section article #price ul li {
-  margin-right: 0.625em;
-}
-html body.home main section article #price ul li:first-of-type {
-  text-decoration: none;
-  font-weight: bold;
-}
-html body.home main section article #price ul li:nth-of-type(2) {
-  text-decoration: line-through;
-  font-weight: normal;
+html body.page main section {
+  /* The filters have relative posistioning with a negative top margin
+    - it's container bottom margin and the next container's top margin must be reset 
+  */
 }
 html body.page main section article {
   margin-bottom: 1.25em;
@@ -441,42 +393,14 @@ html body.page main section article.thumb {
   margin-right: 2%;
   float: left;
 }
-html body.page main section article.title h1 {
-  padding: 0.625em;
-  border: 1px solid;
-}
-html body.page main section article aside {
-  display: block;
-}
-html body.page main section article aside #title {
+html body.page main section article header, html body.page main section article figure, html body.page main section article aside {
   display: none;
 }
-html body.page main section article aside #details {
+html body.page main section article figure {
   display: block;
 }
-html body.page main section article #price ul {
-  margin: 0;
-  display: block;
-  list-style-type: none;
-}
-html body.page main section article #price ul li {
-  display: inline-block;
-  float: left;
-  margin-right: 1.25em;
-}
-html body.page main section article #price ul li:last-of-type {
-  margin-right: 0;
-}
-html body.page main section article #price ul li {
-  margin-right: 0.625em;
-}
-html body.page main section article #price ul li:first-of-type {
-  text-decoration: none;
-  font-weight: bold;
-}
-html body.page main section article #price ul li:nth-of-type(2) {
-  text-decoration: line-through;
-  font-weight: normal;
+html body.page main section#filters {
+  margin-bottom: 0;
 }
 html body.page main section#filters label.select:after {
   content: "\21E3";
@@ -515,920 +439,78 @@ html body.page main section#filters ul li, html body.page main section#filters .
   float: left;
 }
 html body.page main section#filters ul li {
-  background: #1f1f1f;
-  color: #f1f1f1;
-  margin-top: 1.25em;
-  padding: 0.3125em;
-  padding-right: 0;
-  width: calc(17% - 0.3125em);
+ /*
+ @include color(invert);
+ margin-top: $pad;
+ padding: $pad/4;
+ padding-right: 0;
+ width: calc(17% - 0.3125em);
+*/
 }
-html body.page main section#filters ul li a {
-  color: #f1f1f1;
-}
-html body.page main section:nth-of-type(3) {
+html body.page main section#results {
   margin-top: 0;
 }
-html body.single-post main section#article article figcaption {
+html body.page main section#results h2, html body.page main section#results h3 {
   display: none;
 }
-html body.single-post main section#article article #content {
-  width: 100%;
-  float: left;
-  width: 100%;
-  float: left;
-}
-html body.single-post main section#article article #content > * {
-  width: auto;
-  float: left;
-  margin-right: 1.25em;
-}
-html body.single-post main section#article article #content aside {
-  max-width: 43.75em;
-  line-height: 1.75;
-  /* Headings
-  */
-  /* Elements
-  */
-  /* Padding of individual elements
-  */
-  /* Padding of consecutive elements
-  */
-}
-html body.single-post main section#article article #content aside h1, html body.single-post main section#article article #content aside h2, html body.single-post main section#article article #content aside h3 {
-  font-size: 20px;
-  font-size: 1.25rem;
-  font-weight: normal;
-}
-html body.single-post main section#article article #content aside h1 {
-  font-weight: bold;
-}
-html body.single-post main section#article article #content aside h2 {
-  text-transform: uppercase;
-  letter-spacing: 0.15625em;
-}
-html body.single-post main section#article article #content aside h4, html body.single-post main section#article article #content aside h5, html body.single-post main section#article article #content aside h6 {
-  font-size: larger;
-}
-html body.single-post main section#article article #content aside h1, html body.single-post main section#article article #content aside h2, html body.single-post main section#article article #content aside h3 {
-  line-height: 1.1;
-  margin-top: 0;
+html body.single-post main section article {
   margin-bottom: 0;
-  padding: 1.45833em 0;
 }
-html body.single-post main section#article article #content aside em, html body.single-post main section#article article #content aside i {
-  font-style: italic;
-}
-html body.single-post main section#article article #content aside strong, html body.single-post main section#article article #content aside b {
-  font-weight: bold;
-}
-html body.single-post main section#article article #content aside ul {
-  list-style: none outside;
-}
-html body.single-post main section#article article #content aside ul li {
-  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
-    - this way we can perfectly align the bullets / numbering to the list content
-  */
-  position: relative;
-  padding-left: 1.25em;
-}
-html body.single-post main section#article article #content aside ul li:before {
-  content: "\271A";
-  /* making the content of the list perfectly align with numbering
-    - <li> is relatively positioned
-    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
-    - the the <li> content has a padding-left to not overlap the numbering
-  */
-  position: absolute;
-  left: 0;
-}
-html body.single-post main section#article article #content aside ol {
-  list-style: none outside;
-  counter-reset: ol-counter;
-}
-html body.single-post main section#article article #content aside ol li {
-  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
-    - this way we can perfectly align the bullets / numbering to the list content
-  */
-  position: relative;
-  padding-left: 1.25em;
-}
-html body.single-post main section#article article #content aside ol li:before {
-  /* making the content of the list perfectly align with numbering
-    - <li> is relatively positioned
-    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
-    - the the <li> content has a padding-left to not overlap the numbering
-  */
-  position: absolute;
-  left: 0;
-}
-html body.single-post main section#article article #content aside ol li {
-  counter-increment: ol-counter;
-}
-html body.single-post main section#article article #content aside ol li:before {
-  content: counter(ol-counter,decimal);
-}
-html body.single-post main section#article article #content aside dl dt {
-  font-size: 20px;
-  font-size: 1.25rem;
-  font-weight: normal;
-  text-transform: uppercase;
-  letter-spacing: 0.15625em;
-}
-html body.single-post main section#article article #content aside table {
-  width: 100%;
-  display: table !important;
-}
-html body.single-post main section#article article #content aside table thead {
-  background: #1f1f1f;
-  color: #f1f1f1;
-}
-html body.single-post main section#article article #content aside table thead a {
-  color: #f1f1f1;
-}
-html body.single-post main section#article article #content aside table thead th, html body.single-post main section#article article #content aside table tbody td {
-  padding: 1.25em;
-  padding-left: 0;
-}
-html body.single-post main section#article article #content aside table tbody td {
-  border-bottom: 1px solid #bebebe;
-}
-html body.single-post main section#article article #content aside form {
-  /* Reset */
-  /* Text */
-  /* Button */
-  /* Stretching and padding */
-}
-html body.single-post main section#article article #content aside form input, html body.single-post main section#article article #content aside form textarea, html body.single-post main section#article article #content aside form select {
-  border: none;
-  outline: 0;
-  background: #f1f1f1;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-html body.single-post main section#article article #content aside form input[type='text'], html body.single-post main section#article article #content aside form input[type='email'], html body.single-post main section#article article #content aside form input[type='password'], html body.single-post main section#article article #content aside form textarea {
-  border: 1px solid #1f1f1f;
-  font-style: italic;
-}
-html body.single-post main section#article article #content aside form input[type='submit'] {
-  text-transform: uppercase;
-  letter-spacing: 0.15625em;
-  border: 1px solid #1f1f1f;
-  cursor: pointer;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-}
-html body.single-post main section#article article #content aside form input[type='submit']:hover {
-  background: #f3aaaa;
-}
-html body.single-post main section#article article #content aside form label, html body.single-post main section#article article #content aside form input, html body.single-post main section#article article #content aside form textarea {
-  width: 100%;
-  float: left;
-}
-html body.single-post main section#article article #content aside form input, html body.single-post main section#article article #content aside form textarea {
-  padding: 0.625em;
-  width: calc(100% - 1.25em);
-}
-html body.single-post main section#article article #content aside blockquote, html body.single-post main section#article article #content aside q {
-  border-top: 1px solid;
-  border-bottom: 1px solid;
-  /* Making room to the " sign 
-  */
-  position: relative;
-  float: left;
-  padding: 12.5em 0 2.5em 5em;
-  /* Fill the parent block
-  */
-  width: 100%;
-  float: left;
-  text-align: right;
-  width: calc(43.75em - 5em);
-  /*
-  @include below-and-small-screen {
-    width: calc(100% - 5em);
-  }
-  */
-}
-html body.single-post main section#article article #content aside blockquote:before, html body.single-post main section#article article #content aside q:before {
-  content: '\201C';
-  font-size: 1400%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-html body.single-post main section#article article #content aside ul, html body.single-post main section#article article #content aside ol, html body.single-post main section#article article #content aside dl, html body.single-post main section#article article #content aside table, html body.single-post main section#article article #content aside figure, html body.single-post main section#article article #content aside form, html body.single-post main section#article article #content aside q {
-  margin: 1.25em 0;
-}
-html body.single-post main section#article article #content aside figure {
-  margin-top: 2.5em;
-}
-html body.single-post main section#article article #content aside dd + dt {
-  margin-top: 1.25em;
-}
-html body.single-post main section#article article #content aside p + p {
-  margin-top: 1.25em;
-}
-html body.single-post main section#article article #content aside h1 + h2, html body.single-post main section#article article #content aside h2 + h3 {
-  padding-top: 0;
-}
-html body.single-post main section#article article #content aside h1 + ul, html body.single-post main section#article article #content aside h2 + ul, html body.single-post main section#article article #content aside h3 + ul,
-html body.single-post main section#article article #content aside h1 + ol, html body.single-post main section#article article #content aside h2 + ol, html body.single-post main section#article article #content aside h3 + ol {
-  margin-top: 0;
-}
-html body.single-post main section#article article #content aside li ul, html body.single-post main section#article article #content aside li ol {
-  margin-top: 0;
-}
-html body.single-post main section#article article #content aside img, html body.single-post main section#article article #content aside h1 {
-  display: none;
-}
-html body.single-post main section#variations article, html body.single-post main section#brands article {
-  margin-bottom: 1.25em;
-}
-html body.single-post main section#variations article.thumb, html body.single-post main section#brands article.thumb {
+html body.single-post main section article.thumb {
   width: 18%;
   margin-right: 2.5%;
   float: left;
 }
-html body.single-post main section#variations article.thumb:nth-of-type(5), html body.single-post main section#brands article.thumb:nth-of-type(5) {
+html body.single-post main section article.thumb:nth-of-type(5) {
   margin-right: 0;
 }
-html body.single-post main section#variations article.thumb:nth-of-type(10), html body.single-post main section#brands article.thumb:nth-of-type(10) {
+html body.single-post main section article.thumb:nth-of-type(10) {
   margin-right: 0;
 }
-html body.single-post main section#variations article.title h1, html body.single-post main section#brands article.title h1 {
-  padding: 0.625em;
-  border: 1px solid;
-}
-html body.single-post main section#variations article aside, html body.single-post main section#brands article aside {
-  display: block;
-}
-html body.single-post main section#variations article aside #title, html body.single-post main section#brands article aside #title {
+html body.single-post main section article header, html body.single-post main section article figure, html body.single-post main section article aside {
   display: none;
 }
-html body.single-post main section#variations article aside #details, html body.single-post main section#brands article aside #details {
+html body.single-post main section article figure {
   display: block;
 }
-html body.single-post main section#variations article #price ul, html body.single-post main section#brands article #price ul {
-  margin: 0;
-  display: block;
-  list-style-type: none;
+html body.page main #content h2, html body.page main #content h3 {
+  display: none;
 }
-html body.single-post main section#variations article #price ul li, html body.single-post main section#brands article #price ul li {
-  display: inline-block;
-  float: left;
-  margin-right: 1.25em;
-}
-html body.single-post main section#variations article #price ul li:last-of-type, html body.single-post main section#brands article #price ul li:last-of-type {
-  margin-right: 0;
-}
-html body.single-post main section#variations article #price ul li, html body.single-post main section#brands article #price ul li {
-  margin-right: 0.625em;
-}
-html body.single-post main section#variations article #price ul li:first-of-type, html body.single-post main section#brands article #price ul li:first-of-type {
-  text-decoration: none;
-  font-weight: bold;
-}
-html body.single-post main section#variations article #price ul li:nth-of-type(2), html body.single-post main section#brands article #price ul li:nth-of-type(2) {
-  text-decoration: line-through;
-  font-weight: normal;
-}
-html body.single-post main section#variations article.title h1 {
-  position: relative;
-  top: -2.8125em;
-  background: #f1f1f1;
-  display: inline-block;
-  padding: 0.625em;
-  border: 1px solid;
-  border-width: 0.3125em;
-  padding: 1.25em;
-  background: #1f1f1f;
-  color: #f1f1f1;
-  opacity: .9;
-  border: none;
-  top: 0;
-  text-align: center;
-  padding: 1.25em 0;
-}
-html body.single-post main section#variations article.title h1 a {
-  color: #f1f1f1;
-}
-html body.page main #page {
+html body.page main #content article {
   width: 61.8047%;
+  margin-right: 0;
   float: left;
 }
-html body.page main #page #content {
-  width: 100%;
-  float: left;
-  max-width: 43.75em;
-  line-height: 1.75;
-  /* Headings
-  */
-  /* Elements
-  */
-  /* Padding of individual elements
-  */
-  /* Padding of consecutive elements
-  */
-}
-html body.page main #page #content h1, html body.page main #page #content h2, html body.page main #page #content h3 {
-  font-size: 20px;
-  font-size: 1.25rem;
-  font-weight: normal;
-}
-html body.page main #page #content h1 {
-  font-weight: bold;
-}
-html body.page main #page #content h2 {
-  text-transform: uppercase;
-  letter-spacing: 0.15625em;
-}
-html body.page main #page #content h4, html body.page main #page #content h5, html body.page main #page #content h6 {
-  font-size: larger;
-}
-html body.page main #page #content h1, html body.page main #page #content h2, html body.page main #page #content h3 {
-  line-height: 1.1;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding: 1.45833em 0;
-}
-html body.page main #page #content em, html body.page main #page #content i {
-  font-style: italic;
-}
-html body.page main #page #content strong, html body.page main #page #content b {
-  font-weight: bold;
-}
-html body.page main #page #content ul {
-  list-style: none outside;
-}
-html body.page main #page #content ul li {
-  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
-    - this way we can perfectly align the bullets / numbering to the list content
-  */
-  position: relative;
-  padding-left: 1.25em;
-}
-html body.page main #page #content ul li:before {
-  content: "\271A";
-  /* making the content of the list perfectly align with numbering
-    - <li> is relatively positioned
-    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
-    - the the <li> content has a padding-left to not overlap the numbering
-  */
-  position: absolute;
-  left: 0;
-}
-html body.page main #page #content ol {
-  list-style: none outside;
-  counter-reset: ol-counter;
-}
-html body.page main #page #content ol li {
-  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
-    - this way we can perfectly align the bullets / numbering to the list content
-  */
-  position: relative;
-  padding-left: 1.25em;
-}
-html body.page main #page #content ol li:before {
-  /* making the content of the list perfectly align with numbering
-    - <li> is relatively positioned
-    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
-    - the the <li> content has a padding-left to not overlap the numbering
-  */
-  position: absolute;
-  left: 0;
-}
-html body.page main #page #content ol li {
-  counter-increment: ol-counter;
-}
-html body.page main #page #content ol li:before {
-  content: counter(ol-counter,decimal);
-}
-html body.page main #page #content dl dt {
-  font-size: 20px;
-  font-size: 1.25rem;
-  font-weight: normal;
-  text-transform: uppercase;
-  letter-spacing: 0.15625em;
-}
-html body.page main #page #content table {
-  width: 100%;
-  display: table !important;
-}
-html body.page main #page #content table thead {
-  background: #1f1f1f;
-  color: #f1f1f1;
-}
-html body.page main #page #content table thead a {
-  color: #f1f1f1;
-}
-html body.page main #page #content table thead th, html body.page main #page #content table tbody td {
-  padding: 1.25em;
-  padding-left: 0;
-}
-html body.page main #page #content table tbody td {
-  border-bottom: 1px solid #bebebe;
-}
-html body.page main #page #content form {
-  /* Reset */
-  /* Text */
-  /* Button */
-  /* Stretching and padding */
-}
-html body.page main #page #content form input, html body.page main #page #content form textarea, html body.page main #page #content form select {
-  border: none;
-  outline: 0;
-  background: #f1f1f1;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-html body.page main #page #content form input[type='text'], html body.page main #page #content form input[type='email'], html body.page main #page #content form input[type='password'], html body.page main #page #content form textarea {
-  border: 1px solid #1f1f1f;
-  font-style: italic;
-}
-html body.page main #page #content form input[type='submit'] {
-  text-transform: uppercase;
-  letter-spacing: 0.15625em;
-  border: 1px solid #1f1f1f;
-  cursor: pointer;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-}
-html body.page main #page #content form input[type='submit']:hover {
-  background: #f3aaaa;
-}
-html body.page main #page #content form label, html body.page main #page #content form input, html body.page main #page #content form textarea {
-  width: 100%;
+html body.page main #content aside {
+  width: 38.1953%;
+  margin-right: 0;
   float: left;
 }
-html body.page main #page #content form input, html body.page main #page #content form textarea {
-  padding: 0.625em;
-  width: calc(100% - 1.25em);
-}
-html body.page main #page #content blockquote, html body.page main #page #content q {
-  border-top: 1px solid;
-  border-bottom: 1px solid;
-  /* Making room to the " sign 
-  */
-  position: relative;
-  float: left;
-  padding: 12.5em 0 2.5em 5em;
-  /* Fill the parent block
-  */
-  width: 100%;
-  float: left;
-  text-align: right;
-  width: calc(43.75em - 5em);
-  /*
-  @include below-and-small-screen {
-    width: calc(100% - 5em);
-  }
-  */
-}
-html body.page main #page #content blockquote:before, html body.page main #page #content q:before {
-  content: '\201C';
-  font-size: 1400%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-html body.page main #page #content ul, html body.page main #page #content ol, html body.page main #page #content dl, html body.page main #page #content table, html body.page main #page #content figure, html body.page main #page #content form, html body.page main #page #content q {
-  margin: 1.25em 0;
-}
-html body.page main #page #content figure {
-  margin-top: 2.5em;
-}
-html body.page main #page #content dd + dt {
-  margin-top: 1.25em;
-}
-html body.page main #page #content p + p {
-  margin-top: 1.25em;
-}
-html body.page main #page #content h1 + h2, html body.page main #page #content h2 + h3 {
-  padding-top: 0;
-}
-html body.page main #page #content h1 + ul, html body.page main #page #content h2 + ul, html body.page main #page #content h3 + ul,
-html body.page main #page #content h1 + ol, html body.page main #page #content h2 + ol, html body.page main #page #content h3 + ol {
-  margin-top: 0;
-}
-html body.page main #page #content li ul, html body.page main #page #content li ol {
-  margin-top: 0;
-}
-html body.page main #page #comments {
-  width: 100%;
-  float: left;
-  max-width: 43.75em;
-  margin: 1.25em 0;
-  background: #1f1f1f;
-  color: #f1f1f1;
-  padding: 1.25em;
-  width: calc(100% - 2.5em);
-}
-html body.page main #page #comments a {
-  color: #f1f1f1;
-}
-html body.page main #page #comments form {
-  /* Reset */
-  /* Text */
-  /* Button */
-  /* Stretching and padding */
-}
-html body.page main #page #comments form input, html body.page main #page #comments form textarea, html body.page main #page #comments form select {
-  border: none;
-  outline: 0;
-  background: #f1f1f1;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-html body.page main #page #comments form input[type='text'], html body.page main #page #comments form input[type='email'], html body.page main #page #comments form input[type='password'], html body.page main #page #comments form textarea {
-  border: 1px solid #1f1f1f;
-  font-style: italic;
-}
-html body.page main #page #comments form input[type='submit'] {
-  text-transform: uppercase;
-  letter-spacing: 0.15625em;
-  border: 1px solid #1f1f1f;
-  cursor: pointer;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-}
-html body.page main #page #comments form input[type='submit']:hover {
-  background: #f3aaaa;
-}
-html body.page main #page #comments form label, html body.page main #page #comments form input, html body.page main #page #comments form textarea {
-  width: 100%;
-  float: left;
-}
-html body.page main #page #comments form input, html body.page main #page #comments form textarea {
-  padding: 0.625em;
-  width: calc(100% - 1.25em);
-}
-html body.page main #page #comments h3, html body.page main #page #comments h2 {
-  margin-bottom: 1.25em;
-}
-html body.page main #page #comments ol li {
-  margin-bottom: 1.25em;
-  padding-bottom: 1.25em;
-  border-bottom: 1px solid #bebebe;
-  max-width: 43.75em;
-  line-height: 1.75;
-  /* Headings
-  */
-  /* Elements
-  */
-  /* Padding of individual elements
-  */
-  /* Padding of consecutive elements
-  */
-}
-html body.page main #page #comments ol li h1, html body.page main #page #comments ol li h2, html body.page main #page #comments ol li h3 {
-  font-size: 20px;
-  font-size: 1.25rem;
-  font-weight: normal;
-}
-html body.page main #page #comments ol li h1 {
-  font-weight: bold;
-}
-html body.page main #page #comments ol li h2 {
-  text-transform: uppercase;
-  letter-spacing: 0.15625em;
-}
-html body.page main #page #comments ol li h4, html body.page main #page #comments ol li h5, html body.page main #page #comments ol li h6 {
-  font-size: larger;
-}
-html body.page main #page #comments ol li h1, html body.page main #page #comments ol li h2, html body.page main #page #comments ol li h3 {
-  line-height: 1.1;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding: 1.45833em 0;
-}
-html body.page main #page #comments ol li em, html body.page main #page #comments ol li i {
-  font-style: italic;
-}
-html body.page main #page #comments ol li strong, html body.page main #page #comments ol li b {
-  font-weight: bold;
-}
-html body.page main #page #comments ol li ul {
-  list-style: none outside;
-}
-html body.page main #page #comments ol li ul li {
-  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
-    - this way we can perfectly align the bullets / numbering to the list content
-  */
-  position: relative;
-  padding-left: 1.25em;
-}
-html body.page main #page #comments ol li ul li:before {
-  content: "\271A";
-  /* making the content of the list perfectly align with numbering
-    - <li> is relatively positioned
-    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
-    - the the <li> content has a padding-left to not overlap the numbering
-  */
-  position: absolute;
-  left: 0;
-}
-html body.page main #page #comments ol li ol {
-  list-style: none outside;
-  counter-reset: ol-counter;
-}
-html body.page main #page #comments ol li ol li {
-  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
-    - this way we can perfectly align the bullets / numbering to the list content
-  */
-  position: relative;
-  padding-left: 1.25em;
-}
-html body.page main #page #comments ol li ol li:before {
-  /* making the content of the list perfectly align with numbering
-    - <li> is relatively positioned
-    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
-    - the the <li> content has a padding-left to not overlap the numbering
-  */
-  position: absolute;
-  left: 0;
-}
-html body.page main #page #comments ol li ol li {
-  counter-increment: ol-counter;
-}
-html body.page main #page #comments ol li ol li:before {
-  content: counter(ol-counter,decimal);
-}
-html body.page main #page #comments ol li dl dt {
-  font-size: 20px;
-  font-size: 1.25rem;
-  font-weight: normal;
-  text-transform: uppercase;
-  letter-spacing: 0.15625em;
-}
-html body.page main #page #comments ol li table {
-  width: 100%;
-  display: table !important;
-}
-html body.page main #page #comments ol li table thead {
-  background: #1f1f1f;
-  color: #f1f1f1;
-}
-html body.page main #page #comments ol li table thead a {
-  color: #f1f1f1;
-}
-html body.page main #page #comments ol li table thead th, html body.page main #page #comments ol li table tbody td {
-  padding: 1.25em;
-  padding-left: 0;
-}
-html body.page main #page #comments ol li table tbody td {
-  border-bottom: 1px solid #bebebe;
-}
-html body.page main #page #comments ol li form {
-  /* Reset */
-  /* Text */
-  /* Button */
-  /* Stretching and padding */
-}
-html body.page main #page #comments ol li form input, html body.page main #page #comments ol li form textarea, html body.page main #page #comments ol li form select {
-  border: none;
-  outline: 0;
-  background: #f1f1f1;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-html body.page main #page #comments ol li form input[type='text'], html body.page main #page #comments ol li form input[type='email'], html body.page main #page #comments ol li form input[type='password'], html body.page main #page #comments ol li form textarea {
-  border: 1px solid #1f1f1f;
-  font-style: italic;
-}
-html body.page main #page #comments ol li form input[type='submit'] {
-  text-transform: uppercase;
-  letter-spacing: 0.15625em;
-  border: 1px solid #1f1f1f;
-  cursor: pointer;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-}
-html body.page main #page #comments ol li form input[type='submit']:hover {
-  background: #f3aaaa;
-}
-html body.page main #page #comments ol li form label, html body.page main #page #comments ol li form input, html body.page main #page #comments ol li form textarea {
-  width: 100%;
-  float: left;
-}
-html body.page main #page #comments ol li form input, html body.page main #page #comments ol li form textarea {
-  padding: 0.625em;
-  width: calc(100% - 1.25em);
-}
-html body.page main #page #comments ol li blockquote, html body.page main #page #comments ol li q {
-  border-top: 1px solid;
-  border-bottom: 1px solid;
-  /* Making room to the " sign 
-  */
-  position: relative;
-  float: left;
-  padding: 12.5em 0 2.5em 5em;
-  /* Fill the parent block
-  */
-  width: 100%;
-  float: left;
-  text-align: right;
-  width: calc(43.75em - 5em);
-  /*
-  @include below-and-small-screen {
-    width: calc(100% - 5em);
-  }
-  */
-}
-html body.page main #page #comments ol li blockquote:before, html body.page main #page #comments ol li q:before {
-  content: '\201C';
-  font-size: 1400%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-html body.page main #page #comments ol li ul, html body.page main #page #comments ol li ol, html body.page main #page #comments ol li dl, html body.page main #page #comments ol li table, html body.page main #page #comments ol li figure, html body.page main #page #comments ol li form, html body.page main #page #comments ol li q {
-  margin: 1.25em 0;
-}
-html body.page main #page #comments ol li figure {
-  margin-top: 2.5em;
-}
-html body.page main #page #comments ol li dd + dt {
-  margin-top: 1.25em;
-}
-html body.page main #page #comments ol li p + p {
-  margin-top: 1.25em;
-}
-html body.page main #page #comments ol li h1 + h2, html body.page main #page #comments ol li h2 + h3 {
-  padding-top: 0;
-}
-html body.page main #page #comments ol li h1 + ul, html body.page main #page #comments ol li h2 + ul, html body.page main #page #comments ol li h3 + ul,
-html body.page main #page #comments ol li h1 + ol, html body.page main #page #comments ol li h2 + ol, html body.page main #page #comments ol li h3 + ol {
-  margin-top: 0;
-}
-html body.page main #page #comments ol li li ul, html body.page main #page #comments ol li li ol {
-  margin-top: 0;
-}
-html body.page main #page #comments ol li a {
-  color: #f3aaaa;
-  text-decoration: none;
-  outline: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.15625em;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-}
-html body.page main #page #comments ol li a:hover, html body.page main #page #comments ol li a:focus {
-  color: #f3aaaa;
-}
-html body.page main #page #comments ol li .reply {
-  margin: 0.625em 0;
-}
-html body.page main #page #comments ol li .vcard {
+html body.page main #content aside h2, html body.page main #content aside h3 {
   display: none;
-}
-html body.page main #page #comments ol.children {
-  margin: 1.25em;
-}
-html body.page main #page #comments form {
-  width: 60%;
-}
-html body.page main #page #comments form input, html body.page main #page #comments form textarea {
-  margin-bottom: 0.625em;
-}
-html body.page main #page #comments form input#submit, html body.page main #page #comments form textarea#submit {
-  width: 15em;
-}
-html body.page main #sidebar {
-  padding: 0.625em;
-  border: 1px solid;
-  padding: 2.5em;
-  width: calc(38.1953% - 5em - 2px);
-  float: left;
-}
-html body.page main #sidebar ul {
-  list-style: none outside;
-}
-html body.page main #sidebar ul li {
-  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
-    - this way we can perfectly align the bullets / numbering to the list content
-  */
-  position: relative;
-  padding-left: 1.25em;
-}
-html body.page main #sidebar ul li:before {
-  content: "\271A";
-  /* making the content of the list perfectly align with numbering
-    - <li> is relatively positioned
-    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
-    - the the <li> content has a padding-left to not overlap the numbering
-  */
-  position: absolute;
-  left: 0;
-}
-html body.page main #sidebar h3 {
-  display: none;
-}
-html body.page main #sidebar ul li {
-  margin: 0.625em 0;
 }
 
-/* The final design
-  - A theme applied to the wireframes / templates
+/* Special constructs for this site
 */
-html body {
-  font-family: 'Montserrat', sans-serif;
-}
-html body .container #header h1 {
-  padding: 0.625em;
-  border: 1px solid;
-}
-html body .container #header nav ul li.current-menu-item a {
-  color: #f3aaaa;
-}
-html body .container #header nav ul li:nth-of-type(3):after {
-  content: '\2022';
-  padding-left: 1.25em;
-}
-html body .container main {
-  font-family: 'Open Sans', sans-serif;
-}
-html body .container main #intro figure img {
-  width: 100%;
-}
-html body .container main #intro figure figcaption {
-  position: relative;
-  top: -2.8125em;
-  background: #f1f1f1;
-  display: inline-block;
-  padding: 0.625em;
-  border: 1px solid;
-  border-width: 0.3125em;
-  padding: 1.25em;
-  background: #1f1f1f;
-  color: #f1f1f1;
-  opacity: .9;
-}
-html body .container main #intro figure figcaption a {
-  color: #f1f1f1;
-}
-html body.home #bestsellers article figcaption {
-  display: none;
-}
-html body.home #bestsellers article aside {
-  display: block;
-}
-html body.home #bestsellers article aside #title {
-  display: block;
-}
-html body.home #bestsellers article aside #details {
-  display: block;
-}
-html body.home #bestsellers article #price ul {
-  margin: 0;
-  display: block;
-  list-style-type: none;
-}
-html body.home #bestsellers article #price ul li {
-  display: inline-block;
-  float: left;
-  margin-right: 1.25em;
-}
-html body.home #bestsellers article #price ul li:last-of-type {
-  margin-right: 0;
-}
-html body.home #bestsellers article #price ul li {
-  margin-right: 0.625em;
-}
-html body.home #bestsellers article #price ul li:first-of-type {
-  text-decoration: none;
-  font-weight: bold;
-}
-html body.home #bestsellers article #price ul li:nth-of-type(2) {
-  text-decoration: line-through;
-  font-weight: normal;
-}
-html body.home #bestsellers article.c0 h1 {
-  color: #f3aaaa;
-}
-html body.home #bestsellers article.c0 h1 a {
-  color: #f3aaaa;
-  text-decoration: none;
-  outline: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.15625em;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-}
-html body.home #bestsellers article.c0 h1 a:hover, html body.home #bestsellers article.c0 h1 a:focus {
-  color: #f3aaaa;
-}
+/* Display page content
+*/
+/* The sidebar
+*/
+/* Displays a product thumb in different ways
+*/
+/* Creates a section displaying product thumbs
+  - if thumbs are filtered by Isotope the standard grid is replaced by an isotope grid
+  - if an article has .title class it will be displayed as section title
+*/
+/* Display price
+*/
+/* A white text on a black, opaque background
+*/
+/* Displays a figure in different ways
+  - $img width can be set to 100% 
+  - $figcaption can be hidden or decorated
+*/
+/* Highlight a text, even if it is a link
+*/
+/* Add border to text
+*/

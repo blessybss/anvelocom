@@ -1,5 +1,14 @@
 /* Groups of molecules (and possibly atoms) joined together to form distinct section of an interface.
 */
+/* Displays a product thumb in different ways
+  - thumb structure is:
+  - <header> with <h3> title
+  - <figure>
+  - <aside> with details
+*/
+/* Displaying product / article thumbs
+  - if thumbs are filtered by Isotope the standard grid is replaced by an isotope grid
+*/
 /* Columns for Isotope
   - since Isotope filters out elements we don't know which element will be the last in a row,
   so we can't make it's righ margin 0

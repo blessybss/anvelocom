@@ -2,6 +2,56 @@
 */
 
 
+/* Displays a product thumb in different ways
+  - thumb structure is:
+  - <header> with <h3> title
+  - <figure>
+  - <aside> with details
+*/
+@mixin thumb($header: false, $figure: true, $aside: false) {
+  header, figure, aside {
+    display: none;
+  }
+  
+  @if ($header == true) {
+    header {
+      display: block;
+    }
+  }
+  
+  @if ($figure == true) {
+    figure {
+      display: block;
+    }
+  }
+  
+  @if ($aside == true) {
+    aside {
+      display: block;
+    }
+  }
+}
+
+
+/* Displaying product / article thumbs
+  - if thumbs are filtered by Isotope the standard grid is replaced by an isotope grid
+*/
+@mixin thumbs($type: normal, $margin-bottom: 0) {
+  article {
+    &.thumb {
+      @if ($type == normal) {
+        @include col(5);
+      } @elseif ($type == isotope) {
+        @include isotope(5);
+      }
+    }
+    
+    @include thumb;
+    margin-bottom: $margin-bottom;
+  }
+}
+
+
 /* Columns for Isotope
   - since Isotope filters out elements we don't know which element will be the last in a row,
   so we can't make it's righ margin 0
@@ -101,7 +151,7 @@
 
 /* Default font, color, typography settings for non text elements
 */
-@mixin defaults {
+@mixin default-settings {
   @include color;
   @include font;
   

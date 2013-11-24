@@ -71,7 +71,7 @@
 </section>
 
 
-<section id="anvelope">
+<section id="results">
   <h2>Rezultate</h2>
   <?php 
     if ($anvelopes) { ?>
