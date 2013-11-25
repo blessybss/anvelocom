@@ -6,18 +6,7 @@
 /* Navigational elements
 */
 
-/* An arrow to scroll top of the page
-*/
-@mixin go-top($arrow: $arrow-up) {
-  cursor: pointer;
-  
-  &:before {
-    content: $arrow;
-    @include circle($pad);
-    font-size: $before-font-size;
-    display: block;
-  }
-}
+
 
 
 
@@ -538,7 +527,7 @@
   width: $size;
   height: $size;
   @include border-radius($size/2);
-  border: 2px solid;
+  border: 1px solid;
   text-align: center;
 }
 

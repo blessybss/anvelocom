@@ -130,8 +130,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 */
 /* Navigational elements
 */
-/* An arrow to scroll top of the page
-*/
 /* Grid elements
   - the $width is coming from the layer above, organisms
 */
@@ -207,9 +205,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* Navigation
 --------------------------------------------------------------------------------
 */
-/* Highlight current menu item
-*/
-/* A classic, horizontal menu for <nav> elements
+/* An arrow 
+  - to scroll to top of the page
+  - or to reveal a menu
 */
 /* Grid
 --------------------------------------------------------------------------------
@@ -241,6 +239,10 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 */
 /* Templates mostly focus on content structure (such as character length, image size, etc) rather than the actual content.
   - they are wireframes describing the layout
+*/
+/* A classic, horizontal menu for <nav> elements
+*/
+/* Highlight current menu item
 */
 /* The golden ration on pages
 */
@@ -321,6 +323,10 @@ html body .container #header > *, html body .container #footer > * {
 html body .container #header {
   margin-bottom: 0;
 }
+html body .container #header nav {
+  /* We have two menus, the last is for contact
+  */
+}
 html body .container #header nav h3 {
   display: none;
 }
@@ -337,14 +343,50 @@ html body .container #header nav ul li {
 html body .container #header nav ul li:last-of-type {
   margin-right: 0;
 }
-@media only screen and (max-width: 47.999em) {
-  html body .container #header nav {
-    display: none;
-  }
-}
 html body .container #header nav:last-of-type {
   float: right;
   margin-right: 0em;
+}
+@media only screen and (max-width: 64em) {
+  html body .container #header nav:last-of-type {
+    display: none;
+  }
+}
+@media only screen and (max-width: 47.999em) {
+  html body .container #header nav {
+    /* Remove the arrow when menu is active
+    */
+  }
+  html body .container #header nav ul {
+    display: none;
+  }
+  html body .container #header nav:last-of-type {
+    cursor: pointer;
+    display: block;
+  }
+  html body .container #header nav:last-of-type:before {
+    content: "\21E3";
+    width: 1.25em;
+    height: 1.25em;
+    -webkit-border-radius: 0.625em;
+    -moz-border-radius: 0.625em;
+    -ms-border-radius: 0.625em;
+    -o-border-radius: 0.625em;
+    border-radius: 0.625em;
+    border: 1px solid;
+    text-align: center;
+    font-size: 150%;
+    display: block;
+  }
+  html body .container #header nav.active:last-of-type {
+    float: left;
+  }
+  html body .container #header nav.active:last-of-type:before {
+    content: '';
+    padding: 0;
+    font-size: normal;
+    display: none;
+  }
 }
 html body .container main {
   width: 100%;
@@ -370,11 +412,12 @@ html body .container main section#intro figure figcaption {
 html body .container #footer nav {
   float: right;
   margin-right: 0;
-}
-html body .container #footer nav h3 {
   cursor: pointer;
 }
-html body .container #footer nav h3:before {
+html body .container #footer nav h2, html body .container #footer nav h3 {
+  display: none;
+}
+html body .container #footer nav:before {
   content: "\21E1";
   width: 1.25em;
   height: 1.25em;
@@ -383,7 +426,7 @@ html body .container #footer nav h3:before {
   -ms-border-radius: 0.625em;
   -o-border-radius: 0.625em;
   border-radius: 0.625em;
-  border: 2px solid;
+  border: 1px solid;
   text-align: center;
   font-size: 150%;
   display: block;

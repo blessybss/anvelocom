@@ -7,28 +7,27 @@
 */
 
 
-/* Highlight current menu item
+/* An arrow 
+  - to scroll to top of the page
+  - or to reveal a menu
 */
-@mixin highlight-menu($index) {
-  #header nav ul li:nth-of-type(#{$index}) a {
-    @include color(highlight);
-  }
-}
-
-
-/* A classic, horizontal menu for <nav> elements
-*/
-@mixin menu {
-  h3 {
-    display: none;
-  }
-  
-  ul {
-    @include list-inline;
-  }
-  
-  @include below-tablet {
-    display: none;
+@mixin arrow($arrow: $arrow-up, $hide: false) {
+  @if ($hide == false) {
+    cursor: pointer;
+    
+    &:before {
+      content: $arrow;
+      @include circle($pad);
+      font-size: $before-font-size;
+      display: block;
+    }
+  } @else {
+    &:before {
+      content: '';
+      padding: 0;
+      font-size: normal;
+      display: none;
+    }
   }
 }
 

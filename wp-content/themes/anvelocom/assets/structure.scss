@@ -3,6 +3,62 @@
 */
 
 
+
+/* A classic, horizontal menu for <nav> elements
+*/
+@mixin menu {
+  h3 {
+    display: none;
+  }
+  
+  ul {
+    @include list-inline;
+  }
+  
+  /* We have two menus, the last is for contact
+  */       
+  &:last-of-type {
+    float: right;
+    margin-right: 0em;
+    
+    @include below-and-small-screen {
+      display: none;
+    }
+  }
+  
+  @include below-tablet {
+    ul { 
+      display: none;
+    }    
+    
+    &:last-of-type {
+      @include arrow($arrow-down);
+      display: block;
+    }
+    
+    /* Remove the arrow when menu is active
+    */
+    &.active {
+      &:last-of-type {
+        @include arrow('', hide);
+        float: left;
+      }
+    }
+  }
+  
+  
+}
+
+/* Highlight current menu item
+*/
+@mixin highlight-menu($index) {
+  #header nav ul li:nth-of-type(#{$index}) a {
+    @include color(highlight);
+  }
+}
+
+
+
 /* The golden ration on pages
 */
 @mixin golden-ratio($first: $major, $last: $minor) {
@@ -67,11 +123,6 @@ html {
         
         nav {
           @include menu;
-          
-          &:last-of-type {
-            float: right;
-            margin-right: 0em;
-          }
         }
       }
             
@@ -93,10 +144,8 @@ html {
         nav {
           float: right;
           margin-right: 0;
-          
-          h3 {
-            @include go-top;
-          }  
+          @include remove-title;
+          @include arrow($arrow-up); 
         }
       }
     }

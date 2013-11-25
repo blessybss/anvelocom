@@ -1,6 +1,18 @@
 
 $(document).ready(function() {
 
+  // Hide / reveal menu on mobiles
+  $('#header nav').click(function() {
+    $('#header nav ul').slideToggle('slow'); 
+    $(this).toggleClass('active'); 
+  });
+
+  // Scroll to top
+  $('#footer nav').click(function() {
+    $("html, body").animate({ scrollTop: 0 }, "slow");
+    return false; 
+  });
+
   
   // Filter Team members
   // - by using the Isotope plugin
