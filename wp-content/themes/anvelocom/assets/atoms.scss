@@ -38,6 +38,7 @@ $breakpoint-mobile: 24em !default; /* 384px, Android Nexus 4 */
 $breakpoint-mobile-landscape: 40em !default; /* 640px, iPhone 5 */
 $breakpoint-tablet: 48em !default; /* 768px */
 $breakpoint-small-screen: 64em !default; /* 1024px */
+$breakpoint-normal-screen: 80em !default; /* 1280px */
 $breakpoint-large-screen: 90em !default; /* 1440px */
 
 @mixin portrait {
@@ -85,6 +86,11 @@ $breakpoint-large-screen: 90em !default; /* 1440px */
 }
 @mixin small-screen {
 	@media only screen and (min-width: $breakpoint-tablet + 0.001) and (max-width: $breakpoint-small-screen) {
+		@content;
+	}
+}
+@mixin above-and-normal-screen {
+	@media only screen and (min-width: $breakpoint-normal-screen) {
 		@content;
 	}
 }

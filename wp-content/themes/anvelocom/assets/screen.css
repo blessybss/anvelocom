@@ -73,6 +73,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* 640px, iPhone 5 */
 /* 768px */
 /* 1024px */
+/* 1280px */
 /* 1440px */
 /* This is not a best practice but sometimes is very useful
   - for example this can tell jQuery we are in mobile mode
@@ -344,12 +345,13 @@ html body .container #header nav ul li:last-of-type {
   margin-right: 0;
 }
 html body .container #header nav:last-of-type {
-  float: right;
-  margin-right: 0em;
+  display: none;
 }
-@media only screen and (max-width: 64em) {
+@media only screen and (min-width: 80em) {
   html body .container #header nav:last-of-type {
-    display: none;
+    float: right;
+    margin-right: 0em;
+    display: block;
   }
 }
 @media only screen and (max-width: 47.999em) {
@@ -363,6 +365,7 @@ html body .container #header nav:last-of-type {
   html body .container #header nav:last-of-type {
     cursor: pointer;
     display: block;
+    float: right;
   }
   html body .container #header nav:last-of-type:before {
     content: "\21E3";

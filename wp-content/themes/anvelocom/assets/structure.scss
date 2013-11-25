@@ -18,11 +18,12 @@
   /* We have two menus, the last is for contact
   */       
   &:last-of-type {
-    float: right;
-    margin-right: 0em;
+    display: none;
     
-    @include below-and-small-screen {
-      display: none;
+    @include above-and-normal-screen {
+      float: right;
+      margin-right: 0em;
+      display: block;
     }
   }
   
@@ -34,6 +35,7 @@
     &:last-of-type {
       @include arrow($arrow-down);
       display: block;
+      float: right;
     }
     
     /* Remove the arrow when menu is active
