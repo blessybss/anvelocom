@@ -13,6 +13,12 @@
   aside, #sidebar {
     @include m_column($last);
   }
+  
+  @include below-small-screen {
+    article, figure, aside, #sidebar {
+      @include m_column(100%, 0);
+    }
+  }
 }
 
 /* The filters
@@ -22,6 +28,12 @@
   
   ul li, .select {
     @include isotope(5);
+  }
+  
+  @include below-and-small-screen {
+    ul {
+      display: none;
+    }
   }
 }
 

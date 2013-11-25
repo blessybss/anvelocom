@@ -337,7 +337,7 @@ html body .container #header nav ul li {
 html body .container #header nav ul li:last-of-type {
   margin-right: 0;
 }
-@media only screen and (max-width: 24em) {
+@media only screen and (max-width: 47.999em) {
   html body .container #header nav {
     display: none;
   }
@@ -596,6 +596,11 @@ html body.page main section#filters ul li, html body.page main section#filters .
     float: left;
   }
 }
+@media only screen and (max-width: 64em) {
+  html body.page main section#filters ul {
+    display: none;
+  }
+}
 html body.page main section#results {
   margin-top: 0;
 }
@@ -611,6 +616,13 @@ html body.single-post main article.product aside, html body.single-post main art
   width: 61.8047%;
   margin-right: 0;
   float: left;
+}
+@media only screen and (max-width: 63.999em) {
+  html body.single-post main article.product article, html body.single-post main article.product figure, html body.single-post main article.product aside, html body.single-post main article.product #sidebar {
+    width: 100%;
+    margin-right: 0;
+    float: left;
+  }
 }
 html body.single-post main section nav {
   width: 100%;
@@ -849,4 +861,11 @@ html body.page main #content aside, html body.page main #content #sidebar {
   width: 38.1953%;
   margin-right: 0;
   float: left;
+}
+@media only screen and (max-width: 63.999em) {
+  html body.page main #content article, html body.page main #content figure, html body.page main #content aside, html body.page main #content #sidebar {
+    width: 100%;
+    margin-right: 0;
+    float: left;
+  }
 }

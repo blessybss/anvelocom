@@ -27,7 +27,7 @@
     @include list-inline;
   }
   
-  @include mobile {
+  @include below-tablet {
     display: none;
   }
 }
