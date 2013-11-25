@@ -69,7 +69,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* 700px / 16px */
 /* Responsive breakpoints
 */
-/* 320px */
+/* 384px, Android Nexus 4 */
 /* 640px, iPhone 5 */
 /* 768px */
 /* 1024px */
@@ -137,6 +137,31 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 */
 /* Left aligned column
 */
+/* Columns for Isotope
+  - since Isotope filters out elements we don't know which element will be the last in a row,
+  so we can't make it's righ margin 0
+  - in this grid all elements in a row will have the same right margin
+*/
+/* Columns for the grid
+  - calculates automatically the columns size and margin
+  - the right margin of the last element in a row is set to zero
+  - $maximum sets how many articles will be displayed on a single page 
+*/
+/* Returns the with of a column in a grid
+  - This is useful to resize other elements to the grid
+  - The formula is taken and must be in sync with the mixin col
+*/
+/* Returns the margin of a column in a grid
+*/
+/* Generates a full grid of $how-many columns and $maximum elements
+*/
+/* Remove right margin of the last element in a row of a grid
+  - the othere elements will have the righ margin set again
+  - this re-set is required by responsive layouts 
+*/
+/* When decorations and padding is added to a column in a grid these must be removed from the original column width
+  - params can be any of %, em, px
+*/
 /* Typographic elements
 */
 /* Select box
@@ -179,6 +204,16 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 */
 /* Groups of molecules (and possibly atoms) joined together to form distinct section of an interface.
 */
+/* Navigation
+--------------------------------------------------------------------------------
+*/
+/* Highlight current menu item
+*/
+/* A classic, horizontal menu for <nav> elements
+*/
+/* Grid
+--------------------------------------------------------------------------------
+*/
 /* Displays a product thumb in different ways
   - thumb structure is:
   - <header> with <h3> title
@@ -188,33 +223,15 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* Displaying product / article thumbs
   - if thumbs are filtered by Isotope the standard grid is replaced by an isotope grid
 */
-/* Columns for Isotope
-  - since Isotope filters out elements we don't know which element will be the last in a row,
-  so we can't make it's righ margin 0
-  - in this grid all elements in a row will have the same right margin
-*/
-/* Columns for the grid
-  - calculates automatically the columns size and margin
-  - the right margin of the last element in a row is set to zero
-  - $maximum sets how many articles will be displayed on a single page 
-*/
-/* Returns the with of a column in a grid
-  - This is useful to resize other elements to the grid
-  - The formula is taken and must be in sync with the mixin col
-*/
-/* When decorations and padding is added to a column in a grid these must be removed from the original column width
-  - params can be any of %, em, px
-*/
 /* Float left child elements like in inline lists
   - it selects only the direct descendants of the parent element
   - its a free-form grid
 */
-/* Highlight current menu item
-*/
-/* A classic, horizontal menu for <nav> elements
-*/
 /* A classic, centered container
   - adapts to small screens 
+*/
+/* Typography
+--------------------------------------------------------------------------------
 */
 /* Default font, color, typography settings for non text elements
 */
@@ -320,9 +337,14 @@ html body .container #header nav ul li {
 html body .container #header nav ul li:last-of-type {
   margin-right: 0;
 }
+@media only screen and (max-width: 24em) {
+  html body .container #header nav {
+    display: none;
+  }
+}
 html body .container #header nav:last-of-type {
   float: right;
-  margin-right: 0;
+  margin-right: 0em;
 }
 html body .container main {
   width: 100%;
@@ -366,24 +388,118 @@ html body .container #footer nav h3:before {
   font-size: 150%;
   display: block;
 }
-html body.home main section article {
-  margin-bottom: 0;
-}
 html body.home main section article.thumb {
   width: 18%;
   margin-right: 2.5%;
   float: left;
+  margin-bottom: 0;
+}
+html body.home main section article.thumb:nth-of-type(2) {
+  margin-right: 2.5%;
+}
+html body.home main section article.thumb:nth-of-type(3) {
+  margin-right: 2.5%;
+}
+html body.home main section article.thumb:nth-of-type(4) {
+  margin-right: 2.5%;
 }
 html body.home main section article.thumb:nth-of-type(5) {
   margin-right: 0;
 }
+html body.home main section article.thumb:nth-of-type(6) {
+  margin-right: 2.5%;
+}
+html body.home main section article.thumb:nth-of-type(7) {
+  margin-right: 2.5%;
+}
+html body.home main section article.thumb:nth-of-type(8) {
+  margin-right: 2.5%;
+}
+html body.home main section article.thumb:nth-of-type(9) {
+  margin-right: 2.5%;
+}
 html body.home main section article.thumb:nth-of-type(10) {
   margin-right: 0;
 }
-html body.home main section article header, html body.home main section article figure, html body.home main section article aside {
+@media only screen and (max-width: 64em) {
+  html body.home main section article.thumb {
+    width: 30%;
+    margin-right: 5%;
+    float: left;
+  }
+  html body.home main section article.thumb:nth-of-type(2) {
+    margin-right: 5%;
+  }
+  html body.home main section article.thumb:nth-of-type(3) {
+    margin-right: 0;
+  }
+  html body.home main section article.thumb:nth-of-type(4) {
+    margin-right: 5%;
+  }
+  html body.home main section article.thumb:nth-of-type(5) {
+    margin-right: 5%;
+  }
+  html body.home main section article.thumb:nth-of-type(6) {
+    margin-right: 0;
+  }
+  html body.home main section article.thumb:nth-of-type(7) {
+    margin-right: 5%;
+  }
+  html body.home main section article.thumb:nth-of-type(8) {
+    margin-right: 5%;
+  }
+  html body.home main section article.thumb:nth-of-type(9) {
+    margin-right: 0;
+  }
+  html body.home main section article.thumb:nth-of-type(10) {
+    margin-right: 5%;
+  }
+}
+@media only screen and (max-width: 47.999em) {
+  html body.home main section article.thumb {
+    width: 45%;
+    margin-right: 10%;
+    float: left;
+  }
+  html body.home main section article.thumb:nth-of-type(2) {
+    margin-right: 0;
+  }
+  html body.home main section article.thumb:nth-of-type(3) {
+    margin-right: 10%;
+  }
+  html body.home main section article.thumb:nth-of-type(4) {
+    margin-right: 0;
+  }
+  html body.home main section article.thumb:nth-of-type(5) {
+    margin-right: 10%;
+  }
+  html body.home main section article.thumb:nth-of-type(6) {
+    margin-right: 0;
+  }
+  html body.home main section article.thumb:nth-of-type(7) {
+    margin-right: 10%;
+  }
+  html body.home main section article.thumb:nth-of-type(8) {
+    margin-right: 0;
+  }
+  html body.home main section article.thumb:nth-of-type(9) {
+    margin-right: 10%;
+  }
+  html body.home main section article.thumb:nth-of-type(10) {
+    margin-right: 0;
+  }
+}
+@media only screen and (max-width: 24em) {
+  html body.home main section article.thumb {
+    width: 100%;
+    margin-right: 0;
+    float: left;
+  }
+}
+html body.home main section article.thumb header, html body.home main section article.thumb figure, html body.home main section article.thumb aside {
   display: none;
 }
-html body.home main section article figure {
+html body.home main section article.thumb figure {
   display: block;
 }
 html body.page main section {
@@ -391,22 +507,37 @@ html body.page main section {
     - it's container bottom margin and the next container's top margin must be reset 
   */
 }
-html body.page main section article {
-  margin-bottom: 1.25em;
-}
 html body.page main section article.thumb {
-  /* The margin will be the 10% of the column width
-    - in a 5 column grid we would have width=18%, margin=2%
-    - since isotope cannot handle this 100% full row (?) we will have to reduce column with with 1% to 17%
-  */
   width: 17%;
   margin-right: 2%;
   float: left;
+  margin-bottom: 1.25em;
 }
-html body.page main section article header, html body.page main section article figure, html body.page main section article aside {
+@media only screen and (max-width: 64em) {
+  html body.page main section article.thumb {
+    width: 32.33333%;
+    margin-right: 1%;
+    float: left;
+  }
+}
+@media only screen and (max-width: 47.999em) {
+  html body.page main section article.thumb {
+    width: 44%;
+    margin-right: 5%;
+    float: left;
+  }
+}
+@media only screen and (max-width: 24em) {
+  html body.page main section article.thumb {
+    width: 100%;
+    margin-right: 0;
+    float: left;
+  }
+}
+html body.page main section article.thumb header, html body.page main section article.thumb figure, html body.page main section article.thumb aside {
   display: none;
 }
-html body.page main section article figure {
+html body.page main section article.thumb figure {
   display: block;
 }
 html body.page main section#filters {
@@ -440,13 +571,30 @@ html body.page main section#filters select {
   padding: 0.3125em;
 }
 html body.page main section#filters ul li, html body.page main section#filters .select {
-  /* The margin will be the 10% of the column width
-    - in a 5 column grid we would have width=18%, margin=2%
-    - since isotope cannot handle this 100% full row (?) we will have to reduce column with with 1% to 17%
-  */
   width: 17%;
   margin-right: 2%;
   float: left;
+}
+@media only screen and (max-width: 64em) {
+  html body.page main section#filters ul li, html body.page main section#filters .select {
+    width: 32.33333%;
+    margin-right: 1%;
+    float: left;
+  }
+}
+@media only screen and (max-width: 47.999em) {
+  html body.page main section#filters ul li, html body.page main section#filters .select {
+    width: 44%;
+    margin-right: 5%;
+    float: left;
+  }
+}
+@media only screen and (max-width: 24em) {
+  html body.page main section#filters ul li, html body.page main section#filters .select {
+    width: 100%;
+    margin-right: 0;
+    float: left;
+  }
 }
 html body.page main section#results {
   margin-top: 0;
@@ -473,30 +621,220 @@ html body.single-post main section nav h2 {
   margin-right: 2.5%;
   float: left;
 }
+html body.single-post main section nav h2:nth-of-type(2) {
+  margin-right: 2.5%;
+}
+html body.single-post main section nav h2:nth-of-type(3) {
+  margin-right: 2.5%;
+}
+html body.single-post main section nav h2:nth-of-type(4) {
+  margin-right: 2.5%;
+}
 html body.single-post main section nav h2:nth-of-type(5) {
   margin-right: 0;
+}
+html body.single-post main section nav h2:nth-of-type(6) {
+  margin-right: 2.5%;
+}
+html body.single-post main section nav h2:nth-of-type(7) {
+  margin-right: 2.5%;
+}
+html body.single-post main section nav h2:nth-of-type(8) {
+  margin-right: 2.5%;
+}
+html body.single-post main section nav h2:nth-of-type(9) {
+  margin-right: 2.5%;
 }
 html body.single-post main section nav h2:nth-of-type(10) {
   margin-right: 0;
 }
-html body.single-post main section article {
-  margin-bottom: 1.25em;
+@media only screen and (max-width: 64em) {
+  html body.single-post main section nav h2 {
+    width: 30%;
+    margin-right: 5%;
+    float: left;
+  }
+  html body.single-post main section nav h2:nth-of-type(2) {
+    margin-right: 5%;
+  }
+  html body.single-post main section nav h2:nth-of-type(3) {
+    margin-right: 0;
+  }
+  html body.single-post main section nav h2:nth-of-type(4) {
+    margin-right: 5%;
+  }
+  html body.single-post main section nav h2:nth-of-type(5) {
+    margin-right: 5%;
+  }
+  html body.single-post main section nav h2:nth-of-type(6) {
+    margin-right: 0;
+  }
+  html body.single-post main section nav h2:nth-of-type(7) {
+    margin-right: 5%;
+  }
+  html body.single-post main section nav h2:nth-of-type(8) {
+    margin-right: 5%;
+  }
+  html body.single-post main section nav h2:nth-of-type(9) {
+    margin-right: 0;
+  }
+  html body.single-post main section nav h2:nth-of-type(10) {
+    margin-right: 5%;
+  }
+}
+@media only screen and (max-width: 47.999em) {
+  html body.single-post main section nav h2 {
+    width: 45%;
+    margin-right: 10%;
+    float: left;
+  }
+  html body.single-post main section nav h2:nth-of-type(2) {
+    margin-right: 0;
+  }
+  html body.single-post main section nav h2:nth-of-type(3) {
+    margin-right: 10%;
+  }
+  html body.single-post main section nav h2:nth-of-type(4) {
+    margin-right: 0;
+  }
+  html body.single-post main section nav h2:nth-of-type(5) {
+    margin-right: 10%;
+  }
+  html body.single-post main section nav h2:nth-of-type(6) {
+    margin-right: 0;
+  }
+  html body.single-post main section nav h2:nth-of-type(7) {
+    margin-right: 10%;
+  }
+  html body.single-post main section nav h2:nth-of-type(8) {
+    margin-right: 0;
+  }
+  html body.single-post main section nav h2:nth-of-type(9) {
+    margin-right: 10%;
+  }
+  html body.single-post main section nav h2:nth-of-type(10) {
+    margin-right: 0;
+  }
+}
+@media only screen and (max-width: 24em) {
+  html body.single-post main section nav h2 {
+    width: 100%;
+    margin-right: 0;
+    float: left;
+  }
 }
 html body.single-post main section article.thumb {
   width: 18%;
   margin-right: 2.5%;
   float: left;
+  margin-bottom: 1.25em;
+}
+html body.single-post main section article.thumb:nth-of-type(2) {
+  margin-right: 2.5%;
+}
+html body.single-post main section article.thumb:nth-of-type(3) {
+  margin-right: 2.5%;
+}
+html body.single-post main section article.thumb:nth-of-type(4) {
+  margin-right: 2.5%;
 }
 html body.single-post main section article.thumb:nth-of-type(5) {
   margin-right: 0;
 }
+html body.single-post main section article.thumb:nth-of-type(6) {
+  margin-right: 2.5%;
+}
+html body.single-post main section article.thumb:nth-of-type(7) {
+  margin-right: 2.5%;
+}
+html body.single-post main section article.thumb:nth-of-type(8) {
+  margin-right: 2.5%;
+}
+html body.single-post main section article.thumb:nth-of-type(9) {
+  margin-right: 2.5%;
+}
 html body.single-post main section article.thumb:nth-of-type(10) {
   margin-right: 0;
 }
-html body.single-post main section article header, html body.single-post main section article figure, html body.single-post main section article aside {
+@media only screen and (max-width: 64em) {
+  html body.single-post main section article.thumb {
+    width: 30%;
+    margin-right: 5%;
+    float: left;
+  }
+  html body.single-post main section article.thumb:nth-of-type(2) {
+    margin-right: 5%;
+  }
+  html body.single-post main section article.thumb:nth-of-type(3) {
+    margin-right: 0;
+  }
+  html body.single-post main section article.thumb:nth-of-type(4) {
+    margin-right: 5%;
+  }
+  html body.single-post main section article.thumb:nth-of-type(5) {
+    margin-right: 5%;
+  }
+  html body.single-post main section article.thumb:nth-of-type(6) {
+    margin-right: 0;
+  }
+  html body.single-post main section article.thumb:nth-of-type(7) {
+    margin-right: 5%;
+  }
+  html body.single-post main section article.thumb:nth-of-type(8) {
+    margin-right: 5%;
+  }
+  html body.single-post main section article.thumb:nth-of-type(9) {
+    margin-right: 0;
+  }
+  html body.single-post main section article.thumb:nth-of-type(10) {
+    margin-right: 5%;
+  }
+}
+@media only screen and (max-width: 47.999em) {
+  html body.single-post main section article.thumb {
+    width: 45%;
+    margin-right: 10%;
+    float: left;
+  }
+  html body.single-post main section article.thumb:nth-of-type(2) {
+    margin-right: 0;
+  }
+  html body.single-post main section article.thumb:nth-of-type(3) {
+    margin-right: 10%;
+  }
+  html body.single-post main section article.thumb:nth-of-type(4) {
+    margin-right: 0;
+  }
+  html body.single-post main section article.thumb:nth-of-type(5) {
+    margin-right: 10%;
+  }
+  html body.single-post main section article.thumb:nth-of-type(6) {
+    margin-right: 0;
+  }
+  html body.single-post main section article.thumb:nth-of-type(7) {
+    margin-right: 10%;
+  }
+  html body.single-post main section article.thumb:nth-of-type(8) {
+    margin-right: 0;
+  }
+  html body.single-post main section article.thumb:nth-of-type(9) {
+    margin-right: 10%;
+  }
+  html body.single-post main section article.thumb:nth-of-type(10) {
+    margin-right: 0;
+  }
+}
+@media only screen and (max-width: 24em) {
+  html body.single-post main section article.thumb {
+    width: 100%;
+    margin-right: 0;
+    float: left;
+  }
+}
+html body.single-post main section article.thumb header, html body.single-post main section article.thumb figure, html body.single-post main section article.thumb aside {
   display: none;
 }
-html body.single-post main section article figure {
+html body.single-post main section article.thumb figure {
   display: block;
 }
 html body.page main #content h2, html body.page main #content h3 {

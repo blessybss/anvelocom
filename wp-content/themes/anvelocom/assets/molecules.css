@@ -11,6 +11,31 @@
 */
 /* Left aligned column
 */
+/* Columns for Isotope
+  - since Isotope filters out elements we don't know which element will be the last in a row,
+  so we can't make it's righ margin 0
+  - in this grid all elements in a row will have the same right margin
+*/
+/* Columns for the grid
+  - calculates automatically the columns size and margin
+  - the right margin of the last element in a row is set to zero
+  - $maximum sets how many articles will be displayed on a single page 
+*/
+/* Returns the with of a column in a grid
+  - This is useful to resize other elements to the grid
+  - The formula is taken and must be in sync with the mixin col
+*/
+/* Returns the margin of a column in a grid
+*/
+/* Generates a full grid of $how-many columns and $maximum elements
+*/
+/* Remove right margin of the last element in a row of a grid
+  - the othere elements will have the righ margin set again
+  - this re-set is required by responsive layouts 
+*/
+/* When decorations and padding is added to a column in a grid these must be removed from the original column width
+  - params can be any of %, em, px
+*/
 /* Typographic elements
 */
 /* Select box

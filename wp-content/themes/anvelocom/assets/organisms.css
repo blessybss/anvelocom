@@ -1,5 +1,15 @@
 /* Groups of molecules (and possibly atoms) joined together to form distinct section of an interface.
 */
+/* Navigation
+--------------------------------------------------------------------------------
+*/
+/* Highlight current menu item
+*/
+/* A classic, horizontal menu for <nav> elements
+*/
+/* Grid
+--------------------------------------------------------------------------------
+*/
 /* Displays a product thumb in different ways
   - thumb structure is:
   - <header> with <h3> title
@@ -9,33 +19,15 @@
 /* Displaying product / article thumbs
   - if thumbs are filtered by Isotope the standard grid is replaced by an isotope grid
 */
-/* Columns for Isotope
-  - since Isotope filters out elements we don't know which element will be the last in a row,
-  so we can't make it's righ margin 0
-  - in this grid all elements in a row will have the same right margin
-*/
-/* Columns for the grid
-  - calculates automatically the columns size and margin
-  - the right margin of the last element in a row is set to zero
-  - $maximum sets how many articles will be displayed on a single page 
-*/
-/* Returns the with of a column in a grid
-  - This is useful to resize other elements to the grid
-  - The formula is taken and must be in sync with the mixin col
-*/
-/* When decorations and padding is added to a column in a grid these must be removed from the original column width
-  - params can be any of %, em, px
-*/
 /* Float left child elements like in inline lists
   - it selects only the direct descendants of the parent element
   - its a free-form grid
 */
-/* Highlight current menu item
-*/
-/* A classic, horizontal menu for <nav> elements
-*/
 /* A classic, centered container
   - adapts to small screens 
+*/
+/* Typography
+--------------------------------------------------------------------------------
 */
 /* Default font, color, typography settings for non text elements
 */
