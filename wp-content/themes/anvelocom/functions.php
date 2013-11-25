@@ -4,7 +4,7 @@
 // Constants
 $PAGE_ANVELOPE = 'categoryanvelope-auto-offroad';
 $PAGE_JENTI = 'jante-auto-aluminiu-si-tabla';
-$PAGE_TUNING = 'tuning-auto-powertuning.php';
+$PAGE_TUNING = 'tuning-auto-powertuning';
 $CATEGORY_META = '467';
 
 
@@ -227,7 +227,22 @@ function thumb_class($index) {
   return "thumb c" . $index;
 }
 
-
+// Get title for any page, post or archive
+function get_title() {
+  if (function_exists('is_tag') && is_tag()) { 
+    return 'Arhiva etichete &quot;' . $tag . '&quot;'; 
+  } elseif (is_archive()) { 
+    return wp_title('', false); 
+  } elseif (is_search()) { 
+    return 'Rezultatul cautarii pentru &quot;' . wp_specialchars($s) . '&quot;'; 
+  } elseif (!(is_404()) && (is_single()) || (is_page())) { 
+    return wp_title('', false); 
+  } elseif (is_404()) { 
+    return 'Pagina inexistenta'; 
+  } elseif (is_home()) {
+    return bloginfo('description');
+  }
+}
 
 
 

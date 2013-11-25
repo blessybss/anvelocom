@@ -139,6 +139,10 @@ html {
             @include remove-title;
             @include figure(100%);
           }
+          
+          &.articles {
+            @include thumbs(normal);
+          }
         }
       }
       
@@ -148,17 +152,6 @@ html {
           margin-right: 0;
           @include remove-title;
           @include arrow($arrow-up); 
-        }
-      }
-    }
-    
-    
-    /* Frontpage
-    */
-    &.home {
-      main {
-        section {
-          @include thumbs(normal);
         }
       }
     }
@@ -194,15 +187,15 @@ html {
         article.product {
           @include golden-ratio($minor, $major);
         }
+        
         section {
           nav {
             @include block;
+            
             h2 {
               @include col(5);
             }
           } 
-          
-          @include thumbs(normal, $pad);
         }
       }
     }

@@ -12,7 +12,7 @@
         $img = get_template_directory_uri() . "/assets/jeep-for-title.jpg";
       }
       if (!isset($title)) {
-        $title = get_the_title(); 
+        $title = get_title(); 
       }
       $retina = false;
       include '_responsive-images.php';

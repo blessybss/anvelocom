@@ -15,13 +15,20 @@
     $klass = 'product';
   }
   
-  // Special pages
+  // If single page or archives page
+  $section_klass = 'articles';
+  if (is_single() || is_page()) {
+    $section_klass = '';
+  }
+  
+  // Special product category pages
   if (is_page(array($PAGE_ANVELOPE, $PAGE_JENTI, $PAGE_TUNING))) {
     include '_product_category_page.php';
   } else {
 ?>
 
-  <section>
+  <section id="index" class="<?php echo $section_klass ?>">
+    <h2>Index</h2>
     <?php 
       if (have_posts()) {
         $index = 0;
@@ -52,24 +59,12 @@
 
 
   <?php if (is_single()) { ?>
-    <section id="variations">
+    <section id="variations" class="articles">
+      <h2>Variatii produs</h2>
       <nav>
         <h2>Alte variante pt. 205/R16/60</h2>
         <h2><a href="">&larr; Inapoi la configurator</a></h2>
       </nav>
-      <?php
-        $related_posts = MRP_get_related_posts($post_id, true);
-        if ($related_posts) { ?>
-          <?php foreach ($related_posts as $index=>$article) { ?>
-          <article class="thumb c<?php echo $index + 1 ?>">
-            <?php 
-              $image_size = 'medium';
-              include '_article.php';
-            ?>
-         </article>
-        <?php }
-        }
-      ?>
     </section>
     
     <?php include '_brands.php' ?>
