@@ -1,6 +1,13 @@
 <?php
 
 
+// Constants
+$PAGE_ANVELOPE = 'categoryanvelope-auto-offroad';
+$PAGE_JENTI = 'jante-auto-aluminiu-si-tabla';
+$PAGE_TUNING = 'tuning-auto-powertuning.php';
+$CATEGORY_META = '467';
+
+
 
 // Get posts, categories, and so on
 
@@ -196,7 +203,6 @@ function get_post_featured_image_url($post_id, $size = array(700, 700)) {
 }
 
 
-
 // Get post attachements
 function get_post_attachments($post_id) {
   $args = array(
@@ -213,6 +219,13 @@ function get_post_attachments($post_id) {
 }
 
 
+
+// General functions
+
+// Create a thumb class for article
+function thumb_class($index) {
+  return "thumb c" . $index;
+}
 
 
 

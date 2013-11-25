@@ -1,10 +1,19 @@
+<?php 
+  /* Displaying an image below the header
+    - only the frontpage image is different, the rest of pages have the same image
+  */
+?>
+
 <section id="intro">
   <h2>Intro</h2>
   <figure>
     <?php 
-      $img = get_template_directory_uri() . "/assets/jeep-for-title.jpg";
-      $title = get_the_title(); 
-      $link = get_permalink();
+      if (!isset($img)) {
+        $img = get_template_directory_uri() . "/assets/jeep-for-title.jpg";
+      }
+      if (!isset($title)) {
+        $title = get_the_title(); 
+      }
       $retina = false;
       include '_responsive-images.php';
     ?>

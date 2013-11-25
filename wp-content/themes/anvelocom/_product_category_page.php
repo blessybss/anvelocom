@@ -1,7 +1,3 @@
-<?php get_header(); ?>
-
-<?php include '_intro.php' ?>
-
 
 <section id="filters">
   <h2>Configurator</h2>
@@ -89,4 +85,3 @@
 
 <?php include '_brands.php' ?>
 
-<?php get_footer(); ?>
