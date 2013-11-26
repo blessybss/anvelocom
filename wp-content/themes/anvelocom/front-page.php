@@ -9,26 +9,26 @@
 
 
 <?php 
-  $articles = get_anvelopes(5);
+  $articles = get_posts_from_category(CATEGORY_PRODUS, 5);
   $title = 'Produse noi';
-  $link = '';
+  $link = get_category_url(CATEGORY_PRODUS);
   $id = 'anvelope';
   include '_articles.php';
 ?>
 
 
 <?php 
-  $articles = get_anvelopes(5);
+  $articles = get_posts_from_category(CATEGORY_REDUCERI, 5);
   $title = 'Reduceri';
-  $link = '';
+  $link = get_category_url(CATEGORY_REDUCERI);
   $id = 'reduceri'; 
   include '_articles.php';
 ?>
 
 <?php 
-  $articles = get_anvelopes(5);
+  $articles = get_posts_from_category(CATEGORY_BESTSELLERS, 5);
   $title = 'Cele mai vandute';
-  $link = '';
+  $link = get_category_url(CATEGORY_BESTSELLERS);
   $id = 'bestsellers'; 
   include '_articles.php';
 ?>

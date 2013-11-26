@@ -22,7 +22,7 @@
   }
   
   // Special product category pages
-  if (is_page(array($PAGE_ANVELOPE, $PAGE_JENTI, $PAGE_TUNING))) {
+  if (is_page($SPECIAL_PAGES)) {
     include '_product_category_page.php';
   } else {
 ?>

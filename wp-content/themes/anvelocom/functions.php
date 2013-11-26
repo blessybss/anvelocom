@@ -2,19 +2,123 @@
 
 
 // Constants
-$PAGE_ANVELOPE = 'categoryanvelope-auto-offroad';
-$PAGE_JENTI = 'jante-auto-aluminiu-si-tabla';
-$PAGE_TUNING = 'tuning-auto-powertuning';
-$CATEGORY_META = '467';
+
+define("PAGE_ANVELOPE", 'categoryanvelope-auto-offroad');
+define("PAGE_JENTI", 'jante-auto-aluminiu-si-tabla');
+define("PAGE_TUNING", 'tuning-auto-powertuning');
+$SPECIAL_PAGES = array(PAGE_ANVELOPE, PAGE_JENTI, PAGE_TUNING);
+
+define("PAGE_ABOUT_US", 'Date firma');
+
+define("CATEGORY_META", '467');
+define("CATEGORY_PRODUS", 'produs');
+define("CATEGORY_REDUCERI", 'reduceri');
+define("CATEGORY_BESTSELLERS", 'cele-mai-vandute');
+
+define("CATEGORY_ANVELOPE", 'anvelope-auto-offroad');
+define("CATEGORY_JENTI", 'jante');
+define("CATEGORY_TUNING", 'tuning');
+$SPECIAL_CATEGORIES = array(CATEGORY_ANVELOPE, CATEGORY_JENTI, CATEGORY_TUNING);
+
+
+define("META_ANVELOPE_DIMENSION", 'Dimensiune janta');
+define("META_ANVELOPE_LATIME", 'latime');
+define("META_ANVELOPE_INALTIME", 'inaltime');
+define("META_ANVELOPE_BRAND", 'brand');
+define("META_ANVELOPE_PROFIL", 'profil');
+$FILTERS_ANVELOPE = array(META_ANVELOPE_LATIME, META_ANVELOPE_INALTIME, META_ANVELOPE_DIMENSION, META_ANVELOPE_BRAND, META_ANVELOPE_PROFIL);
+$FILTERS_ANVELOPE_LABELS = array('Latime anvelopa', 'Inaltime anvelopa', 'Diametru janta', 'Marca', 'Profil');
+$FILTERS_ANVELOPE_LABELS2 = array('Toate latimile', 'Toate inaltimile', 'Toate dimensiunile', 'Toate marcile', 'Toate profilurile');
+
+$FILTERS_JENTI = array();
+$FILTERS_JENTI_LABELS = array();
+$FILTERS_JENTI_LABELS2 = array();
+
+$FILTERS_TUNING = array();
+$FILTERS_TUNING_LABELS = array();
+$FILTERS_TUNING_LABELS2 = array();
+
+
+$FILTERS = array($FILTERS_ANVELOPE, $FILTERS_JENTI, $FILTERS_TUNING);
+$FILTERS_LABELS = array($FILTERS_ANVELOPE_LABELS, $FILTERS_JENTI_LABELS, $FILTERS_TUNING_LABELS);
+$FILTERS_LABELS2 = array($FILTERS_ANVELOPE_LABELS2, $FILTERS_JENTI_LABELS2, $FILTERS_TUNING_LABELS2);
+
+
+
+// Filters
+
+
+// Returns an array of values to use in a filter
+// - $filter_meta, the meta field to look for
+// - $articles, the list of posts where to search for thei meta tag
+function get_filter_values($filter_meta, $articles) {
+  $ret = array();
+  if ($articles) {
+    foreach ($articles as $article) {
+      $ret = array_merge($ret, get_filter_value($filter_meta, $article));
+    }
+  }
+  return array_filter(array_unique($ret));
+}
+
+// Returns post meta values for a given meta tag
+// - $filter_meta, the tag
+// - $article, the post
+function get_filter_value($filter_meta, $article) {
+  $ret = array();
+  if ($article) {
+    $ret = get_post_meta($article->ID, $filter_meta);
+  }
+  return $ret;
+}
+
+// Generates a class for each article to use with the filters
+// $filters, an array of constants, like Anvelopes, or Jenti, ...
+function get_article_class($filters, $article) {
+  $klass = array();
+  
+  foreach ($filters as $filter_meta) {
+    $klass = array_merge($klass, get_filter_value($filter_meta, $article));
+  }
+  
+  $klass = array_map("string_to_classname", $klass);
+  return $klass;
+}
+
 
 
 
 // Get posts, categories, and so on
 
+function get_posts_from_category($category_slug, $how_many) {
+  $c = get_category_by_slug($category_slug);
+  if ($c) {
+    $category_id = $c->term_id;
+    
+    $p = get_cat_ID(CATEGORY_PRODUS);
+    return get_posts(array(
+      'category__and' => array($category_id, $p),
+      'posts_per_page' => $how_many,
+    ));
+  }
+}
+
+function get_category_url($category_slug) {
+  $category_id = get_cat_ID($category_slug);
+  return get_category_link($category_id);
+}
+
+
+
+
+
+
+
+
 
 /* Get anvelope brands */
 function get_anvelope_brands() {
-  $c = get_category_by_slug('anvelope-auto-offroad');
+  $c = get_category_by_slug(CATEGORY_ANVELOPE);
   $category_id = $c->term_id;
   
   return get_categories(array(
@@ -25,10 +129,10 @@ function get_anvelope_brands() {
 
 /* Get the latest anvelopes */
 function get_anvelopes($how_many) {
-  $c = get_category_by_slug('anvelope-auto-offroad');
+  $c = get_category_by_slug(CATEGORY_ANVELOPE);
   $category_id = $c->term_id;
   
-  $p = get_cat_ID('Produs');
+  $p = get_cat_ID(CATEGORY_PRODUS);
   return get_posts(array(
     'category__and' => array($category_id, $p),
     'posts_per_page' => $how_many,
@@ -38,122 +142,11 @@ function get_anvelopes($how_many) {
 
 /* Get the content of About Us */
 function get_date_firma() {
-  $about_us = get_page_by_title( 'Date firma' ); 
+  $about_us = get_page_by_title(PAGE_ABOUT_US); 
   $page_data = get_page($about_us);
   return $page_data->post_content;
 }
 
-
-
-
-
-
-
-
-// Filter anvelopes
-
-function get_dimensions($posts) {
-  $ret = array();
-  if ($posts) {
-    foreach ($posts as $post) {
-      $ret = array_merge($ret, get_dimension($post));
-    }
-  }
-  return array_filter(array_unique($ret));
-}
-
-function get_latimes($posts) {
-  $ret = array();
-  if ($posts) {
-    foreach ($posts as $post) {
-      $ret = array_merge($ret, get_latime($post));
-    }
-  }
-  return array_filter(array_unique($ret));
-}
-
-function get_inaltimes($posts) {
-  $ret = array();
-  if ($posts) {
-    foreach ($posts as $post) {
-      $ret = array_merge($ret, get_inaltime($post));
-    }
-  }
-  return array_filter(array_unique($ret));
-}
-
-function get_brands($posts) {
-  $ret = array();
-  if ($posts) {
-    foreach ($posts as $post) {
-      $ret = array_merge($ret, get_brand($post));
-    }
-  }
-  return array_filter(array_unique($ret));
-}
-
-function get_profs($posts) {
-  $ret = array();
-  if ($posts) {
-    foreach ($posts as $post) {
-      $ret = array_merge($ret, get_prof($post));
-    }
-  }
-  return array_filter(array_unique($ret));
-}
-
-
-function get_dimension($post) {
-  $ret = array();
-  if ($post) {
-    $ret = get_post_meta($post->ID, 'Dimensiune janta');
-  }
-  return $ret;
-}
-
-function get_latime($post) {
-  $ret = array();
-  if ($post) {
-    $ret = get_post_meta($post->ID, 'latime');
-  }
-  return $ret;
-}
-
-function get_inaltime($post) {
-  $ret = array();
-  if ($post) {
-    $ret = get_post_meta($post->ID, 'inaltime');
-  }
-  return $ret;
-}
-
-function get_brand($post) {
-  $ret = array();
-  if ($post) {
-    //$ret = get_post_meta($post->ID, 'brandi');
-  }
-  return $ret;
-}
-
-function get_prof($post) {
-  $ret = array();
-  if ($post) {
-    $ret = get_post_meta($post->ID, 'profil');
-  }
-  return $ret;
-}
-
-
-function get_article_class($post) {
-  $klass = array();
-  $klass = array_merge($klass, get_dimension($post));
-  $klass = array_merge($klass, get_inaltime($post));
-  $klass = array_merge($klass, get_latime($post));
-  $klass = array_merge($klass, get_brand($post));
-  $klass = array_merge($klass, get_prof($post));
-  $klass = array_map("string_to_classname", $klass);
-  return $klass;
-}
 
 
 
@@ -226,6 +219,7 @@ function get_post_attachments($post_id) {
 function thumb_class($index) {
   return "thumb c" . $index;
 }
+
 
 // Get title for any page, post or archive
 function get_title() {
