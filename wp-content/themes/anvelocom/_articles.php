@@ -14,7 +14,7 @@
       foreach ($articles as $index => $article) { 
         $klass = thumb_class($index + 1);
         
-        if ($filters) {
+        if (isset($filters) && $filters) {
           $klass2 = get_article_class($FILTERS_ANVELOPE, $article);
           $klass .= ' ' . implode(' ', $klass2);
         }

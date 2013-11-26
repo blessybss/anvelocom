@@ -48,5 +48,8 @@
   ?>
 <?php } ?>
 
-<?php include '_brands.php' ?>
+<?php 
+  $parent_slug = $SPECIAL_CATEGORIES[$page];  
+  include '_brands.php';
+?>
 

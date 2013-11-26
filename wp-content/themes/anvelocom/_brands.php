@@ -1,8 +1,10 @@
 <?php 
-  $articles = get_anvelope_brands();
+  $articles = get_children_categories($parent_slug);
   $title = 'Toate marcile';
   $link = '';
   $id = 'brands';
+  $filters = false;
+  $type = 'category';
   include '_articles.php';
 ?>
 

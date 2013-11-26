@@ -3,17 +3,21 @@
 
 // Constants
 
-define("PAGE_ANVELOPE", 'categoryanvelope-auto-offroad');
-define("PAGE_JENTI", 'jante-auto-aluminiu-si-tabla');
-define("PAGE_TUNING", 'tuning-auto-powertuning');
-$SPECIAL_PAGES = array(PAGE_ANVELOPE, PAGE_JENTI, PAGE_TUNING);
-
 define("PAGE_ABOUT_US", 'Date firma');
 
 define("CATEGORY_META", '467');
 define("CATEGORY_PRODUS", 'produs');
 define("CATEGORY_REDUCERI", 'reduceri');
 define("CATEGORY_BESTSELLERS", 'cele-mai-vandute');
+
+
+
+
+define("PAGE_ANVELOPE", 'categoryanvelope-auto-offroad');
+define("PAGE_JENTI", 'jante-auto-aluminiu-si-tabla');
+define("PAGE_TUNING", 'tuning-auto-powertuning');
+$SPECIAL_PAGES = array(PAGE_ANVELOPE, PAGE_JENTI, PAGE_TUNING);
+
 
 define("CATEGORY_ANVELOPE", 'anvelope-auto-offroad');
 define("CATEGORY_JENTI", 'jante');
@@ -42,6 +46,8 @@ $FILTERS_TUNING_LABELS2 = array();
 $FILTERS = array($FILTERS_ANVELOPE, $FILTERS_JENTI, $FILTERS_TUNING);
 $FILTERS_LABELS = array($FILTERS_ANVELOPE_LABELS, $FILTERS_JENTI_LABELS, $FILTERS_TUNING_LABELS);
 $FILTERS_LABELS2 = array($FILTERS_ANVELOPE_LABELS2, $FILTERS_JENTI_LABELS2, $FILTERS_TUNING_LABELS2);
+
+
 
 
 
@@ -109,7 +115,16 @@ function get_category_url($category_slug) {
 }
 
 
-
+function get_children_categories($parent_slug) {
+  $c = get_category_by_slug($parent_slug);
+  if ($c) {
+    $category_id = $c->term_id;
+    
+    return get_categories(array(
+      'child_of' => $category_id,
+    ));
+  }
+}
 
 
 
