@@ -23,7 +23,7 @@
           $link = get_permalink($article->ID);
         }
         
-        $img = 'http://placehold.it/350x250';
+        //$img = 'http://placehold.it/350x250';
         
         $retina = false;
         include '_responsive-images.php';

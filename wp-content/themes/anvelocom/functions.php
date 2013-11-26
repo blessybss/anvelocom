@@ -36,13 +36,19 @@ $FILTERS_ANVELOPE = array(META_ANVELOPE_LATIME, META_ANVELOPE_INALTIME, META_ANV
 $FILTERS_ANVELOPE_LABELS = array('Latime anvelopa', 'Inaltime anvelopa', 'Diametru janta', 'Marca', 'Profil');
 $FILTERS_ANVELOPE_LABELS2 = array('Toate latimile', 'Toate inaltimile', 'Toate dimensiunile', 'Toate marcile', 'Toate profilurile');
 
-$FILTERS_JENTI = array();
-$FILTERS_JENTI_LABELS = array();
-$FILTERS_JENTI_LABELS2 = array();
+define("META_JENTI_DIMENSION", 'Latime/Diametru');
+define("META_JENTI_BRAND", 'Marca/Model');
+define("META_JENTI_PCD", 'PCD');
+$FILTERS_JENTI = array(META_JENTI_DIMENSION, META_JENTI_BRAND, META_JENTI_PCD);
+$FILTERS_JENTI_LABELS = array('Latime/Diametru', 'Marca/Model', 'PCD');
+$FILTERS_JENTI_LABELS2 = array('Toate Latime/Diametru', 'Toate Marca/Model', 'Toate PCD');
 
-$FILTERS_TUNING = array();
-$FILTERS_TUNING_LABELS = array();
-$FILTERS_TUNING_LABELS2 = array();
+define("META_TUNING_BRAND", 'Marca auto');
+define("META_TUNING_MODEL", 'Model');
+define("META_TUNING_MOTOR", 'Motorizare');
+$FILTERS_TUNING = array(META_TUNING_BRAND, META_TUNING_MODEL, META_TUNING_MOTOR);
+$FILTERS_TUNING_LABELS = array('Marca auto', 'Model', 'Motorizare');
+$FILTERS_TUNING_LABELS2 = array('Toate marcile', 'Toate modelurile', 'Toate motorizarile');
 
 global $FILTERS;
 $FILTERS = array($FILTERS_ANVELOPE, $FILTERS_JENTI, $FILTERS_TUNING);
@@ -66,6 +72,7 @@ function get_filter_values($filter_meta, $articles) {
       $ret = array_merge($ret, get_filter_value($filter_meta, $article));
     }
   }
+  asort($ret);
   return array_filter(array_unique($ret));
 }
 
@@ -103,9 +110,9 @@ function get_posts_from_category($category_slug, $how_many) {
   if ($c) {
     $category_id = $c->term_id;
     
-    $p = get_cat_ID(CATEGORY_PRODUS);
+    //$p = get_cat_ID(CATEGORY_PRODUS);
     return get_posts(array(
-      'category__and' => array($category_id, $p),
+      'category__and' => array($category_id),
       'posts_per_page' => $how_many,
     ));
   }
@@ -215,8 +222,10 @@ function get_anvelopes($how_many) {
 /* Get the content of About Us */
 function get_date_firma() {
   $about_us = get_page_by_title(PAGE_ABOUT_US); 
-  $page_data = get_page($about_us);
-  return $page_data->post_content;
+  if ($about_us) {
+    $page_data = get_page($about_us);
+    return $page_data->post_content;
+  }
 }
 
 
