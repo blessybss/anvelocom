@@ -15,6 +15,7 @@
       <?php } ?>
     </ul>
     
+    
     <?php
       // Prepare articles and filters
       $articles = get_posts_from_category($SPECIAL_CATEGORIES[$page], -1);
@@ -24,26 +25,28 @@
       }
     ?>
     
-    <?php
-      // Display the select boxes
-      foreach ($FILTERS_LABELS2[$page] as $index => $select) { ?>
-        <label class="select"> 
-          <select class="option-set" data-filter-group="<?php echo $FILTERS[$page][$index] // latime ?>">
-            <option selected data-filter-value=""><?php echo $select // Toate latimile ?></option>
-            <?php foreach ($filters[$index] as $p) { ?>
-		          <option data-filter-value=".<?php echo $p ?>"><?php echo $p ?></option>
-	          <?php } ?>
-          </select>
-        </label> 
-      <?php }
-    ?>
+    <div id="selects">
+      <?php
+        // Display the select boxes
+        foreach ($FILTERS_LABELS2[$page] as $index => $select) { ?>
+          <label class="select"> 
+            <select class="option-set" data-filter-group="<?php echo $FILTERS[$page][$index] // latime ?>">
+              <option selected data-filter-value=""><?php echo $select // Toate latimile ?></option>
+              <?php foreach ($filters[$index] as $p) { ?>
+		            <option data-filter-value=".<?php echo $p ?>"><?php echo $p ?></option>
+	            <?php } ?>
+            </select>
+          </label> 
+        <?php }
+      ?>
+    </div>
   </section>
 
   <?php 
     $title = 'Rezultate';
     $link = '';
     $id = 'results';
-    $filters = true; 
+    $filters = $FILTERS[$page]; 
     include '_articles.php';
   ?>
 <?php } ?>

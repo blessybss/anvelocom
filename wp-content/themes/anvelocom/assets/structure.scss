@@ -82,6 +82,10 @@
 /* The filters
 */
 @mixin filters {
+  #labels, #select {
+    @include block;
+  }
+  
   @include select;
   
   ul li, .select {

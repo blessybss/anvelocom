@@ -587,6 +587,10 @@ html body.page main section article.thumb figure {
 html body.page main section#filters {
   margin-bottom: 0;
 }
+html body.page main section#filters #labels, html body.page main section#filters #select {
+  width: 100%;
+  float: left;
+}
 html body.page main section#filters label.select:after {
   content: "\21E3";
   float: right;

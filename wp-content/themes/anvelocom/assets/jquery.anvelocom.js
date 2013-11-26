@@ -14,7 +14,7 @@ $(document).ready(function() {
   });
 
   
-  // Filter Team members
+  // Filter
   // - by using the Isotope plugin
   // - which is initialized below in the window.onload() event
   
@@ -25,7 +25,6 @@ $(document).ready(function() {
   filters = {};
   $('#filters select').on('change', function (e) {
     var $this = $("option:selected", this);
-    
     
     // don't proceed if already selected
     if ( $this.hasClass('selected') ) {
