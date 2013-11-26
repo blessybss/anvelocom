@@ -56,19 +56,25 @@
 		  }
 	  ?>
   </section>
-
-
-  <?php if (is_single()) { ?>
-    <section id="variations" class="articles">
-      <h2>Variatii produs</h2>
-      <nav>
-        <h2>Alte variante pt. 205/R16/60</h2>
-        <h2><a href="">&larr; Inapoi la configurator</a></h2>
-      </nav>
-    </section>
+  
+  <?php if (is_single()) { 
+    // Get product's main category
+    $main_category = get_post_main_category_slug($post);
     
-    <?php include '_brands.php' ?>
-  <?php } ?>
+    // Get product dimensions from meta fields / filters
+    $dimension = get_product_dimension($post, $main_category);
+    
+    // Get similar posts
+    $articles = get_similar_posts($post, $main_category, $dimension);
+    $title = 'Alte variante pt. ' . $dimension;
+    $link = '';
+    $id = 'variations';
+    include '_articles.php';
+    
+    // Get brands for this category
+    $parent_slug = $main_category; 
+    include '_brands.php';
+  } ?>
 
 
   <?php if (is_page()) { ?>

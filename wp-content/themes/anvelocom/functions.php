@@ -16,12 +16,14 @@ define("CATEGORY_BESTSELLERS", 'cele-mai-vandute');
 define("PAGE_ANVELOPE", 'categoryanvelope-auto-offroad');
 define("PAGE_JENTI", 'jante-auto-aluminiu-si-tabla');
 define("PAGE_TUNING", 'tuning-auto-powertuning');
+global $SPECIAL_PAGES;
 $SPECIAL_PAGES = array(PAGE_ANVELOPE, PAGE_JENTI, PAGE_TUNING);
 
 
 define("CATEGORY_ANVELOPE", 'anvelope-auto-offroad');
 define("CATEGORY_JENTI", 'jante');
 define("CATEGORY_TUNING", 'tuning');
+global $SPECIAL_CATEGORIES;
 $SPECIAL_CATEGORIES = array(CATEGORY_ANVELOPE, CATEGORY_JENTI, CATEGORY_TUNING);
 
 
@@ -42,7 +44,7 @@ $FILTERS_TUNING = array();
 $FILTERS_TUNING_LABELS = array();
 $FILTERS_TUNING_LABELS2 = array();
 
-
+global $FILTERS;
 $FILTERS = array($FILTERS_ANVELOPE, $FILTERS_JENTI, $FILTERS_TUNING);
 $FILTERS_LABELS = array($FILTERS_ANVELOPE_LABELS, $FILTERS_JENTI_LABELS, $FILTERS_TUNING_LABELS);
 $FILTERS_LABELS2 = array($FILTERS_ANVELOPE_LABELS2, $FILTERS_JENTI_LABELS2, $FILTERS_TUNING_LABELS2);
@@ -79,7 +81,7 @@ function get_filter_value($filter_meta, $article) {
 }
 
 // Generates a class for each article to use with the filters
-// $filters, an array of constants, like Anvelopes, or Jenti, ...
+// - $filters, an array of meta tags
 function get_article_class($filters, $article) {
   $klass = array();
   
@@ -126,7 +128,62 @@ function get_children_categories($parent_slug) {
   }
 }
 
+// Checks in which main category this post belongs
+// - returns the category slug
+function get_post_main_category_slug($post) {
+  $post_categories = wp_get_post_categories($post->ID);
+  $post_category_slugs = array();
+  
+  foreach($post_categories as $c) {
+	  $cat = get_category($c);
+	  $post_category_slugs[] = $cat->slug;
+  }
+  
+  global $SPECIAL_CATEGORIES;
+  $main_category = array_intersect($post_category_slugs, $SPECIAL_CATEGORIES);
+  return $main_category[0];
+}
 
+
+// Check which filters / meta tags apply for a post based on it's main category
+function get_post_filters($main_category) {
+  global $SPECIAL_CATEGORIES;
+  global $FILTERS;
+  
+  $index = array_search($main_category, $SPECIAL_CATEGORIES);
+  return $FILTERS[$index];
+}
+
+// Get product dimension
+// - ie 265/55/r18
+function get_product_dimension($post, $main_category) {
+  $filters = get_post_filters($main_category);
+  
+  // Merge filters into a string
+  $filter_string = get_article_class($filters, $post);
+  $filter_string = implode('/', $filter_string);
+  return $filter_string;
+}
+
+
+// Returns similar products based on product parameters / filters
+// - $dimension is created from meta fields / filters like '265/55/R18';
+function get_similar_posts($post, $main_category, $dimension) {
+  $filters = get_post_filters($main_category);
+  $posts = get_posts_from_category($main_category, -1);
+  
+  $ret = array();
+  foreach ($posts as $p) {
+    $klass = get_article_class($filters, $p);
+    $klass = implode('/', $klass);
+    
+    if ( ($klass == $dimension) && ($p->ID != $post->ID)) {
+      $ret[] = $p;
+    }
+  }
+  
+  return $ret;
+}
 
 
 
