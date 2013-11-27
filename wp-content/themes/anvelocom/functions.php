@@ -355,9 +355,10 @@ register_nav_menus();
 */
 function string_to_classname($string) {
   $ret = '';
+  $invalid_charachters = array(' ', ',', '~', '!', '@', '$', '%', '^', '&', '*', '(', ')', '_', '+', '-', '=', ',', '.', '/', ';', ':', '"', '?', '>', '<', '[', ']', '{', '}', '|', '`', '#');
   
   if ($string) {
-    $ret = str_replace(' ', '-', strtolower($string));
+    $ret = str_replace($invalid_charachters, '-', strtolower($string));
   }
   return $ret;
 }

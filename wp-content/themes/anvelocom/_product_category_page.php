@@ -33,7 +33,7 @@
             <select class="option-set" data-filter-group="<?php echo $FILTERS[$page][$index] // latime ?>">
               <option selected data-filter-value=""><?php echo $select // Toate latimile ?></option>
               <?php foreach ($filters[$index] as $p) { ?>
-		            <option data-filter-value=".<?php echo $p ?>"><?php echo $p ?></option>
+		            <option data-filter-value=".<?php echo string_to_classname($p) ?>"><?php echo $p ?></option>
 	            <?php } ?>
             </select>
           </label> 
