@@ -28,7 +28,7 @@
 ?>
 
   <section id="index" class="<?php echo $section_klass ?>">
-    <h2>Index</h2>
+    <h2>Content</h2>
     <?php 
       if (have_posts()) {
         $index = 0;
@@ -67,7 +67,7 @@
     // Get similar posts
     $articles = get_similar_posts($post, $main_category, $dimension);
     $title = 'Alte variante pt. ' . $dimension;
-    $link = '';
+    $link = null;
     $id = 'variations';
     include '_articles.php';
     
@@ -81,9 +81,11 @@
     <nav id="sidebar">
       <h3>Toate categoriile de produse</h3>
       <ul>
-        <?php wp_list_categories(array(
+        <?php 
+          $c = get_category_by_slug(CATEGORY_META);
+          wp_list_categories(array(
           'title_li' => '',
-          'exclude' => $CATEGORY_META,
+          'exclude' => $c->term_id,
         )); ?>  
       </ul>
     </nav>

@@ -5,10 +5,10 @@
 
 define("PAGE_ABOUT_US", 'Date firma');
 
-define("CATEGORY_META", '467');
+define("CATEGORY_META", 'Meta');
 define("CATEGORY_PRODUS", 'produs');
 define("CATEGORY_REDUCERI", 'reduceri');
-define("CATEGORY_BESTSELLERS", 'cele-mai-vandute');
+define("CATEGORY_BESTSELLERS", 'Cele mai vandute');
 
 define("META_PRICE", 'Pret');
 define("META_PRICE_SALES", 'Pret redus');

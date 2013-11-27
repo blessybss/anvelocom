@@ -541,9 +541,11 @@ html body .container main section.articles article.thumb aside #price li:last-of
 }
 html body .container main section.articles article.thumb aside #price li:nth-of-type(1) {
   font-weight: bold;
+  margin-right: 0.625em;
 }
 html body .container main section.articles article.thumb aside #price li:nth-of-type(2) {
   text-decoration: line-through;
+  margin-right: 0;
 }
 html body .container main section.articles article.thumb figure {
   display: block;
@@ -631,9 +633,11 @@ html body.page main section article.thumb aside #price li:last-of-type {
 }
 html body.page main section article.thumb aside #price li:nth-of-type(1) {
   font-weight: bold;
+  margin-right: 0.625em;
 }
 html body.page main section article.thumb aside #price li:nth-of-type(2) {
   text-decoration: line-through;
+  margin-right: 0;
 }
 html body.page main section article.thumb figure {
   display: block;

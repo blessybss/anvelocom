@@ -4,29 +4,29 @@
 ?>
 
 <article class="<?php echo $klass ?>">
-  <?php if ($article) { ?>
+  <?php if ($article) { 
+    $image_size = 'medium';
+        
+    if (isset($type) && ($type == 'category')) {
+      $img = z_taxonomy_image_url($article->term_id);
+      $title = $article->cat_name;
+      $link = get_category_link($article->term_id);
+      $price = array();
+    } else {
+      $img = get_post_featured_image_url($article->ID, $image_size);
+      $title = $article->post_title;
+      $link = get_permalink($article->ID);
+      $price = get_price($article->ID);
+    }
+    
+    $img = 'http://placehold.it/350x250'; ?>
+    
     <header>
       <h3><a href="<?php echo $link ?>" title="<?php echo $title ?>"><?php echo $title; ?></a></h3>
     </header>
     
     <figure>
       <?php
-        $image_size = 'medium';
-        
-        if (isset($type) && ($type == 'category')) {
-          $img = z_taxonomy_image_url($article->term_id);
-          $title = $article->cat_name;
-          $link = get_category_link($article->term_id);
-          $price = array();
-        } else {
-          $img = get_post_featured_image_url($article->ID, $image_size);
-          $title = $article->post_title;
-          $link = get_permalink($article->ID);
-          $price = get_price($article->ID);
-        }
-        
-        //$img = 'http://placehold.it/350x250';
-        
         $retina = false;
         include '_responsive-images.php';
       ?>
