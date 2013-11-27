@@ -10,8 +10,8 @@ define("CATEGORY_PRODUS", 'produs');
 define("CATEGORY_REDUCERI", 'reduceri');
 define("CATEGORY_BESTSELLERS", 'cele-mai-vandute');
 
-
-
+define("META_PRICE", 'Pret');
+define("META_PRICE_SALES", 'Pret redus');
 
 define("PAGE_ANVELOPE", 'categoryanvelope-auto-offroad');
 define("PAGE_JENTI", 'jante-auto-aluminiu-si-tabla');
@@ -192,6 +192,15 @@ function get_similar_posts($post, $main_category, $dimension) {
   return $ret;
 }
 
+
+// Get product price
+function get_price($post) {
+  $ret = array();
+  $ret[] = get_post_meta($post, META_PRICE, true);
+  $ret[] = get_post_meta($post, META_PRICE_SALES, true);
+  
+  return array_filter(array_unique($ret));
+}
 
 
 

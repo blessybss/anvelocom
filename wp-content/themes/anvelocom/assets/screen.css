@@ -518,8 +518,30 @@ html body .container main section.articles article.thumb:nth-of-type(10) {
     float: left;
   }
 }
-html body .container main section.articles article.thumb header, html body .container main section.articles article.thumb figure, html body .container main section.articles article.thumb aside {
+html body .container main section.articles article.thumb header, html body .container main section.articles article.thumb figure, html body .container main section.articles article.thumb aside #content {
   display: none;
+}
+html body .container main section.articles article.thumb aside h4 {
+  display: none;
+}
+html body .container main section.articles article.thumb aside #price {
+  margin: 0;
+  display: block;
+  list-style-type: none;
+}
+html body .container main section.articles article.thumb aside #price li {
+  display: inline-block;
+  float: left;
+  margin-right: 1.25em;
+}
+html body .container main section.articles article.thumb aside #price li:last-of-type {
+  margin-right: 0;
+}
+html body .container main section.articles article.thumb aside #price li:nth-of-type(1) {
+  font-weight: bold;
+}
+html body .container main section.articles article.thumb aside #price li:nth-of-type(2) {
+  text-decoration: line-through;
 }
 html body .container main section.articles article.thumb figure {
   display: block;
@@ -578,8 +600,30 @@ html body.page main section article.thumb {
     float: left;
   }
 }
-html body.page main section article.thumb header, html body.page main section article.thumb figure, html body.page main section article.thumb aside {
+html body.page main section article.thumb header, html body.page main section article.thumb figure, html body.page main section article.thumb aside #content {
   display: none;
+}
+html body.page main section article.thumb aside h4 {
+  display: none;
+}
+html body.page main section article.thumb aside #price {
+  margin: 0;
+  display: block;
+  list-style-type: none;
+}
+html body.page main section article.thumb aside #price li {
+  display: inline-block;
+  float: left;
+  margin-right: 1.25em;
+}
+html body.page main section article.thumb aside #price li:last-of-type {
+  margin-right: 0;
+}
+html body.page main section article.thumb aside #price li:nth-of-type(1) {
+  font-weight: bold;
+}
+html body.page main section article.thumb aside #price li:nth-of-type(2) {
+  text-decoration: line-through;
 }
 html body.page main section article.thumb figure {
   display: block;

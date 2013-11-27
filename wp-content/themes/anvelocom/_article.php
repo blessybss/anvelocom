@@ -21,6 +21,7 @@
           $img = get_post_featured_image_url($article->ID, $image_size);
           $title = $article->post_title;
           $link = get_permalink($article->ID);
+          $price = get_price($article->ID);
         }
         
         //$img = 'http://placehold.it/350x250';
@@ -35,9 +36,12 @@
     
     <aside>
       <h4>Details</h4>
-      <ul>
-        <li>390 RON</li>
-        <li>490 RON</li>
+      <ul id="price">
+        <?php if ($price) {
+          foreach ($price as $pr) { ?>
+            <li><?php echo $pr ?> RON</li>
+          <?php }
+        } ?>
       </ul>
       
       <div id="content">
