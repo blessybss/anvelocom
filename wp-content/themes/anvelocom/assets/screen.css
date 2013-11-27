@@ -251,6 +251,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 */
 /* Remove a section or nav title required by HTML5 outliner
 */
+/* Images are not well sized. On thumbs they will be cut to a precise size
+*/
 html body {
   background: #f1f1f1;
   color: #1f1f1f;
@@ -545,6 +547,14 @@ html body .container main section.articles article.thumb aside #price li:nth-of-
 }
 html body .container main section.articles article.thumb figure {
   display: block;
+}
+html body .container main section.articles figure div {
+  max-height: 10em;
+  overflow: hidden;
+  background: #fff;
+}
+html body .container main section.articles figure div img {
+  width: 100%;
 }
 html body .container #footer nav {
   float: right;

@@ -108,6 +108,22 @@
   }
 }
 
+/* Images are not well sized. On thumbs they will be cut to a precise size
+*/
+@mixin truncate-image {
+  figure {
+    div {
+      max-height: 10em;
+      overflow: hidden;
+      background: #fff;
+      
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
 
 
 
@@ -146,6 +162,7 @@ html {
           
           &.articles {
             @include thumbs(normal);
+            @include truncate-image;
           }
         }
       }

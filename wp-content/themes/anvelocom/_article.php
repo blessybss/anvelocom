@@ -17,6 +17,7 @@
           $img = z_taxonomy_image_url($article->term_id);
           $title = $article->cat_name;
           $link = get_category_link($article->term_id);
+          $price = array();
         } else {
           $img = get_post_featured_image_url($article->ID, $image_size);
           $title = $article->post_title;
