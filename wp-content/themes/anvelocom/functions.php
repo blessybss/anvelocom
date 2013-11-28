@@ -142,17 +142,22 @@ function get_children_categories($parent_slug) {
 // - returns the category slug
 function get_post_main_category_slug($post) {
   $post_categories = wp_get_post_categories($post->ID);
-  $post_category_slugs = array();
   
+  $post_category_slugs = array();
   foreach($post_categories as $c) {
 	  $cat = get_category($c);
 	  $post_category_slugs[] = $cat->slug;
   }
   
+  
   global $SPECIAL_CATEGORIES;
+  //print_r($post_category_slugs);
+  //print_r($SPECIAL_CATEGORIES);
+  //print_r(array_intersect($post_category_slugs, $SPECIAL_CATEGORIES));
   $main_category = array_intersect($post_category_slugs, $SPECIAL_CATEGORIES);
-  if (($main_category) && isset($main_category[0])) {
-    return $main_category[0];
+  if (!empty($main_category)) {
+    //echo 'return:' . array_shift(array_values($main_category));
+    return array_shift(array_values($main_category));
   }
 }
 

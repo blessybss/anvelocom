@@ -61,6 +61,7 @@
     // Get similar posts
     // Get product's main category
     $main_category = get_post_main_category_slug($post);
+    $parent_slug = $main_category; 
     
     // Get product dimensions from meta fields / filters
     $dimension = get_product_dimension($post, $main_category);
@@ -83,7 +84,6 @@
     }
     
     // Get brands for this category
-    $parent_slug = $main_category; 
     include '_brands.php';
   } ?>
 
