@@ -49,7 +49,7 @@
   - <aside> with details
 */
 @mixin thumb($header: false, $figure: true, $aside: false) {
-  header, figure, aside #content {
+  header, figure, aside #content, aside #dimension {
     display: none;
   }
   
@@ -59,18 +59,19 @@
     }
     
     #price {
+      @include block;
       @include list-inline;
-      
-      li {
-        &:nth-of-type(1) {
-          font-weight: bold;
-          margin-right: $pad/2;
-        }
-        
-        &:nth-of-type(2) {
-          text-decoration: line-through;
-          margin-right: 0;
-        }
+    }
+    
+    #dimension {
+      @include block;
+    }
+    
+    #content {
+      @include body-text;
+              
+      img {
+        display: none;
       }
     }
   } 
@@ -88,8 +89,10 @@
   }
   
   @if ($aside == true) {
-    aside #content {
-      display: block;
+    aside {
+      #dimension, #content {
+        display: block;
+      }
     }
   }
 }

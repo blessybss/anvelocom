@@ -13,6 +13,14 @@
   
   ul {
     @include list-inline;
+    
+    li {
+      &.current_page_item {
+        a {
+          @include color(highlight);
+        }
+      }
+    }
   }
   
   /* We have two menus, the last is for contact
@@ -49,14 +57,6 @@
   }
   
   
-}
-
-/* Highlight current menu item
-*/
-@mixin highlight-menu($index) {
-  #header nav ul li:nth-of-type(#{$index}) a {
-    @include color(highlight);
-  }
 }
 
 
@@ -103,7 +103,7 @@
 /* Remove a section or nav title required by HTML5 outliner
 */
 @mixin remove-title {
-  h2, h3 {
+  h2, h3, h4 {
     display: none;
   }
 }
@@ -164,6 +164,10 @@ html {
             @include thumbs(normal);
             @include truncate-image;
           }
+          
+          &#index {
+            @include remove-title;
+          }
         }
       }
       
@@ -207,6 +211,7 @@ html {
       main {
         article.product {
           @include golden-ratio($minor, $major);
+          @include thumb(false, true, true);
         }
         
         section {

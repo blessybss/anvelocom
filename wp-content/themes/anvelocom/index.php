@@ -58,18 +58,29 @@
   </section>
   
   <?php if (is_single()) { 
+    // Get similar posts
     // Get product's main category
     $main_category = get_post_main_category_slug($post);
     
     // Get product dimensions from meta fields / filters
     $dimension = get_product_dimension($post, $main_category);
     
-    // Get similar posts
-    $articles = get_similar_posts($post, $main_category, $dimension);
-    $title = 'Alte variante pt. ' . $dimension;
-    $link = null;
-    $id = 'variations';
-    include '_articles.php';
+    if ($dimension != '') {
+      $articles = get_similar_posts($post, $main_category, $dimension);
+      $title = 'Alte variante pt. ' . $dimension;
+      $link = null;
+      $id = 'variations';
+      include '_articles.php';
+    }
+    
+    // If there are no similar posts then get related posts
+    if (empty($articles)) {
+      $articles = MRP_get_related_posts($post_id, true);
+      $title = 'Articole similare';
+      $link = null;
+      $id = 'related';
+      include '_articles.php';
+    }
     
     // Get brands for this category
     $parent_slug = $main_category; 

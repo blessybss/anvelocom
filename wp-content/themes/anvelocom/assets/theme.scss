@@ -93,21 +93,15 @@
 /* Display price
 */
 @mixin price {
-  ul {
-    @include list-inline;
-    
-    li {
+  li {
+    &:nth-of-type(1) {
+      font-weight: bold;
       margin-right: $pad/2;
-      
-      &:first-of-type {
-        text-decoration: none;
-        font-weight: bold;
-      }
-      
-      &:nth-of-type(2) {
-        text-decoration: line-through;
-        font-weight: normal;
-      }
+    }
+    
+    &:nth-of-type(2) {
+      text-decoration: line-through;
+      margin-right: 0;
     }
   }
 }
@@ -173,6 +167,14 @@ html {
             margin-bottom: $pad;
           }
           
+          article {
+            aside {
+              #price {
+                @include price;
+              }
+            }
+          }
+          
           &#intro {
             figure {
               figcaption {
@@ -225,6 +227,8 @@ html {
               display: none;
             }
           }
+          
+          
         }
         
         section {

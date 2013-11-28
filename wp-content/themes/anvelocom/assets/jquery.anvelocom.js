@@ -6,6 +6,12 @@ $(document).ready(function() {
     $('#header nav ul').slideToggle('slow'); 
     $(this).toggleClass('active'); 
   });
+  
+  // Enable clickc on menu items
+  // - The hide/reveal function is overwritten here
+  $('#header nav a').click(function(e) {
+    e.stopPropagation();
+  });
 
   // Scroll to top
   $('#footer nav').click(function() {

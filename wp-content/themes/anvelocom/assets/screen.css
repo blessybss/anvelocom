@@ -243,8 +243,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 */
 /* A classic, horizontal menu for <nav> elements
 */
-/* Highlight current menu item
-*/
 /* The golden ration on pages
 */
 /* The filters
@@ -344,6 +342,10 @@ html body .container #header nav ul li {
 html body .container #header nav ul li:last-of-type {
   margin-right: 0;
 }
+html body .container #header nav ul li.current_page_item a {
+  background: #f1f1f1;
+  color: #f3aaaa;
+}
 html body .container #header nav:last-of-type {
   display: none;
 }
@@ -400,7 +402,7 @@ html body .container main section {
   float: left;
   margin: 1.25em 0;
 }
-html body .container main section#intro h2, html body .container main section#intro h3 {
+html body .container main section#intro h2, html body .container main section#intro h3, html body .container main section#intro h4 {
   display: none;
 }
 html body .container main section#intro figure img {
@@ -520,13 +522,15 @@ html body .container main section.articles article.thumb:nth-of-type(10) {
     float: left;
   }
 }
-html body .container main section.articles article.thumb header, html body .container main section.articles article.thumb figure, html body .container main section.articles article.thumb aside #content {
+html body .container main section.articles article.thumb header, html body .container main section.articles article.thumb figure, html body .container main section.articles article.thumb aside #content, html body .container main section.articles article.thumb aside #dimension {
   display: none;
 }
 html body .container main section.articles article.thumb aside h4 {
   display: none;
 }
 html body .container main section.articles article.thumb aside #price {
+  width: 100%;
+  float: left;
   margin: 0;
   display: block;
   list-style-type: none;
@@ -539,13 +543,219 @@ html body .container main section.articles article.thumb aside #price li {
 html body .container main section.articles article.thumb aside #price li:last-of-type {
   margin-right: 0;
 }
-html body .container main section.articles article.thumb aside #price li:nth-of-type(1) {
-  font-weight: bold;
-  margin-right: 0.625em;
+html body .container main section.articles article.thumb aside #dimension {
+  width: 100%;
+  float: left;
 }
-html body .container main section.articles article.thumb aside #price li:nth-of-type(2) {
-  text-decoration: line-through;
-  margin-right: 0;
+html body .container main section.articles article.thumb aside #content {
+  max-width: 43.75em;
+  line-height: 1.75;
+  /* Headings
+  */
+  /* Elements
+  */
+  /* Padding of individual elements
+  */
+  /* Padding of consecutive elements
+  */
+}
+html body .container main section.articles article.thumb aside #content h1, html body .container main section.articles article.thumb aside #content h2, html body .container main section.articles article.thumb aside #content h3 {
+  font-size: 20px;
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+html body .container main section.articles article.thumb aside #content h1 {
+  font-weight: bold;
+}
+html body .container main section.articles article.thumb aside #content h2 {
+  text-transform: uppercase;
+  letter-spacing: 0.15625em;
+}
+html body .container main section.articles article.thumb aside #content h4, html body .container main section.articles article.thumb aside #content h5, html body .container main section.articles article.thumb aside #content h6 {
+  font-size: larger;
+}
+html body .container main section.articles article.thumb aside #content h1, html body .container main section.articles article.thumb aside #content h2, html body .container main section.articles article.thumb aside #content h3 {
+  line-height: 1.1;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 1.45833em 0;
+}
+html body .container main section.articles article.thumb aside #content em, html body .container main section.articles article.thumb aside #content i {
+  font-style: italic;
+}
+html body .container main section.articles article.thumb aside #content strong, html body .container main section.articles article.thumb aside #content b {
+  font-weight: bold;
+}
+html body .container main section.articles article.thumb aside #content ul {
+  list-style: none outside;
+}
+html body .container main section.articles article.thumb aside #content ul li {
+  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
+    - this way we can perfectly align the bullets / numbering to the list content
+  */
+  position: relative;
+  padding-left: 1.25em;
+}
+html body .container main section.articles article.thumb aside #content ul li:before {
+  content: "\271A";
+  /* making the content of the list perfectly align with numbering
+    - <li> is relatively positioned
+    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
+    - the the <li> content has a padding-left to not overlap the numbering
+  */
+  position: absolute;
+  left: 0;
+}
+html body .container main section.articles article.thumb aside #content ol {
+  list-style: none outside;
+  counter-reset: ol-counter;
+}
+html body .container main section.articles article.thumb aside #content ol li {
+  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
+    - this way we can perfectly align the bullets / numbering to the list content
+  */
+  position: relative;
+  padding-left: 1.25em;
+}
+html body .container main section.articles article.thumb aside #content ol li:before {
+  /* making the content of the list perfectly align with numbering
+    - <li> is relatively positioned
+    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
+    - the the <li> content has a padding-left to not overlap the numbering
+  */
+  position: absolute;
+  left: 0;
+}
+html body .container main section.articles article.thumb aside #content ol li {
+  counter-increment: ol-counter;
+}
+html body .container main section.articles article.thumb aside #content ol li:before {
+  content: counter(ol-counter,decimal);
+}
+html body .container main section.articles article.thumb aside #content dl dt {
+  font-size: 20px;
+  font-size: 1.25rem;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.15625em;
+}
+html body .container main section.articles article.thumb aside #content table {
+  width: 100%;
+  display: table !important;
+}
+html body .container main section.articles article.thumb aside #content table thead {
+  background: #1f1f1f;
+  color: #f1f1f1;
+}
+html body .container main section.articles article.thumb aside #content table thead a {
+  color: #f1f1f1;
+}
+html body .container main section.articles article.thumb aside #content table thead th, html body .container main section.articles article.thumb aside #content table tbody td {
+  padding: 1.25em;
+  padding-left: 0;
+}
+html body .container main section.articles article.thumb aside #content table tbody td {
+  border-bottom: 1px solid #bebebe;
+}
+html body .container main section.articles article.thumb aside #content figure img {
+  -webkit-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  width: auto;
+}
+html body .container main section.articles article.thumb aside #content figure figcaption {
+  font-size: smaller;
+}
+html body .container main section.articles article.thumb aside #content form {
+  /* Reset */
+  /* Text */
+  /* Button */
+  /* Stretching and padding */
+}
+html body .container main section.articles article.thumb aside #content form input, html body .container main section.articles article.thumb aside #content form textarea, html body .container main section.articles article.thumb aside #content form select {
+  border: none;
+  outline: 0;
+  background: #f1f1f1;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+html body .container main section.articles article.thumb aside #content form input[type='text'], html body .container main section.articles article.thumb aside #content form input[type='email'], html body .container main section.articles article.thumb aside #content form input[type='password'], html body .container main section.articles article.thumb aside #content form textarea {
+  border: 1px solid #1f1f1f;
+  font-style: italic;
+}
+html body .container main section.articles article.thumb aside #content form input[type='submit'] {
+  text-transform: uppercase;
+  letter-spacing: 0.15625em;
+  border: 1px solid #1f1f1f;
+  cursor: pointer;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+html body .container main section.articles article.thumb aside #content form input[type='submit']:hover {
+  background: #f3aaaa;
+}
+html body .container main section.articles article.thumb aside #content form label, html body .container main section.articles article.thumb aside #content form input, html body .container main section.articles article.thumb aside #content form textarea {
+  width: 100%;
+  float: left;
+}
+html body .container main section.articles article.thumb aside #content form input, html body .container main section.articles article.thumb aside #content form textarea {
+  padding: 0.625em;
+  width: calc(100% - 1.25em);
+}
+html body .container main section.articles article.thumb aside #content blockquote, html body .container main section.articles article.thumb aside #content q {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  /* Making room to the " sign 
+  */
+  position: relative;
+  float: left;
+  padding: 12.5em 0 2.5em 5em;
+  /* Fill the parent block
+  */
+  width: 100%;
+  float: left;
+  text-align: right;
+  width: calc(43.75em - 5em);
+  /*
+  @include below-and-small-screen {
+    width: calc(100% - 5em);
+  }
+  */
+}
+html body .container main section.articles article.thumb aside #content blockquote:before, html body .container main section.articles article.thumb aside #content q:before {
+  content: '\201C';
+  font-size: 1400%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+html body .container main section.articles article.thumb aside #content ul, html body .container main section.articles article.thumb aside #content ol, html body .container main section.articles article.thumb aside #content dl, html body .container main section.articles article.thumb aside #content table, html body .container main section.articles article.thumb aside #content figure, html body .container main section.articles article.thumb aside #content form, html body .container main section.articles article.thumb aside #content q {
+  margin: 1.25em 0;
+}
+html body .container main section.articles article.thumb aside #content figure {
+  margin-top: 2.5em;
+}
+html body .container main section.articles article.thumb aside #content dd + dt {
+  margin-top: 1.25em;
+}
+html body .container main section.articles article.thumb aside #content p + p {
+  margin-top: 1.25em;
+}
+html body .container main section.articles article.thumb aside #content h1 + h2, html body .container main section.articles article.thumb aside #content h2 + h3 {
+  padding-top: 0;
+}
+html body .container main section.articles article.thumb aside #content h1 + ul, html body .container main section.articles article.thumb aside #content h2 + ul, html body .container main section.articles article.thumb aside #content h3 + ul,
+html body .container main section.articles article.thumb aside #content h1 + ol, html body .container main section.articles article.thumb aside #content h2 + ol, html body .container main section.articles article.thumb aside #content h3 + ol {
+  margin-top: 0;
+}
+html body .container main section.articles article.thumb aside #content li ul, html body .container main section.articles article.thumb aside #content li ol {
+  margin-top: 0;
+}
+html body .container main section.articles article.thumb aside #content img {
+  display: none;
 }
 html body .container main section.articles article.thumb figure {
   display: block;
@@ -558,12 +768,15 @@ html body .container main section.articles figure div {
 html body .container main section.articles figure div img {
   width: 100%;
 }
+html body .container main section#index h2, html body .container main section#index h3, html body .container main section#index h4 {
+  display: none;
+}
 html body .container #footer nav {
   float: right;
   margin-right: 0;
   cursor: pointer;
 }
-html body .container #footer nav h2, html body .container #footer nav h3 {
+html body .container #footer nav h2, html body .container #footer nav h3, html body .container #footer nav h4 {
   display: none;
 }
 html body .container #footer nav:before {
@@ -612,13 +825,15 @@ html body.page main section article.thumb {
     float: left;
   }
 }
-html body.page main section article.thumb header, html body.page main section article.thumb figure, html body.page main section article.thumb aside #content {
+html body.page main section article.thumb header, html body.page main section article.thumb figure, html body.page main section article.thumb aside #content, html body.page main section article.thumb aside #dimension {
   display: none;
 }
 html body.page main section article.thumb aside h4 {
   display: none;
 }
 html body.page main section article.thumb aside #price {
+  width: 100%;
+  float: left;
   margin: 0;
   display: block;
   list-style-type: none;
@@ -631,13 +846,219 @@ html body.page main section article.thumb aside #price li {
 html body.page main section article.thumb aside #price li:last-of-type {
   margin-right: 0;
 }
-html body.page main section article.thumb aside #price li:nth-of-type(1) {
-  font-weight: bold;
-  margin-right: 0.625em;
+html body.page main section article.thumb aside #dimension {
+  width: 100%;
+  float: left;
 }
-html body.page main section article.thumb aside #price li:nth-of-type(2) {
-  text-decoration: line-through;
-  margin-right: 0;
+html body.page main section article.thumb aside #content {
+  max-width: 43.75em;
+  line-height: 1.75;
+  /* Headings
+  */
+  /* Elements
+  */
+  /* Padding of individual elements
+  */
+  /* Padding of consecutive elements
+  */
+}
+html body.page main section article.thumb aside #content h1, html body.page main section article.thumb aside #content h2, html body.page main section article.thumb aside #content h3 {
+  font-size: 20px;
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+html body.page main section article.thumb aside #content h1 {
+  font-weight: bold;
+}
+html body.page main section article.thumb aside #content h2 {
+  text-transform: uppercase;
+  letter-spacing: 0.15625em;
+}
+html body.page main section article.thumb aside #content h4, html body.page main section article.thumb aside #content h5, html body.page main section article.thumb aside #content h6 {
+  font-size: larger;
+}
+html body.page main section article.thumb aside #content h1, html body.page main section article.thumb aside #content h2, html body.page main section article.thumb aside #content h3 {
+  line-height: 1.1;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 1.45833em 0;
+}
+html body.page main section article.thumb aside #content em, html body.page main section article.thumb aside #content i {
+  font-style: italic;
+}
+html body.page main section article.thumb aside #content strong, html body.page main section article.thumb aside #content b {
+  font-weight: bold;
+}
+html body.page main section article.thumb aside #content ul {
+  list-style: none outside;
+}
+html body.page main section article.thumb aside #content ul li {
+  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
+    - this way we can perfectly align the bullets / numbering to the list content
+  */
+  position: relative;
+  padding-left: 1.25em;
+}
+html body.page main section article.thumb aside #content ul li:before {
+  content: "\271A";
+  /* making the content of the list perfectly align with numbering
+    - <li> is relatively positioned
+    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
+    - the the <li> content has a padding-left to not overlap the numbering
+  */
+  position: absolute;
+  left: 0;
+}
+html body.page main section article.thumb aside #content ol {
+  list-style: none outside;
+  counter-reset: ol-counter;
+}
+html body.page main section article.thumb aside #content ol li {
+  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
+    - this way we can perfectly align the bullets / numbering to the list content
+  */
+  position: relative;
+  padding-left: 1.25em;
+}
+html body.page main section article.thumb aside #content ol li:before {
+  /* making the content of the list perfectly align with numbering
+    - <li> is relatively positioned
+    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
+    - the the <li> content has a padding-left to not overlap the numbering
+  */
+  position: absolute;
+  left: 0;
+}
+html body.page main section article.thumb aside #content ol li {
+  counter-increment: ol-counter;
+}
+html body.page main section article.thumb aside #content ol li:before {
+  content: counter(ol-counter,decimal);
+}
+html body.page main section article.thumb aside #content dl dt {
+  font-size: 20px;
+  font-size: 1.25rem;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.15625em;
+}
+html body.page main section article.thumb aside #content table {
+  width: 100%;
+  display: table !important;
+}
+html body.page main section article.thumb aside #content table thead {
+  background: #1f1f1f;
+  color: #f1f1f1;
+}
+html body.page main section article.thumb aside #content table thead a {
+  color: #f1f1f1;
+}
+html body.page main section article.thumb aside #content table thead th, html body.page main section article.thumb aside #content table tbody td {
+  padding: 1.25em;
+  padding-left: 0;
+}
+html body.page main section article.thumb aside #content table tbody td {
+  border-bottom: 1px solid #bebebe;
+}
+html body.page main section article.thumb aside #content figure img {
+  -webkit-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  width: auto;
+}
+html body.page main section article.thumb aside #content figure figcaption {
+  font-size: smaller;
+}
+html body.page main section article.thumb aside #content form {
+  /* Reset */
+  /* Text */
+  /* Button */
+  /* Stretching and padding */
+}
+html body.page main section article.thumb aside #content form input, html body.page main section article.thumb aside #content form textarea, html body.page main section article.thumb aside #content form select {
+  border: none;
+  outline: 0;
+  background: #f1f1f1;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+html body.page main section article.thumb aside #content form input[type='text'], html body.page main section article.thumb aside #content form input[type='email'], html body.page main section article.thumb aside #content form input[type='password'], html body.page main section article.thumb aside #content form textarea {
+  border: 1px solid #1f1f1f;
+  font-style: italic;
+}
+html body.page main section article.thumb aside #content form input[type='submit'] {
+  text-transform: uppercase;
+  letter-spacing: 0.15625em;
+  border: 1px solid #1f1f1f;
+  cursor: pointer;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+html body.page main section article.thumb aside #content form input[type='submit']:hover {
+  background: #f3aaaa;
+}
+html body.page main section article.thumb aside #content form label, html body.page main section article.thumb aside #content form input, html body.page main section article.thumb aside #content form textarea {
+  width: 100%;
+  float: left;
+}
+html body.page main section article.thumb aside #content form input, html body.page main section article.thumb aside #content form textarea {
+  padding: 0.625em;
+  width: calc(100% - 1.25em);
+}
+html body.page main section article.thumb aside #content blockquote, html body.page main section article.thumb aside #content q {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  /* Making room to the " sign 
+  */
+  position: relative;
+  float: left;
+  padding: 12.5em 0 2.5em 5em;
+  /* Fill the parent block
+  */
+  width: 100%;
+  float: left;
+  text-align: right;
+  width: calc(43.75em - 5em);
+  /*
+  @include below-and-small-screen {
+    width: calc(100% - 5em);
+  }
+  */
+}
+html body.page main section article.thumb aside #content blockquote:before, html body.page main section article.thumb aside #content q:before {
+  content: '\201C';
+  font-size: 1400%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+html body.page main section article.thumb aside #content ul, html body.page main section article.thumb aside #content ol, html body.page main section article.thumb aside #content dl, html body.page main section article.thumb aside #content table, html body.page main section article.thumb aside #content figure, html body.page main section article.thumb aside #content form, html body.page main section article.thumb aside #content q {
+  margin: 1.25em 0;
+}
+html body.page main section article.thumb aside #content figure {
+  margin-top: 2.5em;
+}
+html body.page main section article.thumb aside #content dd + dt {
+  margin-top: 1.25em;
+}
+html body.page main section article.thumb aside #content p + p {
+  margin-top: 1.25em;
+}
+html body.page main section article.thumb aside #content h1 + h2, html body.page main section article.thumb aside #content h2 + h3 {
+  padding-top: 0;
+}
+html body.page main section article.thumb aside #content h1 + ul, html body.page main section article.thumb aside #content h2 + ul, html body.page main section article.thumb aside #content h3 + ul,
+html body.page main section article.thumb aside #content h1 + ol, html body.page main section article.thumb aside #content h2 + ol, html body.page main section article.thumb aside #content h3 + ol {
+  margin-top: 0;
+}
+html body.page main section article.thumb aside #content li ul, html body.page main section article.thumb aside #content li ol {
+  margin-top: 0;
+}
+html body.page main section article.thumb aside #content img {
+  display: none;
 }
 html body.page main section article.thumb figure {
   display: block;
@@ -710,7 +1131,7 @@ html body.page main section#filters ul li, html body.page main section#filters .
 html body.page main section#results {
   margin-top: 0;
 }
-html body.page main section#results h2, html body.page main section#results h3 {
+html body.page main section#results h2, html body.page main section#results h3, html body.page main section#results h4 {
   display: none;
 }
 html body.single-post main article.product article, html body.single-post main article.product figure {
@@ -729,6 +1150,247 @@ html body.single-post main article.product aside, html body.single-post main art
     margin-right: 0;
     float: left;
   }
+}
+html body.single-post main article.product header, html body.single-post main article.product figure, html body.single-post main article.product aside #content, html body.single-post main article.product aside #dimension {
+  display: none;
+}
+html body.single-post main article.product aside h4 {
+  display: none;
+}
+html body.single-post main article.product aside #price {
+  width: 100%;
+  float: left;
+  margin: 0;
+  display: block;
+  list-style-type: none;
+}
+html body.single-post main article.product aside #price li {
+  display: inline-block;
+  float: left;
+  margin-right: 1.25em;
+}
+html body.single-post main article.product aside #price li:last-of-type {
+  margin-right: 0;
+}
+html body.single-post main article.product aside #dimension {
+  width: 100%;
+  float: left;
+}
+html body.single-post main article.product aside #content {
+  max-width: 43.75em;
+  line-height: 1.75;
+  /* Headings
+  */
+  /* Elements
+  */
+  /* Padding of individual elements
+  */
+  /* Padding of consecutive elements
+  */
+}
+html body.single-post main article.product aside #content h1, html body.single-post main article.product aside #content h2, html body.single-post main article.product aside #content h3 {
+  font-size: 20px;
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+html body.single-post main article.product aside #content h1 {
+  font-weight: bold;
+}
+html body.single-post main article.product aside #content h2 {
+  text-transform: uppercase;
+  letter-spacing: 0.15625em;
+}
+html body.single-post main article.product aside #content h4, html body.single-post main article.product aside #content h5, html body.single-post main article.product aside #content h6 {
+  font-size: larger;
+}
+html body.single-post main article.product aside #content h1, html body.single-post main article.product aside #content h2, html body.single-post main article.product aside #content h3 {
+  line-height: 1.1;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 1.45833em 0;
+}
+html body.single-post main article.product aside #content em, html body.single-post main article.product aside #content i {
+  font-style: italic;
+}
+html body.single-post main article.product aside #content strong, html body.single-post main article.product aside #content b {
+  font-weight: bold;
+}
+html body.single-post main article.product aside #content ul {
+  list-style: none outside;
+}
+html body.single-post main article.product aside #content ul li {
+  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
+    - this way we can perfectly align the bullets / numbering to the list content
+  */
+  position: relative;
+  padding-left: 1.25em;
+}
+html body.single-post main article.product aside #content ul li:before {
+  content: "\271A";
+  /* making the content of the list perfectly align with numbering
+    - <li> is relatively positioned
+    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
+    - the the <li> content has a padding-left to not overlap the numbering
+  */
+  position: absolute;
+  left: 0;
+}
+html body.single-post main article.product aside #content ol {
+  list-style: none outside;
+  counter-reset: ol-counter;
+}
+html body.single-post main article.product aside #content ol li {
+  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
+    - this way we can perfectly align the bullets / numbering to the list content
+  */
+  position: relative;
+  padding-left: 1.25em;
+}
+html body.single-post main article.product aside #content ol li:before {
+  /* making the content of the list perfectly align with numbering
+    - <li> is relatively positioned
+    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
+    - the the <li> content has a padding-left to not overlap the numbering
+  */
+  position: absolute;
+  left: 0;
+}
+html body.single-post main article.product aside #content ol li {
+  counter-increment: ol-counter;
+}
+html body.single-post main article.product aside #content ol li:before {
+  content: counter(ol-counter,decimal);
+}
+html body.single-post main article.product aside #content dl dt {
+  font-size: 20px;
+  font-size: 1.25rem;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.15625em;
+}
+html body.single-post main article.product aside #content table {
+  width: 100%;
+  display: table !important;
+}
+html body.single-post main article.product aside #content table thead {
+  background: #1f1f1f;
+  color: #f1f1f1;
+}
+html body.single-post main article.product aside #content table thead a {
+  color: #f1f1f1;
+}
+html body.single-post main article.product aside #content table thead th, html body.single-post main article.product aside #content table tbody td {
+  padding: 1.25em;
+  padding-left: 0;
+}
+html body.single-post main article.product aside #content table tbody td {
+  border-bottom: 1px solid #bebebe;
+}
+html body.single-post main article.product aside #content figure img {
+  -webkit-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  width: auto;
+}
+html body.single-post main article.product aside #content figure figcaption {
+  font-size: smaller;
+}
+html body.single-post main article.product aside #content form {
+  /* Reset */
+  /* Text */
+  /* Button */
+  /* Stretching and padding */
+}
+html body.single-post main article.product aside #content form input, html body.single-post main article.product aside #content form textarea, html body.single-post main article.product aside #content form select {
+  border: none;
+  outline: 0;
+  background: #f1f1f1;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+html body.single-post main article.product aside #content form input[type='text'], html body.single-post main article.product aside #content form input[type='email'], html body.single-post main article.product aside #content form input[type='password'], html body.single-post main article.product aside #content form textarea {
+  border: 1px solid #1f1f1f;
+  font-style: italic;
+}
+html body.single-post main article.product aside #content form input[type='submit'] {
+  text-transform: uppercase;
+  letter-spacing: 0.15625em;
+  border: 1px solid #1f1f1f;
+  cursor: pointer;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+html body.single-post main article.product aside #content form input[type='submit']:hover {
+  background: #f3aaaa;
+}
+html body.single-post main article.product aside #content form label, html body.single-post main article.product aside #content form input, html body.single-post main article.product aside #content form textarea {
+  width: 100%;
+  float: left;
+}
+html body.single-post main article.product aside #content form input, html body.single-post main article.product aside #content form textarea {
+  padding: 0.625em;
+  width: calc(100% - 1.25em);
+}
+html body.single-post main article.product aside #content blockquote, html body.single-post main article.product aside #content q {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  /* Making room to the " sign 
+  */
+  position: relative;
+  float: left;
+  padding: 12.5em 0 2.5em 5em;
+  /* Fill the parent block
+  */
+  width: 100%;
+  float: left;
+  text-align: right;
+  width: calc(43.75em - 5em);
+  /*
+  @include below-and-small-screen {
+    width: calc(100% - 5em);
+  }
+  */
+}
+html body.single-post main article.product aside #content blockquote:before, html body.single-post main article.product aside #content q:before {
+  content: '\201C';
+  font-size: 1400%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+html body.single-post main article.product aside #content ul, html body.single-post main article.product aside #content ol, html body.single-post main article.product aside #content dl, html body.single-post main article.product aside #content table, html body.single-post main article.product aside #content figure, html body.single-post main article.product aside #content form, html body.single-post main article.product aside #content q {
+  margin: 1.25em 0;
+}
+html body.single-post main article.product aside #content figure {
+  margin-top: 2.5em;
+}
+html body.single-post main article.product aside #content dd + dt {
+  margin-top: 1.25em;
+}
+html body.single-post main article.product aside #content p + p {
+  margin-top: 1.25em;
+}
+html body.single-post main article.product aside #content h1 + h2, html body.single-post main article.product aside #content h2 + h3 {
+  padding-top: 0;
+}
+html body.single-post main article.product aside #content h1 + ul, html body.single-post main article.product aside #content h2 + ul, html body.single-post main article.product aside #content h3 + ul,
+html body.single-post main article.product aside #content h1 + ol, html body.single-post main article.product aside #content h2 + ol, html body.single-post main article.product aside #content h3 + ol {
+  margin-top: 0;
+}
+html body.single-post main article.product aside #content li ul, html body.single-post main article.product aside #content li ol {
+  margin-top: 0;
+}
+html body.single-post main article.product aside #content img {
+  display: none;
+}
+html body.single-post main article.product figure {
+  display: block;
+}
+html body.single-post main article.product aside #dimension, html body.single-post main article.product aside #content {
+  display: block;
 }
 html body.single-post main section nav {
   width: 100%;
@@ -841,7 +1503,7 @@ html body.single-post main section nav h2:nth-of-type(10) {
     float: left;
   }
 }
-html body.page main #content h2, html body.page main #content h3 {
+html body.page main #content h2, html body.page main #content h3, html body.page main #content h4 {
   display: none;
 }
 html body.page main #content article, html body.page main #content figure {
@@ -860,624 +1522,4 @@ html body.page main #content aside, html body.page main #content #sidebar {
     margin-right: 0;
     float: left;
   }
-}
-
-/* Special decorations for this site
-*/
-/* Display page content
-*/
-/* The sidebar
-*/
-/* Display price
-*/
-/* A white text on a black, opaque background
-*/
-/* Highlight a text, even if it is a link
-*/
-/* Add border to text
-*/
-html body {
-  /* Archives
-  */
-  /* Single product
-  */
-  /* Content page
-  */
-}
-html body .container #header {
-  /* Nav must be adjusted to the bordered header
-  */
-}
-html body .container #header h1 {
-  padding: 0.625em;
-  border: 1px solid;
-}
-html body .container #header nav {
-  margin-top: 0.9375em;
-}
-html body .container main section h2 {
-  padding: 0.625em;
-  border: 1px solid;
-  width: calc(18% - 1.25em - 2px);
-  margin-bottom: 1.25em;
-}
-html body .container main section#intro {
-  /* Figcaption has relative positioning with negative top margin 
-  */
-  margin-bottom: 0;
-}
-html body .container main section#intro figure figcaption {
-  position: relative;
-  top: -2.8125em;
-  background: #f1f1f1;
-  display: inline-block;
-  padding: 0.625em;
-  border: 1px solid;
-  border-width: 0.3125em;
-  padding: 1.25em;
-  background: #1f1f1f;
-  color: #f1f1f1;
-  opacity: .9;
-}
-html body .container main section#intro figure figcaption a {
-  color: #f1f1f1;
-}
-html body.page .container main section h2 {
-  width: calc(17% - 1.25em - 2px);
-}
-html body.page .container main section#filters ul li {
-  background: #1f1f1f;
-  color: #f1f1f1;
-  padding: 0.3125em;
-  width: calc(17% - 0.625em - 0px);
-}
-html body.page .container main section#filters ul li a {
-  color: #f1f1f1;
-}
-html body.single-post main article.product header {
-  display: none;
-}
-html body.single-post main article.product figure figcaption {
-  display: none;
-}
-html body.single-post main section nav h2 {
-  width: calc(18% - 1.25em - 2px);
-}
-html body.page main #content article.page #body {
-  width: 100%;
-  float: left;
-  max-width: 43.75em;
-  line-height: 1.75;
-  /* Headings
-  */
-  /* Elements
-  */
-  /* Padding of individual elements
-  */
-  /* Padding of consecutive elements
-  */
-}
-html body.page main #content article.page #body h1, html body.page main #content article.page #body h2, html body.page main #content article.page #body h3 {
-  font-size: 20px;
-  font-size: 1.25rem;
-  font-weight: normal;
-}
-html body.page main #content article.page #body h1 {
-  font-weight: bold;
-}
-html body.page main #content article.page #body h2 {
-  text-transform: uppercase;
-  letter-spacing: 0.15625em;
-}
-html body.page main #content article.page #body h4, html body.page main #content article.page #body h5, html body.page main #content article.page #body h6 {
-  font-size: larger;
-}
-html body.page main #content article.page #body h1, html body.page main #content article.page #body h2, html body.page main #content article.page #body h3 {
-  line-height: 1.1;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding: 1.45833em 0;
-}
-html body.page main #content article.page #body em, html body.page main #content article.page #body i {
-  font-style: italic;
-}
-html body.page main #content article.page #body strong, html body.page main #content article.page #body b {
-  font-weight: bold;
-}
-html body.page main #content article.page #body ul {
-  list-style: none outside;
-}
-html body.page main #content article.page #body ul li {
-  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
-    - this way we can perfectly align the bullets / numbering to the list content
-  */
-  position: relative;
-  padding-left: 1.25em;
-}
-html body.page main #content article.page #body ul li:before {
-  content: "\271A";
-  /* making the content of the list perfectly align with numbering
-    - <li> is relatively positioned
-    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
-    - the the <li> content has a padding-left to not overlap the numbering
-  */
-  position: absolute;
-  left: 0;
-}
-html body.page main #content article.page #body ol {
-  list-style: none outside;
-  counter-reset: ol-counter;
-}
-html body.page main #content article.page #body ol li {
-  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
-    - this way we can perfectly align the bullets / numbering to the list content
-  */
-  position: relative;
-  padding-left: 1.25em;
-}
-html body.page main #content article.page #body ol li:before {
-  /* making the content of the list perfectly align with numbering
-    - <li> is relatively positioned
-    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
-    - the the <li> content has a padding-left to not overlap the numbering
-  */
-  position: absolute;
-  left: 0;
-}
-html body.page main #content article.page #body ol li {
-  counter-increment: ol-counter;
-}
-html body.page main #content article.page #body ol li:before {
-  content: counter(ol-counter,decimal);
-}
-html body.page main #content article.page #body dl dt {
-  font-size: 20px;
-  font-size: 1.25rem;
-  font-weight: normal;
-  text-transform: uppercase;
-  letter-spacing: 0.15625em;
-}
-html body.page main #content article.page #body table {
-  width: 100%;
-  display: table !important;
-}
-html body.page main #content article.page #body table thead {
-  background: #1f1f1f;
-  color: #f1f1f1;
-}
-html body.page main #content article.page #body table thead a {
-  color: #f1f1f1;
-}
-html body.page main #content article.page #body table thead th, html body.page main #content article.page #body table tbody td {
-  padding: 1.25em;
-  padding-left: 0;
-}
-html body.page main #content article.page #body table tbody td {
-  border-bottom: 1px solid #bebebe;
-}
-html body.page main #content article.page #body figure img {
-  -webkit-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
-  -moz-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
-  box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
-  width: auto;
-}
-html body.page main #content article.page #body figure figcaption {
-  font-size: smaller;
-}
-html body.page main #content article.page #body form {
-  /* Reset */
-  /* Text */
-  /* Button */
-  /* Stretching and padding */
-}
-html body.page main #content article.page #body form input, html body.page main #content article.page #body form textarea, html body.page main #content article.page #body form select {
-  border: none;
-  outline: 0;
-  background: #f1f1f1;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-html body.page main #content article.page #body form input[type='text'], html body.page main #content article.page #body form input[type='email'], html body.page main #content article.page #body form input[type='password'], html body.page main #content article.page #body form textarea {
-  border: 1px solid #1f1f1f;
-  font-style: italic;
-}
-html body.page main #content article.page #body form input[type='submit'] {
-  text-transform: uppercase;
-  letter-spacing: 0.15625em;
-  border: 1px solid #1f1f1f;
-  cursor: pointer;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-}
-html body.page main #content article.page #body form input[type='submit']:hover {
-  background: #f3aaaa;
-}
-html body.page main #content article.page #body form label, html body.page main #content article.page #body form input, html body.page main #content article.page #body form textarea {
-  width: 100%;
-  float: left;
-}
-html body.page main #content article.page #body form input, html body.page main #content article.page #body form textarea {
-  padding: 0.625em;
-  width: calc(100% - 1.25em);
-}
-html body.page main #content article.page #body blockquote, html body.page main #content article.page #body q {
-  border-top: 1px solid;
-  border-bottom: 1px solid;
-  /* Making room to the " sign 
-  */
-  position: relative;
-  float: left;
-  padding: 12.5em 0 2.5em 5em;
-  /* Fill the parent block
-  */
-  width: 100%;
-  float: left;
-  text-align: right;
-  width: calc(43.75em - 5em);
-  /*
-  @include below-and-small-screen {
-    width: calc(100% - 5em);
-  }
-  */
-}
-html body.page main #content article.page #body blockquote:before, html body.page main #content article.page #body q:before {
-  content: '\201C';
-  font-size: 1400%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-html body.page main #content article.page #body ul, html body.page main #content article.page #body ol, html body.page main #content article.page #body dl, html body.page main #content article.page #body table, html body.page main #content article.page #body figure, html body.page main #content article.page #body form, html body.page main #content article.page #body q {
-  margin: 1.25em 0;
-}
-html body.page main #content article.page #body figure {
-  margin-top: 2.5em;
-}
-html body.page main #content article.page #body dd + dt {
-  margin-top: 1.25em;
-}
-html body.page main #content article.page #body p + p {
-  margin-top: 1.25em;
-}
-html body.page main #content article.page #body h1 + h2, html body.page main #content article.page #body h2 + h3 {
-  padding-top: 0;
-}
-html body.page main #content article.page #body h1 + ul, html body.page main #content article.page #body h2 + ul, html body.page main #content article.page #body h3 + ul,
-html body.page main #content article.page #body h1 + ol, html body.page main #content article.page #body h2 + ol, html body.page main #content article.page #body h3 + ol {
-  margin-top: 0;
-}
-html body.page main #content article.page #body li ul, html body.page main #content article.page #body li ol {
-  margin-top: 0;
-}
-html body.page main #content article.page #comments {
-  width: 100%;
-  float: left;
-  max-width: 43.75em;
-  margin: 1.25em 0;
-  background: #1f1f1f;
-  color: #f1f1f1;
-  padding: 1.25em;
-  width: calc(100% - 2.5em);
-}
-html body.page main #content article.page #comments a {
-  color: #f1f1f1;
-}
-html body.page main #content article.page #comments form {
-  /* Reset */
-  /* Text */
-  /* Button */
-  /* Stretching and padding */
-}
-html body.page main #content article.page #comments form input, html body.page main #content article.page #comments form textarea, html body.page main #content article.page #comments form select {
-  border: none;
-  outline: 0;
-  background: #f1f1f1;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-html body.page main #content article.page #comments form input[type='text'], html body.page main #content article.page #comments form input[type='email'], html body.page main #content article.page #comments form input[type='password'], html body.page main #content article.page #comments form textarea {
-  border: 1px solid #1f1f1f;
-  font-style: italic;
-}
-html body.page main #content article.page #comments form input[type='submit'] {
-  text-transform: uppercase;
-  letter-spacing: 0.15625em;
-  border: 1px solid #1f1f1f;
-  cursor: pointer;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-}
-html body.page main #content article.page #comments form input[type='submit']:hover {
-  background: #f3aaaa;
-}
-html body.page main #content article.page #comments form label, html body.page main #content article.page #comments form input, html body.page main #content article.page #comments form textarea {
-  width: 100%;
-  float: left;
-}
-html body.page main #content article.page #comments form input, html body.page main #content article.page #comments form textarea {
-  padding: 0.625em;
-  width: calc(100% - 1.25em);
-}
-html body.page main #content article.page #comments h3, html body.page main #content article.page #comments h2 {
-  margin-bottom: 1.25em;
-}
-html body.page main #content article.page #comments ol li {
-  margin-bottom: 1.25em;
-  padding-bottom: 1.25em;
-  border-bottom: 1px solid #bebebe;
-  max-width: 43.75em;
-  line-height: 1.75;
-  /* Headings
-  */
-  /* Elements
-  */
-  /* Padding of individual elements
-  */
-  /* Padding of consecutive elements
-  */
-}
-html body.page main #content article.page #comments ol li h1, html body.page main #content article.page #comments ol li h2, html body.page main #content article.page #comments ol li h3 {
-  font-size: 20px;
-  font-size: 1.25rem;
-  font-weight: normal;
-}
-html body.page main #content article.page #comments ol li h1 {
-  font-weight: bold;
-}
-html body.page main #content article.page #comments ol li h2 {
-  text-transform: uppercase;
-  letter-spacing: 0.15625em;
-}
-html body.page main #content article.page #comments ol li h4, html body.page main #content article.page #comments ol li h5, html body.page main #content article.page #comments ol li h6 {
-  font-size: larger;
-}
-html body.page main #content article.page #comments ol li h1, html body.page main #content article.page #comments ol li h2, html body.page main #content article.page #comments ol li h3 {
-  line-height: 1.1;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding: 1.45833em 0;
-}
-html body.page main #content article.page #comments ol li em, html body.page main #content article.page #comments ol li i {
-  font-style: italic;
-}
-html body.page main #content article.page #comments ol li strong, html body.page main #content article.page #comments ol li b {
-  font-weight: bold;
-}
-html body.page main #content article.page #comments ol li ul {
-  list-style: none outside;
-}
-html body.page main #content article.page #comments ol li ul li {
-  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
-    - this way we can perfectly align the bullets / numbering to the list content
-  */
-  position: relative;
-  padding-left: 1.25em;
-}
-html body.page main #content article.page #comments ol li ul li:before {
-  content: "\271A";
-  /* making the content of the list perfectly align with numbering
-    - <li> is relatively positioned
-    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
-    - the the <li> content has a padding-left to not overlap the numbering
-  */
-  position: absolute;
-  left: 0;
-}
-html body.page main #content article.page #comments ol li ol {
-  list-style: none outside;
-  counter-reset: ol-counter;
-}
-html body.page main #content article.page #comments ol li ol li {
-  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
-    - this way we can perfectly align the bullets / numbering to the list content
-  */
-  position: relative;
-  padding-left: 1.25em;
-}
-html body.page main #content article.page #comments ol li ol li:before {
-  /* making the content of the list perfectly align with numbering
-    - <li> is relatively positioned
-    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
-    - the the <li> content has a padding-left to not overlap the numbering
-  */
-  position: absolute;
-  left: 0;
-}
-html body.page main #content article.page #comments ol li ol li {
-  counter-increment: ol-counter;
-}
-html body.page main #content article.page #comments ol li ol li:before {
-  content: counter(ol-counter,decimal);
-}
-html body.page main #content article.page #comments ol li dl dt {
-  font-size: 20px;
-  font-size: 1.25rem;
-  font-weight: normal;
-  text-transform: uppercase;
-  letter-spacing: 0.15625em;
-}
-html body.page main #content article.page #comments ol li table {
-  width: 100%;
-  display: table !important;
-}
-html body.page main #content article.page #comments ol li table thead {
-  background: #1f1f1f;
-  color: #f1f1f1;
-}
-html body.page main #content article.page #comments ol li table thead a {
-  color: #f1f1f1;
-}
-html body.page main #content article.page #comments ol li table thead th, html body.page main #content article.page #comments ol li table tbody td {
-  padding: 1.25em;
-  padding-left: 0;
-}
-html body.page main #content article.page #comments ol li table tbody td {
-  border-bottom: 1px solid #bebebe;
-}
-html body.page main #content article.page #comments ol li figure img {
-  -webkit-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
-  -moz-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
-  box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
-  width: auto;
-}
-html body.page main #content article.page #comments ol li figure figcaption {
-  font-size: smaller;
-}
-html body.page main #content article.page #comments ol li form {
-  /* Reset */
-  /* Text */
-  /* Button */
-  /* Stretching and padding */
-}
-html body.page main #content article.page #comments ol li form input, html body.page main #content article.page #comments ol li form textarea, html body.page main #content article.page #comments ol li form select {
-  border: none;
-  outline: 0;
-  background: #f1f1f1;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-html body.page main #content article.page #comments ol li form input[type='text'], html body.page main #content article.page #comments ol li form input[type='email'], html body.page main #content article.page #comments ol li form input[type='password'], html body.page main #content article.page #comments ol li form textarea {
-  border: 1px solid #1f1f1f;
-  font-style: italic;
-}
-html body.page main #content article.page #comments ol li form input[type='submit'] {
-  text-transform: uppercase;
-  letter-spacing: 0.15625em;
-  border: 1px solid #1f1f1f;
-  cursor: pointer;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-}
-html body.page main #content article.page #comments ol li form input[type='submit']:hover {
-  background: #f3aaaa;
-}
-html body.page main #content article.page #comments ol li form label, html body.page main #content article.page #comments ol li form input, html body.page main #content article.page #comments ol li form textarea {
-  width: 100%;
-  float: left;
-}
-html body.page main #content article.page #comments ol li form input, html body.page main #content article.page #comments ol li form textarea {
-  padding: 0.625em;
-  width: calc(100% - 1.25em);
-}
-html body.page main #content article.page #comments ol li blockquote, html body.page main #content article.page #comments ol li q {
-  border-top: 1px solid;
-  border-bottom: 1px solid;
-  /* Making room to the " sign 
-  */
-  position: relative;
-  float: left;
-  padding: 12.5em 0 2.5em 5em;
-  /* Fill the parent block
-  */
-  width: 100%;
-  float: left;
-  text-align: right;
-  width: calc(43.75em - 5em);
-  /*
-  @include below-and-small-screen {
-    width: calc(100% - 5em);
-  }
-  */
-}
-html body.page main #content article.page #comments ol li blockquote:before, html body.page main #content article.page #comments ol li q:before {
-  content: '\201C';
-  font-size: 1400%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-html body.page main #content article.page #comments ol li ul, html body.page main #content article.page #comments ol li ol, html body.page main #content article.page #comments ol li dl, html body.page main #content article.page #comments ol li table, html body.page main #content article.page #comments ol li figure, html body.page main #content article.page #comments ol li form, html body.page main #content article.page #comments ol li q {
-  margin: 1.25em 0;
-}
-html body.page main #content article.page #comments ol li figure {
-  margin-top: 2.5em;
-}
-html body.page main #content article.page #comments ol li dd + dt {
-  margin-top: 1.25em;
-}
-html body.page main #content article.page #comments ol li p + p {
-  margin-top: 1.25em;
-}
-html body.page main #content article.page #comments ol li h1 + h2, html body.page main #content article.page #comments ol li h2 + h3 {
-  padding-top: 0;
-}
-html body.page main #content article.page #comments ol li h1 + ul, html body.page main #content article.page #comments ol li h2 + ul, html body.page main #content article.page #comments ol li h3 + ul,
-html body.page main #content article.page #comments ol li h1 + ol, html body.page main #content article.page #comments ol li h2 + ol, html body.page main #content article.page #comments ol li h3 + ol {
-  margin-top: 0;
-}
-html body.page main #content article.page #comments ol li li ul, html body.page main #content article.page #comments ol li li ol {
-  margin-top: 0;
-}
-html body.page main #content article.page #comments ol li a {
-  color: #f3aaaa;
-  text-decoration: none;
-  outline: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.15625em;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-}
-html body.page main #content article.page #comments ol li a:hover, html body.page main #content article.page #comments ol li a:focus {
-  color: #f3aaaa;
-}
-html body.page main #content article.page #comments ol li .reply {
-  margin: 0.625em 0;
-}
-html body.page main #content article.page #comments ol li .vcard {
-  display: none;
-}
-html body.page main #content article.page #comments ol.children {
-  margin: 1.25em;
-}
-html body.page main #content article.page #comments form {
-  width: 60%;
-}
-html body.page main #content article.page #comments form input, html body.page main #content article.page #comments form textarea {
-  margin-bottom: 0.625em;
-}
-html body.page main #content article.page #comments form input#submit, html body.page main #content article.page #comments form textarea#submit {
-  width: 15em;
-}
-html body.page main #content #sidebar {
-  padding: 0.625em;
-  border: 1px solid;
-  padding: 2.5em;
-  width: calc(38.1953% - 5em - 2px);
-}
-html body.page main #content #sidebar ul {
-  list-style: none outside;
-}
-html body.page main #content #sidebar ul li {
-  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
-    - this way we can perfectly align the bullets / numbering to the list content
-  */
-  position: relative;
-  padding-left: 1.25em;
-}
-html body.page main #content #sidebar ul li:before {
-  content: "\271A";
-  /* making the content of the list perfectly align with numbering
-    - <li> is relatively positioned
-    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
-    - the the <li> content has a padding-left to not overlap the numbering
-  */
-  position: absolute;
-  left: 0;
-}
-html body.page main #content #sidebar h3 {
-  display: none;
-}
-html body.page main #content #sidebar ul li {
-  margin: 0.625em 0;
 }

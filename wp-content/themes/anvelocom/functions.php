@@ -89,14 +89,17 @@ function get_filter_value($filter_meta, $article) {
 
 // Generates a class for each article to use with the filters
 // - $filters, an array of meta tags
-function get_article_class($filters, $article) {
+// - $sanitize, if the clas should be sanitized or not
+function get_article_class($filters, $article, $sanitize = true) {
   $klass = array();
   
   foreach ($filters as $filter_meta) {
     $klass = array_merge($klass, get_filter_value($filter_meta, $article));
   }
   
-  $klass = array_map("string_to_classname", $klass);
+  if ($sanitize) {
+    $klass = array_map("string_to_classname", $klass);
+  }
   return $klass;
 }
 
@@ -148,7 +151,9 @@ function get_post_main_category_slug($post) {
   
   global $SPECIAL_CATEGORIES;
   $main_category = array_intersect($post_category_slugs, $SPECIAL_CATEGORIES);
-  return $main_category[0];
+  if (($main_category) && isset($main_category[0])) {
+    return $main_category[0];
+  }
 }
 
 
@@ -163,12 +168,12 @@ function get_post_filters($main_category) {
 
 // Get product dimension
 // - ie 265/55/r18
-function get_product_dimension($post, $main_category) {
+function get_product_dimension($post, $main_category, $sanitize = false) {
   $filters = get_post_filters($main_category);
   
   // Merge filters into a string
-  $filter_string = get_article_class($filters, $post);
-  $filter_string = implode('/', $filter_string);
+  $filter_string = get_article_class($filters, $post, $sanitize);
+  $filter_string = implode(' / ', $filter_string);
   return $filter_string;
 }
 
@@ -182,7 +187,7 @@ function get_similar_posts($post, $main_category, $dimension) {
   $ret = array();
   foreach ($posts as $p) {
     $klass = get_article_class($filters, $p);
-    $klass = implode('/', $klass);
+    $klass = implode(' / ', $klass);
     
     if ( ($klass == $dimension) && ($p->ID != $post->ID)) {
       $ret[] = $p;
@@ -196,36 +201,14 @@ function get_similar_posts($post, $main_category, $dimension) {
 // Get product price
 function get_price($post) {
   $ret = array();
-  $ret[] = get_post_meta($post, META_PRICE, true);
   $ret[] = get_post_meta($post, META_PRICE_SALES, true);
+  $ret[] = get_post_meta($post, META_PRICE, true);
   
   return array_filter(array_unique($ret));
 }
 
 
 
-/* Get anvelope brands */
-function get_anvelope_brands() {
-  $c = get_category_by_slug(CATEGORY_ANVELOPE);
-  $category_id = $c->term_id;
-  
-  return get_categories(array(
-    'child_of' => $category_id,
-  ));
-}
-
-
-/* Get the latest anvelopes */
-function get_anvelopes($how_many) {
-  $c = get_category_by_slug(CATEGORY_ANVELOPE);
-  $category_id = $c->term_id;
-  
-  $p = get_cat_ID(CATEGORY_PRODUS);
-  return get_posts(array(
-    'category__and' => array($category_id, $p),
-    'posts_per_page' => $how_many,
-  ));
-}
 
 
 /* Get the content of About Us */
