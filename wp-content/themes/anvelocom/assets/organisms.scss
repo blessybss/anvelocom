@@ -45,54 +45,29 @@
 /* Displays a product thumb in different ways
   - thumb structure is:
   - <header> with <h3> title
-  - <figure>
+  - <figure> with <figcaption>
   - <aside> with details
 */
 @mixin thumb($header: false, $figure: true, $aside: false) {
-  header, figure, aside #content, aside #dimension {
+  header, figure, aside {
     display: none;
   }
   
-  aside {
-    h4 {
-      display: none;
-    }
-    
-    #price {
-      @include block;
-      @include list-inline;
-    }
-    
-    #dimension {
-      @include block;
-    }
-    
-    #content {
-      @include body-text;
-              
-      img {
-        display: none;
-      }
-    }
-  } 
-  
-  @if ($header == true) {
+  @if ($header != false) {
     header {
       display: block;
     }
   }
   
-  @if ($figure == true) {
+  @if ($figure != false) {
     figure {
       display: block;
     }
   }
   
-  @if ($aside == true) {
+  @if ($aside != false) {
     aside {
-      #dimension, #content {
-        display: block;
-      }
+      display: block;
     }
   }
 }

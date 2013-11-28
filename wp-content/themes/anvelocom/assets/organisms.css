@@ -13,7 +13,7 @@
 /* Displays a product thumb in different ways
   - thumb structure is:
   - <header> with <h3> title
-  - <figure>
+  - <figure> with <figcaption>
   - <aside> with details
 */
 /* Displaying product / article thumbs

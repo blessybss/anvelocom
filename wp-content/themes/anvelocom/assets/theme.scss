@@ -3,6 +3,39 @@
 
 
 
+/* The product thumb must be styled specially for this theme
+*/
+@mixin thumb-anvelocom($figcaption: true, $price: true) {
+  article {
+    &.thumb, &.product {
+      @if ($figcaption != true) {
+        figure {
+          figcaption {
+            display: none;
+          }
+        }
+      }
+      
+      @if ($price != false) {
+        aside {
+          display: block;
+          @include remove-title;
+          
+          #dimension, #content {
+            display: none;
+          }
+          
+          #price {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
 
 /* Display page content
 */

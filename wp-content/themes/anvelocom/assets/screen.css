@@ -137,8 +137,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* Left aligned column
 */
 /* Columns for Isotope
-  - since Isotope filters out elements we don't know which element will be the last in a row,
-  so we can't make it's righ margin 0
+  - since Isotope filters out elements we don't know which element will be the last in a row, so we can't make it's righ margin 0
   - in this grid all elements in a row will have the same right margin
 */
 /* Columns for the grid
@@ -155,8 +154,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* Generates a full grid of $how-many columns and $maximum elements
 */
 /* Remove right margin of the last element in a row of a grid
-  - the othere elements will have the righ margin set again
-  - this re-set is required by responsive layouts 
+  - the non-last elements will have the righ margin set again required by responsive layouts
 */
 /* When decorations and padding is added to a column in a grid these must be removed from the original column width
   - params can be any of %, em, px
@@ -216,7 +214,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /* Displays a product thumb in different ways
   - thumb structure is:
   - <header> with <h3> title
-  - <figure>
+  - <figure> with <figcaption>
   - <aside> with details
 */
 /* Displaying product / article thumbs
@@ -242,8 +240,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   - they are wireframes describing the layout
 */
 /* A classic, horizontal menu for <nav> elements
-*/
-/* The golden ration on pages
 */
 /* The filters
 */
@@ -400,7 +396,7 @@ html body .container main {
 html body .container main section {
   width: 100%;
   float: left;
-  margin: 1.25em 0;
+  margin: 1.25em 0 0;
 }
 html body .container main section#intro h2, html body .container main section#intro h3, html body .container main section#intro h4 {
   display: none;
@@ -418,7 +414,7 @@ html body .container main section.articles article.thumb {
   width: 18%;
   margin-right: 2.5%;
   float: left;
-  margin-bottom: 0;
+  margin-bottom: 1.25em;
 }
 html body .container main section.articles article.thumb:nth-of-type(2) {
   margin-right: 2.5%;
@@ -522,239 +518,7 @@ html body .container main section.articles article.thumb:nth-of-type(10) {
     float: left;
   }
 }
-html body .container main section.articles article.thumb header, html body .container main section.articles article.thumb figure, html body .container main section.articles article.thumb aside #content, html body .container main section.articles article.thumb aside #dimension {
-  display: none;
-}
-html body .container main section.articles article.thumb aside h4 {
-  display: none;
-}
-html body .container main section.articles article.thumb aside #price {
-  width: 100%;
-  float: left;
-  margin: 0;
-  display: block;
-  list-style-type: none;
-}
-html body .container main section.articles article.thumb aside #price li {
-  display: inline-block;
-  float: left;
-  margin-right: 1.25em;
-}
-html body .container main section.articles article.thumb aside #price li:last-of-type {
-  margin-right: 0;
-}
-html body .container main section.articles article.thumb aside #dimension {
-  width: 100%;
-  float: left;
-}
-html body .container main section.articles article.thumb aside #content {
-  max-width: 43.75em;
-  line-height: 1.75;
-  /* Headings
-  */
-  /* Elements
-  */
-  /* Padding of individual elements
-  */
-  /* Padding of consecutive elements
-  */
-}
-html body .container main section.articles article.thumb aside #content h1, html body .container main section.articles article.thumb aside #content h2, html body .container main section.articles article.thumb aside #content h3 {
-  font-size: 20px;
-  font-size: 1.25rem;
-  font-weight: normal;
-}
-html body .container main section.articles article.thumb aside #content h1 {
-  font-weight: bold;
-}
-html body .container main section.articles article.thumb aside #content h2 {
-  text-transform: uppercase;
-  letter-spacing: 0.15625em;
-}
-html body .container main section.articles article.thumb aside #content h4, html body .container main section.articles article.thumb aside #content h5, html body .container main section.articles article.thumb aside #content h6 {
-  font-size: larger;
-}
-html body .container main section.articles article.thumb aside #content h1, html body .container main section.articles article.thumb aside #content h2, html body .container main section.articles article.thumb aside #content h3 {
-  line-height: 1.1;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding: 1.45833em 0;
-}
-html body .container main section.articles article.thumb aside #content em, html body .container main section.articles article.thumb aside #content i {
-  font-style: italic;
-}
-html body .container main section.articles article.thumb aside #content strong, html body .container main section.articles article.thumb aside #content b {
-  font-weight: bold;
-}
-html body .container main section.articles article.thumb aside #content ul {
-  list-style: none outside;
-}
-html body .container main section.articles article.thumb aside #content ul li {
-  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
-    - this way we can perfectly align the bullets / numbering to the list content
-  */
-  position: relative;
-  padding-left: 1.25em;
-}
-html body .container main section.articles article.thumb aside #content ul li:before {
-  content: "\271A";
-  /* making the content of the list perfectly align with numbering
-    - <li> is relatively positioned
-    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
-    - the the <li> content has a padding-left to not overlap the numbering
-  */
-  position: absolute;
-  left: 0;
-}
-html body .container main section.articles article.thumb aside #content ol {
-  list-style: none outside;
-  counter-reset: ol-counter;
-}
-html body .container main section.articles article.thumb aside #content ol li {
-  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
-    - this way we can perfectly align the bullets / numbering to the list content
-  */
-  position: relative;
-  padding-left: 1.25em;
-}
-html body .container main section.articles article.thumb aside #content ol li:before {
-  /* making the content of the list perfectly align with numbering
-    - <li> is relatively positioned
-    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
-    - the the <li> content has a padding-left to not overlap the numbering
-  */
-  position: absolute;
-  left: 0;
-}
-html body .container main section.articles article.thumb aside #content ol li {
-  counter-increment: ol-counter;
-}
-html body .container main section.articles article.thumb aside #content ol li:before {
-  content: counter(ol-counter,decimal);
-}
-html body .container main section.articles article.thumb aside #content dl dt {
-  font-size: 20px;
-  font-size: 1.25rem;
-  font-weight: normal;
-  text-transform: uppercase;
-  letter-spacing: 0.15625em;
-}
-html body .container main section.articles article.thumb aside #content table {
-  width: 100%;
-  display: table !important;
-}
-html body .container main section.articles article.thumb aside #content table thead {
-  background: #1f1f1f;
-  color: #f1f1f1;
-}
-html body .container main section.articles article.thumb aside #content table thead a {
-  color: #f1f1f1;
-}
-html body .container main section.articles article.thumb aside #content table thead th, html body .container main section.articles article.thumb aside #content table tbody td {
-  padding: 1.25em;
-  padding-left: 0;
-}
-html body .container main section.articles article.thumb aside #content table tbody td {
-  border-bottom: 1px solid #bebebe;
-}
-html body .container main section.articles article.thumb aside #content figure img {
-  -webkit-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
-  -moz-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
-  box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
-  width: auto;
-}
-html body .container main section.articles article.thumb aside #content figure figcaption {
-  font-size: smaller;
-}
-html body .container main section.articles article.thumb aside #content form {
-  /* Reset */
-  /* Text */
-  /* Button */
-  /* Stretching and padding */
-}
-html body .container main section.articles article.thumb aside #content form input, html body .container main section.articles article.thumb aside #content form textarea, html body .container main section.articles article.thumb aside #content form select {
-  border: none;
-  outline: 0;
-  background: #f1f1f1;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-html body .container main section.articles article.thumb aside #content form input[type='text'], html body .container main section.articles article.thumb aside #content form input[type='email'], html body .container main section.articles article.thumb aside #content form input[type='password'], html body .container main section.articles article.thumb aside #content form textarea {
-  border: 1px solid #1f1f1f;
-  font-style: italic;
-}
-html body .container main section.articles article.thumb aside #content form input[type='submit'] {
-  text-transform: uppercase;
-  letter-spacing: 0.15625em;
-  border: 1px solid #1f1f1f;
-  cursor: pointer;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-}
-html body .container main section.articles article.thumb aside #content form input[type='submit']:hover {
-  background: #f3aaaa;
-}
-html body .container main section.articles article.thumb aside #content form label, html body .container main section.articles article.thumb aside #content form input, html body .container main section.articles article.thumb aside #content form textarea {
-  width: 100%;
-  float: left;
-}
-html body .container main section.articles article.thumb aside #content form input, html body .container main section.articles article.thumb aside #content form textarea {
-  padding: 0.625em;
-  width: calc(100% - 1.25em);
-}
-html body .container main section.articles article.thumb aside #content blockquote, html body .container main section.articles article.thumb aside #content q {
-  border-top: 1px solid;
-  border-bottom: 1px solid;
-  /* Making room to the " sign 
-  */
-  position: relative;
-  float: left;
-  padding: 12.5em 0 2.5em 5em;
-  /* Fill the parent block
-  */
-  width: 100%;
-  float: left;
-  text-align: right;
-  width: calc(43.75em - 5em);
-  /*
-  @include below-and-small-screen {
-    width: calc(100% - 5em);
-  }
-  */
-}
-html body .container main section.articles article.thumb aside #content blockquote:before, html body .container main section.articles article.thumb aside #content q:before {
-  content: '\201C';
-  font-size: 1400%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-html body .container main section.articles article.thumb aside #content ul, html body .container main section.articles article.thumb aside #content ol, html body .container main section.articles article.thumb aside #content dl, html body .container main section.articles article.thumb aside #content table, html body .container main section.articles article.thumb aside #content figure, html body .container main section.articles article.thumb aside #content form, html body .container main section.articles article.thumb aside #content q {
-  margin: 1.25em 0;
-}
-html body .container main section.articles article.thumb aside #content figure {
-  margin-top: 2.5em;
-}
-html body .container main section.articles article.thumb aside #content dd + dt {
-  margin-top: 1.25em;
-}
-html body .container main section.articles article.thumb aside #content p + p {
-  margin-top: 1.25em;
-}
-html body .container main section.articles article.thumb aside #content h1 + h2, html body .container main section.articles article.thumb aside #content h2 + h3 {
-  padding-top: 0;
-}
-html body .container main section.articles article.thumb aside #content h1 + ul, html body .container main section.articles article.thumb aside #content h2 + ul, html body .container main section.articles article.thumb aside #content h3 + ul,
-html body .container main section.articles article.thumb aside #content h1 + ol, html body .container main section.articles article.thumb aside #content h2 + ol, html body .container main section.articles article.thumb aside #content h3 + ol {
-  margin-top: 0;
-}
-html body .container main section.articles article.thumb aside #content li ul, html body .container main section.articles article.thumb aside #content li ol {
-  margin-top: 0;
-}
-html body .container main section.articles article.thumb aside #content img {
+html body .container main section.articles article.thumb header, html body .container main section.articles article.thumb figure, html body .container main section.articles article.thumb aside {
   display: none;
 }
 html body .container main section.articles article.thumb figure {
@@ -798,269 +562,118 @@ html body.page main section {
     - it's container bottom margin and the next container's top margin must be reset 
   */
 }
-html body.page main section article.thumb {
+html body.page main section.articles article.thumb {
   width: 17%;
   margin-right: 2%;
   float: left;
   margin-bottom: 1.25em;
 }
+html body.page main section.articles article.thumb:nth-of-type(2) {
+  margin-right: 2%;
+}
+html body.page main section.articles article.thumb:nth-of-type(3) {
+  margin-right: 2%;
+}
+html body.page main section.articles article.thumb:nth-of-type(4) {
+  margin-right: 2%;
+}
+html body.page main section.articles article.thumb:nth-of-type(5) {
+  margin-right: 2%;
+}
+html body.page main section.articles article.thumb:nth-of-type(6) {
+  margin-right: 2%;
+}
+html body.page main section.articles article.thumb:nth-of-type(7) {
+  margin-right: 2%;
+}
+html body.page main section.articles article.thumb:nth-of-type(8) {
+  margin-right: 2%;
+}
+html body.page main section.articles article.thumb:nth-of-type(9) {
+  margin-right: 2%;
+}
+html body.page main section.articles article.thumb:nth-of-type(10) {
+  margin-right: 2%;
+}
 @media only screen and (max-width: 64em) {
-  html body.page main section article.thumb {
+  html body.page main section.articles article.thumb {
     width: 32.33333%;
     margin-right: 1%;
     float: left;
   }
+  html body.page main section.articles article.thumb:nth-of-type(2) {
+    margin-right: 1%;
+  }
+  html body.page main section.articles article.thumb:nth-of-type(3) {
+    margin-right: 1%;
+  }
+  html body.page main section.articles article.thumb:nth-of-type(4) {
+    margin-right: 1%;
+  }
+  html body.page main section.articles article.thumb:nth-of-type(5) {
+    margin-right: 1%;
+  }
+  html body.page main section.articles article.thumb:nth-of-type(6) {
+    margin-right: 1%;
+  }
+  html body.page main section.articles article.thumb:nth-of-type(7) {
+    margin-right: 1%;
+  }
+  html body.page main section.articles article.thumb:nth-of-type(8) {
+    margin-right: 1%;
+  }
+  html body.page main section.articles article.thumb:nth-of-type(9) {
+    margin-right: 1%;
+  }
+  html body.page main section.articles article.thumb:nth-of-type(10) {
+    margin-right: 1%;
+  }
 }
 @media only screen and (max-width: 47.999em) {
-  html body.page main section article.thumb {
+  html body.page main section.articles article.thumb {
     width: 44%;
     margin-right: 5%;
     float: left;
   }
+  html body.page main section.articles article.thumb:nth-of-type(2) {
+    margin-right: 5%;
+  }
+  html body.page main section.articles article.thumb:nth-of-type(3) {
+    margin-right: 5%;
+  }
+  html body.page main section.articles article.thumb:nth-of-type(4) {
+    margin-right: 5%;
+  }
+  html body.page main section.articles article.thumb:nth-of-type(5) {
+    margin-right: 5%;
+  }
+  html body.page main section.articles article.thumb:nth-of-type(6) {
+    margin-right: 5%;
+  }
+  html body.page main section.articles article.thumb:nth-of-type(7) {
+    margin-right: 5%;
+  }
+  html body.page main section.articles article.thumb:nth-of-type(8) {
+    margin-right: 5%;
+  }
+  html body.page main section.articles article.thumb:nth-of-type(9) {
+    margin-right: 5%;
+  }
+  html body.page main section.articles article.thumb:nth-of-type(10) {
+    margin-right: 5%;
+  }
 }
 @media only screen and (max-width: 24em) {
-  html body.page main section article.thumb {
+  html body.page main section.articles article.thumb {
     width: 100%;
     margin-right: 0;
     float: left;
   }
 }
-html body.page main section article.thumb header, html body.page main section article.thumb figure, html body.page main section article.thumb aside #content, html body.page main section article.thumb aside #dimension {
+html body.page main section.articles article.thumb header, html body.page main section.articles article.thumb figure, html body.page main section.articles article.thumb aside {
   display: none;
 }
-html body.page main section article.thumb aside h4 {
-  display: none;
-}
-html body.page main section article.thumb aside #price {
-  width: 100%;
-  float: left;
-  margin: 0;
-  display: block;
-  list-style-type: none;
-}
-html body.page main section article.thumb aside #price li {
-  display: inline-block;
-  float: left;
-  margin-right: 1.25em;
-}
-html body.page main section article.thumb aside #price li:last-of-type {
-  margin-right: 0;
-}
-html body.page main section article.thumb aside #dimension {
-  width: 100%;
-  float: left;
-}
-html body.page main section article.thumb aside #content {
-  max-width: 43.75em;
-  line-height: 1.75;
-  /* Headings
-  */
-  /* Elements
-  */
-  /* Padding of individual elements
-  */
-  /* Padding of consecutive elements
-  */
-}
-html body.page main section article.thumb aside #content h1, html body.page main section article.thumb aside #content h2, html body.page main section article.thumb aside #content h3 {
-  font-size: 20px;
-  font-size: 1.25rem;
-  font-weight: normal;
-}
-html body.page main section article.thumb aside #content h1 {
-  font-weight: bold;
-}
-html body.page main section article.thumb aside #content h2 {
-  text-transform: uppercase;
-  letter-spacing: 0.15625em;
-}
-html body.page main section article.thumb aside #content h4, html body.page main section article.thumb aside #content h5, html body.page main section article.thumb aside #content h6 {
-  font-size: larger;
-}
-html body.page main section article.thumb aside #content h1, html body.page main section article.thumb aside #content h2, html body.page main section article.thumb aside #content h3 {
-  line-height: 1.1;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding: 1.45833em 0;
-}
-html body.page main section article.thumb aside #content em, html body.page main section article.thumb aside #content i {
-  font-style: italic;
-}
-html body.page main section article.thumb aside #content strong, html body.page main section article.thumb aside #content b {
-  font-weight: bold;
-}
-html body.page main section article.thumb aside #content ul {
-  list-style: none outside;
-}
-html body.page main section article.thumb aside #content ul li {
-  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
-    - this way we can perfectly align the bullets / numbering to the list content
-  */
-  position: relative;
-  padding-left: 1.25em;
-}
-html body.page main section article.thumb aside #content ul li:before {
-  content: "\271A";
-  /* making the content of the list perfectly align with numbering
-    - <li> is relatively positioned
-    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
-    - the the <li> content has a padding-left to not overlap the numbering
-  */
-  position: absolute;
-  left: 0;
-}
-html body.page main section article.thumb aside #content ol {
-  list-style: none outside;
-  counter-reset: ol-counter;
-}
-html body.page main section article.thumb aside #content ol li {
-  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
-    - this way we can perfectly align the bullets / numbering to the list content
-  */
-  position: relative;
-  padding-left: 1.25em;
-}
-html body.page main section article.thumb aside #content ol li:before {
-  /* making the content of the list perfectly align with numbering
-    - <li> is relatively positioned
-    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
-    - the the <li> content has a padding-left to not overlap the numbering
-  */
-  position: absolute;
-  left: 0;
-}
-html body.page main section article.thumb aside #content ol li {
-  counter-increment: ol-counter;
-}
-html body.page main section article.thumb aside #content ol li:before {
-  content: counter(ol-counter,decimal);
-}
-html body.page main section article.thumb aside #content dl dt {
-  font-size: 20px;
-  font-size: 1.25rem;
-  font-weight: normal;
-  text-transform: uppercase;
-  letter-spacing: 0.15625em;
-}
-html body.page main section article.thumb aside #content table {
-  width: 100%;
-  display: table !important;
-}
-html body.page main section article.thumb aside #content table thead {
-  background: #1f1f1f;
-  color: #f1f1f1;
-}
-html body.page main section article.thumb aside #content table thead a {
-  color: #f1f1f1;
-}
-html body.page main section article.thumb aside #content table thead th, html body.page main section article.thumb aside #content table tbody td {
-  padding: 1.25em;
-  padding-left: 0;
-}
-html body.page main section article.thumb aside #content table tbody td {
-  border-bottom: 1px solid #bebebe;
-}
-html body.page main section article.thumb aside #content figure img {
-  -webkit-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
-  -moz-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
-  box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
-  width: auto;
-}
-html body.page main section article.thumb aside #content figure figcaption {
-  font-size: smaller;
-}
-html body.page main section article.thumb aside #content form {
-  /* Reset */
-  /* Text */
-  /* Button */
-  /* Stretching and padding */
-}
-html body.page main section article.thumb aside #content form input, html body.page main section article.thumb aside #content form textarea, html body.page main section article.thumb aside #content form select {
-  border: none;
-  outline: 0;
-  background: #f1f1f1;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-html body.page main section article.thumb aside #content form input[type='text'], html body.page main section article.thumb aside #content form input[type='email'], html body.page main section article.thumb aside #content form input[type='password'], html body.page main section article.thumb aside #content form textarea {
-  border: 1px solid #1f1f1f;
-  font-style: italic;
-}
-html body.page main section article.thumb aside #content form input[type='submit'] {
-  text-transform: uppercase;
-  letter-spacing: 0.15625em;
-  border: 1px solid #1f1f1f;
-  cursor: pointer;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-}
-html body.page main section article.thumb aside #content form input[type='submit']:hover {
-  background: #f3aaaa;
-}
-html body.page main section article.thumb aside #content form label, html body.page main section article.thumb aside #content form input, html body.page main section article.thumb aside #content form textarea {
-  width: 100%;
-  float: left;
-}
-html body.page main section article.thumb aside #content form input, html body.page main section article.thumb aside #content form textarea {
-  padding: 0.625em;
-  width: calc(100% - 1.25em);
-}
-html body.page main section article.thumb aside #content blockquote, html body.page main section article.thumb aside #content q {
-  border-top: 1px solid;
-  border-bottom: 1px solid;
-  /* Making room to the " sign 
-  */
-  position: relative;
-  float: left;
-  padding: 12.5em 0 2.5em 5em;
-  /* Fill the parent block
-  */
-  width: 100%;
-  float: left;
-  text-align: right;
-  width: calc(43.75em - 5em);
-  /*
-  @include below-and-small-screen {
-    width: calc(100% - 5em);
-  }
-  */
-}
-html body.page main section article.thumb aside #content blockquote:before, html body.page main section article.thumb aside #content q:before {
-  content: '\201C';
-  font-size: 1400%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-html body.page main section article.thumb aside #content ul, html body.page main section article.thumb aside #content ol, html body.page main section article.thumb aside #content dl, html body.page main section article.thumb aside #content table, html body.page main section article.thumb aside #content figure, html body.page main section article.thumb aside #content form, html body.page main section article.thumb aside #content q {
-  margin: 1.25em 0;
-}
-html body.page main section article.thumb aside #content figure {
-  margin-top: 2.5em;
-}
-html body.page main section article.thumb aside #content dd + dt {
-  margin-top: 1.25em;
-}
-html body.page main section article.thumb aside #content p + p {
-  margin-top: 1.25em;
-}
-html body.page main section article.thumb aside #content h1 + h2, html body.page main section article.thumb aside #content h2 + h3 {
-  padding-top: 0;
-}
-html body.page main section article.thumb aside #content h1 + ul, html body.page main section article.thumb aside #content h2 + ul, html body.page main section article.thumb aside #content h3 + ul,
-html body.page main section article.thumb aside #content h1 + ol, html body.page main section article.thumb aside #content h2 + ol, html body.page main section article.thumb aside #content h3 + ol {
-  margin-top: 0;
-}
-html body.page main section article.thumb aside #content li ul, html body.page main section article.thumb aside #content li ol {
-  margin-top: 0;
-}
-html body.page main section article.thumb aside #content img {
-  display: none;
-}
-html body.page main section article.thumb figure {
+html body.page main section.articles article.thumb figure {
   display: block;
 }
 html body.page main section#filters {
@@ -1102,11 +715,65 @@ html body.page main section#filters ul li, html body.page main section#filters .
   margin-right: 2%;
   float: left;
 }
+html body.page main section#filters ul li:nth-of-type(2), html body.page main section#filters .select:nth-of-type(2) {
+  margin-right: 2%;
+}
+html body.page main section#filters ul li:nth-of-type(3), html body.page main section#filters .select:nth-of-type(3) {
+  margin-right: 2%;
+}
+html body.page main section#filters ul li:nth-of-type(4), html body.page main section#filters .select:nth-of-type(4) {
+  margin-right: 2%;
+}
+html body.page main section#filters ul li:nth-of-type(5), html body.page main section#filters .select:nth-of-type(5) {
+  margin-right: 2%;
+}
+html body.page main section#filters ul li:nth-of-type(6), html body.page main section#filters .select:nth-of-type(6) {
+  margin-right: 2%;
+}
+html body.page main section#filters ul li:nth-of-type(7), html body.page main section#filters .select:nth-of-type(7) {
+  margin-right: 2%;
+}
+html body.page main section#filters ul li:nth-of-type(8), html body.page main section#filters .select:nth-of-type(8) {
+  margin-right: 2%;
+}
+html body.page main section#filters ul li:nth-of-type(9), html body.page main section#filters .select:nth-of-type(9) {
+  margin-right: 2%;
+}
+html body.page main section#filters ul li:nth-of-type(10), html body.page main section#filters .select:nth-of-type(10) {
+  margin-right: 2%;
+}
 @media only screen and (max-width: 64em) {
   html body.page main section#filters ul li, html body.page main section#filters .select {
     width: 32.33333%;
     margin-right: 1%;
     float: left;
+  }
+  html body.page main section#filters ul li:nth-of-type(2), html body.page main section#filters .select:nth-of-type(2) {
+    margin-right: 1%;
+  }
+  html body.page main section#filters ul li:nth-of-type(3), html body.page main section#filters .select:nth-of-type(3) {
+    margin-right: 1%;
+  }
+  html body.page main section#filters ul li:nth-of-type(4), html body.page main section#filters .select:nth-of-type(4) {
+    margin-right: 1%;
+  }
+  html body.page main section#filters ul li:nth-of-type(5), html body.page main section#filters .select:nth-of-type(5) {
+    margin-right: 1%;
+  }
+  html body.page main section#filters ul li:nth-of-type(6), html body.page main section#filters .select:nth-of-type(6) {
+    margin-right: 1%;
+  }
+  html body.page main section#filters ul li:nth-of-type(7), html body.page main section#filters .select:nth-of-type(7) {
+    margin-right: 1%;
+  }
+  html body.page main section#filters ul li:nth-of-type(8), html body.page main section#filters .select:nth-of-type(8) {
+    margin-right: 1%;
+  }
+  html body.page main section#filters ul li:nth-of-type(9), html body.page main section#filters .select:nth-of-type(9) {
+    margin-right: 1%;
+  }
+  html body.page main section#filters ul li:nth-of-type(10), html body.page main section#filters .select:nth-of-type(10) {
+    margin-right: 1%;
   }
 }
 @media only screen and (max-width: 47.999em) {
@@ -1114,6 +781,33 @@ html body.page main section#filters ul li, html body.page main section#filters .
     width: 44%;
     margin-right: 5%;
     float: left;
+  }
+  html body.page main section#filters ul li:nth-of-type(2), html body.page main section#filters .select:nth-of-type(2) {
+    margin-right: 5%;
+  }
+  html body.page main section#filters ul li:nth-of-type(3), html body.page main section#filters .select:nth-of-type(3) {
+    margin-right: 5%;
+  }
+  html body.page main section#filters ul li:nth-of-type(4), html body.page main section#filters .select:nth-of-type(4) {
+    margin-right: 5%;
+  }
+  html body.page main section#filters ul li:nth-of-type(5), html body.page main section#filters .select:nth-of-type(5) {
+    margin-right: 5%;
+  }
+  html body.page main section#filters ul li:nth-of-type(6), html body.page main section#filters .select:nth-of-type(6) {
+    margin-right: 5%;
+  }
+  html body.page main section#filters ul li:nth-of-type(7), html body.page main section#filters .select:nth-of-type(7) {
+    margin-right: 5%;
+  }
+  html body.page main section#filters ul li:nth-of-type(8), html body.page main section#filters .select:nth-of-type(8) {
+    margin-right: 5%;
+  }
+  html body.page main section#filters ul li:nth-of-type(9), html body.page main section#filters .select:nth-of-type(9) {
+    margin-right: 5%;
+  }
+  html body.page main section#filters ul li:nth-of-type(10), html body.page main section#filters .select:nth-of-type(10) {
+    margin-right: 5%;
   }
 }
 @media only screen and (max-width: 24em) {
@@ -1134,263 +828,26 @@ html body.page main section#results {
 html body.page main section#results h2, html body.page main section#results h3, html body.page main section#results h4 {
   display: none;
 }
-html body.single-post main article.product article, html body.single-post main article.product figure {
+html body.single-post main article.product {
+  /* The Golden Ratios 
+  */
+}
+html body.single-post main article.product figure {
   width: 38.1953%;
-  margin-right: 0;
+  margin-right: 5%;
   float: left;
 }
-html body.single-post main article.product aside, html body.single-post main article.product #sidebar {
-  width: 61.8047%;
+html body.single-post main article.product aside {
+  width: 56.8047%;
   margin-right: 0;
   float: left;
 }
 @media only screen and (max-width: 63.999em) {
-  html body.single-post main article.product article, html body.single-post main article.product figure, html body.single-post main article.product aside, html body.single-post main article.product #sidebar {
+  html body.single-post main article.product figure, html body.single-post main article.product aside {
     width: 100%;
     margin-right: 0;
     float: left;
   }
-}
-html body.single-post main article.product header, html body.single-post main article.product figure, html body.single-post main article.product aside #content, html body.single-post main article.product aside #dimension {
-  display: none;
-}
-html body.single-post main article.product aside h4 {
-  display: none;
-}
-html body.single-post main article.product aside #price {
-  width: 100%;
-  float: left;
-  margin: 0;
-  display: block;
-  list-style-type: none;
-}
-html body.single-post main article.product aside #price li {
-  display: inline-block;
-  float: left;
-  margin-right: 1.25em;
-}
-html body.single-post main article.product aside #price li:last-of-type {
-  margin-right: 0;
-}
-html body.single-post main article.product aside #dimension {
-  width: 100%;
-  float: left;
-}
-html body.single-post main article.product aside #content {
-  max-width: 43.75em;
-  line-height: 1.75;
-  /* Headings
-  */
-  /* Elements
-  */
-  /* Padding of individual elements
-  */
-  /* Padding of consecutive elements
-  */
-}
-html body.single-post main article.product aside #content h1, html body.single-post main article.product aside #content h2, html body.single-post main article.product aside #content h3 {
-  font-size: 20px;
-  font-size: 1.25rem;
-  font-weight: normal;
-}
-html body.single-post main article.product aside #content h1 {
-  font-weight: bold;
-}
-html body.single-post main article.product aside #content h2 {
-  text-transform: uppercase;
-  letter-spacing: 0.15625em;
-}
-html body.single-post main article.product aside #content h4, html body.single-post main article.product aside #content h5, html body.single-post main article.product aside #content h6 {
-  font-size: larger;
-}
-html body.single-post main article.product aside #content h1, html body.single-post main article.product aside #content h2, html body.single-post main article.product aside #content h3 {
-  line-height: 1.1;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding: 1.45833em 0;
-}
-html body.single-post main article.product aside #content em, html body.single-post main article.product aside #content i {
-  font-style: italic;
-}
-html body.single-post main article.product aside #content strong, html body.single-post main article.product aside #content b {
-  font-weight: bold;
-}
-html body.single-post main article.product aside #content ul {
-  list-style: none outside;
-}
-html body.single-post main article.product aside #content ul li {
-  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
-    - this way we can perfectly align the bullets / numbering to the list content
-  */
-  position: relative;
-  padding-left: 1.25em;
-}
-html body.single-post main article.product aside #content ul li:before {
-  content: "\271A";
-  /* making the content of the list perfectly align with numbering
-    - <li> is relatively positioned
-    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
-    - the the <li> content has a padding-left to not overlap the numbering
-  */
-  position: absolute;
-  left: 0;
-}
-html body.single-post main article.product aside #content ol {
-  list-style: none outside;
-  counter-reset: ol-counter;
-}
-html body.single-post main article.product aside #content ol li {
-  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
-    - this way we can perfectly align the bullets / numbering to the list content
-  */
-  position: relative;
-  padding-left: 1.25em;
-}
-html body.single-post main article.product aside #content ol li:before {
-  /* making the content of the list perfectly align with numbering
-    - <li> is relatively positioned
-    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
-    - the the <li> content has a padding-left to not overlap the numbering
-  */
-  position: absolute;
-  left: 0;
-}
-html body.single-post main article.product aside #content ol li {
-  counter-increment: ol-counter;
-}
-html body.single-post main article.product aside #content ol li:before {
-  content: counter(ol-counter,decimal);
-}
-html body.single-post main article.product aside #content dl dt {
-  font-size: 20px;
-  font-size: 1.25rem;
-  font-weight: normal;
-  text-transform: uppercase;
-  letter-spacing: 0.15625em;
-}
-html body.single-post main article.product aside #content table {
-  width: 100%;
-  display: table !important;
-}
-html body.single-post main article.product aside #content table thead {
-  background: #1f1f1f;
-  color: #f1f1f1;
-}
-html body.single-post main article.product aside #content table thead a {
-  color: #f1f1f1;
-}
-html body.single-post main article.product aside #content table thead th, html body.single-post main article.product aside #content table tbody td {
-  padding: 1.25em;
-  padding-left: 0;
-}
-html body.single-post main article.product aside #content table tbody td {
-  border-bottom: 1px solid #bebebe;
-}
-html body.single-post main article.product aside #content figure img {
-  -webkit-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
-  -moz-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
-  box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
-  width: auto;
-}
-html body.single-post main article.product aside #content figure figcaption {
-  font-size: smaller;
-}
-html body.single-post main article.product aside #content form {
-  /* Reset */
-  /* Text */
-  /* Button */
-  /* Stretching and padding */
-}
-html body.single-post main article.product aside #content form input, html body.single-post main article.product aside #content form textarea, html body.single-post main article.product aside #content form select {
-  border: none;
-  outline: 0;
-  background: #f1f1f1;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-html body.single-post main article.product aside #content form input[type='text'], html body.single-post main article.product aside #content form input[type='email'], html body.single-post main article.product aside #content form input[type='password'], html body.single-post main article.product aside #content form textarea {
-  border: 1px solid #1f1f1f;
-  font-style: italic;
-}
-html body.single-post main article.product aside #content form input[type='submit'] {
-  text-transform: uppercase;
-  letter-spacing: 0.15625em;
-  border: 1px solid #1f1f1f;
-  cursor: pointer;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
-}
-html body.single-post main article.product aside #content form input[type='submit']:hover {
-  background: #f3aaaa;
-}
-html body.single-post main article.product aside #content form label, html body.single-post main article.product aside #content form input, html body.single-post main article.product aside #content form textarea {
-  width: 100%;
-  float: left;
-}
-html body.single-post main article.product aside #content form input, html body.single-post main article.product aside #content form textarea {
-  padding: 0.625em;
-  width: calc(100% - 1.25em);
-}
-html body.single-post main article.product aside #content blockquote, html body.single-post main article.product aside #content q {
-  border-top: 1px solid;
-  border-bottom: 1px solid;
-  /* Making room to the " sign 
-  */
-  position: relative;
-  float: left;
-  padding: 12.5em 0 2.5em 5em;
-  /* Fill the parent block
-  */
-  width: 100%;
-  float: left;
-  text-align: right;
-  width: calc(43.75em - 5em);
-  /*
-  @include below-and-small-screen {
-    width: calc(100% - 5em);
-  }
-  */
-}
-html body.single-post main article.product aside #content blockquote:before, html body.single-post main article.product aside #content q:before {
-  content: '\201C';
-  font-size: 1400%;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-html body.single-post main article.product aside #content ul, html body.single-post main article.product aside #content ol, html body.single-post main article.product aside #content dl, html body.single-post main article.product aside #content table, html body.single-post main article.product aside #content figure, html body.single-post main article.product aside #content form, html body.single-post main article.product aside #content q {
-  margin: 1.25em 0;
-}
-html body.single-post main article.product aside #content figure {
-  margin-top: 2.5em;
-}
-html body.single-post main article.product aside #content dd + dt {
-  margin-top: 1.25em;
-}
-html body.single-post main article.product aside #content p + p {
-  margin-top: 1.25em;
-}
-html body.single-post main article.product aside #content h1 + h2, html body.single-post main article.product aside #content h2 + h3 {
-  padding-top: 0;
-}
-html body.single-post main article.product aside #content h1 + ul, html body.single-post main article.product aside #content h2 + ul, html body.single-post main article.product aside #content h3 + ul,
-html body.single-post main article.product aside #content h1 + ol, html body.single-post main article.product aside #content h2 + ol, html body.single-post main article.product aside #content h3 + ol {
-  margin-top: 0;
-}
-html body.single-post main article.product aside #content li ul, html body.single-post main article.product aside #content li ol {
-  margin-top: 0;
-}
-html body.single-post main article.product aside #content img {
-  display: none;
-}
-html body.single-post main article.product figure {
-  display: block;
-}
-html body.single-post main article.product aside #dimension, html body.single-post main article.product aside #content {
-  display: block;
 }
 html body.single-post main section nav {
   width: 100%;
@@ -1503,21 +960,25 @@ html body.single-post main section nav h2:nth-of-type(10) {
     float: left;
   }
 }
-html body.page main #content h2, html body.page main #content h3, html body.page main #content h4 {
+html body.page main {
+  /* The Golden Ratios 
+  */
+}
+html body.page main #index {
+  width: 61.8047%;
+  margin-right: 5%;
+  float: left;
+}
+html body.page main #sidebar {
+  width: 33.1953%;
+  margin-right: 0;
+  float: left;
+}
+html body.page main #sidebar h2, html body.page main #sidebar h3, html body.page main #sidebar h4 {
   display: none;
 }
-html body.page main #content article, html body.page main #content figure {
-  width: 61.8047%;
-  margin-right: 0;
-  float: left;
-}
-html body.page main #content aside, html body.page main #content #sidebar {
-  width: 38.1953%;
-  margin-right: 0;
-  float: left;
-}
 @media only screen and (max-width: 63.999em) {
-  html body.page main #content article, html body.page main #content figure, html body.page main #content aside, html body.page main #content #sidebar {
+  html body.page main #index, html body.page main #sidebar {
     width: 100%;
     margin-right: 0;
     float: left;

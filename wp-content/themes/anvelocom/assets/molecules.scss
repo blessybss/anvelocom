@@ -30,19 +30,21 @@
 
 
 /* Columns for Isotope
-  - since Isotope filters out elements we don't know which element will be the last in a row,
-  so we can't make it's righ margin 0
+  - since Isotope filters out elements we don't know which element will be the last in a row, so we can't make it's righ margin 0
   - in this grid all elements in a row will have the same right margin
 */
 @mixin isotope($how-many, $maximum : 10) {
   @include m_column(isotope-col-width($how-many), isotope-col-gutter($how-many));
+  @include col-right-margin(1.1, isotope-col-gutter($how-many), $maximum);
   
   @include below-and-small-screen {
     @include m_column(isotope-col-width(3), isotope-col-gutter(3));
+    @include col-right-margin(1.1, isotope-col-gutter(3), $maximum);
   }
   
   @include below-tablet {
-    @include m_column(isotope-col-width(2), isotope-col-gutter(2))
+    @include m_column(isotope-col-width(2), isotope-col-gutter(2));
+    @include col-right-margin(1.1, isotope-col-gutter(2), $maximum);
   }
   
   @include mobile {
@@ -131,8 +133,7 @@
 }
 
 /* Remove right margin of the last element in a row of a grid
-  - the othere elements will have the righ margin set again
-  - this re-set is required by responsive layouts 
+  - the non-last elements will have the righ margin set again required by responsive layouts
 */
 @mixin col-right-margin($how-many, $gutter, $maximum) {
   @for $i from 2 through $maximum {
