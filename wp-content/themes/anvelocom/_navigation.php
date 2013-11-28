@@ -4,5 +4,6 @@
   <?php wp_nav_menu(array(
     'menu' => 'navbar',
     'container' => false,
+    'depth' => 1,
    )); ?> 
 </nav>

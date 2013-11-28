@@ -159,6 +159,10 @@ html {
           margin-right: 0;
           @include remove-title;
           @include arrow($arrow-up); 
+          
+          @include below-mobile-landscape {
+            float: left;
+          }
         }
       }
     }
@@ -199,24 +203,16 @@ html {
           figure {
             @include m_column($minor, 5%);
           }
+          
           aside {
             @include m_column($major - 5%, 0);
           }
+          
           @include below-small-screen {
             figure, aside {
               @include m_column(100%, 0);
             }
           }
-        }
-        
-        section {
-          nav {
-            @include block;
-            
-            h2 {
-              @include col(5);
-            }
-          } 
         }
       }
     }
@@ -230,10 +226,12 @@ html {
         #index {
           @include m_column($major, 5%);
         }
+        
         #sidebar {
           @include m_column($minor - 5%, 0);
           @include remove-title;
         }
+        
         @include below-small-screen {
           #index, #sidebar {
             @include m_column(100%, 0);

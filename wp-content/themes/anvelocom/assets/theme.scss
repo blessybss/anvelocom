@@ -39,63 +39,74 @@
 
 /* Display page content
 */
-@mixin content {
-  #body {
-    @include block;
-    @include body-text;
+@mixin page {
+  figure {
+    display: none;
   }
   
-  #comments {
-    @include block;
-    max-width: $body-text-width;
-    margin: $pad 0;
+  aside {
+    #price, #dimension {
+      display: none;
+    }
     
-    @include color(invert);
-    padding: $pad;
-    width: calc(100% - #{$pad*2});
-    
-    @include form;
-    
-    h3, h2 {
+    #content {
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+
+@mixin comments {
+  max-width: $body-text-width;
+  margin: $pad 0;
+  
+  @include color(invert);
+  padding: $pad;
+  width: calc(100% - #{$pad*2});
+  
+  @include form;
+  
+  h3, h2 {
+    margin-bottom: $pad;
+  }
+  
+  ol {
+    li {
       margin-bottom: $pad;
-    }
-    
-    ol {
-      li {
-        margin-bottom: $pad;
-        padding-bottom: $pad;
-        border-bottom: 1px solid $gray;
-        
-        @include body-text;
-        
-        a {
-          @include link($highlight);
-        }
-        
-        .reply {
-          margin: $pad/2 0;
-        }
-        
-        .vcard {
-          display: none;
-        }
+      padding-bottom: $pad;
+      border-bottom: 1px solid $gray;
+      
+      @include body-text;
+      
+      a {
+        @include link($highlight);
       }
       
-      &.children {
-        margin: $pad;
+      .reply {
+        margin: $pad/2 0;
+      }
+      
+      .vcard {
+        display: none;
       }
     }
     
+    &.children {
+      margin: $pad;
+    }
+  }
+  
+  
+  form {
+    width: 60%;
     
-    form {
-      width: 60%;
+    input, textarea {
+      margin-bottom: $pad/2;
       
-      input, textarea {
-        margin-bottom: $pad/2;
-        
-        &#submit {
-          width: 15em;
-        }
+      &#submit {
+        width: 15em;
       }
     }
   }
@@ -107,7 +118,6 @@
 @mixin sidebar {
   @include bordered;
   padding: $pad*2;
-  width: calc(#{$minor} - #{$pad*4} - 2px);
   @include ul;
   
   h3 {
@@ -126,6 +136,8 @@
 /* Display price
 */
 @mixin price {
+  @include list-inline;
+  
   li {
     &:nth-of-type(1) {
       font-weight: bold;
@@ -154,6 +166,11 @@
   @include color(invert);
   
   opacity: .9;
+  
+  @include mobile {
+    border-width: 0;
+    top: 0;
+  }
 }
 
 
@@ -173,6 +190,7 @@
 @mixin bordered {
   padding: $pad/2;
   border: 1px solid;
+  word-wrap: break-word;
 }
 
 
@@ -189,24 +207,49 @@ html {
         */
         nav {
           margin-top: $pad - $pad/4;
+          
+          @include below-tablet {
+            margin-top: $pad/2;
+          }
         }
       }
       
       main {
         section {
           h2 {
-            @include bordered;
-            width: col-resize(col-width(5), $pad, 2px);   
+            @include bordered;  
             margin-bottom: $pad;
+            width: col-resize(col-width(5), $pad, 2px); 
+            
+            @include below-and-small-screen {
+              width: col-resize(col-width(3), $pad, 2px);
+            }
+            
+            @include below-tablet {
+              width: col-resize(col-width(2), $pad, 2px);
+            }
+            
+            @include mobile {
+              width: col-resize(100%, $pad, 2px);
+            }
           }
-          
-          article {
-            aside {
-              #price {
-                @include price;
+            
+          &.articles {
+            article.thumb {
+              aside {
+                display: block;
+                @include remove-title;
+                
+                #dimension, #content {
+                  display: none;
+                }
+                #price {
+                  @include price;
+                }
               }
             }
           }
+          
           
           &#intro {
             figure {
@@ -220,6 +263,16 @@ html {
           }
         }
       }
+      
+      #footer {
+        #company {
+          @include address;
+          address {
+            max-width: 35em;
+            margin: $pad 0;
+          }
+        }
+      }
     }
   
     /* Archives
@@ -229,9 +282,21 @@ html {
         main {
           section {
             h2 {
-              width: col-resize(isotope-col-width(5), $pad, 2px);
+              width: col-resize(isotope-col-width(5), $pad, 2px); 
+            
+              @include below-and-small-screen {
+                width: col-resize(isotope-col-width(3), $pad, 2px);
+              }
+              
+              @include below-tablet {
+                width: col-resize(isotope-col-width(2), $pad, 2px);
+              }
+              
+              @include mobile {
+                width: col-resize(100%, $pad, 2px);
+              }
             }
-          
+            
             &#filters {
               ul {
                 li {
@@ -250,24 +315,42 @@ html {
     */
     &.single-post {
       main {
-        article.product {
-          header {
-            display: none;
-          }
+        #index {
+          margin-top: 0;
           
-          figure {
-            figcaption {
+          article.product {
+            header {
               display: none;
             }
-          }
-          
-          
-        }
-        
-        section {
-          nav {
-            h2 {
-              width: col-resize(col-width(5), $pad, 2px);   
+            
+            figure {
+              figcaption {
+                display: none;
+              }
+              
+              margin-bottom: $pad;
+            }
+            
+            aside {
+              #price {
+                @include price;
+              }
+              
+              #price, #dimension {
+                @include block;
+                @include bordered;
+                width: 51%;
+                margin-bottom: $pad;
+              }
+              
+              #content {
+                @include block;
+                @include body-text;
+                
+                img {
+                  display: none;
+                }
+              }
             }
           }
         }
@@ -279,13 +362,30 @@ html {
     */
     &.page {
       main {
-        #content {
-          article.page {
-            @include content;
+        #index {
+          margin-top: 0;
+          
+          article.thumb, #comments {
+            float: left;
+            @include body-text;
           }
           
-          #sidebar {
-            @include sidebar;
+          article.thumb {
+            @include page;
+          }
+          
+          #comments {
+            @include comments;
+          }
+        }
+        
+        #sidebar {
+          @include sidebar;
+          width: col-resize($minor - 5%, $pad*4, 2px);
+          
+          @include below-small-screen {
+            padding: $pad;
+            width: col-resize(100%, $pad*2, 2px);
           }
         }
       }

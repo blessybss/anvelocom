@@ -23,7 +23,7 @@
       $dimension = get_product_dimension($article, $main_category);
     }
     
-    $img = 'http://placehold.it/350x250'; 
+    // $img = 'http://placehold.it/350x250'; 
     ?>
     
     <header>

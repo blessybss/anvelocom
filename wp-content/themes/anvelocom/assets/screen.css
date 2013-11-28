@@ -557,6 +557,11 @@ html body .container #footer nav:before {
   font-size: 150%;
   display: block;
 }
+@media only screen and (max-width: 40em) {
+  html body .container #footer nav {
+    float: left;
+  }
+}
 html body.page main section {
   /* The filters have relative posistioning with a negative top margin
     - it's container bottom margin and the next container's top margin must be reset 
@@ -849,117 +854,6 @@ html body.single-post main article.product aside {
     float: left;
   }
 }
-html body.single-post main section nav {
-  width: 100%;
-  float: left;
-}
-html body.single-post main section nav h2 {
-  width: 18%;
-  margin-right: 2.5%;
-  float: left;
-}
-html body.single-post main section nav h2:nth-of-type(2) {
-  margin-right: 2.5%;
-}
-html body.single-post main section nav h2:nth-of-type(3) {
-  margin-right: 2.5%;
-}
-html body.single-post main section nav h2:nth-of-type(4) {
-  margin-right: 2.5%;
-}
-html body.single-post main section nav h2:nth-of-type(5) {
-  margin-right: 0;
-}
-html body.single-post main section nav h2:nth-of-type(6) {
-  margin-right: 2.5%;
-}
-html body.single-post main section nav h2:nth-of-type(7) {
-  margin-right: 2.5%;
-}
-html body.single-post main section nav h2:nth-of-type(8) {
-  margin-right: 2.5%;
-}
-html body.single-post main section nav h2:nth-of-type(9) {
-  margin-right: 2.5%;
-}
-html body.single-post main section nav h2:nth-of-type(10) {
-  margin-right: 0;
-}
-@media only screen and (max-width: 64em) {
-  html body.single-post main section nav h2 {
-    width: 30%;
-    margin-right: 5%;
-    float: left;
-  }
-  html body.single-post main section nav h2:nth-of-type(2) {
-    margin-right: 5%;
-  }
-  html body.single-post main section nav h2:nth-of-type(3) {
-    margin-right: 0;
-  }
-  html body.single-post main section nav h2:nth-of-type(4) {
-    margin-right: 5%;
-  }
-  html body.single-post main section nav h2:nth-of-type(5) {
-    margin-right: 5%;
-  }
-  html body.single-post main section nav h2:nth-of-type(6) {
-    margin-right: 0;
-  }
-  html body.single-post main section nav h2:nth-of-type(7) {
-    margin-right: 5%;
-  }
-  html body.single-post main section nav h2:nth-of-type(8) {
-    margin-right: 5%;
-  }
-  html body.single-post main section nav h2:nth-of-type(9) {
-    margin-right: 0;
-  }
-  html body.single-post main section nav h2:nth-of-type(10) {
-    margin-right: 5%;
-  }
-}
-@media only screen and (max-width: 47.999em) {
-  html body.single-post main section nav h2 {
-    width: 45%;
-    margin-right: 10%;
-    float: left;
-  }
-  html body.single-post main section nav h2:nth-of-type(2) {
-    margin-right: 0;
-  }
-  html body.single-post main section nav h2:nth-of-type(3) {
-    margin-right: 10%;
-  }
-  html body.single-post main section nav h2:nth-of-type(4) {
-    margin-right: 0;
-  }
-  html body.single-post main section nav h2:nth-of-type(5) {
-    margin-right: 10%;
-  }
-  html body.single-post main section nav h2:nth-of-type(6) {
-    margin-right: 0;
-  }
-  html body.single-post main section nav h2:nth-of-type(7) {
-    margin-right: 10%;
-  }
-  html body.single-post main section nav h2:nth-of-type(8) {
-    margin-right: 0;
-  }
-  html body.single-post main section nav h2:nth-of-type(9) {
-    margin-right: 10%;
-  }
-  html body.single-post main section nav h2:nth-of-type(10) {
-    margin-right: 0;
-  }
-}
-@media only screen and (max-width: 24em) {
-  html body.single-post main section nav h2 {
-    width: 100%;
-    margin-right: 0;
-    float: left;
-  }
-}
 html body.page main {
   /* The Golden Ratios 
   */
@@ -982,5 +876,972 @@ html body.page main #sidebar h2, html body.page main #sidebar h3, html body.page
     width: 100%;
     margin-right: 0;
     float: left;
+  }
+}
+
+/* Special decorations for this site
+*/
+/* The product thumb must be styled specially for this theme
+*/
+/* Display page content
+*/
+/* The sidebar
+*/
+/* Display price
+*/
+/* A white text on a black, opaque background
+*/
+/* Highlight a text, even if it is a link
+*/
+/* Add border to text
+*/
+html body {
+  /* Archives
+  */
+  /* Single product
+  */
+  /* Content page
+  */
+}
+html body .container #header {
+  /* Nav must be adjusted to the bordered header
+  */
+}
+html body .container #header h1 {
+  padding: 0.625em;
+  border: 1px solid;
+  word-wrap: break-word;
+}
+html body .container #header nav {
+  margin-top: 0.9375em;
+}
+@media only screen and (max-width: 47.999em) {
+  html body .container #header nav {
+    margin-top: 0.625em;
+  }
+}
+html body .container main section h2 {
+  padding: 0.625em;
+  border: 1px solid;
+  word-wrap: break-word;
+  margin-bottom: 1.25em;
+  width: calc(18% - 1.25em - 2px);
+}
+@media only screen and (max-width: 64em) {
+  html body .container main section h2 {
+    width: calc(30% - 1.25em - 2px);
+  }
+}
+@media only screen and (max-width: 47.999em) {
+  html body .container main section h2 {
+    width: calc(45% - 1.25em - 2px);
+  }
+}
+@media only screen and (max-width: 24em) {
+  html body .container main section h2 {
+    width: calc(100% - 1.25em - 2px);
+  }
+}
+html body .container main section.articles article.thumb aside {
+  display: block;
+}
+html body .container main section.articles article.thumb aside h2, html body .container main section.articles article.thumb aside h3, html body .container main section.articles article.thumb aside h4 {
+  display: none;
+}
+html body .container main section.articles article.thumb aside #dimension, html body .container main section.articles article.thumb aside #content {
+  display: none;
+}
+html body .container main section.articles article.thumb aside #price {
+  margin: 0;
+  display: block;
+  list-style-type: none;
+}
+html body .container main section.articles article.thumb aside #price li {
+  display: inline-block;
+  float: left;
+  margin-right: 1.25em;
+}
+html body .container main section.articles article.thumb aside #price li:last-of-type {
+  margin-right: 0;
+}
+html body .container main section.articles article.thumb aside #price li:nth-of-type(1) {
+  font-weight: bold;
+  margin-right: 0.625em;
+}
+html body .container main section.articles article.thumb aside #price li:nth-of-type(2) {
+  text-decoration: line-through;
+  margin-right: 0;
+}
+html body .container main section#intro {
+  /* Figcaption has relative positioning with negative top margin 
+  */
+  margin-bottom: 0;
+}
+html body .container main section#intro figure figcaption {
+  position: relative;
+  top: -2.8125em;
+  background: #f1f1f1;
+  display: inline-block;
+  padding: 0.625em;
+  border: 1px solid;
+  word-wrap: break-word;
+  border-width: 0.3125em;
+  padding: 1.25em;
+  background: #1f1f1f;
+  color: #f1f1f1;
+  opacity: .9;
+}
+html body .container main section#intro figure figcaption a {
+  color: #f1f1f1;
+}
+@media only screen and (max-width: 24em) {
+  html body .container main section#intro figure figcaption {
+    border-width: 0;
+    top: 0;
+  }
+}
+html body .container #footer #company address {
+  font-size: small;
+  color: #bebebe;
+  max-width: 21.875em;
+}
+html body .container #footer #company address {
+  max-width: 35em;
+  margin: 1.25em 0;
+}
+html body.page .container main section h2 {
+  width: calc(17% - 1.25em - 2px);
+}
+@media only screen and (max-width: 64em) {
+  html body.page .container main section h2 {
+    width: calc(32.33333% - 1.25em - 2px);
+  }
+}
+@media only screen and (max-width: 47.999em) {
+  html body.page .container main section h2 {
+    width: calc(44% - 1.25em - 2px);
+  }
+}
+@media only screen and (max-width: 24em) {
+  html body.page .container main section h2 {
+    width: calc(100% - 1.25em - 2px);
+  }
+}
+html body.page .container main section#filters ul li {
+  background: #1f1f1f;
+  color: #f1f1f1;
+  padding: 0.3125em;
+  width: calc(17% - 0.625em - 0px);
+}
+html body.page .container main section#filters ul li a {
+  color: #f1f1f1;
+}
+html body.single-post main #index {
+  margin-top: 0;
+}
+html body.single-post main #index article.product header {
+  display: none;
+}
+html body.single-post main #index article.product figure {
+  margin-bottom: 1.25em;
+}
+html body.single-post main #index article.product figure figcaption {
+  display: none;
+}
+html body.single-post main #index article.product aside #price {
+  margin: 0;
+  display: block;
+  list-style-type: none;
+}
+html body.single-post main #index article.product aside #price li {
+  display: inline-block;
+  float: left;
+  margin-right: 1.25em;
+}
+html body.single-post main #index article.product aside #price li:last-of-type {
+  margin-right: 0;
+}
+html body.single-post main #index article.product aside #price li:nth-of-type(1) {
+  font-weight: bold;
+  margin-right: 0.625em;
+}
+html body.single-post main #index article.product aside #price li:nth-of-type(2) {
+  text-decoration: line-through;
+  margin-right: 0;
+}
+html body.single-post main #index article.product aside #price, html body.single-post main #index article.product aside #dimension {
+  width: 100%;
+  float: left;
+  padding: 0.625em;
+  border: 1px solid;
+  word-wrap: break-word;
+  width: 51%;
+  margin-bottom: 1.25em;
+}
+html body.single-post main #index article.product aside #content {
+  width: 100%;
+  float: left;
+  max-width: 43.75em;
+  line-height: 1.75;
+  /* Headings
+  */
+  /* Elements
+  */
+  /* Padding of individual elements
+  */
+  /* Padding of consecutive elements
+  */
+}
+html body.single-post main #index article.product aside #content h1, html body.single-post main #index article.product aside #content h2, html body.single-post main #index article.product aside #content h3 {
+  font-size: 20px;
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+html body.single-post main #index article.product aside #content h1 {
+  font-weight: bold;
+}
+html body.single-post main #index article.product aside #content h2 {
+  text-transform: uppercase;
+  letter-spacing: 0.15625em;
+}
+html body.single-post main #index article.product aside #content h4, html body.single-post main #index article.product aside #content h5, html body.single-post main #index article.product aside #content h6 {
+  font-size: larger;
+}
+html body.single-post main #index article.product aside #content h1, html body.single-post main #index article.product aside #content h2, html body.single-post main #index article.product aside #content h3 {
+  line-height: 1.1;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 1.45833em 0;
+}
+html body.single-post main #index article.product aside #content em, html body.single-post main #index article.product aside #content i {
+  font-style: italic;
+}
+html body.single-post main #index article.product aside #content strong, html body.single-post main #index article.product aside #content b {
+  font-weight: bold;
+}
+html body.single-post main #index article.product aside #content ul {
+  list-style: none outside;
+}
+html body.single-post main #index article.product aside #content ul li {
+  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
+    - this way we can perfectly align the bullets / numbering to the list content
+  */
+  position: relative;
+  padding-left: 1.25em;
+}
+html body.single-post main #index article.product aside #content ul li:before {
+  content: "\271A";
+  /* making the content of the list perfectly align with numbering
+    - <li> is relatively positioned
+    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
+    - the the <li> content has a padding-left to not overlap the numbering
+  */
+  position: absolute;
+  left: 0;
+}
+html body.single-post main #index article.product aside #content ol {
+  list-style: none outside;
+  counter-reset: ol-counter;
+}
+html body.single-post main #index article.product aside #content ol li {
+  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
+    - this way we can perfectly align the bullets / numbering to the list content
+  */
+  position: relative;
+  padding-left: 1.25em;
+}
+html body.single-post main #index article.product aside #content ol li:before {
+  /* making the content of the list perfectly align with numbering
+    - <li> is relatively positioned
+    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
+    - the the <li> content has a padding-left to not overlap the numbering
+  */
+  position: absolute;
+  left: 0;
+}
+html body.single-post main #index article.product aside #content ol li {
+  counter-increment: ol-counter;
+}
+html body.single-post main #index article.product aside #content ol li:before {
+  content: counter(ol-counter,decimal);
+}
+html body.single-post main #index article.product aside #content dl dt {
+  font-size: 20px;
+  font-size: 1.25rem;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.15625em;
+}
+html body.single-post main #index article.product aside #content table {
+  width: 100%;
+  display: table !important;
+}
+html body.single-post main #index article.product aside #content table thead {
+  background: #1f1f1f;
+  color: #f1f1f1;
+}
+html body.single-post main #index article.product aside #content table thead a {
+  color: #f1f1f1;
+}
+html body.single-post main #index article.product aside #content table thead th, html body.single-post main #index article.product aside #content table tbody td {
+  padding: 1.25em;
+  padding-left: 0;
+}
+html body.single-post main #index article.product aside #content table tbody td {
+  border-bottom: 1px solid #bebebe;
+}
+html body.single-post main #index article.product aside #content figure img {
+  -webkit-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  width: auto;
+}
+html body.single-post main #index article.product aside #content figure figcaption {
+  font-size: smaller;
+}
+html body.single-post main #index article.product aside #content form {
+  /* Reset */
+  /* Text */
+  /* Button */
+  /* Stretching and padding */
+}
+html body.single-post main #index article.product aside #content form input, html body.single-post main #index article.product aside #content form textarea, html body.single-post main #index article.product aside #content form select {
+  border: none;
+  outline: 0;
+  background: #f1f1f1;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+html body.single-post main #index article.product aside #content form input[type='text'], html body.single-post main #index article.product aside #content form input[type='email'], html body.single-post main #index article.product aside #content form input[type='password'], html body.single-post main #index article.product aside #content form textarea {
+  border: 1px solid #1f1f1f;
+  font-style: italic;
+}
+html body.single-post main #index article.product aside #content form input[type='submit'] {
+  text-transform: uppercase;
+  letter-spacing: 0.15625em;
+  border: 1px solid #1f1f1f;
+  cursor: pointer;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+html body.single-post main #index article.product aside #content form input[type='submit']:hover {
+  background: #f3aaaa;
+}
+html body.single-post main #index article.product aside #content form label, html body.single-post main #index article.product aside #content form input, html body.single-post main #index article.product aside #content form textarea {
+  width: 100%;
+  float: left;
+}
+html body.single-post main #index article.product aside #content form input, html body.single-post main #index article.product aside #content form textarea {
+  padding: 0.625em;
+  width: calc(100% - 1.25em);
+}
+html body.single-post main #index article.product aside #content blockquote, html body.single-post main #index article.product aside #content q {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  /* Making room to the " sign 
+  */
+  position: relative;
+  float: left;
+  padding: 12.5em 0 2.5em 5em;
+  /* Fill the parent block
+  */
+  width: 100%;
+  float: left;
+  text-align: right;
+  width: calc(43.75em - 5em);
+  /*
+  @include below-and-small-screen {
+    width: calc(100% - 5em);
+  }
+  */
+}
+html body.single-post main #index article.product aside #content blockquote:before, html body.single-post main #index article.product aside #content q:before {
+  content: '\201C';
+  font-size: 1400%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+html body.single-post main #index article.product aside #content ul, html body.single-post main #index article.product aside #content ol, html body.single-post main #index article.product aside #content dl, html body.single-post main #index article.product aside #content table, html body.single-post main #index article.product aside #content figure, html body.single-post main #index article.product aside #content form, html body.single-post main #index article.product aside #content q {
+  margin: 1.25em 0;
+}
+html body.single-post main #index article.product aside #content figure {
+  margin-top: 2.5em;
+}
+html body.single-post main #index article.product aside #content dd + dt {
+  margin-top: 1.25em;
+}
+html body.single-post main #index article.product aside #content p + p {
+  margin-top: 1.25em;
+}
+html body.single-post main #index article.product aside #content h1 + h2, html body.single-post main #index article.product aside #content h2 + h3 {
+  padding-top: 0;
+}
+html body.single-post main #index article.product aside #content h1 + ul, html body.single-post main #index article.product aside #content h2 + ul, html body.single-post main #index article.product aside #content h3 + ul,
+html body.single-post main #index article.product aside #content h1 + ol, html body.single-post main #index article.product aside #content h2 + ol, html body.single-post main #index article.product aside #content h3 + ol {
+  margin-top: 0;
+}
+html body.single-post main #index article.product aside #content li ul, html body.single-post main #index article.product aside #content li ol {
+  margin-top: 0;
+}
+html body.single-post main #index article.product aside #content img {
+  display: none;
+}
+html body.page main #index {
+  margin-top: 0;
+}
+html body.page main #index article.thumb, html body.page main #index #comments {
+  float: left;
+  max-width: 43.75em;
+  line-height: 1.75;
+  /* Headings
+  */
+  /* Elements
+  */
+  /* Padding of individual elements
+  */
+  /* Padding of consecutive elements
+  */
+}
+html body.page main #index article.thumb h1, html body.page main #index article.thumb h2, html body.page main #index article.thumb h3, html body.page main #index #comments h1, html body.page main #index #comments h2, html body.page main #index #comments h3 {
+  font-size: 20px;
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+html body.page main #index article.thumb h1, html body.page main #index #comments h1 {
+  font-weight: bold;
+}
+html body.page main #index article.thumb h2, html body.page main #index #comments h2 {
+  text-transform: uppercase;
+  letter-spacing: 0.15625em;
+}
+html body.page main #index article.thumb h4, html body.page main #index article.thumb h5, html body.page main #index article.thumb h6, html body.page main #index #comments h4, html body.page main #index #comments h5, html body.page main #index #comments h6 {
+  font-size: larger;
+}
+html body.page main #index article.thumb h1, html body.page main #index article.thumb h2, html body.page main #index article.thumb h3, html body.page main #index #comments h1, html body.page main #index #comments h2, html body.page main #index #comments h3 {
+  line-height: 1.1;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 1.45833em 0;
+}
+html body.page main #index article.thumb em, html body.page main #index article.thumb i, html body.page main #index #comments em, html body.page main #index #comments i {
+  font-style: italic;
+}
+html body.page main #index article.thumb strong, html body.page main #index article.thumb b, html body.page main #index #comments strong, html body.page main #index #comments b {
+  font-weight: bold;
+}
+html body.page main #index article.thumb ul, html body.page main #index #comments ul {
+  list-style: none outside;
+}
+html body.page main #index article.thumb ul li, html body.page main #index #comments ul li {
+  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
+    - this way we can perfectly align the bullets / numbering to the list content
+  */
+  position: relative;
+  padding-left: 1.25em;
+}
+html body.page main #index article.thumb ul li:before, html body.page main #index #comments ul li:before {
+  content: "\271A";
+  /* making the content of the list perfectly align with numbering
+    - <li> is relatively positioned
+    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
+    - the the <li> content has a padding-left to not overlap the numbering
+  */
+  position: absolute;
+  left: 0;
+}
+html body.page main #index article.thumb ol, html body.page main #index #comments ol {
+  list-style: none outside;
+  counter-reset: ol-counter;
+}
+html body.page main #index article.thumb ol li, html body.page main #index #comments ol li {
+  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
+    - this way we can perfectly align the bullets / numbering to the list content
+  */
+  position: relative;
+  padding-left: 1.25em;
+}
+html body.page main #index article.thumb ol li:before, html body.page main #index #comments ol li:before {
+  /* making the content of the list perfectly align with numbering
+    - <li> is relatively positioned
+    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
+    - the the <li> content has a padding-left to not overlap the numbering
+  */
+  position: absolute;
+  left: 0;
+}
+html body.page main #index article.thumb ol li, html body.page main #index #comments ol li {
+  counter-increment: ol-counter;
+}
+html body.page main #index article.thumb ol li:before, html body.page main #index #comments ol li:before {
+  content: counter(ol-counter,decimal);
+}
+html body.page main #index article.thumb dl dt, html body.page main #index #comments dl dt {
+  font-size: 20px;
+  font-size: 1.25rem;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.15625em;
+}
+html body.page main #index article.thumb table, html body.page main #index #comments table {
+  width: 100%;
+  display: table !important;
+}
+html body.page main #index article.thumb table thead, html body.page main #index #comments table thead {
+  background: #1f1f1f;
+  color: #f1f1f1;
+}
+html body.page main #index article.thumb table thead a, html body.page main #index #comments table thead a {
+  color: #f1f1f1;
+}
+html body.page main #index article.thumb table thead th, html body.page main #index article.thumb table tbody td, html body.page main #index #comments table thead th, html body.page main #index #comments table tbody td {
+  padding: 1.25em;
+  padding-left: 0;
+}
+html body.page main #index article.thumb table tbody td, html body.page main #index #comments table tbody td {
+  border-bottom: 1px solid #bebebe;
+}
+html body.page main #index article.thumb figure img, html body.page main #index #comments figure img {
+  -webkit-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  width: auto;
+}
+html body.page main #index article.thumb figure figcaption, html body.page main #index #comments figure figcaption {
+  font-size: smaller;
+}
+html body.page main #index article.thumb form, html body.page main #index #comments form {
+  /* Reset */
+  /* Text */
+  /* Button */
+  /* Stretching and padding */
+}
+html body.page main #index article.thumb form input, html body.page main #index article.thumb form textarea, html body.page main #index article.thumb form select, html body.page main #index #comments form input, html body.page main #index #comments form textarea, html body.page main #index #comments form select {
+  border: none;
+  outline: 0;
+  background: #f1f1f1;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+html body.page main #index article.thumb form input[type='text'], html body.page main #index article.thumb form input[type='email'], html body.page main #index article.thumb form input[type='password'], html body.page main #index article.thumb form textarea, html body.page main #index #comments form input[type='text'], html body.page main #index #comments form input[type='email'], html body.page main #index #comments form input[type='password'], html body.page main #index #comments form textarea {
+  border: 1px solid #1f1f1f;
+  font-style: italic;
+}
+html body.page main #index article.thumb form input[type='submit'], html body.page main #index #comments form input[type='submit'] {
+  text-transform: uppercase;
+  letter-spacing: 0.15625em;
+  border: 1px solid #1f1f1f;
+  cursor: pointer;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+html body.page main #index article.thumb form input[type='submit']:hover, html body.page main #index #comments form input[type='submit']:hover {
+  background: #f3aaaa;
+}
+html body.page main #index article.thumb form label, html body.page main #index article.thumb form input, html body.page main #index article.thumb form textarea, html body.page main #index #comments form label, html body.page main #index #comments form input, html body.page main #index #comments form textarea {
+  width: 100%;
+  float: left;
+}
+html body.page main #index article.thumb form input, html body.page main #index article.thumb form textarea, html body.page main #index #comments form input, html body.page main #index #comments form textarea {
+  padding: 0.625em;
+  width: calc(100% - 1.25em);
+}
+html body.page main #index article.thumb blockquote, html body.page main #index article.thumb q, html body.page main #index #comments blockquote, html body.page main #index #comments q {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  /* Making room to the " sign 
+  */
+  position: relative;
+  float: left;
+  padding: 12.5em 0 2.5em 5em;
+  /* Fill the parent block
+  */
+  width: 100%;
+  float: left;
+  text-align: right;
+  width: calc(43.75em - 5em);
+  /*
+  @include below-and-small-screen {
+    width: calc(100% - 5em);
+  }
+  */
+}
+html body.page main #index article.thumb blockquote:before, html body.page main #index article.thumb q:before, html body.page main #index #comments blockquote:before, html body.page main #index #comments q:before {
+  content: '\201C';
+  font-size: 1400%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+html body.page main #index article.thumb ul, html body.page main #index article.thumb ol, html body.page main #index article.thumb dl, html body.page main #index article.thumb table, html body.page main #index article.thumb figure, html body.page main #index article.thumb form, html body.page main #index article.thumb q, html body.page main #index #comments ul, html body.page main #index #comments ol, html body.page main #index #comments dl, html body.page main #index #comments table, html body.page main #index #comments figure, html body.page main #index #comments form, html body.page main #index #comments q {
+  margin: 1.25em 0;
+}
+html body.page main #index article.thumb figure, html body.page main #index #comments figure {
+  margin-top: 2.5em;
+}
+html body.page main #index article.thumb dd + dt, html body.page main #index #comments dd + dt {
+  margin-top: 1.25em;
+}
+html body.page main #index article.thumb p + p, html body.page main #index #comments p + p {
+  margin-top: 1.25em;
+}
+html body.page main #index article.thumb h1 + h2, html body.page main #index article.thumb h2 + h3, html body.page main #index #comments h1 + h2, html body.page main #index #comments h2 + h3 {
+  padding-top: 0;
+}
+html body.page main #index article.thumb h1 + ul, html body.page main #index article.thumb h2 + ul, html body.page main #index article.thumb h3 + ul,
+html body.page main #index article.thumb h1 + ol, html body.page main #index article.thumb h2 + ol, html body.page main #index article.thumb h3 + ol, html body.page main #index #comments h1 + ul, html body.page main #index #comments h2 + ul, html body.page main #index #comments h3 + ul,
+html body.page main #index #comments h1 + ol, html body.page main #index #comments h2 + ol, html body.page main #index #comments h3 + ol {
+  margin-top: 0;
+}
+html body.page main #index article.thumb li ul, html body.page main #index article.thumb li ol, html body.page main #index #comments li ul, html body.page main #index #comments li ol {
+  margin-top: 0;
+}
+html body.page main #index article.thumb figure {
+  display: none;
+}
+html body.page main #index article.thumb aside #price, html body.page main #index article.thumb aside #dimension {
+  display: none;
+}
+html body.page main #index article.thumb aside #content img {
+  width: 100%;
+}
+html body.page main #index #comments {
+  max-width: 43.75em;
+  margin: 1.25em 0;
+  background: #1f1f1f;
+  color: #f1f1f1;
+  padding: 1.25em;
+  width: calc(100% - 2.5em);
+}
+html body.page main #index #comments a {
+  color: #f1f1f1;
+}
+html body.page main #index #comments form {
+  /* Reset */
+  /* Text */
+  /* Button */
+  /* Stretching and padding */
+}
+html body.page main #index #comments form input, html body.page main #index #comments form textarea, html body.page main #index #comments form select {
+  border: none;
+  outline: 0;
+  background: #f1f1f1;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+html body.page main #index #comments form input[type='text'], html body.page main #index #comments form input[type='email'], html body.page main #index #comments form input[type='password'], html body.page main #index #comments form textarea {
+  border: 1px solid #1f1f1f;
+  font-style: italic;
+}
+html body.page main #index #comments form input[type='submit'] {
+  text-transform: uppercase;
+  letter-spacing: 0.15625em;
+  border: 1px solid #1f1f1f;
+  cursor: pointer;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+html body.page main #index #comments form input[type='submit']:hover {
+  background: #f3aaaa;
+}
+html body.page main #index #comments form label, html body.page main #index #comments form input, html body.page main #index #comments form textarea {
+  width: 100%;
+  float: left;
+}
+html body.page main #index #comments form input, html body.page main #index #comments form textarea {
+  padding: 0.625em;
+  width: calc(100% - 1.25em);
+}
+html body.page main #index #comments h3, html body.page main #index #comments h2 {
+  margin-bottom: 1.25em;
+}
+html body.page main #index #comments ol li {
+  margin-bottom: 1.25em;
+  padding-bottom: 1.25em;
+  border-bottom: 1px solid #bebebe;
+  max-width: 43.75em;
+  line-height: 1.75;
+  /* Headings
+  */
+  /* Elements
+  */
+  /* Padding of individual elements
+  */
+  /* Padding of consecutive elements
+  */
+}
+html body.page main #index #comments ol li h1, html body.page main #index #comments ol li h2, html body.page main #index #comments ol li h3 {
+  font-size: 20px;
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+html body.page main #index #comments ol li h1 {
+  font-weight: bold;
+}
+html body.page main #index #comments ol li h2 {
+  text-transform: uppercase;
+  letter-spacing: 0.15625em;
+}
+html body.page main #index #comments ol li h4, html body.page main #index #comments ol li h5, html body.page main #index #comments ol li h6 {
+  font-size: larger;
+}
+html body.page main #index #comments ol li h1, html body.page main #index #comments ol li h2, html body.page main #index #comments ol li h3 {
+  line-height: 1.1;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding: 1.45833em 0;
+}
+html body.page main #index #comments ol li em, html body.page main #index #comments ol li i {
+  font-style: italic;
+}
+html body.page main #index #comments ol li strong, html body.page main #index #comments ol li b {
+  font-weight: bold;
+}
+html body.page main #index #comments ol li ul {
+  list-style: none outside;
+}
+html body.page main #index #comments ol li ul li {
+  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
+    - this way we can perfectly align the bullets / numbering to the list content
+  */
+  position: relative;
+  padding-left: 1.25em;
+}
+html body.page main #index #comments ol li ul li:before {
+  content: "\271A";
+  /* making the content of the list perfectly align with numbering
+    - <li> is relatively positioned
+    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
+    - the the <li> content has a padding-left to not overlap the numbering
+  */
+  position: absolute;
+  left: 0;
+}
+html body.page main #index #comments ol li ol {
+  list-style: none outside;
+  counter-reset: ol-counter;
+}
+html body.page main #index #comments ol li ol li {
+  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
+    - this way we can perfectly align the bullets / numbering to the list content
+  */
+  position: relative;
+  padding-left: 1.25em;
+}
+html body.page main #index #comments ol li ol li:before {
+  /* making the content of the list perfectly align with numbering
+    - <li> is relatively positioned
+    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
+    - the the <li> content has a padding-left to not overlap the numbering
+  */
+  position: absolute;
+  left: 0;
+}
+html body.page main #index #comments ol li ol li {
+  counter-increment: ol-counter;
+}
+html body.page main #index #comments ol li ol li:before {
+  content: counter(ol-counter,decimal);
+}
+html body.page main #index #comments ol li dl dt {
+  font-size: 20px;
+  font-size: 1.25rem;
+  font-weight: normal;
+  text-transform: uppercase;
+  letter-spacing: 0.15625em;
+}
+html body.page main #index #comments ol li table {
+  width: 100%;
+  display: table !important;
+}
+html body.page main #index #comments ol li table thead {
+  background: #1f1f1f;
+  color: #f1f1f1;
+}
+html body.page main #index #comments ol li table thead a {
+  color: #f1f1f1;
+}
+html body.page main #index #comments ol li table thead th, html body.page main #index #comments ol li table tbody td {
+  padding: 1.25em;
+  padding-left: 0;
+}
+html body.page main #index #comments ol li table tbody td {
+  border-bottom: 1px solid #bebebe;
+}
+html body.page main #index #comments ol li figure img {
+  -webkit-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  width: auto;
+}
+html body.page main #index #comments ol li figure figcaption {
+  font-size: smaller;
+}
+html body.page main #index #comments ol li form {
+  /* Reset */
+  /* Text */
+  /* Button */
+  /* Stretching and padding */
+}
+html body.page main #index #comments ol li form input, html body.page main #index #comments ol li form textarea, html body.page main #index #comments ol li form select {
+  border: none;
+  outline: 0;
+  background: #f1f1f1;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+html body.page main #index #comments ol li form input[type='text'], html body.page main #index #comments ol li form input[type='email'], html body.page main #index #comments ol li form input[type='password'], html body.page main #index #comments ol li form textarea {
+  border: 1px solid #1f1f1f;
+  font-style: italic;
+}
+html body.page main #index #comments ol li form input[type='submit'] {
+  text-transform: uppercase;
+  letter-spacing: 0.15625em;
+  border: 1px solid #1f1f1f;
+  cursor: pointer;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+html body.page main #index #comments ol li form input[type='submit']:hover {
+  background: #f3aaaa;
+}
+html body.page main #index #comments ol li form label, html body.page main #index #comments ol li form input, html body.page main #index #comments ol li form textarea {
+  width: 100%;
+  float: left;
+}
+html body.page main #index #comments ol li form input, html body.page main #index #comments ol li form textarea {
+  padding: 0.625em;
+  width: calc(100% - 1.25em);
+}
+html body.page main #index #comments ol li blockquote, html body.page main #index #comments ol li q {
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  /* Making room to the " sign 
+  */
+  position: relative;
+  float: left;
+  padding: 12.5em 0 2.5em 5em;
+  /* Fill the parent block
+  */
+  width: 100%;
+  float: left;
+  text-align: right;
+  width: calc(43.75em - 5em);
+  /*
+  @include below-and-small-screen {
+    width: calc(100% - 5em);
+  }
+  */
+}
+html body.page main #index #comments ol li blockquote:before, html body.page main #index #comments ol li q:before {
+  content: '\201C';
+  font-size: 1400%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+html body.page main #index #comments ol li ul, html body.page main #index #comments ol li ol, html body.page main #index #comments ol li dl, html body.page main #index #comments ol li table, html body.page main #index #comments ol li figure, html body.page main #index #comments ol li form, html body.page main #index #comments ol li q {
+  margin: 1.25em 0;
+}
+html body.page main #index #comments ol li figure {
+  margin-top: 2.5em;
+}
+html body.page main #index #comments ol li dd + dt {
+  margin-top: 1.25em;
+}
+html body.page main #index #comments ol li p + p {
+  margin-top: 1.25em;
+}
+html body.page main #index #comments ol li h1 + h2, html body.page main #index #comments ol li h2 + h3 {
+  padding-top: 0;
+}
+html body.page main #index #comments ol li h1 + ul, html body.page main #index #comments ol li h2 + ul, html body.page main #index #comments ol li h3 + ul,
+html body.page main #index #comments ol li h1 + ol, html body.page main #index #comments ol li h2 + ol, html body.page main #index #comments ol li h3 + ol {
+  margin-top: 0;
+}
+html body.page main #index #comments ol li li ul, html body.page main #index #comments ol li li ol {
+  margin-top: 0;
+}
+html body.page main #index #comments ol li a {
+  color: #f3aaaa;
+  text-decoration: none;
+  outline: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.15625em;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+html body.page main #index #comments ol li a:hover, html body.page main #index #comments ol li a:focus {
+  color: #f3aaaa;
+}
+html body.page main #index #comments ol li .reply {
+  margin: 0.625em 0;
+}
+html body.page main #index #comments ol li .vcard {
+  display: none;
+}
+html body.page main #index #comments ol.children {
+  margin: 1.25em;
+}
+html body.page main #index #comments form {
+  width: 60%;
+}
+html body.page main #index #comments form input, html body.page main #index #comments form textarea {
+  margin-bottom: 0.625em;
+}
+html body.page main #index #comments form input#submit, html body.page main #index #comments form textarea#submit {
+  width: 15em;
+}
+html body.page main #sidebar {
+  padding: 0.625em;
+  border: 1px solid;
+  word-wrap: break-word;
+  padding: 2.5em;
+  width: calc(33.1953% - 5em - 2px);
+}
+html body.page main #sidebar ul {
+  list-style: none outside;
+}
+html body.page main #sidebar ul li {
+  /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
+    - this way we can perfectly align the bullets / numbering to the list content
+  */
+  position: relative;
+  padding-left: 1.25em;
+}
+html body.page main #sidebar ul li:before {
+  content: "\271A";
+  /* making the content of the list perfectly align with numbering
+    - <li> is relatively positioned
+    - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
+    - the the <li> content has a padding-left to not overlap the numbering
+  */
+  position: absolute;
+  left: 0;
+}
+html body.page main #sidebar h3 {
+  display: none;
+}
+html body.page main #sidebar ul li {
+  margin: 0.625em 0;
+}
+@media only screen and (max-width: 63.999em) {
+  html body.page main #sidebar {
+    padding: 1.25em;
+    width: calc(100% - 2.5em - 2px);
   }
 }
