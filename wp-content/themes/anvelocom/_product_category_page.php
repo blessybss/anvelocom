@@ -7,7 +7,9 @@
 
 <?php if (!empty($FILTERS_LABELS[$page])) { ?>
   <section id="filters">
-    <h2>Configurator</h2>
+    <header>
+      <h2>Configurator</h2>
+    </header>
     
     <ul id="labels">
       <?php foreach ($FILTERS_LABELS[$page] as $label) { ?>

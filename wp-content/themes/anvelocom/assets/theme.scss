@@ -216,21 +216,12 @@ html {
       
       main {
         section {
-          h2 {
-            @include bordered;  
-            margin-bottom: $pad;
-            width: col-resize(col-width(5), $pad, 2px); 
-            
-            @include below-and-small-screen {
-              width: col-resize(col-width(3), $pad, 2px);
-            }
-            
-            @include below-tablet {
-              width: col-resize(col-width(2), $pad, 2px);
-            }
-            
-            @include mobile {
-              width: col-resize(100%, $pad, 2px);
+          header {
+            h2 {
+              @include bordered;  
+              margin-bottom: $pad;
+              width: auto;
+              display: inline-block;
             }
           }
             
@@ -281,22 +272,6 @@ html {
       .container {
         main {
           section {
-            h2 {
-              width: col-resize(isotope-col-width(5), $pad, 2px); 
-            
-              @include below-and-small-screen {
-                width: col-resize(isotope-col-width(3), $pad, 2px);
-              }
-              
-              @include below-tablet {
-                width: col-resize(isotope-col-width(2), $pad, 2px);
-              }
-              
-              @include mobile {
-                width: col-resize(100%, $pad, 2px);
-              }
-            }
-            
             &#filters {
               ul {
                 li {

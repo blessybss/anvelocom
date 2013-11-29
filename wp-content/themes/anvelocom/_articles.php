@@ -9,11 +9,13 @@
 <?php if ($articles) { ?>
 
   <section id="<?php echo $id ?>" class="articles">
-    <h2>
-      <?php
-        echo ($link) ? "<a href='" . $link . "'>" . $title . "</a>" : $title;
-      ?>
-    </h2>
+    <header>
+      <h2>
+        <?php
+          echo ($link) ? "<a href='" . $link . "'>" . $title . "</a>" : $title;
+        ?>
+      </h2>
+    </header>
     <?php 
       foreach ($articles as $index => $article) { 
         $klass = thumb_class($index + 1);

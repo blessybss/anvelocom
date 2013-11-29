@@ -28,7 +28,9 @@
 ?>
 
   <section id="index" class="<?php echo $section_klass ?>">
-    <h2>Content</h2>
+    <header>
+      <h2>Content</h2>
+    </header>
     <?php 
       if (have_posts()) {
         $index = 0;

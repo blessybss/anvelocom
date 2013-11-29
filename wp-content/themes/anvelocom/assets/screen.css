@@ -920,27 +920,13 @@ html body .container #header nav {
     margin-top: 0.625em;
   }
 }
-html body .container main section h2 {
+html body .container main section header h2 {
   padding: 0.625em;
   border: 1px solid;
   word-wrap: break-word;
   margin-bottom: 1.25em;
-  width: calc(18% - 1.25em - 2px);
-}
-@media only screen and (max-width: 64em) {
-  html body .container main section h2 {
-    width: calc(30% - 1.25em - 2px);
-  }
-}
-@media only screen and (max-width: 47.999em) {
-  html body .container main section h2 {
-    width: calc(45% - 1.25em - 2px);
-  }
-}
-@media only screen and (max-width: 24em) {
-  html body .container main section h2 {
-    width: calc(100% - 1.25em - 2px);
-  }
+  width: auto;
+  display: inline-block;
 }
 html body .container main section.articles article.thumb aside {
   display: block;
@@ -1008,24 +994,6 @@ html body .container #footer #company address {
 html body .container #footer #company address {
   max-width: 35em;
   margin: 1.25em 0;
-}
-html body.page .container main section h2 {
-  width: calc(17% - 1.25em - 2px);
-}
-@media only screen and (max-width: 64em) {
-  html body.page .container main section h2 {
-    width: calc(32.33333% - 1.25em - 2px);
-  }
-}
-@media only screen and (max-width: 47.999em) {
-  html body.page .container main section h2 {
-    width: calc(44% - 1.25em - 2px);
-  }
-}
-@media only screen and (max-width: 24em) {
-  html body.page .container main section h2 {
-    width: calc(100% - 1.25em - 2px);
-  }
 }
 html body.page .container main section#filters ul li {
   background: #1f1f1f;
