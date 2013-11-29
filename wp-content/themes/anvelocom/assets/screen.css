@@ -245,8 +245,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 */
 /* Remove a section or nav title required by HTML5 outliner
 */
-/* Images are not well sized. On thumbs they will be cut to a precise size
-*/
 html body {
   background: #f1f1f1;
   color: #1f1f1f;
@@ -523,14 +521,6 @@ html body .container main section.articles article.thumb header, html body .cont
 }
 html body .container main section.articles article.thumb figure {
   display: block;
-}
-html body .container main section.articles figure div {
-  max-height: 10em;
-  overflow: hidden;
-  background: #fff;
-}
-html body .container main section.articles figure div img {
-  width: 100%;
 }
 html body .container main section#index h2, html body .container main section#index h3, html body .container main section#index h4 {
   display: none;
@@ -910,7 +900,6 @@ html body .container #header {
 html body .container #header h1 {
   padding: 0.625em;
   border: 1px solid;
-  word-wrap: break-word;
 }
 html body .container #header nav {
   margin-top: 0.9375em;
@@ -923,38 +912,66 @@ html body .container #header nav {
 html body .container main section header h2 {
   padding: 0.625em;
   border: 1px solid;
-  word-wrap: break-word;
   margin-bottom: 1.25em;
   width: auto;
   display: inline-block;
 }
-html body .container main section.articles article.thumb aside {
+html body .container main section.articles article.thumb, html body .container main section.articles article.product {
+  height: 19em;
+}
+@media only screen and (orientation: landscape) {
+  html body .container main section.articles article.thumb, html body .container main section.articles article.product {
+    height: 23em;
+  }
+}
+html body .container main section.articles article.thumb figure, html body .container main section.articles article.product figure {
+  height: 17em;
+  padding: 0.625em;
+  border: 1px solid;
+}
+@media only screen and (orientation: landscape) {
+  html body .container main section.articles article.thumb figure, html body .container main section.articles article.product figure {
+    height: 21em;
+  }
+}
+html body .container main section.articles article.thumb figure div, html body .container main section.articles article.product figure div {
+  max-height: 10em;
+  overflow: hidden;
+}
+html body .container main section.articles article.thumb figure div img, html body .container main section.articles article.product figure div img {
+  width: 100%;
+}
+html body .container main section.articles article.thumb figure figcaption, html body .container main section.articles article.product figure figcaption {
+  margin: 1.25em 0;
+}
+html body .container main section.articles article.thumb aside, html body .container main section.articles article.product aside {
   display: block;
 }
-html body .container main section.articles article.thumb aside h2, html body .container main section.articles article.thumb aside h3, html body .container main section.articles article.thumb aside h4 {
+html body .container main section.articles article.thumb aside h2, html body .container main section.articles article.thumb aside h3, html body .container main section.articles article.thumb aside h4, html body .container main section.articles article.product aside h2, html body .container main section.articles article.product aside h3, html body .container main section.articles article.product aside h4 {
   display: none;
 }
-html body .container main section.articles article.thumb aside #dimension, html body .container main section.articles article.thumb aside #content {
+html body .container main section.articles article.thumb aside #dimension, html body .container main section.articles article.thumb aside #content, html body .container main section.articles article.product aside #dimension, html body .container main section.articles article.product aside #content {
   display: none;
 }
-html body .container main section.articles article.thumb aside #price {
+html body .container main section.articles article.thumb aside #price, html body .container main section.articles article.product aside #price {
+  display: block;
   margin: 0;
   display: block;
   list-style-type: none;
 }
-html body .container main section.articles article.thumb aside #price li {
+html body .container main section.articles article.thumb aside #price li, html body .container main section.articles article.product aside #price li {
   display: inline-block;
   float: left;
   margin-right: 1.25em;
 }
-html body .container main section.articles article.thumb aside #price li:last-of-type {
+html body .container main section.articles article.thumb aside #price li:last-of-type, html body .container main section.articles article.product aside #price li:last-of-type {
   margin-right: 0;
 }
-html body .container main section.articles article.thumb aside #price li:nth-of-type(1) {
+html body .container main section.articles article.thumb aside #price li:nth-of-type(1), html body .container main section.articles article.product aside #price li:nth-of-type(1) {
   font-weight: bold;
   margin-right: 0.625em;
 }
-html body .container main section.articles article.thumb aside #price li:nth-of-type(2) {
+html body .container main section.articles article.thumb aside #price li:nth-of-type(2), html body .container main section.articles article.product aside #price li:nth-of-type(2) {
   text-decoration: line-through;
   margin-right: 0;
 }
@@ -970,7 +987,6 @@ html body .container main section#intro figure figcaption {
   display: inline-block;
   padding: 0.625em;
   border: 1px solid;
-  word-wrap: break-word;
   border-width: 0.3125em;
   padding: 1.25em;
   background: #1f1f1f;
@@ -1016,6 +1032,16 @@ html body.single-post main #index article.product figure {
 html body.single-post main #index article.product figure figcaption {
   display: none;
 }
+html body.single-post main #index article.product aside {
+  background: white;
+  padding: 1.25em;
+  width: calc(56.8047% - 2.5em - 0px);
+}
+@media only screen and (max-width: 63.999em) {
+  html body.single-post main #index article.product aside {
+    width: calc(100% - 2.5em - 0px);
+  }
+}
 html body.single-post main #index article.product aside #price {
   margin: 0;
   display: block;
@@ -1042,7 +1068,6 @@ html body.single-post main #index article.product aside #price, html body.single
   float: left;
   padding: 0.625em;
   border: 1px solid;
-  word-wrap: break-word;
   width: 51%;
   margin-bottom: 1.25em;
 }
@@ -1470,6 +1495,10 @@ html body.page main #index #comments h1 + ol, html body.page main #index #commen
 html body.page main #index article.thumb li ul, html body.page main #index article.thumb li ol, html body.page main #index #comments li ul, html body.page main #index #comments li ol {
   margin-top: 0;
 }
+html body.page main #index article.thumb {
+  background: white;
+  padding: 1.25em;
+}
 html body.page main #index article.thumb figure {
   display: none;
 }
@@ -1777,7 +1806,6 @@ html body.page main #index #comments form input#submit, html body.page main #ind
 html body.page main #sidebar {
   padding: 0.625em;
   border: 1px solid;
-  word-wrap: break-word;
   padding: 2.5em;
   width: calc(33.1953% - 5em - 2px);
 }

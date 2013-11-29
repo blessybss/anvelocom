@@ -47,6 +47,12 @@ $breakpoint-large-screen: 90em !default; /* 1440px */
 	}
 }
 
+@mixin landscape {
+	@media only screen and (orientation : landscape) {
+		@content;
+	}
+}
+
 @mixin mobile {
 	@media only screen and (max-width: $breakpoint-mobile) {
 		@content;

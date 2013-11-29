@@ -8,11 +8,36 @@
 @mixin thumb-anvelocom($figcaption: true, $price: true) {
   article {
     &.thumb, &.product {
-      @if ($figcaption != true) {
-        figure {
-          figcaption {
-            display: none;
+      height: 19em;
+      @include landscape {
+        height: 23em;
+      }
+    
+      figure {
+        height: 17em;
+        @include landscape {
+          height: 21em;
+        }
+        
+        @include bordered;
+        
+        div {
+          max-height: 10em;
+          overflow: hidden;
+          
+          img {
+            width: 100%;
           }
+        }
+        
+        figcaption {
+          margin: $pad 0;
+        }
+      }
+      
+      @if ($figcaption != true) {
+        figcaption {
+          display: none;
         }
       }
       
@@ -27,6 +52,7 @@
           
           #price {
             display: block;
+            @include price;
           }
         }
       }
@@ -190,7 +216,6 @@
 @mixin bordered {
   padding: $pad/2;
   border: 1px solid;
-  word-wrap: break-word;
 }
 
 
@@ -226,19 +251,7 @@ html {
           }
             
           &.articles {
-            article.thumb {
-              aside {
-                display: block;
-                @include remove-title;
-                
-                #dimension, #content {
-                  display: none;
-                }
-                #price {
-                  @include price;
-                }
-              }
-            }
+            @include thumb-anvelocom;
           }
           
           
@@ -307,6 +320,13 @@ html {
             }
             
             aside {
+              background: white; 
+              padding: $pad;
+              width: col-resize($major - 5%, $pad*2, 0px);
+              @include below-small-screen {
+                width: col-resize(100%, $pad*2, 0px);
+              } 
+            
               #price {
                 @include price;
               }
@@ -347,6 +367,9 @@ html {
           
           article.thumb {
             @include page;
+            
+            background: white; 
+            padding: $pad;
           }
           
           #comments {
