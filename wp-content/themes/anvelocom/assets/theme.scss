@@ -3,6 +3,28 @@
 
 
 
+/* Brands will be naked unlike product thumbs
+*/
+@mixin remove-thumb-anvelocom {
+  article {
+    &.thumb {
+      height: auto !important;
+      
+      figure {
+        height: auto !important;
+        border: none;
+        
+        figcaption {
+          display: none;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+
+
 /* The product thumb must be styled specially for this theme
 */
 @mixin thumb-anvelocom($figcaption: true, $price: true) {
@@ -61,11 +83,70 @@
 }
 
 
+/* Display a single post
+*/
+@mixin single {
+  header {
+    display: none;
+  }
+  
+  figure {
+    figcaption {
+      display: none;
+    }
+    
+    @include mobile {
+      div {
+        img {
+          width: 100%;
+        }
+      }
+    }
+    
+    margin-bottom: $pad;
+  }
+  
+  aside {
+    background: white; 
+    padding: $pad;
+    width: col-resize($major - 5%, $pad*2, 0px);
+    @include below-small-screen {
+      width: col-resize(100%, $pad*2, 0px);
+    } 
+  
+    #price {
+      @include price;
+    }
+    
+    #price, #dimension {
+      @include block;
+      @include bordered;
+      width: 51%;
+      margin-bottom: $pad;
+      
+      @include mobile {
+        width: col-resize(100%, $pad*2, 0px);
+      }
+    }
+    
+    #content {
+      @include block;
+      @include body-text;
+      
+      img {
+        display: none;
+      }
+    }
+  }
+}
 
 
 /* Display page content
 */
 @mixin page {
+  background: white; 
+  padding: $pad;
+  
   figure {
     display: none;
   }
@@ -128,6 +209,10 @@
   form {
     width: 60%;
     
+    @include mobile {
+      width: 90%;
+    }
+    
     input, textarea {
       margin-bottom: $pad/2;
       
@@ -151,6 +236,7 @@
   }
   
   ul {
+    @include ol-ul('-');
     li {
       margin: $pad/2 0;
     }
@@ -196,6 +282,8 @@
   @include mobile {
     border-width: 0;
     top: 0;
+    margin-bottom: $pad;
+    display: block;
   }
 }
 
@@ -247,11 +335,20 @@ html {
               margin-bottom: $pad;
               width: auto;
               display: inline-block;
+              
+              @include mobile {
+                display: block;
+                width: col-resize(100%, $pad, 2px);
+              }
             }
           }
             
           &.articles {
             @include thumb-anvelocom;
+          }
+          
+          &#brands.articles {
+            @include remove-thumb-anvelocom;
           }
           
           
@@ -285,6 +382,19 @@ html {
       .container {
         main {
           section {
+            /* On mobiles the 'Configurator' border is removed
+            */
+            @include mobile {
+              &:nth-of-type(2) {
+                header {
+                  h2 {
+                    border: none;
+                    padding-left: 0;
+                  }
+                }
+              }
+            }
+            
             &#filters {
               ul {
                 li {
@@ -304,49 +414,8 @@ html {
     &.single-post {
       main {
         #index {
-          margin-top: 0;
-          
           article.product {
-            header {
-              display: none;
-            }
-            
-            figure {
-              figcaption {
-                display: none;
-              }
-              
-              margin-bottom: $pad;
-            }
-            
-            aside {
-              background: white; 
-              padding: $pad;
-              width: col-resize($major - 5%, $pad*2, 0px);
-              @include below-small-screen {
-                width: col-resize(100%, $pad*2, 0px);
-              } 
-            
-              #price {
-                @include price;
-              }
-              
-              #price, #dimension {
-                @include block;
-                @include bordered;
-                width: 51%;
-                margin-bottom: $pad;
-              }
-              
-              #content {
-                @include block;
-                @include body-text;
-                
-                img {
-                  display: none;
-                }
-              }
-            }
+            @include single;
           }
         }
       }
@@ -358,8 +427,6 @@ html {
     &.page {
       main {
         #index {
-          margin-top: 0;
-          
           article.thumb, #comments {
             float: left;
             @include body-text;
@@ -367,9 +434,6 @@ html {
           
           article.thumb {
             @include page;
-            
-            background: white; 
-            padding: $pad;
           }
           
           #comments {

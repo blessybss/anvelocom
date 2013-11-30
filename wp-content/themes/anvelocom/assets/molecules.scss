@@ -216,17 +216,16 @@
   label.select {
     &:after {
       content: $arrow-down;
+      @include transform(rotate(90deg));
       float: right;
       
       display: inline-block;
-      padding: 0 .45em;
       position: relative;
-      left: 0;
+      padding: 0;
+      left: -$pad/4;
       background: $background;
-      border: 1px solid;
-      
-      font-size: 140%;
-      top: -1.35em;
+      font-size: 150%;
+      top: -$pad;
       
       pointer-events: none; /* this is a must */
       cursor: pointer;
@@ -558,6 +557,18 @@
     &:last-of-type {
       margin-right: 0;
     }
+  }
+}
+
+/* A normal list (A reset of list inline)
+*/
+@mixin list-normal {
+  @include block;
+  
+  li {
+    display: block;
+    margin-right: 0;
+    float: none;
   }
 }
 

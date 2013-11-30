@@ -3,6 +3,39 @@
 */
 
 
+/* An arrow 
+  - to scroll to top of the page
+  - or to reveal a menu
+*/
+@mixin arrow($arrow: up, $hide: false) {
+  @if ($hide == false) {
+    cursor: pointer;
+    margin-right: 0;
+    
+    &:before {
+      content: $arrow-down;
+      font-size: $before-font-size;
+      display: block;
+      
+      @if ($arrow == up) {
+        @include transform(rotate(-90deg));
+      }
+      @if ($arrow == down) {
+        @include transform(rotate(90deg));
+      }
+    }
+  } @else {
+    &:before {
+      content: '';
+      padding: 0;
+      font-size: normal;
+      display: none;
+    }
+  }
+}
+
+
+
 
 
 /* A classic, horizontal menu for <nav> elements
@@ -42,7 +75,7 @@
     }    
     
     &:last-of-type {
-      @include arrow($arrow-down);
+      @include arrow(down);
       display: block;
       float: right;
     }
@@ -53,6 +86,19 @@
       &:last-of-type {
         @include arrow('', hide);
         float: left;
+      }
+    }
+  }
+  
+  @include mobile {
+    &.active {
+      /* Display the menu as a normal list
+      */
+      @include block;
+      
+      ul {
+        @include list-normal;
+        margin-left: $pad/2;
       }
     }
   }
@@ -120,6 +166,12 @@ html {
           @include block;
           margin: $pad 0 0;
           
+          /* The space between the intro image and real content is adjusted
+          */
+          &:nth-of-type(2) {
+            margin-top: 0;
+          }
+          
           &#intro {
             @include remove-title;
             @include figure(100%);
@@ -140,7 +192,7 @@ html {
           float: right;
           margin-right: 0;
           @include remove-title;
-          @include arrow($arrow-up); 
+          @include arrow(up); 
           
           @include below-mobile-landscape {
             float: left;

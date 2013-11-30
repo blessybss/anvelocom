@@ -7,31 +7,6 @@
 */
 
 
-/* An arrow 
-  - to scroll to top of the page
-  - or to reveal a menu
-*/
-@mixin arrow($arrow: $arrow-up, $hide: false) {
-  @if ($hide == false) {
-    cursor: pointer;
-    
-    &:before {
-      content: $arrow;
-      @include circle($pad);
-      font-size: $before-font-size;
-      display: block;
-    }
-  } @else {
-    &:before {
-      content: '';
-      padding: 0;
-      font-size: normal;
-      display: none;
-    }
-  }
-}
-
-
 
 
 

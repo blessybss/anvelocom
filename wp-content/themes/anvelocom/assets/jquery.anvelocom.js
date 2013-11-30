@@ -3,8 +3,10 @@ $(document).ready(function() {
 
   // Hide / reveal menu on mobiles
   $('#header nav').click(function() {
-    $('#header nav ul').slideToggle('slow'); 
-    $(this).toggleClass('active'); 
+    if (!($(this).hasClass('active'))) {
+      $('#header nav ul').slideDown('slow'); 
+      $('#header nav').addClass('active'); 
+    }
   });
   
   // Enable clickc on menu items
