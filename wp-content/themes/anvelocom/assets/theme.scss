@@ -44,23 +44,7 @@
           height: 21em;
         }
         
-        @include bordered;
-        
-        background: $background;
-        position: relative;
-        
-        &:after {
-          content: '';
-          @include bordered;
-          
-          top: 2%;
-          left: 2%;
-          width: 93%;
-          height: 94%;
-          
-          position: absolute;
-          z-index: -1;
-        }
+        @include bordered(double);
         
         div {
           max-height: 10em;
@@ -194,7 +178,7 @@
   
   @include color(invert);
   padding: $pad;
-  width: calc(100% - #{$pad*2});
+  width: col-resize(100%, $pad*2, 0px);
   
   @include form;
   
@@ -252,6 +236,7 @@
 @mixin sidebar {
   @include bordered;
   padding: $pad*2;
+  width: col-resize(100%, $pad*4, 2px);
   @include ul;
   
   h3 {
@@ -324,9 +309,28 @@
 
 /* Add border to text
 */
-@mixin bordered {
+@mixin bordered($type : simple) {
   padding: $pad/2;
   border: 1px solid;
+  
+  @if ($type == double) {
+    background: $background;
+    position: relative;
+    
+    &:after {
+      content: '';
+      padding: $pad/2;
+      border: 1px solid;
+      
+      top: 2%;
+      left: 2%;
+      width: 93%;
+      height: 94%;
+      
+      position: absolute;
+      z-index: -1;
+    }
+  }
 }
 
 
@@ -338,7 +342,7 @@ html {
       #header {
         h1 {
           @include bordered;
-          border: 6px double;
+          border: 3px solid;
         }
         /* Nav must be adjusted to the bordered header
         */
@@ -354,45 +358,11 @@ html {
       main {
         section {
           header {
-            height: 0;
-            
-            h2 {
-              @include bordered; 
-              width: auto;
-              display: inline-block;
-              
-              position: relative;
-              z-index: 2;
-              
-              @include color(invert);
-              
-              border: none;
-              top: 6em;
-              
-              @include mobile {
-                display: block;
-                width: col-resize(100%, $pad, 2px);
-              }
-            }
+            display: none;
           }
             
           &.articles {
             @include thumb-anvelocom;
-            
-            article.thumb {
-              &:first-of-type {
-                figure div, figure figcaption, aside {
-                  opacity: 0;
-                }
-                  
-                &:hover {
-                  figure div, figure figcaption, aside {
-                    opacity: 1;
-                  }
-                }
-              }
-            }
-            
           }
           
           &#brands.articles {

@@ -927,7 +927,7 @@ html body .container #header {
 html body .container #header h1 {
   padding: 0.625em;
   border: 1px solid;
-  border: 6px double;
+  border: 3px solid;
 }
 html body .container #header nav {
   margin-top: 1.25em;
@@ -938,28 +938,7 @@ html body .container #header nav {
   }
 }
 html body .container main section header {
-  height: 0;
-}
-html body .container main section header h2 {
-  padding: 0.625em;
-  border: 1px solid;
-  width: auto;
-  display: inline-block;
-  position: relative;
-  z-index: 2;
-  background: #1f1f1f;
-  color: #f1f1f1;
-  border: none;
-  top: 6em;
-}
-html body .container main section header h2 a {
-  color: #f1f1f1;
-}
-@media only screen and (max-width: 24em) {
-  html body .container main section header h2 {
-    display: block;
-    width: calc(100% - 1.25em - 2px);
-  }
+  display: none;
 }
 html body .container main section.articles article.thumb, html body .container main section.articles article.product {
   height: 19em;
@@ -1035,12 +1014,6 @@ html body .container main section.articles article.thumb aside #price li:nth-of-
 html body .container main section.articles article.thumb aside #price li:nth-of-type(2), html body .container main section.articles article.product aside #price li:nth-of-type(2) {
   text-decoration: line-through;
   margin-right: 0;
-}
-html body .container main section.articles article.thumb:first-of-type figure div, html body .container main section.articles article.thumb:first-of-type figure figcaption, html body .container main section.articles article.thumb:first-of-type aside {
-  opacity: 0;
-}
-html body .container main section.articles article.thumb:first-of-type:hover figure div, html body .container main section.articles article.thumb:first-of-type:hover figure figcaption, html body .container main section.articles article.thumb:first-of-type:hover aside {
-  opacity: 1;
 }
 html body .container main section#brands.articles article.thumb {
   height: auto !important;
@@ -1609,7 +1582,7 @@ html body.page main #index #comments {
   background: #1f1f1f;
   color: #f1f1f1;
   padding: 1.25em;
-  width: calc(100% - 2.5em);
+  width: calc(100% - 2.5em - 0px);
 }
 html body.page main #index #comments a {
   color: #f1f1f1;
@@ -1907,6 +1880,7 @@ html body.page main #sidebar {
   padding: 0.625em;
   border: 1px solid;
   padding: 2.5em;
+  width: calc(100% - 5em - 2px);
   width: calc(33.1953% - 5em - 2px);
 }
 html body.page main #sidebar ul {
