@@ -13,6 +13,7 @@
       figure {
         height: auto !important;
         border: none;
+        padding: 0;
         
         figcaption {
           display: none;
@@ -31,17 +32,35 @@
   article {
     &.thumb, &.product {
       height: 19em;
+      
       @include landscape {
         height: 23em;
       }
     
       figure {
         height: 17em;
+        
         @include landscape {
           height: 21em;
         }
         
         @include bordered;
+        
+        background: $background;
+        position: relative;
+        
+        &:after {
+          content: '';
+          @include bordered;
+          
+          top: 2%;
+          left: 2%;
+          width: 93%;
+          height: 94%;
+          
+          position: absolute;
+          z-index: -1;
+        }
         
         div {
           max-height: 10em;
@@ -75,6 +94,10 @@
           #price {
             display: block;
             @include price;
+            
+            position: relative;
+            top: -$pad - $pad/2;
+            left: $pad/2;
           }
         }
       }
@@ -315,11 +338,12 @@ html {
       #header {
         h1 {
           @include bordered;
+          border: 6px double;
         }
         /* Nav must be adjusted to the bordered header
         */
         nav {
-          margin-top: $pad - $pad/4;
+          margin-top: $pad;
           
           @include below-tablet {
             margin-top: $pad/2;
@@ -330,11 +354,20 @@ html {
       main {
         section {
           header {
+            height: 0;
+            
             h2 {
-              @include bordered;  
-              margin-bottom: $pad;
+              @include bordered; 
               width: auto;
               display: inline-block;
+              
+              position: relative;
+              z-index: 2;
+              
+              @include color(invert);
+              
+              border: none;
+              top: 6em;
               
               @include mobile {
                 display: block;
@@ -345,6 +378,21 @@ html {
             
           &.articles {
             @include thumb-anvelocom;
+            
+            article.thumb {
+              &:first-of-type {
+                figure div, figure figcaption, aside {
+                  opacity: 0;
+                }
+                  
+                &:hover {
+                  figure div, figure figcaption, aside {
+                    opacity: 1;
+                  }
+                }
+              }
+            }
+            
           }
           
           &#brands.articles {
