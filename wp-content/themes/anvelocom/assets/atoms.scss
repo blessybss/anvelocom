@@ -216,8 +216,9 @@ $brown: #C0A073;
 /* Animations, decorations
 */
 
-$easing: all 0.5s ease-in-out;
-$shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+$easing: all 0.75s ease-in-out;
+$shadow: 15px 20px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+$shadow-remove: 0px 0px 0px 0px transparent;
 
 
 $arrow-down: '\2794';

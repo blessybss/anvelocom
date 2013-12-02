@@ -70,6 +70,8 @@
         
         @include bordered(double);
         
+        position: relative;
+        
         div {
           max-height: 10em;
           overflow: hidden;
@@ -133,6 +135,34 @@
         }
       }
     }
+    
+    /* Hover on product thumb
+    */
+    &.thumb {
+      figure {
+        @include transition($easing);
+        
+        &:after, div, figcaption {
+          @include transition($easing);
+        }
+      }
+    }
+    
+    &.active {
+      figure {
+        background: #fff;
+        border-color: lightgray;
+        @include box-shadow($shadow);
+        
+        div {
+          max-height: 19em;
+        }
+        
+        figcaption {
+          display: none;
+        }
+      }
+    }
   }
 }
 
@@ -169,7 +199,6 @@
   }
   
   aside {
-    
     padding: $pad*2;
     
     width: col-resize($major - 5%, $pad*4, 1px);
@@ -424,6 +453,10 @@ html {
           
           &#intro {
             figure {
+              img {
+                @include box-shadow($shadow-remove);
+              }
+                
               figcaption {
                 @include black-background;
               }

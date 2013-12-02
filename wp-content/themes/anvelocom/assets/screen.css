@@ -282,10 +282,10 @@ html body a {
   outline: 0;
   text-transform: uppercase;
   letter-spacing: 0.15625em;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.75s ease-in-out;
+  -moz-transition: all 0.75s ease-in-out;
+  -o-transition: all 0.75s ease-in-out;
+  transition: all 0.75s ease-in-out;
 }
 html body a:hover, html body a:focus {
   color: #f3aaaa;
@@ -423,9 +423,9 @@ html body .container main section#intro h2, html body .container main section#in
   display: none;
 }
 html body .container main section#intro figure img {
-  -webkit-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
-  -moz-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
-  box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 15px 20px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 15px 20px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 15px 20px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
   width: 100%;
 }
 html body .container main section#intro figure figcaption {
@@ -944,6 +944,8 @@ html body .container main section header {
 html body .container main section.articles article {
   /* The first article as section title
   */
+  /* Hover on product thumb
+  */
 }
 html body .container main section.articles article.thumb, html body .container main section.articles article.product {
   height: 20em;
@@ -973,6 +975,7 @@ html body .container main section.articles article.thumb figure, html body .cont
   padding: 0.625em;
   border: 1px solid;
   background: #f1f1f1;
+  position: relative;
   position: relative;
 }
 @media only screen and (orientation: landscape) {
@@ -1081,10 +1084,40 @@ html body .container main section.articles article.title header h3:after {
   position: relative;
   top: 2px;
 }
+html body .container main section.articles article.thumb figure {
+  -webkit-transition: all 0.75s ease-in-out;
+  -moz-transition: all 0.75s ease-in-out;
+  -o-transition: all 0.75s ease-in-out;
+  transition: all 0.75s ease-in-out;
+}
+html body .container main section.articles article.thumb figure:after, html body .container main section.articles article.thumb figure div, html body .container main section.articles article.thumb figure figcaption {
+  -webkit-transition: all 0.75s ease-in-out;
+  -moz-transition: all 0.75s ease-in-out;
+  -o-transition: all 0.75s ease-in-out;
+  transition: all 0.75s ease-in-out;
+}
+html body .container main section.articles article.active figure {
+  background: #fff;
+  border-color: lightgray;
+  -webkit-box-shadow: 15px 20px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  -moz-box-shadow: 15px 20px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 15px 20px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+}
+html body .container main section.articles article.active figure div {
+  max-height: 19em;
+}
+html body .container main section.articles article.active figure figcaption {
+  display: none;
+}
 html body .container main section#intro {
   /* Figcaption has relative positioning with negative top margin 
   */
   margin-bottom: 0;
+}
+html body .container main section#intro figure img {
+  -webkit-box-shadow: 0px 0px 0px 0px transparent;
+  -moz-box-shadow: 0px 0px 0px 0px transparent;
+  box-shadow: 0px 0px 0px 0px transparent;
 }
 html body .container main section#intro figure figcaption {
   position: relative;
@@ -1347,9 +1380,9 @@ html body.single-post main section#index article.product aside #content table tb
   border-bottom: 1px solid #bebebe;
 }
 html body.single-post main section#index article.product aside #content figure img {
-  -webkit-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
-  -moz-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
-  box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 0px 0px 0px 0px transparent;
+  -moz-box-shadow: 0px 0px 0px 0px transparent;
+  box-shadow: 0px 0px 0px 0px transparent;
   width: auto;
 }
 html body.single-post main section#index article.product aside #content figure figcaption {
@@ -1378,10 +1411,10 @@ html body.single-post main section#index article.product aside #content form inp
   letter-spacing: 0.15625em;
   border: 1px solid #1f1f1f;
   cursor: pointer;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.75s ease-in-out;
+  -moz-transition: all 0.75s ease-in-out;
+  -o-transition: all 0.75s ease-in-out;
+  transition: all 0.75s ease-in-out;
 }
 html body.single-post main section#index article.product aside #content form input[type='submit']:hover {
   background: #f3aaaa;
@@ -1559,9 +1592,9 @@ html body.page main #index article.thumb table tbody td, html body.page main #in
   border-bottom: 1px solid #bebebe;
 }
 html body.page main #index article.thumb figure img, html body.page main #index #comments figure img {
-  -webkit-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
-  -moz-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
-  box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 0px 0px 0px 0px transparent;
+  -moz-box-shadow: 0px 0px 0px 0px transparent;
+  box-shadow: 0px 0px 0px 0px transparent;
   width: auto;
 }
 html body.page main #index article.thumb figure figcaption, html body.page main #index #comments figure figcaption {
@@ -1590,10 +1623,10 @@ html body.page main #index article.thumb form input[type='submit'], html body.pa
   letter-spacing: 0.15625em;
   border: 1px solid #1f1f1f;
   cursor: pointer;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.75s ease-in-out;
+  -moz-transition: all 0.75s ease-in-out;
+  -o-transition: all 0.75s ease-in-out;
+  transition: all 0.75s ease-in-out;
 }
 html body.page main #index article.thumb form input[type='submit']:hover, html body.page main #index #comments form input[type='submit']:hover {
   background: #f3aaaa;
@@ -1699,10 +1732,10 @@ html body.page main #index #comments form input[type='submit'] {
   letter-spacing: 0.15625em;
   border: 1px solid #1f1f1f;
   cursor: pointer;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.75s ease-in-out;
+  -moz-transition: all 0.75s ease-in-out;
+  -o-transition: all 0.75s ease-in-out;
+  transition: all 0.75s ease-in-out;
 }
 html body.page main #index #comments form input[type='submit']:hover {
   background: #f3aaaa;
@@ -1833,9 +1866,9 @@ html body.page main #index #comments ol li table tbody td {
   border-bottom: 1px solid #bebebe;
 }
 html body.page main #index #comments ol li figure img {
-  -webkit-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
-  -moz-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
-  box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 0px 0px 0px 0px transparent;
+  -moz-box-shadow: 0px 0px 0px 0px transparent;
+  box-shadow: 0px 0px 0px 0px transparent;
   width: auto;
 }
 html body.page main #index #comments ol li figure figcaption {
@@ -1864,10 +1897,10 @@ html body.page main #index #comments ol li form input[type='submit'] {
   letter-spacing: 0.15625em;
   border: 1px solid #1f1f1f;
   cursor: pointer;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.75s ease-in-out;
+  -moz-transition: all 0.75s ease-in-out;
+  -o-transition: all 0.75s ease-in-out;
+  transition: all 0.75s ease-in-out;
 }
 html body.page main #index #comments ol li form input[type='submit']:hover {
   background: #f3aaaa;
@@ -1935,10 +1968,10 @@ html body.page main #index #comments ol li a {
   outline: 0;
   text-transform: uppercase;
   letter-spacing: 0.15625em;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.75s ease-in-out;
+  -moz-transition: all 0.75s ease-in-out;
+  -o-transition: all 0.75s ease-in-out;
+  transition: all 0.75s ease-in-out;
 }
 html body.page main #index #comments ol li a:hover, html body.page main #index #comments ol li a:focus {
   color: #f3aaaa;

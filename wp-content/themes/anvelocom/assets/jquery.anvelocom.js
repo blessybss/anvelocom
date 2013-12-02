@@ -1,6 +1,16 @@
 
 $(document).ready(function() {
 
+  // Hover on product thumb
+  $('.articles article.thumb').hover(
+    function() {
+      $(this).addClass('active');
+    }, function() {
+      $(this).removeClass('active');
+    }
+  );
+
+
   // Hide / reveal menu on mobiles
   $('#header nav').click(function() {
     if (!($(this).hasClass('active'))) {
@@ -15,11 +25,15 @@ $(document).ready(function() {
     e.stopPropagation();
   });
 
+
+
   // Scroll to top
   $('#footer nav').click(function() {
     $("html, body").animate({ scrollTop: 0 }, "slow");
     return false; 
   });
+
+
 
   
   // Filter
