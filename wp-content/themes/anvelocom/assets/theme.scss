@@ -93,11 +93,18 @@
 /* Display a single post
 */
 @mixin single {
+  @include block;
+  @include bordered(double);
+  width: col-resize(100%, $pad, 4px);
+  background: #fff;
+  
   header {
     display: none;
   }
   
   figure {
+    text-align: center;
+    
     figcaption {
       display: none;
     }
@@ -176,7 +183,7 @@
   max-width: $body-text-width;
   margin: $pad 0;
   
-  @include color(invert);
+  background: #fff;
   padding: $pad;
   width: col-resize(100%, $pad*2, 0px);
   
@@ -234,7 +241,7 @@
 /* The sidebar
 */
 @mixin sidebar {
-  @include bordered;
+  @include bordered(double);
   padding: $pad*2;
   width: col-resize(100%, $pad*4, 2px);
   @include ul;
@@ -322,10 +329,10 @@
       padding: $pad/2;
       border: 1px solid;
       
-      top: 2%;
-      left: 2%;
-      width: 93%;
-      height: 94%;
+      top: $pad/2;
+      left: $pad/2;
+      width: col-resize(100%, $pad, 0px);
+      height: col-resize(100%, $pad, 0px);
       
       position: absolute;
       z-index: -1;
@@ -363,10 +370,6 @@ html {
             
           &.articles {
             @include thumb-anvelocom;
-          }
-          
-          &#brands.articles {
-            @include remove-thumb-anvelocom;
           }
           
           
