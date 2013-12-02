@@ -120,7 +120,8 @@
         height: 91%;
         
         h3 {
-          margin: $pad $pad/2;
+          margin: $pad/2;
+          height: 18em;
           
           &:after {
             content: $arrow-down;
@@ -141,8 +142,8 @@
 @mixin single {
   @include block;
   @include bordered(double);
-  width: col-resize(100%, $pad, 4px);
-  background: #fff;
+  padding: 0;
+  width: col-resize(100%, 0, 4px);
   
   header {
     display: none;
@@ -150,6 +151,9 @@
   
   figure {
     text-align: center;
+    background: #fff;
+    margin: 0;
+    padding: $pad 0;
     
     figcaption {
       display: none;
@@ -162,16 +166,15 @@
         }
       }
     }
-    
-    margin-bottom: $pad;
   }
   
   aside {
-    background: white; 
-    padding: $pad;
-    width: col-resize($major - 5%, $pad*2, 0px);
+    
+    padding: $pad*2;
+    
+    width: col-resize($major - 5%, $pad*4, 1px);
     @include below-small-screen {
-      width: col-resize(100%, $pad*2, 0px);
+      width: col-resize(100%, $pad*4, 1px);
     } 
   
     #price {
@@ -442,6 +445,7 @@ html {
         }
       }
     }
+    
   
     /* Archives
     */
@@ -481,8 +485,13 @@ html {
     &.single-post {
       main {
         section {
+          /* Display Articole similare, Toate marcile
+          */
           header {
             display: block;
+            h2 {
+              margin-bottom: $pad;
+            }
           }
           
           &#index {

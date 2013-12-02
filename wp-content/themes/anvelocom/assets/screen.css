@@ -1071,7 +1071,8 @@ html body .container main section.articles article.title header:after {
   z-index: -1;
 }
 html body .container main section.articles article.title header h3 {
-  margin: 1.25em 0.625em;
+  margin: 0.625em;
+  height: 18em;
 }
 html body .container main section.articles article.title header h3:after {
   content: "\2794";
@@ -1137,8 +1138,15 @@ html body.page .container main section#filters ul li {
 html body.page .container main section#filters ul li a {
   color: #f1f1f1;
 }
+html body.single-post main section {
+  /* Display Articole similare, Toate marcile
+  */
+}
 html body.single-post main section header {
   display: block;
+}
+html body.single-post main section header h2 {
+  margin-bottom: 1.25em;
 }
 html body.single-post main section#index {
   margin-bottom: 1.25em;
@@ -1150,8 +1158,8 @@ html body.single-post main section#index article.product {
   border: 1px solid;
   background: #f1f1f1;
   position: relative;
-  width: calc(100% - 1.25em - 4px);
-  background: #fff;
+  padding: 0;
+  width: calc(100% - 0 - 4px);
 }
 html body.single-post main section#index article.product:after {
   content: '';
@@ -1169,7 +1177,9 @@ html body.single-post main section#index article.product header {
 }
 html body.single-post main section#index article.product figure {
   text-align: center;
-  margin-bottom: 1.25em;
+  background: #fff;
+  margin: 0;
+  padding: 1.25em 0;
 }
 html body.single-post main section#index article.product figure figcaption {
   display: none;
@@ -1180,13 +1190,12 @@ html body.single-post main section#index article.product figure figcaption {
   }
 }
 html body.single-post main section#index article.product aside {
-  background: white;
-  padding: 1.25em;
-  width: calc(56.8047% - 2.5em - 0px);
+  padding: 2.5em;
+  width: calc(56.8047% - 5em - 1px);
 }
 @media only screen and (max-width: 63.999em) {
   html body.single-post main section#index article.product aside {
-    width: calc(100% - 2.5em - 0px);
+    width: calc(100% - 5em - 1px);
   }
 }
 html body.single-post main section#index article.product aside #price {
