@@ -16,6 +16,15 @@
         ?>
       </h2>
     </header>
+    
+    <?php if (isset($first_article) && ($first_article)) { ?>
+      <article class="thumb title c0">
+        <header>
+          <h3><a href="<?php echo $link ?>" title="<?php echo $title ?>"><?php echo $title; ?></a></h3>
+        </header>
+      </article>
+    <?php } ?>
+    
     <?php 
       foreach ($articles as $index => $article) { 
         $klass = thumb_class($index + 1);

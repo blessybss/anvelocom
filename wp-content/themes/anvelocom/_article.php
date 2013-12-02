@@ -47,7 +47,9 @@
           foreach ($price as $pr) { ?>
             <li><?php echo $pr ?> RON</li>
           <?php }
-        } ?>
+        } else { ?>
+          <li>100 RON</li>
+        <?php } ?>
       </ul>
       
       <div id="dimension">

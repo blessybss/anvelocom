@@ -31,17 +31,41 @@
 @mixin thumb-anvelocom($figcaption: true, $price: true) {
   article {
     &.thumb, &.product {
-      height: 19em;
+      height: 20em;
       
       @include landscape {
-        height: 23em;
+        height: 21em;
+      }
+      
+      @include below-mobile-landscape {
+        height: 24em;
+      }
+      
+      @include below-and-small-screen-portrait {
+        height: 22em;
+      }
+      
+      @include below-and-normal-screen {
+        height: 24em;
       }
     
       figure {
-        height: 17em;
+        height: 18em;
         
         @include landscape {
-          height: 21em;
+          height: 19em;
+        }
+        
+        @include below-mobile-landscape {
+          height: 22em;
+        }
+        
+        @include below-and-small-screen-portrait {
+          height: 20em;
+        }
+        
+        @include below-and-normal-screen {
+          height: 22em;
         }
         
         @include bordered(double);
@@ -82,6 +106,28 @@
             position: relative;
             top: -$pad - $pad/2;
             left: $pad/2;
+          }
+        }
+      }
+    }
+    
+    /* The first article as section title
+    */
+    &.title {
+      header {
+        display: block;
+        @include bordered(double);
+        height: 91%;
+        
+        h3 {
+          margin: $pad $pad/2;
+          
+          &:after {
+            content: $arrow-down;
+            font-size: $before-font-size;
+            margin-left: $pad/4;
+            position: relative;
+            top: 2px;;
           }
         }
       }
@@ -274,6 +320,7 @@
     &:nth-of-type(2) {
       text-decoration: line-through;
       margin-right: 0;
+      color: $highlight;
     }
   }
 }
@@ -354,7 +401,7 @@ html {
         /* Nav must be adjusted to the bordered header
         */
         nav {
-          margin-top: $pad;
+          margin-top: $pad - $pad/4;
           
           @include below-tablet {
             margin-top: $pad/2;
@@ -371,7 +418,6 @@ html {
           &.articles {
             @include thumb-anvelocom;
           }
-          
           
           &#intro {
             figure {
@@ -434,11 +480,20 @@ html {
     */
     &.single-post {
       main {
-        #index {
-          article.product {
-            @include single;
+        section {
+          header {
+            display: block;
+          }
+          
+          &#index {
+            margin-bottom: $pad;
+            
+            article.product {
+              @include single;
+            }
           }
         }
+        
       }
     }
     

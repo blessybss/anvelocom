@@ -264,6 +264,7 @@ html body h1, html body h2, html body h3 {
   font-size: 20px;
   font-size: 1.25rem;
   font-weight: normal;
+  line-height: 1.1;
 }
 html body h1 {
   font-weight: bold;
@@ -566,7 +567,7 @@ html body .container #footer nav:before {
   -o-transform: rotate(-90deg);
   transform: rotate(-90deg);
 }
-@media only screen and (max-width: 40em) {
+@media only screen and (max-width: 40em) and (orientation: landscape) {
   html body .container #footer nav {
     float: left;
   }
@@ -611,7 +612,7 @@ html body.page main section.articles article.thumb:nth-of-type(10) {
 }
 @media only screen and (max-width: 64em) {
   html body.page main section.articles article.thumb {
-    width: 32.33333%;
+    width: 32%;
     margin-right: 1%;
     float: left;
   }
@@ -762,7 +763,7 @@ html body.page main section#filters ul li:nth-of-type(10), html body.page main s
 }
 @media only screen and (max-width: 64em) {
   html body.page main section#filters ul li, html body.page main section#filters .select {
-    width: 32.33333%;
+    width: 32%;
     margin-right: 1%;
     float: left;
   }
@@ -930,7 +931,7 @@ html body .container #header h1 {
   border: 3px solid;
 }
 html body .container #header nav {
-  margin-top: 1.25em;
+  margin-top: 0.9375em;
 }
 @media only screen and (max-width: 47.999em) {
   html body .container #header nav {
@@ -940,16 +941,35 @@ html body .container #header nav {
 html body .container main section header {
   display: none;
 }
+html body .container main section.articles article {
+  /* The first article as section title
+  */
+}
 html body .container main section.articles article.thumb, html body .container main section.articles article.product {
-  height: 19em;
+  height: 20em;
 }
 @media only screen and (orientation: landscape) {
   html body .container main section.articles article.thumb, html body .container main section.articles article.product {
-    height: 23em;
+    height: 21em;
+  }
+}
+@media only screen and (max-width: 40em) and (orientation: landscape) {
+  html body .container main section.articles article.thumb, html body .container main section.articles article.product {
+    height: 24em;
+  }
+}
+@media only screen and (max-width: 64em) and (orientation: portrait) {
+  html body .container main section.articles article.thumb, html body .container main section.articles article.product {
+    height: 22em;
+  }
+}
+@media only screen and (max-width: 80em) {
+  html body .container main section.articles article.thumb, html body .container main section.articles article.product {
+    height: 24em;
   }
 }
 html body .container main section.articles article.thumb figure, html body .container main section.articles article.product figure {
-  height: 17em;
+  height: 18em;
   padding: 0.625em;
   border: 1px solid;
   background: #f1f1f1;
@@ -957,7 +977,22 @@ html body .container main section.articles article.thumb figure, html body .cont
 }
 @media only screen and (orientation: landscape) {
   html body .container main section.articles article.thumb figure, html body .container main section.articles article.product figure {
-    height: 21em;
+    height: 19em;
+  }
+}
+@media only screen and (max-width: 40em) and (orientation: landscape) {
+  html body .container main section.articles article.thumb figure, html body .container main section.articles article.product figure {
+    height: 22em;
+  }
+}
+@media only screen and (max-width: 64em) and (orientation: portrait) {
+  html body .container main section.articles article.thumb figure, html body .container main section.articles article.product figure {
+    height: 20em;
+  }
+}
+@media only screen and (max-width: 80em) {
+  html body .container main section.articles article.thumb figure, html body .container main section.articles article.product figure {
+    height: 22em;
   }
 }
 html body .container main section.articles article.thumb figure:after, html body .container main section.articles article.product figure:after {
@@ -1014,6 +1049,36 @@ html body .container main section.articles article.thumb aside #price li:nth-of-
 html body .container main section.articles article.thumb aside #price li:nth-of-type(2), html body .container main section.articles article.product aside #price li:nth-of-type(2) {
   text-decoration: line-through;
   margin-right: 0;
+  color: #f3aaaa;
+}
+html body .container main section.articles article.title header {
+  display: block;
+  padding: 0.625em;
+  border: 1px solid;
+  background: #f1f1f1;
+  position: relative;
+  height: 91%;
+}
+html body .container main section.articles article.title header:after {
+  content: '';
+  padding: 0.625em;
+  border: 1px solid;
+  top: 0.625em;
+  left: 0.625em;
+  width: calc(100% - 1.25em - 0px);
+  height: calc(100% - 1.25em - 0px);
+  position: absolute;
+  z-index: -1;
+}
+html body .container main section.articles article.title header h3 {
+  margin: 1.25em 0.625em;
+}
+html body .container main section.articles article.title header h3:after {
+  content: "\2794";
+  font-size: 150%;
+  margin-left: 0.3125em;
+  position: relative;
+  top: 2px;
 }
 html body .container main section#intro {
   /* Figcaption has relative positioning with negative top margin 
@@ -1072,7 +1137,13 @@ html body.page .container main section#filters ul li {
 html body.page .container main section#filters ul li a {
   color: #f1f1f1;
 }
-html body.single-post main #index article.product {
+html body.single-post main section header {
+  display: block;
+}
+html body.single-post main section#index {
+  margin-bottom: 1.25em;
+}
+html body.single-post main section#index article.product {
   width: 100%;
   float: left;
   padding: 0.625em;
@@ -1082,7 +1153,7 @@ html body.single-post main #index article.product {
   width: calc(100% - 1.25em - 4px);
   background: #fff;
 }
-html body.single-post main #index article.product:after {
+html body.single-post main section#index article.product:after {
   content: '';
   padding: 0.625em;
   border: 1px solid;
@@ -1093,53 +1164,54 @@ html body.single-post main #index article.product:after {
   position: absolute;
   z-index: -1;
 }
-html body.single-post main #index article.product header {
+html body.single-post main section#index article.product header {
   display: none;
 }
-html body.single-post main #index article.product figure {
+html body.single-post main section#index article.product figure {
   text-align: center;
   margin-bottom: 1.25em;
 }
-html body.single-post main #index article.product figure figcaption {
+html body.single-post main section#index article.product figure figcaption {
   display: none;
 }
 @media only screen and (max-width: 24em) {
-  html body.single-post main #index article.product figure div img {
+  html body.single-post main section#index article.product figure div img {
     width: 100%;
   }
 }
-html body.single-post main #index article.product aside {
+html body.single-post main section#index article.product aside {
   background: white;
   padding: 1.25em;
   width: calc(56.8047% - 2.5em - 0px);
 }
 @media only screen and (max-width: 63.999em) {
-  html body.single-post main #index article.product aside {
+  html body.single-post main section#index article.product aside {
     width: calc(100% - 2.5em - 0px);
   }
 }
-html body.single-post main #index article.product aside #price {
+html body.single-post main section#index article.product aside #price {
   margin: 0;
   display: block;
   list-style-type: none;
 }
-html body.single-post main #index article.product aside #price li {
+html body.single-post main section#index article.product aside #price li {
   display: inline-block;
   float: left;
   margin-right: 1.25em;
 }
-html body.single-post main #index article.product aside #price li:last-of-type {
+html body.single-post main section#index article.product aside #price li:last-of-type {
   margin-right: 0;
 }
-html body.single-post main #index article.product aside #price li:nth-of-type(1) {
+html body.single-post main section#index article.product aside #price li:nth-of-type(1) {
   font-weight: bold;
   margin-right: 0.625em;
 }
-html body.single-post main #index article.product aside #price li:nth-of-type(2) {
+html body.single-post main section#index article.product aside #price li:nth-of-type(2) {
   text-decoration: line-through;
   margin-right: 0;
+  color: #f3aaaa;
 }
-html body.single-post main #index article.product aside #price, html body.single-post main #index article.product aside #dimension {
+html body.single-post main section#index article.product aside #price, html body.single-post main section#index article.product aside #dimension {
   width: 100%;
   float: left;
   padding: 0.625em;
@@ -1148,11 +1220,11 @@ html body.single-post main #index article.product aside #price, html body.single
   margin-bottom: 1.25em;
 }
 @media only screen and (max-width: 24em) {
-  html body.single-post main #index article.product aside #price, html body.single-post main #index article.product aside #dimension {
+  html body.single-post main section#index article.product aside #price, html body.single-post main section#index article.product aside #dimension {
     width: calc(100% - 2.5em - 0px);
   }
 }
-html body.single-post main #index article.product aside #content {
+html body.single-post main section#index article.product aside #content {
   width: 100%;
   float: left;
   max-width: 43.75em;
@@ -1166,44 +1238,45 @@ html body.single-post main #index article.product aside #content {
   /* Padding of consecutive elements
   */
 }
-html body.single-post main #index article.product aside #content h1, html body.single-post main #index article.product aside #content h2, html body.single-post main #index article.product aside #content h3 {
+html body.single-post main section#index article.product aside #content h1, html body.single-post main section#index article.product aside #content h2, html body.single-post main section#index article.product aside #content h3 {
   font-size: 20px;
   font-size: 1.25rem;
   font-weight: normal;
+  line-height: 1.1;
 }
-html body.single-post main #index article.product aside #content h1 {
+html body.single-post main section#index article.product aside #content h1 {
   font-weight: bold;
 }
-html body.single-post main #index article.product aside #content h2 {
+html body.single-post main section#index article.product aside #content h2 {
   text-transform: uppercase;
   letter-spacing: 0.15625em;
 }
-html body.single-post main #index article.product aside #content h4, html body.single-post main #index article.product aside #content h5, html body.single-post main #index article.product aside #content h6 {
+html body.single-post main section#index article.product aside #content h4, html body.single-post main section#index article.product aside #content h5, html body.single-post main section#index article.product aside #content h6 {
   font-size: larger;
 }
-html body.single-post main #index article.product aside #content h1, html body.single-post main #index article.product aside #content h2, html body.single-post main #index article.product aside #content h3 {
+html body.single-post main section#index article.product aside #content h1, html body.single-post main section#index article.product aside #content h2, html body.single-post main section#index article.product aside #content h3 {
   line-height: 1.1;
   margin-top: 0;
   margin-bottom: 0;
   padding: 1.45833em 0;
 }
-html body.single-post main #index article.product aside #content em, html body.single-post main #index article.product aside #content i {
+html body.single-post main section#index article.product aside #content em, html body.single-post main section#index article.product aside #content i {
   font-style: italic;
 }
-html body.single-post main #index article.product aside #content strong, html body.single-post main #index article.product aside #content b {
+html body.single-post main section#index article.product aside #content strong, html body.single-post main section#index article.product aside #content b {
   font-weight: bold;
 }
-html body.single-post main #index article.product aside #content ul {
+html body.single-post main section#index article.product aside #content ul {
   list-style: none outside;
 }
-html body.single-post main #index article.product aside #content ul li {
+html body.single-post main section#index article.product aside #content ul li {
   /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
     - this way we can perfectly align the bullets / numbering to the list content
   */
   position: relative;
   padding-left: 1.25em;
 }
-html body.single-post main #index article.product aside #content ul li:before {
+html body.single-post main section#index article.product aside #content ul li:before {
   content: "\271A";
   /* making the content of the list perfectly align with numbering
     - <li> is relatively positioned
@@ -1213,18 +1286,18 @@ html body.single-post main #index article.product aside #content ul li:before {
   position: absolute;
   left: 0;
 }
-html body.single-post main #index article.product aside #content ol {
+html body.single-post main section#index article.product aside #content ol {
   list-style: none outside;
   counter-reset: ol-counter;
 }
-html body.single-post main #index article.product aside #content ol li {
+html body.single-post main section#index article.product aside #content ol li {
   /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
     - this way we can perfectly align the bullets / numbering to the list content
   */
   position: relative;
   padding-left: 1.25em;
 }
-html body.single-post main #index article.product aside #content ol li:before {
+html body.single-post main section#index article.product aside #content ol li:before {
   /* making the content of the list perfectly align with numbering
     - <li> is relatively positioned
     - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
@@ -1233,53 +1306,53 @@ html body.single-post main #index article.product aside #content ol li:before {
   position: absolute;
   left: 0;
 }
-html body.single-post main #index article.product aside #content ol li {
+html body.single-post main section#index article.product aside #content ol li {
   counter-increment: ol-counter;
 }
-html body.single-post main #index article.product aside #content ol li:before {
+html body.single-post main section#index article.product aside #content ol li:before {
   content: counter(ol-counter,decimal);
 }
-html body.single-post main #index article.product aside #content dl dt {
+html body.single-post main section#index article.product aside #content dl dt {
   font-size: 20px;
   font-size: 1.25rem;
   font-weight: normal;
   text-transform: uppercase;
   letter-spacing: 0.15625em;
 }
-html body.single-post main #index article.product aside #content table {
+html body.single-post main section#index article.product aside #content table {
   width: 100%;
   display: table !important;
 }
-html body.single-post main #index article.product aside #content table thead {
+html body.single-post main section#index article.product aside #content table thead {
   background: #1f1f1f;
   color: #f1f1f1;
 }
-html body.single-post main #index article.product aside #content table thead a {
+html body.single-post main section#index article.product aside #content table thead a {
   color: #f1f1f1;
 }
-html body.single-post main #index article.product aside #content table thead th, html body.single-post main #index article.product aside #content table tbody td {
+html body.single-post main section#index article.product aside #content table thead th, html body.single-post main section#index article.product aside #content table tbody td {
   padding: 1.25em;
   padding-left: 0;
 }
-html body.single-post main #index article.product aside #content table tbody td {
+html body.single-post main section#index article.product aside #content table tbody td {
   border-bottom: 1px solid #bebebe;
 }
-html body.single-post main #index article.product aside #content figure img {
+html body.single-post main section#index article.product aside #content figure img {
   -webkit-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
   -moz-box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
   box-shadow: 0 2px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
   width: auto;
 }
-html body.single-post main #index article.product aside #content figure figcaption {
+html body.single-post main section#index article.product aside #content figure figcaption {
   font-size: smaller;
 }
-html body.single-post main #index article.product aside #content form {
+html body.single-post main section#index article.product aside #content form {
   /* Reset */
   /* Text */
   /* Button */
   /* Stretching and padding */
 }
-html body.single-post main #index article.product aside #content form input, html body.single-post main #index article.product aside #content form textarea, html body.single-post main #index article.product aside #content form select {
+html body.single-post main section#index article.product aside #content form input, html body.single-post main section#index article.product aside #content form textarea, html body.single-post main section#index article.product aside #content form select {
   border: none;
   outline: 0;
   background: #f1f1f1;
@@ -1287,11 +1360,11 @@ html body.single-post main #index article.product aside #content form input, htm
   -webkit-appearance: none;
   -moz-appearance: none;
 }
-html body.single-post main #index article.product aside #content form input[type='text'], html body.single-post main #index article.product aside #content form input[type='email'], html body.single-post main #index article.product aside #content form input[type='password'], html body.single-post main #index article.product aside #content form textarea {
+html body.single-post main section#index article.product aside #content form input[type='text'], html body.single-post main section#index article.product aside #content form input[type='email'], html body.single-post main section#index article.product aside #content form input[type='password'], html body.single-post main section#index article.product aside #content form textarea {
   border: 1px solid #1f1f1f;
   font-style: italic;
 }
-html body.single-post main #index article.product aside #content form input[type='submit'] {
+html body.single-post main section#index article.product aside #content form input[type='submit'] {
   text-transform: uppercase;
   letter-spacing: 0.15625em;
   border: 1px solid #1f1f1f;
@@ -1301,18 +1374,18 @@ html body.single-post main #index article.product aside #content form input[type
   -o-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
 }
-html body.single-post main #index article.product aside #content form input[type='submit']:hover {
+html body.single-post main section#index article.product aside #content form input[type='submit']:hover {
   background: #f3aaaa;
 }
-html body.single-post main #index article.product aside #content form label, html body.single-post main #index article.product aside #content form input, html body.single-post main #index article.product aside #content form textarea {
+html body.single-post main section#index article.product aside #content form label, html body.single-post main section#index article.product aside #content form input, html body.single-post main section#index article.product aside #content form textarea {
   width: 100%;
   float: left;
 }
-html body.single-post main #index article.product aside #content form input, html body.single-post main #index article.product aside #content form textarea {
+html body.single-post main section#index article.product aside #content form input, html body.single-post main section#index article.product aside #content form textarea {
   padding: 0.625em;
   width: calc(100% - 1.25em);
 }
-html body.single-post main #index article.product aside #content blockquote, html body.single-post main #index article.product aside #content q {
+html body.single-post main section#index article.product aside #content blockquote, html body.single-post main section#index article.product aside #content q {
   border-top: 1px solid;
   border-bottom: 1px solid;
   /* Making room to the " sign 
@@ -1332,36 +1405,36 @@ html body.single-post main #index article.product aside #content blockquote, htm
   }
   */
 }
-html body.single-post main #index article.product aside #content blockquote:before, html body.single-post main #index article.product aside #content q:before {
+html body.single-post main section#index article.product aside #content blockquote:before, html body.single-post main section#index article.product aside #content q:before {
   content: '\201C';
   font-size: 1400%;
   position: absolute;
   top: 0;
   left: 0;
 }
-html body.single-post main #index article.product aside #content ul, html body.single-post main #index article.product aside #content ol, html body.single-post main #index article.product aside #content dl, html body.single-post main #index article.product aside #content table, html body.single-post main #index article.product aside #content figure, html body.single-post main #index article.product aside #content form, html body.single-post main #index article.product aside #content q {
+html body.single-post main section#index article.product aside #content ul, html body.single-post main section#index article.product aside #content ol, html body.single-post main section#index article.product aside #content dl, html body.single-post main section#index article.product aside #content table, html body.single-post main section#index article.product aside #content figure, html body.single-post main section#index article.product aside #content form, html body.single-post main section#index article.product aside #content q {
   margin: 1.25em 0;
 }
-html body.single-post main #index article.product aside #content figure {
+html body.single-post main section#index article.product aside #content figure {
   margin-top: 2.5em;
 }
-html body.single-post main #index article.product aside #content dd + dt {
+html body.single-post main section#index article.product aside #content dd + dt {
   margin-top: 1.25em;
 }
-html body.single-post main #index article.product aside #content p + p {
+html body.single-post main section#index article.product aside #content p + p {
   margin-top: 1.25em;
 }
-html body.single-post main #index article.product aside #content h1 + h2, html body.single-post main #index article.product aside #content h2 + h3 {
+html body.single-post main section#index article.product aside #content h1 + h2, html body.single-post main section#index article.product aside #content h2 + h3 {
   padding-top: 0;
 }
-html body.single-post main #index article.product aside #content h1 + ul, html body.single-post main #index article.product aside #content h2 + ul, html body.single-post main #index article.product aside #content h3 + ul,
-html body.single-post main #index article.product aside #content h1 + ol, html body.single-post main #index article.product aside #content h2 + ol, html body.single-post main #index article.product aside #content h3 + ol {
+html body.single-post main section#index article.product aside #content h1 + ul, html body.single-post main section#index article.product aside #content h2 + ul, html body.single-post main section#index article.product aside #content h3 + ul,
+html body.single-post main section#index article.product aside #content h1 + ol, html body.single-post main section#index article.product aside #content h2 + ol, html body.single-post main section#index article.product aside #content h3 + ol {
   margin-top: 0;
 }
-html body.single-post main #index article.product aside #content li ul, html body.single-post main #index article.product aside #content li ol {
+html body.single-post main section#index article.product aside #content li ul, html body.single-post main section#index article.product aside #content li ol {
   margin-top: 0;
 }
-html body.single-post main #index article.product aside #content img {
+html body.single-post main section#index article.product aside #content img {
   display: none;
 }
 html body.page main #index article.thumb, html body.page main #index #comments {
@@ -1381,6 +1454,7 @@ html body.page main #index article.thumb h1, html body.page main #index article.
   font-size: 20px;
   font-size: 1.25rem;
   font-weight: normal;
+  line-height: 1.1;
 }
 html body.page main #index article.thumb h1, html body.page main #index #comments h1 {
   font-weight: bold;
@@ -1654,6 +1728,7 @@ html body.page main #index #comments ol li h1, html body.page main #index #comme
   font-size: 20px;
   font-size: 1.25rem;
   font-weight: normal;
+  line-height: 1.1;
 }
 html body.page main #index #comments ol li h1 {
   font-weight: bold;

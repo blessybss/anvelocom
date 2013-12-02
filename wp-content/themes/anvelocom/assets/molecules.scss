@@ -35,16 +35,16 @@
 */
 @mixin isotope($how-many, $maximum : 10) {
   @include m_column(isotope-col-width($how-many), isotope-col-gutter($how-many));
-  @include col-right-margin(1.1, isotope-col-gutter($how-many), $maximum);
+  @include col-right-margin(0, isotope-col-gutter($how-many), $maximum);
   
   @include below-and-small-screen {
     @include m_column(isotope-col-width(3), isotope-col-gutter(3));
-    @include col-right-margin(1.1, isotope-col-gutter(3), $maximum);
+    @include col-right-margin(0, isotope-col-gutter(3), $maximum);
   }
   
   @include below-tablet {
     @include m_column(isotope-col-width(2), isotope-col-gutter(2));
-    @include col-right-margin(1.1, isotope-col-gutter(2), $maximum);
+    @include col-right-margin(0, isotope-col-gutter(2), $maximum);
   }
   
   @include mobile {
@@ -89,7 +89,7 @@
 
 @function isotope-col-width($how-many) {
   $modulo: 100 % $how-many;
-  $divident: 100 / $how-many;
+  $divident: round(100 / $how-many);
   
   @if ($modulo == 0) {
     /* The margin will be the 10% of the column width
@@ -108,7 +108,7 @@
 
 @function isotope-col-gutter($how-many) {
   $modulo: 100 % $how-many;
-  $divident: 100 / $how-many;
+  $divident: round(100 / $how-many);
   
   @if ($modulo == 0) {
     /* The margin will be the 10% of the column width
@@ -137,7 +137,7 @@
 */
 @mixin col-right-margin($how-many, $gutter, $maximum) {
   @for $i from 2 through $maximum {
-    @if (($i % $how-many) == 0) {
+    @if (($how-many != 0) and (($i % $how-many) == 0)) {
       &:nth-of-type(#{$i}) {
          margin-right: 0;
       }
@@ -417,6 +417,7 @@
   h1, h2, h3 {
     @include font-size($h1);
     font-weight: normal;
+    line-height: $line-height-headings;
   }
   
   h1 {

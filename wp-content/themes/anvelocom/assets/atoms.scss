@@ -59,7 +59,7 @@ $breakpoint-large-screen: 90em !default; /* 1440px */
 	}
 } 
 @mixin below-mobile-landscape {
-	@media only screen and (max-width: $breakpoint-mobile-landscape) {
+	@media only screen and (max-width: $breakpoint-mobile-landscape) and (orientation : landscape) {
 		@content;
 	}
 }
@@ -71,6 +71,16 @@ $breakpoint-large-screen: 90em !default; /* 1440px */
 }
 @mixin below-tablet-landscape {
 	@media only screen and (max-width: $breakpoint-tablet - 0.001) and (orientation : landscape) {
+		@content;
+	}
+}
+@mixin below-tablet-portrait {
+	@media only screen and (max-width: $breakpoint-tablet - 0.001) and (orientation : portrait) {
+		@content;
+	}
+}
+@mixin below-and-tablet-portrait {
+	@media only screen and (max-width: $breakpoint-tablet) and (orientation : portrait) {
 		@content;
 	}
 }
@@ -95,11 +105,29 @@ $breakpoint-large-screen: 90em !default; /* 1440px */
 		@content;
 	}
 }
+@mixin below-small-screen-landscape {
+	@media only screen and (max-width: $breakpoint-small-screen - 0.001) and (orientation : landscape) {
+		@content;
+	}
+}
+@mixin below-and-small-screen-portrait {
+	@media only screen and (max-width: $breakpoint-small-screen) and (orientation : portrait) {
+		@content;
+	}
+}
+
+@mixin below-and-normal-screen {
+	@media only screen and (max-width: $breakpoint-normal-screen) {
+		@content;
+	}
+}
 @mixin above-and-normal-screen {
 	@media only screen and (min-width: $breakpoint-normal-screen) {
 		@content;
 	}
 }
+
+
 
 @mixin large-screen-and-above {
 	@media only screen and (min-width: $breakpoint-large-screen) {
