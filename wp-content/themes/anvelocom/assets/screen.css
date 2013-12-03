@@ -282,10 +282,10 @@ html body a {
   outline: 0;
   text-transform: uppercase;
   letter-spacing: 0.15625em;
-  -webkit-transition: all 0.75s ease-in-out;
-  -moz-transition: all 0.75s ease-in-out;
-  -o-transition: all 0.75s ease-in-out;
-  transition: all 0.75s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 html body a:hover, html body a:focus {
   color: #f3aaaa;
@@ -423,9 +423,9 @@ html body .container main section#intro h2, html body .container main section#in
   display: none;
 }
 html body .container main section#intro figure img {
-  -webkit-box-shadow: 15px 20px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
-  -moz-box-shadow: 15px 20px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
-  box-shadow: 15px 20px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 1px 0 #1f1f1f, 0 1px #1f1f1f, 2px 1px #1f1f1f, 1px 2px #1f1f1f, 3px 2px #1f1f1f, 2px 3px #1f1f1f, 4px 3px #1f1f1f, 3px 4px #1f1f1f, 5px 4px #1f1f1f, 4px 5px #1f1f1f;
+  -moz-box-shadow: 1px 0 #1f1f1f, 0 1px #1f1f1f, 2px 1px #1f1f1f, 1px 2px #1f1f1f, 3px 2px #1f1f1f, 2px 3px #1f1f1f, 4px 3px #1f1f1f, 3px 4px #1f1f1f, 5px 4px #1f1f1f, 4px 5px #1f1f1f;
+  box-shadow: 1px 0 #1f1f1f, 0 1px #1f1f1f, 2px 1px #1f1f1f, 1px 2px #1f1f1f, 3px 2px #1f1f1f, 2px 3px #1f1f1f, 4px 3px #1f1f1f, 3px 4px #1f1f1f, 5px 4px #1f1f1f, 4px 5px #1f1f1f;
   width: 100%;
 }
 html body .container main section#intro figure figcaption {
@@ -1085,23 +1085,23 @@ html body .container main section.articles article.title header h3:after {
   top: 2px;
 }
 html body .container main section.articles article.thumb figure {
-  -webkit-transition: all 0.75s ease-in-out;
-  -moz-transition: all 0.75s ease-in-out;
-  -o-transition: all 0.75s ease-in-out;
-  transition: all 0.75s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 html body .container main section.articles article.thumb figure:after, html body .container main section.articles article.thumb figure div, html body .container main section.articles article.thumb figure figcaption {
-  -webkit-transition: all 0.75s ease-in-out;
-  -moz-transition: all 0.75s ease-in-out;
-  -o-transition: all 0.75s ease-in-out;
-  transition: all 0.75s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 html body .container main section.articles article.active figure {
   background: #fff;
   border-color: lightgray;
-  -webkit-box-shadow: 15px 20px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
-  -moz-box-shadow: 15px 20px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
-  box-shadow: 15px 20px 25px -10px rgba(0, 0, 0, 0.698), 0 1px rgba(0, 0, 0, 0.1), 0 0 4px rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 1px 0 #1f1f1f, 0 1px #1f1f1f, 2px 1px #1f1f1f, 1px 2px #1f1f1f, 3px 2px #1f1f1f, 2px 3px #1f1f1f, 4px 3px #1f1f1f, 3px 4px #1f1f1f, 5px 4px #1f1f1f, 4px 5px #1f1f1f;
+  -moz-box-shadow: 1px 0 #1f1f1f, 0 1px #1f1f1f, 2px 1px #1f1f1f, 1px 2px #1f1f1f, 3px 2px #1f1f1f, 2px 3px #1f1f1f, 4px 3px #1f1f1f, 3px 4px #1f1f1f, 5px 4px #1f1f1f, 4px 5px #1f1f1f;
+  box-shadow: 1px 0 #1f1f1f, 0 1px #1f1f1f, 2px 1px #1f1f1f, 1px 2px #1f1f1f, 3px 2px #1f1f1f, 2px 3px #1f1f1f, 4px 3px #1f1f1f, 3px 4px #1f1f1f, 5px 4px #1f1f1f, 4px 5px #1f1f1f;
 }
 html body .container main section.articles article.active figure div {
   max-height: 19em;
@@ -1411,10 +1411,10 @@ html body.single-post main section#index article.product aside #content form inp
   letter-spacing: 0.15625em;
   border: 1px solid #1f1f1f;
   cursor: pointer;
-  -webkit-transition: all 0.75s ease-in-out;
-  -moz-transition: all 0.75s ease-in-out;
-  -o-transition: all 0.75s ease-in-out;
-  transition: all 0.75s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 html body.single-post main section#index article.product aside #content form input[type='submit']:hover {
   background: #f3aaaa;
@@ -1623,10 +1623,10 @@ html body.page main #index article.thumb form input[type='submit'], html body.pa
   letter-spacing: 0.15625em;
   border: 1px solid #1f1f1f;
   cursor: pointer;
-  -webkit-transition: all 0.75s ease-in-out;
-  -moz-transition: all 0.75s ease-in-out;
-  -o-transition: all 0.75s ease-in-out;
-  transition: all 0.75s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 html body.page main #index article.thumb form input[type='submit']:hover, html body.page main #index #comments form input[type='submit']:hover {
   background: #f3aaaa;
@@ -1732,10 +1732,10 @@ html body.page main #index #comments form input[type='submit'] {
   letter-spacing: 0.15625em;
   border: 1px solid #1f1f1f;
   cursor: pointer;
-  -webkit-transition: all 0.75s ease-in-out;
-  -moz-transition: all 0.75s ease-in-out;
-  -o-transition: all 0.75s ease-in-out;
-  transition: all 0.75s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 html body.page main #index #comments form input[type='submit']:hover {
   background: #f3aaaa;
@@ -1897,10 +1897,10 @@ html body.page main #index #comments ol li form input[type='submit'] {
   letter-spacing: 0.15625em;
   border: 1px solid #1f1f1f;
   cursor: pointer;
-  -webkit-transition: all 0.75s ease-in-out;
-  -moz-transition: all 0.75s ease-in-out;
-  -o-transition: all 0.75s ease-in-out;
-  transition: all 0.75s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 html body.page main #index #comments ol li form input[type='submit']:hover {
   background: #f3aaaa;
@@ -1968,10 +1968,10 @@ html body.page main #index #comments ol li a {
   outline: 0;
   text-transform: uppercase;
   letter-spacing: 0.15625em;
-  -webkit-transition: all 0.75s ease-in-out;
-  -moz-transition: all 0.75s ease-in-out;
-  -o-transition: all 0.75s ease-in-out;
-  transition: all 0.75s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 html body.page main #index #comments ol li a:hover, html body.page main #index #comments ol li a:focus {
   color: #f3aaaa;
