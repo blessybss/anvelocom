@@ -55,7 +55,12 @@
       </div>
       
       <div id="content">
-        <?php echo $article->post_content ?>
+        <?php  
+          $content = get_the_content();
+          $content = apply_filters('the_content', $content);
+          $content = str_replace(']]>', ']]&gt;', $content);
+          print $content;
+        ?>
       </div>
     </aside>
   <?php } ?>

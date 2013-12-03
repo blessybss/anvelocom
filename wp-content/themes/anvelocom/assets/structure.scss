@@ -95,11 +95,6 @@
       /* Display the menu as a normal list
       */
       @include block;
-      
-      ul {
-        @include list-normal;
-        margin-left: $pad/2;
-      }
     }
   }
   

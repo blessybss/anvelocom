@@ -394,16 +394,6 @@ html body .container #header nav:last-of-type {
     width: 100%;
     float: left;
   }
-  html body .container #header nav.active ul {
-    width: 100%;
-    float: left;
-    margin-left: 0.625em;
-  }
-  html body .container #header nav.active ul li {
-    display: block;
-    margin-right: 0;
-    float: none;
-  }
 }
 html body .container main {
   width: 100%;
@@ -934,6 +924,87 @@ html body .container #header nav {
   margin-top: 0.9375em;
 }
 @media only screen and (max-width: 47.999em) {
+  html body .container #header nav.active {
+    padding: 0.625em;
+    border: 1px solid;
+    background: #f1f1f1;
+    position: relative;
+    padding: 1.25em;
+    width: calc(100% - 2.5em - 2px);
+  }
+  html body .container #header nav.active:after {
+    content: '';
+    padding: 0.625em;
+    border: 1px solid;
+    top: 0.625em;
+    left: 0.625em;
+    width: calc(100% - 1.25em - 0px);
+    height: calc(100% - 1.25em - 0px);
+    position: absolute;
+    z-index: -1;
+  }
+  html body .container #header nav.active ul {
+    list-style: none outside;
+  }
+  html body .container #header nav.active ul li {
+    /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
+      - this way we can perfectly align the bullets / numbering to the list content
+    */
+    position: relative;
+    padding-left: 1.25em;
+  }
+  html body .container #header nav.active ul li:before {
+    content: "\271A";
+    /* making the content of the list perfectly align with numbering
+      - <li> is relatively positioned
+      - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
+      - the the <li> content has a padding-left to not overlap the numbering
+    */
+    position: absolute;
+    left: 0;
+  }
+  html body .container #header nav.active h3 {
+    display: none;
+  }
+  html body .container #header nav.active ul {
+    list-style: none outside;
+  }
+  html body .container #header nav.active ul li {
+    /* When parent positioned to 'relative' the children (:before) can be positioned to 'absolute'
+      - this way we can perfectly align the bullets / numbering to the list content
+    */
+    position: relative;
+    padding-left: 1.25em;
+  }
+  html body .container #header nav.active ul li:before {
+    content: "-";
+    /* making the content of the list perfectly align with numbering
+      - <li> is relatively positioned
+      - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
+      - the the <li> content has a padding-left to not overlap the numbering
+    */
+    position: absolute;
+    left: 0;
+  }
+  html body .container #header nav.active ul li {
+    margin: 0.625em 0;
+  }
+  html body .container #header nav.active ul {
+    width: 100%;
+    float: left;
+  }
+  html body .container #header nav.active ul li {
+    display: block;
+    margin-right: 0;
+    float: none;
+  }
+}
+@media only screen and (max-width: 47.999em) and (max-width: 63.999em) {
+  html body .container #header nav.active {
+    margin-bottom: 1.25em;
+  }
+}
+@media only screen and (max-width: 47.999em) {
   html body .container #header nav {
     margin-top: 0.625em;
   }
@@ -1078,11 +1149,24 @@ html body .container main section.articles article.title header h3 {
   height: 18em;
 }
 html body .container main section.articles article.title header h3:after {
+  display: inline-block;
   content: "\2794";
   font-size: 150%;
   margin-left: 0.3125em;
   position: relative;
   top: 2px;
+}
+@media only screen and (max-width: 24em) {
+  html body .container main section.articles article.title {
+    height: 6em;
+  }
+  html body .container main section.articles article.title header h3:after {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+  }
 }
 html body .container main section.articles article.thumb figure {
   -webkit-transition: all 0.5s ease-in-out;
@@ -1692,6 +1776,7 @@ html body.page main #index article.thumb li ul, html body.page main #index artic
 html body.page main #index article.thumb {
   background: white;
   padding: 1.25em;
+  width: calc(100% - 2.5em - 0px);
 }
 html body.page main #index article.thumb figure {
   display: none;
@@ -2038,6 +2123,11 @@ html body.page main #sidebar ul li:before {
   */
   position: absolute;
   left: 0;
+}
+@media only screen and (max-width: 63.999em) {
+  html body.page main #sidebar {
+    margin-bottom: 1.25em;
+  }
 }
 html body.page main #sidebar h3 {
   display: none;

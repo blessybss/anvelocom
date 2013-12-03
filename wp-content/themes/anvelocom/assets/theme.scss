@@ -126,11 +126,24 @@
           height: 18em;
           
           &:after {
+            display: inline-block;
             content: $arrow-down;
             font-size: $before-font-size;
             margin-left: $pad/4;
             position: relative;
-            top: 2px;;
+            top: 2px;
+          }
+        }
+      }
+      
+      @include mobile {
+        height: 6em;
+        
+        header {
+          h3 {
+            &:after {
+              @include transform(rotate(90deg));
+            }
           }
         }
       }
@@ -238,6 +251,7 @@
 @mixin page {
   background: white; 
   padding: $pad;
+  width: col-resize(100%, $pad*2, 0px);
   
   figure {
     display: none;
@@ -318,11 +332,15 @@
 
 /* The sidebar
 */
-@mixin sidebar {
+@mixin sidebar($padding: $pad*2) {
   @include bordered(double);
-  padding: $pad*2;
-  width: col-resize(100%, $pad*4, 2px);
+  padding: $padding;
+  width: col-resize(100%, $padding*2, 2px);
   @include ul;
+  
+  @include below-small-screen {
+    margin-bottom: $pad;
+  }
   
   h3 {
     display: none;
@@ -330,8 +348,21 @@
   
   ul {
     @include ol-ul('-');
+    
     li {
       margin: $pad/2 0;
+    }
+  }
+}
+
+@mixin menu-anvelocom {
+  @include below-tablet {
+    &.active {
+      @include sidebar($pad);
+      
+      ul {
+        @include list-normal;
+      }
     }
   }
 }
@@ -433,6 +464,7 @@ html {
         /* Nav must be adjusted to the bordered header
         */
         nav {
+          @include menu-anvelocom;
           margin-top: $pad - $pad/4;
           
           @include below-tablet {
