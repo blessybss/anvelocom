@@ -137,12 +137,19 @@
       }
       
       @include mobile {
-        height: 6em;
+        height: $pad*2;
         
         header {
+          border: none;
+          padding: 0;
+          
+          &:after {
+            border: none;
+          }
+          
           h3 {
             &:after {
-              @include transform(rotate(90deg));
+              display: none;
             }
           }
         }
@@ -554,6 +561,7 @@ html {
           */
           header {
             display: block;
+            
             h2 {
               margin-bottom: $pad;
             }

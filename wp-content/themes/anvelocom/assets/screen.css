@@ -1158,14 +1158,17 @@ html body .container main section.articles article.title header h3:after {
 }
 @media only screen and (max-width: 24em) {
   html body .container main section.articles article.title {
-    height: 6em;
+    height: 2.5em;
+  }
+  html body .container main section.articles article.title header {
+    border: none;
+    padding: 0;
+  }
+  html body .container main section.articles article.title header:after {
+    border: none;
   }
   html body .container main section.articles article.title header h3:after {
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    -o-transform: rotate(90deg);
-    transform: rotate(90deg);
+    display: none;
   }
 }
 html body .container main section.articles article.thumb figure {
