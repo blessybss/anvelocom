@@ -1,0 +1,10 @@
+.wp-admin .filter, .wp-admin .filter #filters, .wp-admin .filter #relationships {
+  width: 100%;
+  float: left;
+}
+.wp-admin .filter #relationships #relation, .wp-admin .filter #filters .select {
+  width: 12em;
+  margin-right: 1.25em;
+  margin-top: 1.25em;
+  float: left;
+}

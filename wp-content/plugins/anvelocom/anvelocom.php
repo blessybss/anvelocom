@@ -1,5 +1,5 @@
 <?php
-  /*
+/*
   Plugin Name: Anvelocom Filters
   Plugin URI: http://anvelocom.ro
   Description: A filter plugin for Anvelocom
@@ -7,7 +7,7 @@
   Author: Csongor Bartus
   Author URI: http://its-csongor.com
   License: GPL2
-  */
+*/
 
 
 
@@ -29,18 +29,6 @@ function anvelocom_admin_menu() {
 add_action('admin_menu', 'anvelocom_admin_menu');
 
 
-
-
-// Include parts of the plugin
-
-// General admin functions
-// - it is like a framework (Rails) to display, edit, add, manage tables
-// - each table has its own file wich must be included below
-include_once(plugin_dir_path( __FILE__ ) . 'admin-framework.php');
-
-include_once(plugin_dir_path( __FILE__ ) . 'anvelopes.php');
-
-
 // Dashboard
 // --------------------------------------------------------------------------------
 
@@ -56,12 +44,91 @@ function anvelocom_main_page() {
 
 
 
+
+
+
+// Include parts of the plugin
+include_once(plugin_dir_path( __FILE__ ) . 'anvelocom-functions.php');
+
+
+// Include admin.css, admin.js 
+function anvelocom_admin_scripts() {
+	wp_register_style( 'anvelocom-admin', plugins_url('anvelocom.css', __FILE__) );
+	wp_enqueue_style( 'anvelocom-admin' );
+	wp_enqueue_script('anvelocom', plugins_url('anvelocom.js', __FILE__), array('jquery'));
+	wp_localize_script( 'anvelocom', 'anvelocom', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+}  
+add_action('admin_print_styles', 'anvelocom_admin_scripts');
+
+
+
 // Anvelope
 // --------------------------------------------------------------------------------
 
-function anvelocom_anvelope_page() {
-  anvelocom_admin_display_submenu_page("Anvelope", "anvelope", new Anvelope_Table(), true, true, true);
-}
+function anvelocom_anvelope_page() { ?>
+  <section id="anvelope" class="filter">
+    <h1>Anvelope</h2>
+    
+    <?php
+      // Prepare articles and filters
+      global $SPECIAL_CATEGORIES;
+      $articles = get_posts_from_category($SPECIAL_CATEGORIES[0], -1);
+      $filters = avc_get_filters(0, $articles); 
+    ?>
+    
+    <div id="filters">
+      <?php
+        // Display the select boxes
+        global $FILTERS_LABELS2;
+        global $FILTERS;
+        
+        foreach ($FILTERS_LABELS2[0] as $index => $select) { ?>
+          <label class="select"> 
+            <select class="option-set" data-filter-group="<?php echo $FILTERS[0][$index] // latime ?>">
+              <option selected data-filter-value=""><?php echo $select // Toate latimile ?></option>
+              <?php foreach ($filters[$index] as $p) { ?>
+	              <option data-filter-value=".<?php echo string_to_classname($p) ?>"><?php echo $p ?></option>
+              <?php } ?>
+            </select>
+          </label> 
+        <?php }
+      ?>
+    </div>
+  
+    <div id="relationships">
+      <?php foreach ($filters as $index => $filter) { ?>
+        <div id="relation">
+          <?php foreach ($filters[$index] as $p) { ?>
+            <input type="checkbox" name="<?php echo $p ?>" value="<?php echo $p ?>"><?php echo $p ?>
+            <br>
+          <?php } ?>
+        </div>
+      <?php } ?>
+    </div>
+    
+    <!--
+    <div id="relationships">
+      <?php 
+        $relationships = avc_get_filter_relationships('265', 'latime', 'anvelope'); 
+        
+        global $FILTERS_ANVELOPE;
+        $current = array_search('latime', $FILTERS_ANVELOPE);
+        
+        foreach ($relationships as $index => $relation) { ?>
+          <div id="relation"> 
+            <?php if ($index == $current) {
+              echo 'current';
+            } else {
+              print_r($relation);
+            } ?>
+          </div>
+        <?php } 
+      ?>
+    </div>
+    -->
+  
+  </section>
+<?php }
 
 
 
@@ -94,30 +161,6 @@ function anvelocom_tuning_page() {
 function anvelocom_tables() {
   global $wpdb;
   require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-  
-  $table_name = $wpdb->prefix . "filter_anvelope_latime"; 
-  $sql = "CREATE TABLE $table_name (
-    id mediumint(9) NOT NULL AUTO_INCREMENT,
-    value tinytext NOT NULL,
-    UNIQUE KEY id (id)
-  );";
-  dbDelta( $sql );
-  
-  $table_name = $wpdb->prefix . "filter_anvelope_inaltime"; 
-  $sql = "CREATE TABLE $table_name (
-    id mediumint(9) NOT NULL AUTO_INCREMENT,
-    value tinytext NOT NULL,
-    UNIQUE KEY id (id)
-  );";
-  dbDelta( $sql );
-  
-  $table_name = $wpdb->prefix . "filter_anvelope_diametru"; 
-  $sql = "CREATE TABLE $table_name (
-    id mediumint(9) NOT NULL AUTO_INCREMENT,
-    value tinytext NOT NULL,
-    UNIQUE KEY id (id)
-  );";
-  dbDelta( $sql );
   
   $table_name = $wpdb->prefix . "filter_anvelope_inaltime_latime"; 
   $sql = "CREATE TABLE $table_name (

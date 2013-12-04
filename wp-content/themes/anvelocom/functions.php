@@ -13,48 +13,6 @@ define("CATEGORY_BESTSELLERS", 'Cele mai vandute');
 define("META_PRICE", 'Pret');
 define("META_PRICE_SALES", 'Pret redus');
 
-define("PAGE_ANVELOPE", 'categoryanvelope-auto-offroad');
-define("PAGE_JENTI", 'jante-auto-aluminiu-si-tabla');
-define("PAGE_TUNING", 'tuning-auto-powertuning');
-global $SPECIAL_PAGES;
-$SPECIAL_PAGES = array(PAGE_ANVELOPE, PAGE_JENTI, PAGE_TUNING);
-
-
-define("CATEGORY_ANVELOPE", 'anvelope-auto-offroad');
-define("CATEGORY_JENTI", 'jante');
-define("CATEGORY_TUNING", 'tuning');
-global $SPECIAL_CATEGORIES;
-$SPECIAL_CATEGORIES = array(CATEGORY_ANVELOPE, CATEGORY_JENTI, CATEGORY_TUNING);
-
-
-define("META_ANVELOPE_DIMENSION", 'Dimensiune janta');
-define("META_ANVELOPE_LATIME", 'latime');
-define("META_ANVELOPE_INALTIME", 'inaltime');
-define("META_ANVELOPE_BRAND", 'brand');
-define("META_ANVELOPE_PROFIL", 'profil');
-$FILTERS_ANVELOPE = array(META_ANVELOPE_LATIME, META_ANVELOPE_INALTIME, META_ANVELOPE_DIMENSION, META_ANVELOPE_BRAND, META_ANVELOPE_PROFIL);
-$FILTERS_ANVELOPE_LABELS = array('Latime anvelopa', 'Inaltime anvelopa', 'Diametru janta', 'Marca', 'Profil');
-$FILTERS_ANVELOPE_LABELS2 = array('Toate latimile', 'Toate inaltimile', 'Toate dimensiunile', 'Toate marcile', 'Toate profilurile');
-
-define("META_JENTI_DIMENSION", 'Latime/Diametru');
-define("META_JENTI_BRAND", 'Marca/Model');
-define("META_JENTI_PCD", 'PCD');
-$FILTERS_JENTI = array(META_JENTI_DIMENSION, META_JENTI_BRAND, META_JENTI_PCD);
-$FILTERS_JENTI_LABELS = array('Latime/Diametru', 'Marca/Model', 'PCD');
-$FILTERS_JENTI_LABELS2 = array('Toate Latime/Diametru', 'Toate Marca/Model', 'Toate PCD');
-
-define("META_TUNING_BRAND", 'Marca auto');
-define("META_TUNING_MODEL", 'Model');
-define("META_TUNING_MOTOR", 'Motorizare');
-$FILTERS_TUNING = array(META_TUNING_BRAND, META_TUNING_MODEL, META_TUNING_MOTOR);
-$FILTERS_TUNING_LABELS = array('Marca auto', 'Model', 'Motorizare');
-$FILTERS_TUNING_LABELS2 = array('Toate marcile', 'Toate modelurile', 'Toate motorizarile');
-
-global $FILTERS;
-$FILTERS = array($FILTERS_ANVELOPE, $FILTERS_JENTI, $FILTERS_TUNING);
-$FILTERS_LABELS = array($FILTERS_ANVELOPE_LABELS, $FILTERS_JENTI_LABELS, $FILTERS_TUNING_LABELS);
-$FILTERS_LABELS2 = array($FILTERS_ANVELOPE_LABELS2, $FILTERS_JENTI_LABELS2, $FILTERS_TUNING_LABELS2);
-
 
 
 
