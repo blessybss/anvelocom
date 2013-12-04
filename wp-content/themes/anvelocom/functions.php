@@ -14,6 +14,20 @@ define("META_PRICE", 'Pret');
 define("META_PRICE_SALES", 'Pret redus');
 
 
+define("PAGE_ANVELOPE", 'categoryanvelope-auto-offroad');
+define("PAGE_JENTI", 'jante-auto-aluminiu-si-tabla');
+define("PAGE_TUNING", 'tuning-auto-powertuning');
+global $SPECIAL_PAGES;
+$SPECIAL_PAGES = array(PAGE_ANVELOPE, PAGE_JENTI, PAGE_TUNING);
+
+
+define("CATEGORY_ANVELOPE", 'anvelope-auto-offroad');
+define("CATEGORY_JENTI", 'jante');
+define("CATEGORY_TUNING", 'tuning');
+global $SPECIAL_CATEGORIES;
+$SPECIAL_CATEGORIES = array(CATEGORY_ANVELOPE, CATEGORY_JENTI, CATEGORY_TUNING);
+
+
 
 
 

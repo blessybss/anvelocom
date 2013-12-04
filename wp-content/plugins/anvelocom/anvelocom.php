@@ -69,6 +69,8 @@ function anvelocom_anvelope_page() { ?>
   <section id="anvelope" class="filter">
     <h1>Anvelope</h2>
     
+    <?php $nonce = 'anvelope-latime' ?>
+    
     <?php
       // Prepare articles and filters
       global $SPECIAL_CATEGORIES;
@@ -79,6 +81,7 @@ function anvelocom_anvelope_page() { ?>
     <div id="filters">
       <?php
         // Display the select boxes
+        //
         global $FILTERS_LABELS2;
         global $FILTERS;
         
@@ -96,37 +99,41 @@ function anvelocom_anvelope_page() { ?>
     </div>
   
     <div id="relationships">
-      <?php foreach ($filters as $index => $filter) { ?>
-        <div id="relation">
-          <?php foreach ($filters[$index] as $p) { ?>
-            <input type="checkbox" name="<?php echo $p ?>" value="<?php echo $p ?>"><?php echo $p ?>
-            <br>
-          <?php } ?>
-        </div>
-      <?php } ?>
+      <form action="?page=anvelocom-anvelope" method="post">
+        <?php $relations = avc_get_filter_relationships('31', 'anvelope-latime', 'anvelope') ?>
+        <?php foreach ($filters as $index => $filter) { ?>
+          <div id="relation" class="<?php echo $FILTERS[0][$index] ?>">
+            <?php foreach ($filters[$index] as $p) { ?>
+              <input type="checkbox" id="array_<?php echo $index ?>[]" name="array_<?php echo $index ?>[]" value="<?php echo $p ?>"><?php echo $p ?>
+              <br>
+            <?php } ?>
+          </div>
+        <?php } ?>
+        
+        <input type="hidden" value="<?php echo wp_create_nonce($nonce) ?>" id="nonce" name="nonce">
+        <input type="hidden" id="action" name="action" value="submit-form">
+        
+        <?php // These will be filled by jQuery when a filter is selected ?>
+        <input type="hidden" id="filter" name="filter" value="">
+        <input type="hidden" id="filter_value" name="filter_value" value="">
+        
+        <p class="submit">
+          <input type="submit" value="Actualizare" id="submit" name="submit">
+        </p>
+      </form>
     </div>
     
-    <!--
-    <div id="relationships">
-      <?php 
-        $relationships = avc_get_filter_relationships('265', 'latime', 'anvelope'); 
-        
-        global $FILTERS_ANVELOPE;
-        $current = array_search('latime', $FILTERS_ANVELOPE);
-        
-        foreach ($relationships as $index => $relation) { ?>
-          <div id="relation"> 
-            <?php if ($index == $current) {
-              echo 'current';
-            } else {
-              print_r($relation);
-            } ?>
-          </div>
-        <?php } 
-      ?>
-    </div>
-    -->
-  
+    
+    <?php 
+      // Save the relationships
+      //
+      if (($_POST) && ($_POST['action'] == 'submit-form')) {
+        if (wp_verify_nonce( $_POST['nonce'], $nonce )) {
+          print_r($_POST);
+          avc_save($_POST);
+        }
+      }
+    ?>
   </section>
 <?php }
 
@@ -165,8 +172,8 @@ function anvelocom_tables() {
   $table_name = $wpdb->prefix . "filter_anvelope_inaltime_latime"; 
   $sql = "CREATE TABLE $table_name (
     id mediumint(9) NOT NULL AUTO_INCREMENT,
-    inaltime_id mediumint(9) NOT NULL,
-    latime_id mediumint(9) NOT NULL,
+    latime mediumint(9) NOT NULL,
+    inaltime mediumint(9) NOT NULL,
     UNIQUE KEY id (id)
   );";
   dbDelta( $sql );
@@ -174,8 +181,8 @@ function anvelocom_tables() {
   $table_name = $wpdb->prefix . "filter_anvelope_inaltime_diametru"; 
   $sql = "CREATE TABLE $table_name (
     id mediumint(9) NOT NULL AUTO_INCREMENT,
-    inaltime_id mediumint(9) NOT NULL,
-    diametru_id mediumint(9) NOT NULL,
+    inaltime mediumint(9) NOT NULL,
+    diametru mediumint(9) NOT NULL,
     UNIQUE KEY id (id)
   );";
   dbDelta( $sql );
@@ -183,8 +190,8 @@ function anvelocom_tables() {
   $table_name = $wpdb->prefix . "filter_anvelope_latime_diametru"; 
   $sql = "CREATE TABLE $table_name (
     id mediumint(9) NOT NULL AUTO_INCREMENT,
-    latime_id mediumint(9) NOT NULL,
-    diametru_id mediumint(9) NOT NULL,
+    latime mediumint(9) NOT NULL,
+    diametru mediumint(9) NOT NULL,
     UNIQUE KEY id (id)
   );";
   dbDelta( $sql );

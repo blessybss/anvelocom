@@ -4,12 +4,12 @@ jQuery(document).ready(function() {
   jQuery('.wp-admin #anvelope #filters select').on('change', function (e) {
     var $this = jQuery("option:selected", this);
     
-    // don't proceed if already selected
+    // Don't proceed if already selected
     if ($this.hasClass('selected')) {
       return;
     }
   
-    // disable all select boxes
+    // Disable all select boxes
     jQuery('.wp-admin #anvelope #filters select').attr('disabled', 'disabled');
     
     // Get filter value
@@ -17,6 +17,13 @@ jQuery(document).ready(function() {
     
     // Get filter
     var $filter = jQuery(this).attr('data-filter-group');
-    alert($filter + $filter_value);
+    
+    // Show checkboxes, unless for this current filter
+    jQuery('.wp-admin #anvelope #relationships').show();
+    jQuery('.wp-admin #anvelope #relationships #relation.' + $filter).css('visibility', 'hidden');
+    
+    // Add hidden elements with the current filter data
+    jQuery('.wp-admin #anvelope #relationships form input#filter').attr('value', $filter);
+    jQuery('.wp-admin #anvelope #relationships form input#filter_value').attr('value', $filter_value);
   });
 });
