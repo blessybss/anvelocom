@@ -98,8 +98,26 @@ function avc_get_filter_relationships($value, $filter, $table) {
     if ($filters != $filter) {
       $column = avc_remove_filter_prefix($filters);
       $ret[] = $wpdb->get_results(
-        "SELECT $column FROM " . $wpdb->prefix . $table . " WHERE " . $key . " = " . $value      
+        "SELECT $column FROM " . $wpdb->prefix . $table . " WHERE " . $key . " = '" . $value . "'"     
       );
+    }
+  }
+  
+  return avc_prettify_relationships($ret);
+}
+
+
+// Make a good looking relationships table
+function avc_prettify_relationships($relations) {
+  $ret = array();
+  
+  foreach ($relations as $relation) {
+    foreach ($relation as $r) {
+      $key = key($r);
+      $value = $r->$key;
+      if ($value) {
+        $ret[$key][] = $value;
+      }
     }
   }
   

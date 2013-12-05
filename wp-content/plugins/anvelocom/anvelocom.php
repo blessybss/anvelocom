@@ -100,7 +100,7 @@ function anvelocom_anvelope_page() { ?>
   
     <div id="relationships">
       <form action="?page=anvelocom-anvelope" method="post">
-        <?php $relations = avc_get_filter_relationships('31', 'anvelope-latime', 'filter_anvelope'); ?>
+        <?php $relations = avc_get_filter_relationships('10,5', 'anvelope-inaltime', 'filter_anvelope'); print_r($relations); ?>
         <?php foreach ($filters as $index => $filter) { ?>
           <div id="relation" class="<?php echo $FILTERS[0][$index] ?>">
             <?php foreach ($filters[$index] as $p) { ?>
