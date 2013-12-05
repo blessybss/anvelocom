@@ -124,6 +124,13 @@ function avc_prettify_relationships($relations) {
   return $ret;
 }
 
+// Check if a checkbox must be checked or not
+// - params: checkbox value, filter, relationships array
+function avc_get_checked($checkbox, $filter, $relations) {
+  $filter = avc_remove_filter_prefix($filter);
+  return (in_array($checkbox, $relations[$filter])) ? "checked" : "";
+}
+
 
 // Get filters 
 // - returns meta fields for $filter_id from all $articles

@@ -100,15 +100,23 @@ function anvelocom_anvelope_page() { ?>
   
     <div id="relationships">
       <form action="?page=anvelocom-anvelope" method="post">
-        <?php $relations = avc_get_filter_relationships('10,5', 'anvelope-inaltime', 'filter_anvelope'); print_r($relations); ?>
-        <?php foreach ($filters as $index => $filter) { ?>
-          <div id="relation" class="<?php echo $FILTERS[0][$index] ?>">
-            <?php foreach ($filters[$index] as $p) { ?>
-              <input type="checkbox" id="relations[<?php echo $FILTERS[0][$index] ?>][]" name="relations[<?php echo $FILTERS[0][$index] ?>][]" value="<?php echo $p ?>"><?php echo $p ?>
-              <br>
-            <?php } ?>
-          </div>
-        <?php } ?>
+        <?php
+          $relations = avc_get_filter_relationships('31', 'anvelope-latime', 'filter_anvelope');
+          print_r($relations);
+       
+          foreach ($filters as $index => $filter) { 
+            $filter_name = $FILTERS[0][$index]; ?>
+            
+            <div id="relation" class="<?php echo $filter_name ?>">
+              <?php foreach ($filters[$index] as $p) { 
+                $checked = avc_get_checked($p, $filter_name, $relations); ?>
+                
+                <input type="checkbox" id="relations[<?php echo $filter_name ?>][]" name="relations[<?php echo $filter_name ?>][]" value="<?php echo $p ?>" <?php echo $checked ?>>
+                <?php echo $p ?>
+                <br>
+              <?php } ?>
+            </div>
+          <?php } ?>
         
         <input type="hidden" value="<?php echo wp_create_nonce($nonce) ?>" id="nonce" name="nonce">
         <input type="hidden" id="action" name="action" value="submit-form">
