@@ -54,8 +54,10 @@ function avc_save($post) {
   $filter_value = $post['filter_value'];
   $relations = $post['relations'];
   
-  global $FILTER_ANVELOPE;
+  // Remove existing data before save
+  avc_delete('filter_anvelope', $filter2, $filter_value);
   
+  // Do save
   foreach ($relations as $column => $relation) {
     $column2 = avc_remove_filter_prefix($column);
     foreach ($relation as $r) {
@@ -77,6 +79,22 @@ function avc_insert($table, $key1, $value1, $key2, $value2) {
   $ret = $wpdb->query( 
   	$wpdb->prepare( 
   		"INSERT INTO $table $fields VALUES $values ", $data
+  	)
+	);
+	
+	return ($ret != false) ? "OK" : "Error";
+}
+
+// Delete existing relationhips for an item
+// - this is called before save
+// - on save all relationships are rewritten, ir first deleted then saved
+function avc_delete($table, $key, $value) {
+  global $wpdb;
+  $table = $wpdb->prefix . $table;
+  
+  $ret = $wpdb->query( 
+  	$wpdb->prepare( 
+  		"DELETE FROM $table WHERE $key = $value", array()
   	)
 	);
 	
@@ -128,7 +146,13 @@ function avc_prettify_relationships($relations) {
 // - params: checkbox value, filter, relationships array
 function avc_get_checked($checkbox, $filter, $relations) {
   $filter = avc_remove_filter_prefix($filter);
-  return (in_array($checkbox, $relations[$filter])) ? "checked" : "";
+  $relation = $relations[$filter];
+  
+  if (empty($relation)) {
+    return '';
+  } else {
+    return (in_array($checkbox, $relation)) ? "checked" : "";
+  }
 }
 
 
