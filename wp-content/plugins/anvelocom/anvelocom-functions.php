@@ -21,13 +21,6 @@ $FILTERS_ANVELOPE = array(META_ANVELOPE_LATIME, META_ANVELOPE_INALTIME, META_ANV
 $FILTERS_ANVELOPE_LABELS = array('Latime anvelopa', 'Inaltime anvelopa', 'Diametru janta', 'Profil', 'Marca');
 $FILTERS_ANVELOPE_LABELS2 = array('Toate latimile', 'Toate inaltimile', 'Toate dimensiunile', 'Toate profilurile', 'Toate marcile');
 
-$FILTERS_ANVELOPE_RELATIONS = array(
-  array('filter_anvelope_inaltime_latime', 'filter_anvelope_latime_diametru'),
-  array('filter_anvelope_inaltime_latime', 'filter_anvelope_inaltime_diametru'),
-  array('filter_anvelope_latime_diametru', 'filter_anvelope_inaltime_diametru')
-);
-
-
 
 
 define("META_JENTI_DIMENSION", 'Latime/Diametru');
@@ -57,86 +50,66 @@ $FILTERS_LABELS2 = array($FILTERS_ANVELOPE_LABELS2, $FILTERS_JENTI_LABELS2, $FIL
 function avc_save($post) {
   // Get and transform $_POST data
   $filter = $post['filter'];
+  $filter2 = avc_remove_filter_prefix($filter);
   $filter_value = $post['filter_value'];
-  $relations = array();
-  $relations[] = $post['array_1'];
-  $relations[] = $post['array_2'];
+  $relations = $post['relations'];
   
-  print_r($relations);
+  global $FILTER_ANVELOPE;
   
-  // Remove prefix for filter to use as database key
-  // ie: anvelope-latime -> latime
-  $key = explode('-', $filter);
-  $key_1 = $key[1];
-  
-  global $wpdb;
-  $wpdb->show_errors();
-  
-  global $FILTERS_ANVELOPE;
-  global $FILTERS_ANVELOPE_RELATIONS;
-  $index = array_search($filter, $FILTERS_ANVELOPE);
-  
-  foreach ($FILTERS_ANVELOPE_RELATIONS[$index] as $i => $table) {
-    // Get the other database key
-    // - ie: filter_anvelope_inaltime_latime > inaltime, when $key_1 = latime
-    $key = explode('_', $table);
-    $key_2 = ($key[2] != $key_1) ? $key[2] : $key[3];
-    
-    $table = $wpdb->prefix . $table;
-    
-    // (inaltime_id, latime_id)
-    $fields = '(' . $key_1 . ',' . $key_2 . ')';
-    
-    $values = '(%s, %s)';
-    
-    // array(265, 16);
-    $data = array();
-    $data[] = $filter_value;
-    
-    foreach ($relations[$i] as $r) {
-      $data[1] = $r;
-      print_r($data);
-      
-      $ret = $wpdb->query( 
-        $wpdb->prepare( 
-      		"INSERT INTO $table $fields VALUES $values", $data
-      	)
-    	);
-    	
-    	$msg = ($ret != false) ? "OK" : "Error";
-      echo $msg;
+  foreach ($relations as $column => $relation) {
+    $column2 = avc_remove_filter_prefix($column);
+    foreach ($relation as $r) {
+      avc_insert('filter_anvelope', $filter2, $filter_value, $column2, $r);
     }
-    
   }
 }
 
+
+// Insert a single relationship into the db
+function avc_insert($table, $key1, $value1, $key2, $value2) {
+  $fields = '(' . $key1 . ',' . $key2 . ')';
+  $values = '(%s, %s)';
+  $data = array($value1, $value2);
+
+  global $wpdb;
+  $table = $wpdb->prefix . $table;
+  
+  $ret = $wpdb->query( 
+  	$wpdb->prepare( 
+  		"INSERT INTO $table $fields VALUES $values ", $data
+  	)
+	);
+	
+	return ($ret != false) ? "OK" : "Error";
+}
+
+
 // Get relationships for a filter
-// - params: 265, latime, anvelope
+// - params: 265, anvelope-latime, filter_anvelope
 // - returns an array of arrays, each array showing a relationship
-function avc_get_filter_relationships($value, $filter, $group) {
+function avc_get_filter_relationships($value, $filter, $table) {
   $ret = array();
   
   global $wpdb;
   global $FILTERS_ANVELOPE;
-  global $FILTERS_ANVELOPE_RELATIONS;
-  $index = array_search($filter, $FILTERS_ANVELOPE);
+  $key = avc_remove_filter_prefix($filter);
   
-  // Remove prefix for filter to use as database key
-  // ie: anvelope-latime -> latime
-  $key = explode('-', $filter);
-  
-  $ret[] = $wpdb->get_results(
-    "SELECT * FROM " . $wpdb->prefix . $FILTERS_ANVELOPE_RELATIONS[$index][0] . " WHERE " . $key[1] . " = " . $value      
-  );
-  $ret[] = $wpdb->get_results(
-    "SELECT * FROM " . $wpdb->prefix . $FILTERS_ANVELOPE_RELATIONS[$index][1] . " WHERE " . $key[1] . " = " . $value      
-  );
+  foreach ($FILTERS_ANVELOPE as $filters) {
+    if ($filters != $filter) {
+      $column = avc_remove_filter_prefix($filters);
+      $ret[] = $wpdb->get_results(
+        "SELECT $column FROM " . $wpdb->prefix . $table . " WHERE " . $key . " = " . $value      
+      );
+    }
+  }
   
   return $ret;
 }
 
 
 // Get filters 
+// - returns meta fields for $filter_id from all $articles
+// - ie. all filter values for anvelope
 function avc_get_filters($filter_id, $articles) {
   global $FILTERS;
   
@@ -162,6 +135,14 @@ function avc_get_filter_labels($filter_id) {
   return $ret;
 }
 
+
+// Remove prefix for filter to use as database key
+// - ie: anvelope-latime -> latime
+function avc_remove_filter_prefix($filter) {
+  $key = explode('-', $filter);
+  return $key[1];
+}
+  
 
 
 

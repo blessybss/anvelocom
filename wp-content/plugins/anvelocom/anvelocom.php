@@ -69,7 +69,7 @@ function anvelocom_anvelope_page() { ?>
   <section id="anvelope" class="filter">
     <h1>Anvelope</h2>
     
-    <?php $nonce = 'anvelope-latime' ?>
+    <?php $nonce = 'anvelope' ?>
     
     <?php
       // Prepare articles and filters
@@ -100,11 +100,11 @@ function anvelocom_anvelope_page() { ?>
   
     <div id="relationships">
       <form action="?page=anvelocom-anvelope" method="post">
-        <?php $relations = avc_get_filter_relationships('31', 'anvelope-latime', 'anvelope') ?>
+        <?php $relations = avc_get_filter_relationships('31', 'anvelope-latime', 'filter_anvelope'); ?>
         <?php foreach ($filters as $index => $filter) { ?>
           <div id="relation" class="<?php echo $FILTERS[0][$index] ?>">
             <?php foreach ($filters[$index] as $p) { ?>
-              <input type="checkbox" id="array_<?php echo $index ?>[]" name="array_<?php echo $index ?>[]" value="<?php echo $p ?>"><?php echo $p ?>
+              <input type="checkbox" id="relations[<?php echo $FILTERS[0][$index] ?>][]" name="relations[<?php echo $FILTERS[0][$index] ?>][]" value="<?php echo $p ?>"><?php echo $p ?>
               <br>
             <?php } ?>
           </div>
@@ -162,40 +162,26 @@ function anvelocom_tuning_page() {
 // --------------------------------------------------------------------------------
 
 
-
-
 // Create database tables
 function anvelocom_tables() {
   global $wpdb;
   require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
   
-  $table_name = $wpdb->prefix . "filter_anvelope_inaltime_latime"; 
+  global $FILTERS_ANVELOPE;
+  
+  $fields = '';
+  foreach ($FILTERS_ANVELOPE as $filter) {
+    $fields .= avc_remove_filter_prefix($filter);
+    $fields .= ' varchar(255), ';
+  }
+  
+  $table_name = $wpdb->prefix . "filter_anvelope"; 
   $sql = "CREATE TABLE $table_name (
     id mediumint(9) NOT NULL AUTO_INCREMENT,
-    latime mediumint(9) NOT NULL,
-    inaltime mediumint(9) NOT NULL,
+    $fields
     UNIQUE KEY id (id)
   );";
   dbDelta( $sql );
-  
-  $table_name = $wpdb->prefix . "filter_anvelope_inaltime_diametru"; 
-  $sql = "CREATE TABLE $table_name (
-    id mediumint(9) NOT NULL AUTO_INCREMENT,
-    inaltime mediumint(9) NOT NULL,
-    diametru mediumint(9) NOT NULL,
-    UNIQUE KEY id (id)
-  );";
-  dbDelta( $sql );
-  
-  $table_name = $wpdb->prefix . "filter_anvelope_latime_diametru"; 
-  $sql = "CREATE TABLE $table_name (
-    id mediumint(9) NOT NULL AUTO_INCREMENT,
-    latime mediumint(9) NOT NULL,
-    diametru mediumint(9) NOT NULL,
-    UNIQUE KEY id (id)
-  );";
-  dbDelta( $sql );
-  
 }
 register_activation_hook(__FILE__,'anvelocom_tables');
 
