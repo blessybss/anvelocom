@@ -12,6 +12,10 @@
     </p>
     <address>
       <?php echo get_date_firma(); ?>
+      
+      <p>
+        © 2013 Anvelocom. Toate drepturile rezervate. <a href="http://www.anpc.gov.ro/" title="Protectia consumatorilor">Protectia consumatorilor</a>. 
+      </p>
     </address>
   </div>
   

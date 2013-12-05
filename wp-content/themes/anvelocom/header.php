@@ -54,8 +54,8 @@
       <nav id="contact">
         <h3>Contact</h3>
         <ul>
-          <li>0744 374 914</li>
-          <li><a href="" title="">Facebook</a></li>
+          <li>Tel: 0744-374-914</li>
+          <li><a href="https://www.facebook.com/Anvelocom" title="Anvelocom pe Facebook">Facebook</a></li>
         </ul>
       </nav>
     </header>
