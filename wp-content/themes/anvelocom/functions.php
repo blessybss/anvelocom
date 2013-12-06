@@ -34,6 +34,7 @@ $SPECIAL_CATEGORIES = array(CATEGORY_ANVELOPE, CATEGORY_JENTI, CATEGORY_TUNING);
 // Filters
 
 
+
 // Returns an array of values to use in a filter
 // - $filter_meta, the meta field to look for
 // - $articles, the list of posts where to search for thei meta tag
@@ -309,8 +310,6 @@ add_theme_support( 'post-thumbnails' );
 
 /* The main menu is now manageable via the Wordpress Admin Panel */
 register_nav_menus();
-
-
 
 
 

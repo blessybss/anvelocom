@@ -70,6 +70,27 @@ $(document).ready(function() {
       isoFilters.push( filters[ prop ] )
     }
     
+    // Do the Ajax call to show only related filters
+    // - this goes through the Anvelocom plugin
+    var nonce = $('#filters #selects').find('#nonce').attr("value");
+    var ajaxurl = $('#filters #selects').find('#ajaxurl').attr("value");
+    var value = $this.attr('data-filter-value');
+    value = value.replace('.', '');
+    $.post(
+      ajaxurl, 
+      {
+        'action' : 'isotope_filter_ajax',
+        'nonce' : nonce,
+        'filter' : group,
+        'filter_value' : value
+      }, 
+      function(response) {        
+        alert(response.relations);    
+      }
+    );
+    
+    
+    // Do the Isotope filtering
     var selector = isoFilters.join('');
     $container.isotope({ filter: selector });
     return false;

@@ -46,7 +46,50 @@ $FILTERS_LABELS2 = array($FILTERS_ANVELOPE_LABELS2, $FILTERS_JENTI_LABELS2, $FIL
 
 
 
-// Do the filtering
+// Do the filtering on the user interface
+//
+function isotope_filter_ajax() {
+  $nonce = $_POST['nonce'];  
+  if (wp_verify_nonce($nonce, 'anvelope')) {
+  
+    $filter = strval($_POST['filter']);
+    $filter_value = strval($_POST['filter_value']);
+    echo $filter;
+    echo $filter_value;
+    
+    if ($filter && $filter_value) {
+      $relations = avc_get_filter_relationships($filter_value, $filter, 'filter_anvelope');
+      print_r($relations);
+      
+      $ret = array(
+        'success' => true,
+        'message' => 'Ok',
+        'relations' => $relations
+      );
+    } else {
+      $ret = array(
+        'success' => false,
+        'message' => 'Filter error'
+      );
+    }
+  } else {
+    $ret = array(
+      'success' => false,
+      'message' => 'Nonce error'
+    );
+  }
+  
+  $response = json_encode($ret);
+  header( "Content-Type: application/json" );
+  echo $response;
+  exit;
+}
+add_action('wp_ajax_isotope_filter_ajax', 'isotope_filter_ajax');
+add_action( 'wp_ajax_nopriv_isotope_filter_ajax', 'isotope_filter_ajax' );
+
+
+
+// Do the filtering on the Admin interface
 //
 function anvelocom_filter_ajax() {
   $nonce = $_POST['nonce'];  

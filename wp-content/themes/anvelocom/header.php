@@ -36,6 +36,8 @@
     <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
     
 	  <link rel="author" href="humans.txt" />
+	  
+    
 	  <?php wp_head(); ?>
   </head>
   
