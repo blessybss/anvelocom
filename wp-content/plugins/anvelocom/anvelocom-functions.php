@@ -46,8 +46,36 @@ $FILTERS_LABELS2 = array($FILTERS_ANVELOPE_LABELS2, $FILTERS_JENTI_LABELS2, $FIL
 
 
 
+// Do the filtering
+//
+function anvelocom_filter_ajax() {
+  $nonce = $_POST['nonce'];  
+  if (wp_verify_nonce($nonce, 'anvelope')) {
+  
+    $filter = strval($_POST['filter']);
+    $filter_value = strval($_POST['filter_value']);
+    
+    if ($filter && $filter_value) {
+      $relations = avc_get_filter_relationships($filter_value, $filter, 'filter_anvelope');
+      $nonce = 'anvelope';
+      
+      global $SPECIAL_CATEGORIES;
+      $articles = get_posts_from_category($SPECIAL_CATEGORIES[0], -1);
+      $filters = avc_get_filters(0, $articles); 
+      include 'form.php';
+    } 
+  }
+  exit;
+}
+add_action('wp_ajax_anvelocom_filter_ajax', 'anvelocom_filter_ajax');
+add_action( 'wp_ajax_nopriv_anvelocom_filter_ajax', 'anvelocom_filter_ajax' );
+
+
+
 // Save relationships for a filter
 function avc_save($post) {
+  $ret = '';
+  
   // Get and transform $_POST data
   $filter = $post['filter'];
   $filter2 = avc_remove_filter_prefix($filter);
@@ -61,9 +89,11 @@ function avc_save($post) {
   foreach ($relations as $column => $relation) {
     $column2 = avc_remove_filter_prefix($column);
     foreach ($relation as $r) {
-      avc_insert('filter_anvelope', $filter2, $filter_value, $column2, $r);
+      $ret = avc_insert('filter_anvelope', $filter2, $filter_value, $column2, $r);
     }
   }
+  
+  return $ret;
 }
 
 
