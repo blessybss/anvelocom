@@ -124,7 +124,7 @@ function avc_delete($table, $key, $value) {
   
   $ret = $wpdb->query( 
   	$wpdb->prepare( 
-  		"DELETE FROM $table WHERE $key = $value", array()
+  		"DELETE FROM $table WHERE $key = '" . $value . "'", array()
   	)
 	);
 	
@@ -172,16 +172,16 @@ function avc_prettify_relationships($relations) {
   return $ret;
 }
 
-// Check if a checkbox must be checked or not
+// Checks if a checkbox must be checked or not
 // - params: checkbox value, filter, relationships array
 function avc_get_checked($checkbox, $filter, $relations) {
   $filter = avc_remove_filter_prefix($filter);
-  $relation = $relations[$filter];
-  
-  if (empty($relation)) {
-    return '';
-  } else {
-    return (in_array($checkbox, $relation)) ? "checked" : "";
+  if (array_key_exists($filter, $relations)) {
+    if (empty($relations[$filter])) {
+      return '';
+    } else {
+      return (in_array($checkbox, $relations[$filter])) ? "checked" : "";
+    }
   }
 }
 
