@@ -71,7 +71,7 @@ $(document).ready(function() {
     }
     
     // Do the Ajax call to show only related filters
-    // - this goes through the Anvelocom plugin
+    // - this goes through the Anvelocom plugin and not through functions.php
     var nonce = $('#filters #selects').find('#nonce').attr("value");
     var ajaxurl = $('#filters #selects').find('#ajaxurl').attr("value");
     var value = $this.attr('data-filter-value');
@@ -85,7 +85,7 @@ $(document).ready(function() {
         'filter_value' : value
       }, 
       function(response) {        
-        alert(response.relations);    
+        removeFilters(response.relations);    
       }
     );
     
@@ -95,6 +95,24 @@ $(document).ready(function() {
     $container.isotope({ filter: selector });
     return false;
   });
+  
+  
+  // Filters are removed from selectboxes if they are not in relation with the selected filter
+  function removeFilters(relations) {
+    $.each(relations, function(k, v) {
+      var select = $('#filters #selects').find("select[data-filter-group='anvelope-" + k + "']");
+      select.children('option').each( function() {
+        if (v.indexOf($(this).text()) != -1) {
+          $(this).prop('disabled', false);
+        } else {
+          $(this).prop('disabled', true);
+        }
+      });
+      console.log(k);
+      console.log(v);
+    });
+  }
+  
 
   
   // The window onload script

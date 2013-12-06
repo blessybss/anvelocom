@@ -54,12 +54,9 @@ function isotope_filter_ajax() {
   
     $filter = strval($_POST['filter']);
     $filter_value = strval($_POST['filter_value']);
-    echo $filter;
-    echo $filter_value;
     
     if ($filter && $filter_value) {
       $relations = avc_get_filter_relationships($filter_value, $filter, 'filter_anvelope');
-      print_r($relations);
       
       $ret = array(
         'success' => true,
