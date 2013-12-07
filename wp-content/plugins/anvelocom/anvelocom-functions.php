@@ -46,6 +46,10 @@ $FILTERS_LABELS2 = array($FILTERS_ANVELOPE_LABELS2, $FILTERS_JENTI_LABELS2, $FIL
 
 
 
+
+
+
+
 // Do the filtering on the user interface
 //
 function isotope_filter_ajax() {
@@ -113,7 +117,7 @@ add_action( 'wp_ajax_nopriv_anvelocom_filter_ajax', 'anvelocom_filter_ajax' );
 
 
 // Save relationships for a filter
-function avc_save($post) {
+function avc_save2($post) {
   $ret = '';
   
   // Get and transform $_POST data
@@ -122,15 +126,15 @@ function avc_save($post) {
   $filter_value = $post['filter_value'];
   $relations = $post['relations'];
   
+  print_r($relations);
+  
   // Remove existing data before save
   avc_delete('filter_anvelope', $filter2, $filter_value);
   
   // Do save
   foreach ($relations as $column => $relation) {
     $column2 = avc_remove_filter_prefix($column);
-    foreach ($relation as $r) {
-      $ret = avc_insert('filter_anvelope', $filter2, $filter_value, $column2, $r);
-    }
+    $ret = avc_insert('filter_anvelope', $filter2, $filter_value, $column2, $relation);
   }
   
   return $ret;
@@ -142,6 +146,8 @@ function avc_insert($table, $key1, $value1, $key2, $value2) {
   $fields = '(' . $key1 . ',' . $key2 . ')';
   $values = '(%s, %s)';
   $data = array($value1, $value2);
+  
+  print_r($fields);
 
   global $wpdb;
   $table = $wpdb->prefix . $table;

@@ -69,6 +69,62 @@ function anvelocom_anvelope_page() { ?>
   <section id="anvelope" class="filter">
     <h1>Anvelope</h2>
     
+    <form action="?page=anvelocom-anvelope" method="post">
+      <input type="hidden" value="<?php echo wp_create_nonce('anvelocom') ?>" id="nonce" name="nonce">
+      <input type="hidden" id="action" name="action" value="submit-form">
+      <input type="submit" value="Actualizare" id="submit" name="submit">
+    </form>
+    
+    <?php 
+      // Save the relationships
+      //
+      if (($_POST) && ($_POST['action'] == 'submit-form')) {
+        if (wp_verify_nonce( $_POST['nonce'], 'anvelocom' )) {
+          global $SPECIAL_CATEGORIES;
+          global $FILTERS;
+          $articles = get_posts_from_category($SPECIAL_CATEGORIES[0], -1);
+          $filters = $FILTERS[0];
+          
+          global $wpdb;
+          $table = $wpdb->prefix . 'filter_anvelope';
+          $fields = '(';
+          $values = '(';
+          foreach ($filters as $filter) {
+            $fields .= avc_remove_filter_prefix($filter) . ',';
+            $values .= '%s,';
+          }
+          $fields = rtrim($fields, ",") . ')';
+          $values = rtrim($values, ",") . ')';
+          
+          
+          foreach ($articles as $article) {
+            $relations = array();
+            
+            foreach ($filters as $filter) {
+              $relations = array_merge($relations, get_filter_value($filter, $article, true));
+            }
+            
+            if (!empty($relations)) {
+              $ret = $wpdb->query( 
+              	$wpdb->prepare( 
+              		"INSERT INTO $table $fields VALUES $values ", $relations
+              	)
+	            );
+	
+	            echo ($ret != false) ? "OK" : "Error";
+            }
+          }
+          
+        }
+      }
+    ?>
+  </section>
+<?php }
+
+function anvelocom_anvelope_page2() { ?>
+  <section id="anvelope" class="filter">
+    <h1>Anvelope</h2>
+    
     <?php $nonce = 'anvelope' ?>
     
     <?php
