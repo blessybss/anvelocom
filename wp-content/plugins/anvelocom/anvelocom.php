@@ -104,6 +104,9 @@ function anvelocom_anvelope_page() { ?>
               $relations = array_merge($relations, get_filter_value($filter, $article, true));
             }
             
+            // convert 10,5 to 10-5 and BF Goodrich to bf-goodrich
+            $relations= array_map("string_to_classname", $relations);
+            
             if (!empty($relations)) {
               $ret = $wpdb->query( 
               	$wpdb->prepare( 

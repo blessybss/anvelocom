@@ -72,23 +72,27 @@ $(document).ready(function() {
     
     // Do the Ajax call to show only related filters
     // - this goes through the Anvelocom plugin and not through functions.php
-    var nonce = $('#filters #selects').find('#nonce').attr("value");
-    var ajaxurl = $('#filters #selects').find('#ajaxurl').attr("value");
     var value = $this.attr('data-filter-value');
-    value = value.replace('.', '');
-    $.post(
-      ajaxurl, 
-      {
-        'action' : 'isotope_filter_ajax',
-        'nonce' : nonce,
-        'filter' : group,
-        'filter_value' : value
-      }, 
-      function(response) {        
-        removeFilters(response.relations);    
-      }
-    );
-    
+    // If the first option is selected ('Toate latimile') reset this relationship filter
+    if (value == '') {
+      activateFilters();
+    } else {
+      value = value.replace('.', '');
+      var nonce = $('#filters #selects').find('#nonce').attr("value");
+      var ajaxurl = $('#filters #selects').find('#ajaxurl').attr("value");
+      $.post(
+        ajaxurl, 
+        {
+          'action' : 'isotope_filter_ajax',
+          'nonce' : nonce,
+          'filter' : group,
+          'filter_value' : value
+        }, 
+        function(response) {        
+          removeFilters(response.relations);    
+        }
+      );
+    }
     
     // Do the Isotope filtering
     var selector = isoFilters.join('');
@@ -102,14 +106,26 @@ $(document).ready(function() {
     $.each(relations, function(k, v) {
       var select = $('#filters #selects').find("select[data-filter-group='anvelope-" + k + "']");
       select.children('option').each( function() {
-        if (v.indexOf($(this).text()) != -1) {
+        var value = $(this).attr('data-filter-value');
+        value = value.replace('.', '');
+        if (v.indexOf(value) != -1) {
           $(this).prop('disabled', false);
         } else {
           $(this).prop('disabled', true);
         }
       });
+      // Make 'Toate latimile ...' always active
+      select.children('option').first().prop('disabled', false);
+      
       console.log(k);
       console.log(v);
+    });
+  }
+  
+  // If the first option is selected ('Toate latimile') reset all relationships filter
+  function activateFilters() {
+    $('#filters #selects option').each( function() {
+      $(this).prop('disabled', false);
     });
   }
   
