@@ -21,12 +21,12 @@ function anvelocom_admin_menu() {
   // This makes the first submenu to be 'Overview' instead of the default 'Anvelocom'
   // - http://wordpress.stackexchange.com/questions/26499/naming-admin-menus-and-submenus
   add_submenu_page("anvelocom-menu", "Descriere plugin", "Descriere plugin", 'delete_others_posts', "anvelocom-menu", "anvelocom_main_page");
-  add_submenu_page("anvelocom-menu", "Anvelope", "Anvelope", 'delete_others_posts', "anvelocom-anvelope", "anvelocom_anvelope_page");  
-  add_submenu_page("anvelocom-menu", "Jenti", "Jenti", 'delete_others_posts', "anvelocom-jenti", "anvelocom_jenti_page"); 
-  add_submenu_page("anvelocom-menu", "Tuning", "Tuning", 'delete_others_posts', "anvelocom-tuning", "anvelocom_tuning_page"); 
+  add_submenu_page("anvelocom-menu", "Filtre", "Filtre", 'delete_others_posts', "anvelocom-anvelope", "anvelocom_anvelope_page"); 
   
 } 
 add_action('admin_menu', 'anvelocom_admin_menu');
+
+
 
 
 // Dashboard
@@ -62,31 +62,63 @@ add_action('admin_print_styles', 'anvelocom_admin_scripts');
 
 
 
-// Anvelope
+
+
+// Filtre
 // --------------------------------------------------------------------------------
 
 function anvelocom_anvelope_page() { ?>
   <section id="anvelope" class="filter">
-    <h1>Anvelope</h2>
+    <h1>Filtre</h2>
     
     <form action="?page=anvelocom-anvelope" method="post">
       <input type="hidden" value="<?php echo wp_create_nonce('anvelocom') ?>" id="nonce" name="nonce">
       <input type="hidden" id="action" name="action" value="submit-form">
-      <input type="submit" value="Actualizare" id="submit" name="submit">
+      <input type="hidden" id="index" name="index" value="0">
+      <input type="submit" value="Anvelope" id="submit" name="submit">
+    </form>
+    
+    <form action="?page=anvelocom-anvelope" method="post">
+      <input type="hidden" value="<?php echo wp_create_nonce('anvelocom') ?>" id="nonce" name="nonce">
+      <input type="hidden" id="action" name="action" value="submit-form">
+      <input type="hidden" id="index" name="index" value="1">
+      <input type="submit" value="Jenti" id="submit" name="submit">
+    </form>
+    
+    <form action="?page=anvelocom-anvelope" method="post">
+      <input type="hidden" value="<?php echo wp_create_nonce('anvelocom') ?>" id="nonce" name="nonce">
+      <input type="hidden" id="action" name="action" value="submit-form">
+      <input type="hidden" id="index" name="index" value="2">
+      <input type="submit" value="Tuning" id="submit" name="submit">
     </form>
     
     <?php 
-      // Save the relationships
+      // Generate the relationships
       //
       if (($_POST) && ($_POST['action'] == 'submit-form')) {
         if (wp_verify_nonce( $_POST['nonce'], 'anvelocom' )) {
+          $index = $_POST['index'];
+        
+          // Get the filters
           global $SPECIAL_CATEGORIES;
           global $FILTERS;
-          $articles = get_posts_from_category($SPECIAL_CATEGORIES[0], -1);
-          $filters = $FILTERS[0];
+          global $TABLES;
+          $articles = get_posts_from_category($SPECIAL_CATEGORIES[$index], -1);
+          $filters = $FILTERS[$index];
           
           global $wpdb;
-          $table = $wpdb->prefix . 'filter_anvelope';
+          $table = $wpdb->prefix . 'filter_' . $TABLES[$index];
+          
+          // First remove all existing data ....
+          $ret = $wpdb->query( 
+          	$wpdb->prepare( 
+          		"TRUNCATE TABLE $table", array()
+          	)
+          );
+          echo ($ret != false) ? "OK " : "Error ";
+          
+          
+          // Now add relationships
           $fields = '(';
           $values = '(';
           foreach ($filters as $filter) {
@@ -99,22 +131,19 @@ function anvelocom_anvelope_page() { ?>
           
           foreach ($articles as $article) {
             $relations = array();
-            
             foreach ($filters as $filter) {
               $relations = array_merge($relations, get_filter_value($filter, $article, true));
             }
             
-            // convert 10,5 to 10-5 and BF Goodrich to bf-goodrich
+            // convert 10,5 to 10-5 and BF Goodrich to bf-goodrich to match HTML class name conventions in order to be usable with the Isotope plugin which filters through class names
             $relations= array_map("string_to_classname", $relations);
-            
             if (!empty($relations)) {
               $ret = $wpdb->query( 
               	$wpdb->prepare( 
               		"INSERT INTO $table $fields VALUES $values ", $relations
               	)
 	            );
-	
-	            echo ($ret != false) ? "OK" : "Error";
+	            echo ($ret != false) ? "OK " : "Error ";
             }
           }
           
@@ -123,75 +152,6 @@ function anvelocom_anvelope_page() { ?>
     ?>
   </section>
 <?php }
-
-function anvelocom_anvelope_page2() { ?>
-  <section id="anvelope" class="filter">
-    <h1>Anvelope</h2>
-    
-    <?php $nonce = 'anvelope' ?>
-    
-    <?php
-      // Prepare articles and filters
-      global $SPECIAL_CATEGORIES;
-      $articles = get_posts_from_category($SPECIAL_CATEGORIES[0], -1);
-      $filters = avc_get_filters(0, $articles); 
-    ?>
-    
-    <div id="filters">
-      <?php
-        // Display the select boxes
-        //
-        global $FILTERS_LABELS2;
-        global $FILTERS;
-        
-        foreach ($FILTERS_LABELS2[0] as $index => $select) { ?>
-          <label class="select"> 
-            <select class="option-set" data-filter-group="<?php echo $FILTERS[0][$index] // latime ?>">
-              <option selected data-filter-value=""><?php echo $select // Toate latimile ?></option>
-              <?php foreach ($filters[$index] as $p) { ?>
-	              <option data-filter-value=".<?php echo string_to_classname($p) ?>"><?php echo $p ?></option>
-              <?php } ?>
-            </select>
-          </label> 
-        <?php }
-      ?>
-      <input type="hidden" value="<?php echo wp_create_nonce($nonce) ?>" id="nonce" name="nonce">
-    </div>
-  
-    <div id="relationships">
-      <?php // Filled by athe AJAX call ?>
-    </div>
-    
-    
-    <?php 
-      // Save the relationships
-      //
-      if (($_POST) && ($_POST['action'] == 'submit-form')) {
-        if (wp_verify_nonce( $_POST['nonce'], $nonce )) {
-          echo avc_save($_POST);
-        }
-      }
-    ?>
-  </section>
-<?php }
-
-
-
-// Jenti
-// --------------------------------------------------------------------------------
-
-function anvelocom_jenti_page() {
-  //anvelocom_admin_display_submenu_page("Jenti", "jenti", new Jenti_Table(), true, true, true);
-}
-
-
-// Tuning
-// --------------------------------------------------------------------------------
-
-function anvelocom_tuning_page() {
-  //anvelocom_admin_display_submenu_page("Tuning", "tuning", new Tuning_Table(), true, false, true);
-}
-
 
 
 
@@ -205,28 +165,39 @@ function anvelocom_tables() {
   global $wpdb;
   require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
   
-  global $FILTERS_ANVELOPE;
+  global $TABLES;
+  global $FILTERS;
   
-  $fields = '';
-  foreach ($FILTERS_ANVELOPE as $filter) {
-    $fields .= avc_remove_filter_prefix($filter);
-    $fields .= ' varchar(255), ';
+  foreach ($TABLES as $index => $table) {
+    $fields = '';
+    foreach ($FILTERS[$index] as $filter) {
+      $fields .= avc_remove_filter_prefix($filter);
+      $fields .= ' varchar(255), ';
+    }
+    
+    $table_name = $wpdb->prefix . "filter_" . $table; 
+    $sql = "CREATE TABLE $table_name (
+      id mediumint(9) NOT NULL AUTO_INCREMENT,
+      $fields
+      UNIQUE KEY id (id)
+    );";
+    dbDelta($sql);
   }
-  
-  $table_name = $wpdb->prefix . "filter_anvelope"; 
-  $sql = "CREATE TABLE $table_name (
-    id mediumint(9) NOT NULL AUTO_INCREMENT,
-    $fields
-    UNIQUE KEY id (id)
-  );";
-  dbDelta( $sql );
 }
 register_activation_hook(__FILE__,'anvelocom_tables');
 
 
 // Destroy database tables
 function anvelocom_deactivate() {
+  global $wpdb;
+  require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
   
+  global $TABLES;
+  foreach ($TABLES as $table) {
+    $table_name = $wpdb->prefix . "filter_" . $table; 
+    $sql = "DROP TABLE $table_name";
+    dbDelta($sql);
+  }
 }
 register_deactivation_hook( __FILE__, 'anvelocom_deactivate' );
 ?>

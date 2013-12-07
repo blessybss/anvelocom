@@ -6,13 +6,12 @@
 
 // Definitions
 
-
+// Anvelope
 define("META_ANVELOPE_DIMENSION", 'anvelope-diametru');
 define("META_ANVELOPE_LATIME", 'anvelope-latime');
 define("META_ANVELOPE_INALTIME", 'anvelope-inaltime');
 define("META_ANVELOPE_BRAND", 'anvelope-brand');
 define("META_ANVELOPE_PROFIL", 'anvelope-profil');
-
 global $FILTERS_ANVELOPE;
 global $FILTERS_ANVELOPE_LABELS;
 global $FILTERS_ANVELOPE_LABELS2;
@@ -22,21 +21,25 @@ $FILTERS_ANVELOPE_LABELS = array('Latime anvelopa', 'Inaltime anvelopa', 'Diamet
 $FILTERS_ANVELOPE_LABELS2 = array('Toate latimile', 'Toate inaltimile', 'Toate dimensiunile', 'Toate profilurile', 'Toate marcile');
 
 
-
-define("META_JENTI_DIMENSION", 'Latime/Diametru');
-define("META_JENTI_BRAND", 'Marca/Model');
-define("META_JENTI_PCD", 'PCD');
+// Jenti
+define("META_JENTI_DIMENSION", 'jenti-latime');
+define("META_JENTI_BRAND", 'jenti-marca');
+define("META_JENTI_PCD", 'jenti-pcd');
 $FILTERS_JENTI = array(META_JENTI_DIMENSION, META_JENTI_BRAND, META_JENTI_PCD);
 $FILTERS_JENTI_LABELS = array('Latime/Diametru', 'Marca/Model', 'PCD');
 $FILTERS_JENTI_LABELS2 = array('Toate Latime/Diametru', 'Toate Marca/Model', 'Toate PCD');
 
-define("META_TUNING_BRAND", 'Marca auto');
-define("META_TUNING_MODEL", 'Model');
-define("META_TUNING_MOTOR", 'Motorizare');
+
+// Tuning
+define("META_TUNING_BRAND", 'tuning-marca');
+define("META_TUNING_MODEL", 'tuning-model');
+define("META_TUNING_MOTOR", 'tuning-motorizare');
 $FILTERS_TUNING = array(META_TUNING_BRAND, META_TUNING_MODEL, META_TUNING_MOTOR);
 $FILTERS_TUNING_LABELS = array('Marca auto', 'Model', 'Motorizare');
 $FILTERS_TUNING_LABELS2 = array('Toate marcile', 'Toate modelurile', 'Toate motorizarile');
 
+
+// Global array
 global $FILTERS;
 global $FILTERS_LABELS;
 global $FILTERS_LABELS2;
@@ -44,9 +47,8 @@ $FILTERS = array($FILTERS_ANVELOPE, $FILTERS_JENTI, $FILTERS_TUNING);
 $FILTERS_LABELS = array($FILTERS_ANVELOPE_LABELS, $FILTERS_JENTI_LABELS, $FILTERS_TUNING_LABELS);
 $FILTERS_LABELS2 = array($FILTERS_ANVELOPE_LABELS2, $FILTERS_JENTI_LABELS2, $FILTERS_TUNING_LABELS2);
 
-
-
-
+global $TABLES;
+$TABLES = array('anvelope', 'jenti', 'tuning');
 
 
 
@@ -58,9 +60,10 @@ function isotope_filter_ajax() {
   
     $filter = strval($_POST['filter']);
     $filter_value = strval($_POST['filter_value']);
+    $table_index = strval($_POST['table_index']);
     
     if ($filter && $filter_value) {
-      $relations = avc_get_filter_relationships($filter_value, $filter, 'filter_anvelope');
+      $relations = avc_get_filter_relationships($filter_value, $filter, $table_index);
       
       $ret = array(
         'success' => true,
@@ -90,105 +93,19 @@ add_action( 'wp_ajax_nopriv_isotope_filter_ajax', 'isotope_filter_ajax' );
 
 
 
-// Do the filtering on the Admin interface
-//
-function anvelocom_filter_ajax() {
-  $nonce = $_POST['nonce'];  
-  if (wp_verify_nonce($nonce, 'anvelope')) {
-  
-    $filter = strval($_POST['filter']);
-    $filter_value = strval($_POST['filter_value']);
-    
-    if ($filter && $filter_value) {
-      $relations = avc_get_filter_relationships($filter_value, $filter, 'filter_anvelope');
-      $nonce = 'anvelope';
-      
-      global $SPECIAL_CATEGORIES;
-      $articles = get_posts_from_category($SPECIAL_CATEGORIES[0], -1);
-      $filters = avc_get_filters(0, $articles); 
-      include 'form.php';
-    } 
-  }
-  exit;
-}
-add_action('wp_ajax_anvelocom_filter_ajax', 'anvelocom_filter_ajax');
-add_action( 'wp_ajax_nopriv_anvelocom_filter_ajax', 'anvelocom_filter_ajax' );
-
-
-
-// Save relationships for a filter
-function avc_save2($post) {
-  $ret = '';
-  
-  // Get and transform $_POST data
-  $filter = $post['filter'];
-  $filter2 = avc_remove_filter_prefix($filter);
-  $filter_value = $post['filter_value'];
-  $relations = $post['relations'];
-  
-  print_r($relations);
-  
-  // Remove existing data before save
-  avc_delete('filter_anvelope', $filter2, $filter_value);
-  
-  // Do save
-  foreach ($relations as $column => $relation) {
-    $column2 = avc_remove_filter_prefix($column);
-    $ret = avc_insert('filter_anvelope', $filter2, $filter_value, $column2, $relation);
-  }
-  
-  return $ret;
-}
-
-
-// Insert a single relationship into the db
-function avc_insert($table, $key1, $value1, $key2, $value2) {
-  $fields = '(' . $key1 . ',' . $key2 . ')';
-  $values = '(%s, %s)';
-  $data = array($value1, $value2);
-  
-  print_r($fields);
-
-  global $wpdb;
-  $table = $wpdb->prefix . $table;
-  
-  $ret = $wpdb->query( 
-  	$wpdb->prepare( 
-  		"INSERT INTO $table $fields VALUES $values ", $data
-  	)
-	);
-	
-	return ($ret != false) ? "OK" : "Error";
-}
-
-// Delete existing relationhips for an item
-// - this is called before save
-// - on save all relationships are rewritten, ir first deleted then saved
-function avc_delete($table, $key, $value) {
-  global $wpdb;
-  $table = $wpdb->prefix . $table;
-  
-  $ret = $wpdb->query( 
-  	$wpdb->prepare( 
-  		"DELETE FROM $table WHERE $key = '" . $value . "'", array()
-  	)
-	);
-	
-	return ($ret != false) ? "OK" : "Error";
-}
-
-
 // Get relationships for a filter
 // - params: 265, anvelope-latime, filter_anvelope
 // - returns an array of arrays, each array showing a relationship
-function avc_get_filter_relationships($value, $filter, $table) {
+function avc_get_filter_relationships($value, $filter, $table_index) {
   $ret = array();
   
   global $wpdb;
-  global $FILTERS_ANVELOPE;
+  global $FILTERS;
+  global $TABLES;
   $key = avc_remove_filter_prefix($filter);
+  $table = 'filter_' . $TABLES[$table_index];
   
-  foreach ($FILTERS_ANVELOPE as $filters) {
+  foreach ($FILTERS[$table_index] as $filters) {
     if ($filters != $filter) {
       $column = avc_remove_filter_prefix($filters);
       $ret[] = $wpdb->get_results(
@@ -218,18 +135,6 @@ function avc_prettify_relationships($relations) {
   return $ret;
 }
 
-// Checks if a checkbox must be checked or not
-// - params: checkbox value, filter, relationships array
-function avc_get_checked($checkbox, $filter, $relations) {
-  $filter = avc_remove_filter_prefix($filter);
-  if (array_key_exists($filter, $relations)) {
-    if (empty($relations[$filter])) {
-      return '';
-    } else {
-      return (in_array($checkbox, $relations[$filter])) ? "checked" : "";
-    }
-  }
-}
 
 
 // Get filters 

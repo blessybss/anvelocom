@@ -43,6 +43,7 @@
       ?>
       <input type="hidden" value="<?php echo wp_create_nonce('anvelope') ?>" id="nonce" name="nonce">
       <input type="hidden" value="<?php echo admin_url('admin-ajax.php'); ?>" id="ajaxurl" name="ajaxurl">
+      <input type="hidden" value="<?php echo $page; ?>" id="table_index" name="table_index">
     </div>
   </section>
 

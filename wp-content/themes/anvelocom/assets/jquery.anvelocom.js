@@ -82,13 +82,15 @@ $(document).ready(function() {
     value = value.replace('.', '');
     var nonce = $('#filters #selects').find('#nonce').attr("value");
     var ajaxurl = $('#filters #selects').find('#ajaxurl').attr("value");
+    var table_index = $('#filters #selects').find('#table_index').attr("value");
     $.post(
       ajaxurl, 
       {
         'action' : 'isotope_filter_ajax',
         'nonce' : nonce,
         'filter' : group,
-        'filter_value' : value
+        'filter_value' : value,
+        'table_index' : table_index
       }, 
       function(response) {        
         removeFilters(response.relations);    
