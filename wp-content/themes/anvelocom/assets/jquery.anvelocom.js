@@ -73,26 +73,27 @@ $(document).ready(function() {
     // Do the Ajax call to show only related filters
     // - this goes through the Anvelocom plugin and not through functions.php
     var value = $this.attr('data-filter-value');
+    
     // If the first option is selected ('Toate latimile') reset this relationship filter
     if (value == '') {
-      activateFilters();
-    } else {
-      value = value.replace('.', '');
-      var nonce = $('#filters #selects').find('#nonce').attr("value");
-      var ajaxurl = $('#filters #selects').find('#ajaxurl').attr("value");
-      $.post(
-        ajaxurl, 
-        {
-          'action' : 'isotope_filter_ajax',
-          'nonce' : nonce,
-          'filter' : group,
-          'filter_value' : value
-        }, 
-        function(response) {        
-          removeFilters(response.relations);    
-        }
-      );
-    }
+      $this.siblings().prop('disabled', false);
+    } 
+    
+    value = value.replace('.', '');
+    var nonce = $('#filters #selects').find('#nonce').attr("value");
+    var ajaxurl = $('#filters #selects').find('#ajaxurl').attr("value");
+    $.post(
+      ajaxurl, 
+      {
+        'action' : 'isotope_filter_ajax',
+        'nonce' : nonce,
+        'filter' : group,
+        'filter_value' : value
+      }, 
+      function(response) {        
+        removeFilters(response.relations);    
+      }
+    );
     
     // Do the Isotope filtering
     var selector = isoFilters.join('');
@@ -119,13 +120,6 @@ $(document).ready(function() {
       
       console.log(k);
       console.log(v);
-    });
-  }
-  
-  // If the first option is selected ('Toate latimile') reset all relationships filter
-  function activateFilters() {
-    $('#filters #selects option').each( function() {
-      $(this).prop('disabled', false);
     });
   }
   
