@@ -511,7 +511,7 @@ html {
         #company {
           @include address;
           address {
-            max-width: 35em;
+            max-width: 50em;
             margin: $pad 0;
           }
         }
