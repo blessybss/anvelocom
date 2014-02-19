@@ -14,7 +14,7 @@ define("META_PRICE", 'Pret');
 define("META_PRICE_SALES", 'Pret redus');
 
 
-define("PAGE_ANVELOPE", 'categoryanvelope-auto-offroad');
+define("PAGE_ANVELOPE", 'anvelope-auto-offroad');
 define("PAGE_JENTI", 'jante-auto-aluminiu-si-tabla');
 define("PAGE_TUNING", 'tuning-auto-powertuning');
 global $SPECIAL_PAGES;
