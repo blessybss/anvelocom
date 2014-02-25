@@ -120,20 +120,24 @@ function anvelocom_anvelope_page() { ?>
           
           // Now add relationships
           $fields = '(';
-          $values = '(';
           foreach ($filters as $filter) {
             $fields .= avc_remove_filter_prefix($filter) . ',';
-            $values .= '%s,';
           }
           $fields = rtrim($fields, ",") . ')';
-          $values = rtrim($values, ",") . ')';
           
           
           foreach ($articles as $article) {
             $relations = array();
+						$values = '(';
             foreach ($filters as $filter) {
-              $relations = array_merge($relations, get_filter_value($filter, $article, true));
+							$filter_value = get_filter_value($filter, $article, true);
+							if ($filter_value) 
+									$values .= '%s,';
+							else	$values .= '"NaV",'; //Not a value: property meta value not set... by iBB!
+              $relations = array_merge($relations, $filter_value);
             }
+
+						$values = rtrim($values, ",") . ')';
             
             // convert 10,5 to 10-5 and BF Goodrich to bf-goodrich to match HTML class name conventions in order to be usable with the Isotope plugin which filters through class names
             $relations= array_map("string_to_classname", $relations);

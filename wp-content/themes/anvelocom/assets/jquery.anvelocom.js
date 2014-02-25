@@ -64,50 +64,63 @@ $(document).ready(function() {
     var group = $optionSet.attr('data-filter-group');
     filters[ group ] = $this.attr('data-filter-value');
     
+    // to take the main category, e.g.: anvelope, jenti, tuning... by iBB!
+    var group_cat = group.split("-");
+    
     // convert object into array
     var isoFilters = [];
     for ( var prop in filters ) {
       isoFilters.push( filters[ prop ] )
     }
-    
+	
+    // for correct filtering in filters we transmit all the selections nut just the actual value, iBB!		
+    var isoFilters_val = [];
+    for ( var prop in filters ) {
+      isoFilters_val.push( prop )
+      isoFilters_val.push( filters[ prop ] )
+    }
+    isoFilters_val = isoFilters_val.join(',');
+
     // Do the Ajax call to show only related filters
     // - this goes through the Anvelocom plugin and not through functions.php
-    var value = $this.attr('data-filter-value');
+    var value = $this.attr('data-filter-value');    
     
     // If the first option is selected ('Toate latimile') reset this relationship filter
     if (value == '') {
       $this.siblings().prop('disabled', false);
+		resetFilters(); 
     } 
     
-    value = value.replace('.', '');
     var nonce = $('#filters #selects').find('#nonce').attr("value");
     var ajaxurl = $('#filters #selects').find('#ajaxurl').attr("value");
     var table_index = $('#filters #selects').find('#table_index').attr("value");
+
     $.post(
       ajaxurl, 
       {
         'action' : 'isotope_filter_ajax',
         'nonce' : nonce,
         'filter' : group,
-        'filter_value' : value,
-        'table_index' : table_index
+        'table_index' : table_index,
+		'filtered_values': isoFilters_val,
       }, 
-      function(response) {        
-        removeFilters(response.relations);    
+      function(response) {
+        removeFilters(response.relations,group_cat[0]);    
       }
     );
     
     // Do the Isotope filtering
-    var selector = isoFilters.join('');
+    var selector = isoFilters.join('');	
     $container.isotope({ filter: selector });
     return false;
   });
   
   
   // Filters are removed from selectboxes if they are not in relation with the selected filter
-  function removeFilters(relations) {
+  function removeFilters(relations,categ) {  
     $.each(relations, function(k, v) {
-      var select = $('#filters #selects').find("select[data-filter-group='anvelope-" + k + "']");
+      var select = $('#filters #selects').find("select[data-filter-group='" + categ + "-" + k + "']");        
+		
       select.children('option').each( function() {
         var value = $(this).attr('data-filter-value');
         value = value.replace('.', '');
@@ -117,6 +130,7 @@ $(document).ready(function() {
           $(this).prop('disabled', true);
         }
       });
+      
       // Make 'Toate latimile ...' always active
       select.children('option').first().prop('disabled', false);
       
@@ -124,8 +138,19 @@ $(document).ready(function() {
       console.log(v);
     });
   }
-  
 
+  // Filters are resetted when Toate... selected
+  function resetFilters() {      
+    $('select').each(function() {
+      $(this).children('option').first().prop('selected', 'selected'); 
+      
+      $(this).children('option').each(function(){
+        $(this).prop('disabled', false);
+      });
+    });
+  }
+  
+  
   
   // The window onload script
   // - here we put all scripts which must run after the page is completelly loaded

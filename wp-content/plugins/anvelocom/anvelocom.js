@@ -17,8 +17,8 @@ jQuery(document).ready(function() {
     var $filter = jQuery(this).attr('data-filter-group');
     
     // Do the AJAX call
-    var nonce = jQuery('.wp-admin #anvelope #filters').find('#nonce').attr("value");
-    jQuery.post(
+    var nonce = jQuery('.wp-admin #anvelope #filters').find('#nonce').attr("value"); 
+		jQuery.post(
       anvelocom.ajaxurl, 
       {
         'action' : 'anvelocom_filter_ajax',

@@ -51,7 +51,6 @@ global $TABLES;
 $TABLES = array('anvelope', 'jenti', 'tuning');
 
 
-
 // Do the filtering on the user interface
 //
 function isotope_filter_ajax() {
@@ -59,12 +58,11 @@ function isotope_filter_ajax() {
   if (wp_verify_nonce($nonce, 'anvelope')) {
   
     $filter = strval($_POST['filter']);
-    $filter_value = strval($_POST['filter_value']);
     $table_index = strval($_POST['table_index']);
+		$filtered_values_str = strval($_POST['filtered_values']);
     
-    if ($filter && $filter_value) {
-      $relations = avc_get_filter_relationships($filter_value, $filter, $table_index);
-      
+    if ($filter) {
+      $relations = avc_get_filter_relationships($filter, $table_index, $filtered_values_str);
       $ret = array(
         'success' => true,
         'message' => 'Ok',
@@ -96,7 +94,7 @@ add_action( 'wp_ajax_nopriv_isotope_filter_ajax', 'isotope_filter_ajax' );
 // Get relationships for a filter
 // - params: 265, anvelope-latime, filter_anvelope
 // - returns an array of arrays, each array showing a relationship
-function avc_get_filter_relationships($value, $filter, $table_index) {
+function avc_get_filter_relationships($filter, $table_index, $filtered_values_arr) {
   $ret = array();
   
   global $wpdb;
@@ -104,16 +102,43 @@ function avc_get_filter_relationships($value, $filter, $table_index) {
   global $TABLES;
   $key = avc_remove_filter_prefix($filter);
   $table = 'filter_' . $TABLES[$table_index];
-  
+/* when Toate latimile ...', etc. are selected the value is an empty string,
+ so we don't need where clause...by iBB!*/
+	$where_clause = "";
+
+	if (!empty($filtered_values_arr)) {
+		$filtered_values_arr = explode(',',$filtered_values_arr);
+		foreach ($filtered_values_arr as $key=>$value) {
+			if ($key > 0) {
+				$f_key = $filtered_values_arr[$key-1];
+				$f_value = $filtered_values_arr[$key];
+				$f_value =substr($f_value,1, strlen($f_value)); 
+				if ($key < 2) {
+					$f_key = avc_remove_filter_prefix($f_key);
+					if ($f_value)
+						$where_clause .= " WHERE " . $f_key . " = '" . $f_value . "'";
+				} else {
+					if (($key-1) % 2 == 0){
+						$f_key = avc_remove_filter_prefix($f_key);
+						if ($f_value)
+							if (strpos($where_clause, 'WHERE') !== false) 
+								$where_clause .= " AND " . $f_key . " = '" . $f_value . "'";
+					}else
+						continue;
+				}
+			}
+		}
+  }
+
   foreach ($FILTERS[$table_index] as $filters) {
     if ($filters != $filter) {
       $column = avc_remove_filter_prefix($filters);
       $ret[] = $wpdb->get_results(
-        "SELECT $column FROM " . $wpdb->prefix . $table . " WHERE " . $key . " = '" . $value . "'"     
+        "SELECT $column FROM " . $wpdb->prefix . $table . $where_clause     
       );
     }
   }
-  
+
   return avc_prettify_relationships($ret);
 }
 
@@ -130,8 +155,7 @@ function avc_prettify_relationships($relations) {
         $ret[$key][] = $value;
       }
     }
-  }
-  
+  } 
   return $ret;
 }
 

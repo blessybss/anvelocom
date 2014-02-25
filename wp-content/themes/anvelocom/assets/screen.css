@@ -51,7 +51,7 @@ a img {
   border: none;
 }
 
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
 }
 
@@ -282,9 +282,9 @@ html body a {
   outline: 0;
   text-transform: uppercase;
   letter-spacing: 0.15625em;
-  -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
 }
 html body a:hover, html body a:focus {
@@ -371,10 +371,10 @@ html body .container #header nav:last-of-type {
     content: "\2794";
     font-size: 150%;
     display: block;
-    -webkit-transform: rotate(90deg);
     -moz-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
     -o-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
     transform: rotate(90deg);
   }
   html body .container #header nav.active:last-of-type {
@@ -413,8 +413,8 @@ html body .container main section#intro h2, html body .container main section#in
   display: none;
 }
 html body .container main section#intro figure img {
-  -webkit-box-shadow: 1px 0 #1f1f1f, 0 1px #1f1f1f, 2px 1px #1f1f1f, 1px 2px #1f1f1f, 3px 2px #1f1f1f, 2px 3px #1f1f1f, 4px 3px #1f1f1f, 3px 4px #1f1f1f, 5px 4px #1f1f1f, 4px 5px #1f1f1f;
   -moz-box-shadow: 1px 0 #1f1f1f, 0 1px #1f1f1f, 2px 1px #1f1f1f, 1px 2px #1f1f1f, 3px 2px #1f1f1f, 2px 3px #1f1f1f, 4px 3px #1f1f1f, 3px 4px #1f1f1f, 5px 4px #1f1f1f, 4px 5px #1f1f1f;
+  -webkit-box-shadow: 1px 0 #1f1f1f, 0 1px #1f1f1f, 2px 1px #1f1f1f, 1px 2px #1f1f1f, 3px 2px #1f1f1f, 2px 3px #1f1f1f, 4px 3px #1f1f1f, 3px 4px #1f1f1f, 5px 4px #1f1f1f, 4px 5px #1f1f1f;
   box-shadow: 1px 0 #1f1f1f, 0 1px #1f1f1f, 2px 1px #1f1f1f, 1px 2px #1f1f1f, 3px 2px #1f1f1f, 2px 3px #1f1f1f, 4px 3px #1f1f1f, 3px 4px #1f1f1f, 5px 4px #1f1f1f, 4px 5px #1f1f1f;
   width: 100%;
 }
@@ -551,10 +551,10 @@ html body .container #footer nav:before {
   content: "\2794";
   font-size: 150%;
   display: block;
-  -webkit-transform: rotate(-90deg);
   -moz-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
   -o-transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
   transform: rotate(-90deg);
 }
 @media only screen and (max-width: 40em) and (orientation: landscape) {
@@ -690,10 +690,10 @@ html body.page main section#filters #labels, html body.page main section#filters
 }
 html body.page main section#filters label.select:after {
   content: "\2794";
-  -webkit-transform: rotate(90deg);
   -moz-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
   -o-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
   float: right;
   display: inline-block;
@@ -963,6 +963,13 @@ html body .container #header nav {
     position: absolute;
     left: 0;
   }
+}
+@media only screen and (max-width: 47.999em) and (max-width: 63.999em) {
+  html body .container #header nav.active {
+    margin-bottom: 1.25em;
+  }
+}
+@media only screen and (max-width: 47.999em) {
   html body .container #header nav.active h3 {
     display: none;
   }
@@ -997,11 +1004,6 @@ html body .container #header nav {
     display: block;
     margin-right: 0;
     float: none;
-  }
-}
-@media only screen and (max-width: 47.999em) and (max-width: 63.999em) {
-  html body .container #header nav.active {
-    margin-bottom: 1.25em;
   }
 }
 @media only screen and (max-width: 47.999em) {
@@ -1172,22 +1174,22 @@ html body .container main section.articles article.title header h3:after {
   }
 }
 html body .container main section.articles article.thumb figure {
-  -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
 }
 html body .container main section.articles article.thumb figure:after, html body .container main section.articles article.thumb figure div, html body .container main section.articles article.thumb figure figcaption {
-  -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
 }
 html body .container main section.articles article.active figure {
   background: #fff;
   border-color: lightgray;
-  -webkit-box-shadow: 1px 0 #1f1f1f, 0 1px #1f1f1f, 2px 1px #1f1f1f, 1px 2px #1f1f1f, 3px 2px #1f1f1f, 2px 3px #1f1f1f, 4px 3px #1f1f1f, 3px 4px #1f1f1f, 5px 4px #1f1f1f, 4px 5px #1f1f1f;
   -moz-box-shadow: 1px 0 #1f1f1f, 0 1px #1f1f1f, 2px 1px #1f1f1f, 1px 2px #1f1f1f, 3px 2px #1f1f1f, 2px 3px #1f1f1f, 4px 3px #1f1f1f, 3px 4px #1f1f1f, 5px 4px #1f1f1f, 4px 5px #1f1f1f;
+  -webkit-box-shadow: 1px 0 #1f1f1f, 0 1px #1f1f1f, 2px 1px #1f1f1f, 1px 2px #1f1f1f, 3px 2px #1f1f1f, 2px 3px #1f1f1f, 4px 3px #1f1f1f, 3px 4px #1f1f1f, 5px 4px #1f1f1f, 4px 5px #1f1f1f;
   box-shadow: 1px 0 #1f1f1f, 0 1px #1f1f1f, 2px 1px #1f1f1f, 1px 2px #1f1f1f, 3px 2px #1f1f1f, 2px 3px #1f1f1f, 4px 3px #1f1f1f, 3px 4px #1f1f1f, 5px 4px #1f1f1f, 4px 5px #1f1f1f;
 }
 html body .container main section.articles article.active figure div {
@@ -1202,8 +1204,8 @@ html body .container main section#intro {
   margin-bottom: 0;
 }
 html body .container main section#intro figure img {
-  -webkit-box-shadow: 0px 0px 0px 0px transparent;
   -moz-box-shadow: 0px 0px 0px 0px transparent;
+  -webkit-box-shadow: 0px 0px 0px 0px transparent;
   box-shadow: 0px 0px 0px 0px transparent;
 }
 html body .container main section#intro figure figcaption {
@@ -1467,9 +1469,9 @@ html body.single-post main section#index article.product aside #content table tb
   border-bottom: 1px solid #bebebe;
 }
 html body.single-post main section#index article.product aside #content figure img {
-  -webkit-box-shadow: 0px 0px 0px 0px transparent;
-  -moz-box-shadow: 0px 0px 0px 0px transparent;
-  box-shadow: 0px 0px 0px 0px transparent;
+  -moz-box-shadow: 1px 0 #1f1f1f, 0 1px #1f1f1f, 2px 1px #1f1f1f, 1px 2px #1f1f1f, 3px 2px #1f1f1f, 2px 3px #1f1f1f, 4px 3px #1f1f1f, 3px 4px #1f1f1f, 5px 4px #1f1f1f, 4px 5px #1f1f1f;
+  -webkit-box-shadow: 1px 0 #1f1f1f, 0 1px #1f1f1f, 2px 1px #1f1f1f, 1px 2px #1f1f1f, 3px 2px #1f1f1f, 2px 3px #1f1f1f, 4px 3px #1f1f1f, 3px 4px #1f1f1f, 5px 4px #1f1f1f, 4px 5px #1f1f1f;
+  box-shadow: 1px 0 #1f1f1f, 0 1px #1f1f1f, 2px 1px #1f1f1f, 1px 2px #1f1f1f, 3px 2px #1f1f1f, 2px 3px #1f1f1f, 4px 3px #1f1f1f, 3px 4px #1f1f1f, 5px 4px #1f1f1f, 4px 5px #1f1f1f;
   width: auto;
 }
 html body.single-post main section#index article.product aside #content figure figcaption {
@@ -1498,9 +1500,9 @@ html body.single-post main section#index article.product aside #content form inp
   letter-spacing: 0.15625em;
   border: 1px solid #1f1f1f;
   cursor: pointer;
-  -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
 }
 html body.single-post main section#index article.product aside #content form input[type='submit']:hover {
@@ -1679,9 +1681,9 @@ html body.page main #index article.thumb table tbody td, html body.page main #in
   border-bottom: 1px solid #bebebe;
 }
 html body.page main #index article.thumb figure img, html body.page main #index #comments figure img {
-  -webkit-box-shadow: 0px 0px 0px 0px transparent;
-  -moz-box-shadow: 0px 0px 0px 0px transparent;
-  box-shadow: 0px 0px 0px 0px transparent;
+  -moz-box-shadow: 1px 0 #1f1f1f, 0 1px #1f1f1f, 2px 1px #1f1f1f, 1px 2px #1f1f1f, 3px 2px #1f1f1f, 2px 3px #1f1f1f, 4px 3px #1f1f1f, 3px 4px #1f1f1f, 5px 4px #1f1f1f, 4px 5px #1f1f1f;
+  -webkit-box-shadow: 1px 0 #1f1f1f, 0 1px #1f1f1f, 2px 1px #1f1f1f, 1px 2px #1f1f1f, 3px 2px #1f1f1f, 2px 3px #1f1f1f, 4px 3px #1f1f1f, 3px 4px #1f1f1f, 5px 4px #1f1f1f, 4px 5px #1f1f1f;
+  box-shadow: 1px 0 #1f1f1f, 0 1px #1f1f1f, 2px 1px #1f1f1f, 1px 2px #1f1f1f, 3px 2px #1f1f1f, 2px 3px #1f1f1f, 4px 3px #1f1f1f, 3px 4px #1f1f1f, 5px 4px #1f1f1f, 4px 5px #1f1f1f;
   width: auto;
 }
 html body.page main #index article.thumb figure figcaption, html body.page main #index #comments figure figcaption {
@@ -1710,9 +1712,9 @@ html body.page main #index article.thumb form input[type='submit'], html body.pa
   letter-spacing: 0.15625em;
   border: 1px solid #1f1f1f;
   cursor: pointer;
-  -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
 }
 html body.page main #index article.thumb form input[type='submit']:hover, html body.page main #index #comments form input[type='submit']:hover {
@@ -1820,9 +1822,9 @@ html body.page main #index #comments form input[type='submit'] {
   letter-spacing: 0.15625em;
   border: 1px solid #1f1f1f;
   cursor: pointer;
-  -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
 }
 html body.page main #index #comments form input[type='submit']:hover {
@@ -1954,9 +1956,9 @@ html body.page main #index #comments ol li table tbody td {
   border-bottom: 1px solid #bebebe;
 }
 html body.page main #index #comments ol li figure img {
-  -webkit-box-shadow: 0px 0px 0px 0px transparent;
-  -moz-box-shadow: 0px 0px 0px 0px transparent;
-  box-shadow: 0px 0px 0px 0px transparent;
+  -moz-box-shadow: 1px 0 #1f1f1f, 0 1px #1f1f1f, 2px 1px #1f1f1f, 1px 2px #1f1f1f, 3px 2px #1f1f1f, 2px 3px #1f1f1f, 4px 3px #1f1f1f, 3px 4px #1f1f1f, 5px 4px #1f1f1f, 4px 5px #1f1f1f;
+  -webkit-box-shadow: 1px 0 #1f1f1f, 0 1px #1f1f1f, 2px 1px #1f1f1f, 1px 2px #1f1f1f, 3px 2px #1f1f1f, 2px 3px #1f1f1f, 4px 3px #1f1f1f, 3px 4px #1f1f1f, 5px 4px #1f1f1f, 4px 5px #1f1f1f;
+  box-shadow: 1px 0 #1f1f1f, 0 1px #1f1f1f, 2px 1px #1f1f1f, 1px 2px #1f1f1f, 3px 2px #1f1f1f, 2px 3px #1f1f1f, 4px 3px #1f1f1f, 3px 4px #1f1f1f, 5px 4px #1f1f1f, 4px 5px #1f1f1f;
   width: auto;
 }
 html body.page main #index #comments ol li figure figcaption {
@@ -1985,9 +1987,9 @@ html body.page main #index #comments ol li form input[type='submit'] {
   letter-spacing: 0.15625em;
   border: 1px solid #1f1f1f;
   cursor: pointer;
-  -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
 }
 html body.page main #index #comments ol li form input[type='submit']:hover {
@@ -2056,9 +2058,9 @@ html body.page main #index #comments ol li a {
   outline: 0;
   text-transform: uppercase;
   letter-spacing: 0.15625em;
-  -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
   transition: all 0.5s ease-in-out;
 }
 html body.page main #index #comments ol li a:hover, html body.page main #index #comments ol li a:focus {
