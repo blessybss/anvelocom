@@ -51,29 +51,25 @@ global $TABLES;
 $TABLES = array('anvelope', 'jenti', 'tuning');
 
 
+
+
+
+
 // Do the filtering on the user interface
 //
 function isotope_filter_ajax() {
   $nonce = $_POST['nonce'];  
   if (wp_verify_nonce($nonce, 'anvelope')) {
   
-    $filter = strval($_POST['filter']);
-    $table_index = strval($_POST['table_index']);
-		$filtered_values_str = strval($_POST['filtered_values']);
+    $filtered_values = strval($_POST['filtered_values']);
     
-    if ($filter) {
-      $relations = avc_get_filter_relationships($filter, $table_index, $filtered_values_str);
-      $ret = array(
-        'success' => true,
-        'message' => 'Ok',
-        'relations' => $relations
-      );
-    } else {
-      $ret = array(
-        'success' => false,
-        'message' => 'Filter error'
-      );
-    }
+    $relations = avc_get_filter_relationships($filtered_values);
+    $ret = array(
+      'success' => true,
+      'message' => 'Ok',
+      'relations' => $relations
+    ); 
+   
   } else {
     $ret = array(
       'success' => false,
@@ -92,42 +88,52 @@ add_action( 'wp_ajax_nopriv_isotope_filter_ajax', 'isotope_filter_ajax' );
 
 
 // Get relationships for a filter
-// - params: 265, anvelope-latime, filter_anvelope
+// - filter_values are like anvelope-latime:.37,anvelope-inaltime:undefined,anvelope-diametru:undefined,anvelope-profil:undefined,anvelope-brand:undefined,
 // - returns an array of arrays, each array showing a relationship
-function avc_get_filter_relationships($filter, $table_index, $filtered_values_arr) {
+function avc_get_filter_relationships($filter_values) {
   $ret = array();
   
   global $wpdb;
-  global $FILTERS;
-  global $TABLES;
-  $key = avc_remove_filter_prefix($filter);
-  $table = 'filter_' . $TABLES[$table_index];
-/* when Toate latimile ...', etc. are selected the value is an empty string,
- so we don't need where clause...by iBB!*/
-	$where_clause = "";
+  
+  // Transform filter_values into an array
+  $filters = explode(',', $filter_values);
+  
+  // Get table name
+  $table = explode('-', $filters[0]);
+  $table_name = $wpdb->prefix . "filter_" . $table[0];
+    
+  // Loop through all filters
+  foreach ($filters as $filter) {
+    // Get filter name and value
+    $split = explode(':', $filter);
+    
+    print_r($split);
+  }
+  
 
-	if (!empty($filtered_values_arr)) {
-		$filtered_values_arr = explode(',',$filtered_values_arr);
-		foreach ($filtered_values_arr as $key=>$value) {
-			if ($key > 0) {
-				$f_key = $filtered_values_arr[$key-1];
-				$f_value = $filtered_values_arr[$key];
-				$f_value =substr($f_value,1, strlen($f_value)); 
-				if ($key < 2) {
-					$f_key = avc_remove_filter_prefix($f_key);
-					if ($f_value)
-						$where_clause .= " WHERE " . $f_key . " = '" . $f_value . "'";
-				} else {
-					if (($key-1) % 2 == 0){
-						$f_key = avc_remove_filter_prefix($f_key);
-						if ($f_value)
-							if (strpos($where_clause, 'WHERE') !== false) 
-								$where_clause .= " AND " . $f_key . " = '" . $f_value . "'";
-					}else
-						continue;
-				}
-			}
-		}
+  /*
+  if (!empty($filtered_values_arr)) {
+    $filtered_values_arr = explode(',',$filtered_values_arr);
+    foreach ($filtered_values_arr as $key=>$value) {
+      if ($key > 0) {
+        $f_key = $filtered_values_arr[$key-1];
+        $f_value = $filtered_values_arr[$key];
+        $f_value =substr($f_value,1, strlen($f_value)); 
+        if ($key < 2) {
+          $f_key = avc_remove_filter_prefix($f_key);
+          if ($f_value)
+            $where_clause .= " WHERE " . $f_key . " = '" . $f_value . "'";
+        } else {
+          if (($key-1) % 2 == 0){
+            $f_key = avc_remove_filter_prefix($f_key);
+            if ($f_value)
+              if (strpos($where_clause, 'WHERE') !== false) 
+                $where_clause .= " AND " . $f_key . " = '" . $f_value . "'";
+          } else
+            continue;
+        }
+      }
+    }
   }
 
   foreach ($FILTERS[$table_index] as $filters) {
@@ -138,6 +144,7 @@ function avc_get_filter_relationships($filter, $table_index, $filtered_values_ar
       );
     }
   }
+  */
 
   return avc_prettify_relationships($ret);
 }
