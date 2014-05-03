@@ -921,7 +921,9 @@ html body .container #header h1 {
   border: 3px solid;
 }
 html body .container #header nav {
-  margin-top: 0.9375em;
+  font-weight: bold;
+  font-size: small;
+  margin-top: 1.25em;
 }
 @media only screen and (max-width: 47.999em) {
   html body .container #header nav.active {
@@ -1004,11 +1006,6 @@ html body .container #header nav {
     display: block;
     margin-right: 0;
     float: none;
-  }
-}
-@media only screen and (max-width: 47.999em) {
-  html body .container #header nav {
-    margin-top: 0.625em;
   }
 }
 html body .container main section header {

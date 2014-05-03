@@ -362,7 +362,12 @@
   }
 }
 
+
+
 @mixin menu-anvelocom {
+  font-weight: bold;
+  font-size: small;
+  
   @include below-tablet {
     &.active {
       @include sidebar($pad);
@@ -472,11 +477,7 @@ html {
         */
         nav {
           @include menu-anvelocom;
-          margin-top: $pad - $pad/4;
-          
-          @include below-tablet {
-            margin-top: $pad/2;
-          }
+          margin-top: $pad;
         }
       }
       
