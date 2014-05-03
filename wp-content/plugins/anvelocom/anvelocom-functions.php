@@ -112,13 +112,13 @@ function avc_get_filter_relationships($filter_values) {
   // Initialize the return arrays
   // - each array will contain all elements by default
   // - later these will be intersected when looping through the filters
-  foreach ($filter_column_names as $filter_column_name) {
+  foreach ($filter_column_names as $index => $filter_column_name) {
     $column = avc_remove_filter_prefix($filter_column_name);
-    $ret[] = $wpdb->get_results(
+    $query = $wpdb->get_results(
       "SELECT $column FROM " . $table     
     );
+    $ret[$index] = avc_prettify_single_relation($query);
   }
-  
   
   // Loop through all filters
   foreach ($filters as $filter) {
@@ -126,18 +126,27 @@ function avc_get_filter_relationships($filter_values) {
     // returns: [0] => anvelope-latime, [1] => .33
     $split = explode(':', $filter);
     $filter_name = $split[0]; // anvelope-latime
-    $filter_value = $split[1]; // .33
+    if (isset($split[1])) {
+      $filter_value = $split[1]; // .33
     
-    if ($filter_value) {
       // Do the query
       $column = avc_remove_filter_prefix($filter_name);
       $value = explode('.', $filter_value); 
       
-      $relation = $wpdb->get_results(
-        "SELECT inaltime FROM " . $table . " WHERE " . $column . " ='" . $value[1] . "' "     
-      );
-      
-      print_r(avc_prettify_single_relation($relation));
+      if (isset($value[1])) {
+        foreach ($filter_column_names as $index => $filter_column_name) {
+          $column_name = avc_remove_filter_prefix($filter_column_name);
+          
+          if ($column != $column_name) {
+            $relation = $wpdb->get_results(
+              "SELECT " . $column_name . " FROM " . $table . " WHERE " . $column . " ='" . $value[1] . "' "     
+            );  
+            
+            $ret[$index] = array_unique(array_intersect($ret[$index], avc_prettify_single_relation($relation)));
+            //print_r($ret[$index]);
+          }
+        }
+      }
     }
     
     
@@ -189,7 +198,8 @@ function avc_get_filter_relationships($filter_values) {
   }
   */
 
-  return avc_prettify_relationships($ret);
+  print_r($ret);
+  return $ret;
 }
 
 // Make a good looking relationship
