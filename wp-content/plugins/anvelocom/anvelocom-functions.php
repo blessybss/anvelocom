@@ -90,6 +90,9 @@ add_action( 'wp_ajax_nopriv_isotope_filter_ajax', 'isotope_filter_ajax' );
 // Get relationships for a filter
 // - filter_values are like anvelope-latime:.37,anvelope-inaltime:undefined,anvelope-diametru:undefined,anvelope-profil:undefined,anvelope-brand:undefined,
 // - returns an array of arrays, each array showing a relationship
+// The algorithm
+// 1. when a filter is active all other select boxes are filtered according to this relationship
+// 2. when there are two or more filters active all results are intersected again
 function avc_get_filter_relationships($filter_values) {
   $ret = array();
   
@@ -109,7 +112,7 @@ function avc_get_filter_relationships($filter_values) {
   $table = $wpdb->prefix . 'filter_' . $name[0]; // wp_filter_anvelope
   
   
-  // Initialize the return arrays
+  // 0. Initialize the return arrays
   // - each array will contain all elements by default
   // - later these will be intersected when looping through the filters
   foreach ($filter_column_names as $index => $filter_column_name) {
@@ -120,12 +123,13 @@ function avc_get_filter_relationships($filter_values) {
     $ret[$index] = array_unique(avc_prettify_single_relation($query));
   }
   
-  // Loop through all filters
-  // - intersect the return arrays with results from the database
+  // 1. Loop through all filters individually
+  // - intersect the return arrays with relationships from the database
   foreach ($filters as $filter) {
     // Get filter name and value
     // returns: [0] => anvelope-latime, [1] => .33
     $split = explode(':', $filter);
+   
     $filter_name = $split[0]; // anvelope-latime
     if (isset($split[1])) {
       $filter_value = $split[1]; // .33
@@ -149,7 +153,47 @@ function avc_get_filter_relationships($filter_values) {
       }
     }
   }
+  
+  
+  // 2. When there are multiple filters active
+  // Build the SQL query's WHERE clause
+  $where = '';
+  $multiple_filters = 0;
+  foreach ($filters as $filter) {
+    // Get filter name and value
+    // returns: [0] => anvelope-latime, [1] => .33
+    $split = explode(':', $filter);
     
+    if (isset($split[1])) {
+      $column = avc_remove_filter_prefix($split[0]);
+      // Remove . from the value
+      // returns .'33' => '33'
+      $value = explode('.', $split[1]);
+      
+      if (isset($value[1])) {
+        $where .= $column . " = '" . $value[1] . "' ";
+        $where .= " AND ";
+        $multiple_filters++;
+      }
+    }
+  }
+  
+  if ($multiple_filters > 1) {
+    $where = str_lreplace(" AND ", "", $where);
+    
+    // Execute the SQL
+    $relations = $wpdb->get_results(
+      "SELECT * FROM " . $table . " WHERE " . $where     
+    );  
+    $relations = avc_prettify_relationships($relations);
+    
+    // intersect the results from 1.) with these new results
+    foreach ($filter_column_names as $index => $filter_column_name) {
+      $ret[$index] = array_unique(array_intersect($ret[$index], $relations[$index]));
+    }
+  }
+  
+  
   return $ret;
 }
 
@@ -164,6 +208,25 @@ function avc_prettify_single_relation($relation) {
     $ret[] = $value;
   }
   
+  return $ret;
+}
+
+
+// Make a good looking relationships table
+// - ie tarnsform an array of arrays of objects into an array of array values
+function avc_prettify_relationships($relations) {
+  $ret = array();
+  
+  foreach ($relations as $relation) {
+    $relation = (array) $relation;
+    $i = 0;
+    foreach ($relation as $key => $value) {
+      if ($key != 'id') {
+        $ret[$i][] = $value;
+        $i++;
+      }
+    }
+  }
   return $ret;
 }
 
@@ -206,5 +269,18 @@ function avc_remove_filter_prefix($filter) {
   
 
 
+// Remove the last sybstring in a string
+// - http://stackoverflow.com/questions/3835636/php-replace-last-occurence-of-a-string-in-a-string
+function str_lreplace($search, $replace, $subject)
+{
+    $pos = strrpos($subject, $search);
+
+    if($pos !== false)
+    {
+        $subject = substr_replace($subject, $replace, $pos, strlen($search));
+    }
+
+    return $subject;
+}
 
 ?>
