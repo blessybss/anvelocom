@@ -72,8 +72,7 @@ $(document).ready(function() {
 	
 
     // This is for the filter relationship
-    
-    // Collect all selected values for every filter
+    //  - collect all selected values for every filter
     var filterValues = ''
     $('#filters select').each(function() {
       var filterName = $(this).attr('data-filter-group');
@@ -106,7 +105,7 @@ $(document).ready(function() {
   
   
   // Options are removed from selectboxes if they are not in relation with the selected filter
-  function removeFilters(relations) {  
+  function removeFilters2(relations) {  
     $.each(relations, function(k, v) {
       var select = $('#filters #selects').find("select[data-filter-group='" + categ + "-" + k + "']");        
 		
@@ -126,6 +125,32 @@ $(document).ready(function() {
     });
   }
 
+  function removeFilters(relations) {
+    $.each(relations, function(k, v) {
+      var values = [];
+      $.each(v, function(key, value) {
+        values.push(value);
+      });
+      
+      var select = $('#filters #selects select').eq(k);
+      
+      console.log(k+" : "+ values);
+      
+      select.children('option').each( function() {
+        var value = $(this).attr('data-filter-value');
+        value = value.replace('.', '');
+        
+        if (values.indexOf(value) != -1) {
+          $(this).prop('disabled', false);
+        } else {
+          $(this).prop('disabled', true);
+        }
+      });
+      
+      // Make 'Toate latimile ...' always active
+      select.children('option').first().prop('disabled', false);
+    });
+  }
   
   
   // The window onload script

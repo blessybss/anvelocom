@@ -117,10 +117,11 @@ function avc_get_filter_relationships($filter_values) {
     $query = $wpdb->get_results(
       "SELECT $column FROM " . $table     
     );
-    $ret[$index] = avc_prettify_single_relation($query);
+    $ret[$index] = array_unique(avc_prettify_single_relation($query));
   }
   
   // Loop through all filters
+  // - intersect the return arrays with results from the database
   foreach ($filters as $filter) {
     // Get filter name and value
     // returns: [0] => anvelope-latime, [1] => .33
@@ -143,62 +144,12 @@ function avc_get_filter_relationships($filter_values) {
             );  
             
             $ret[$index] = array_unique(array_intersect($ret[$index], avc_prettify_single_relation($relation)));
-            //print_r($ret[$index]);
           }
         }
       }
     }
-    
-    
-    
-    
-    /*
-    // Intersect return values
-    foreach ($filter_column_names as $filter_column_name) {
-      if ($filter_column_name != $filter_name) {
-        $ret[$filter_column_name] = array_intersect($ret[$filter_column_name]
-      }
-    }
-    */
   }
-
-
-  /*
-  if (!empty($filtered_values_arr)) {
-    $filtered_values_arr = explode(',',$filtered_values_arr);
-    foreach ($filtered_values_arr as $key=>$value) {
-      if ($key > 0) {
-        $f_key = $filtered_values_arr[$key-1];
-        $f_value = $filtered_values_arr[$key];
-        $f_value =substr($f_value,1, strlen($f_value)); 
-        if ($key < 2) {
-          $f_key = avc_remove_filter_prefix($f_key);
-          if ($f_value)
-            $where_clause .= " WHERE " . $f_key . " = '" . $f_value . "'";
-        } else {
-          if (($key-1) % 2 == 0){
-            $f_key = avc_remove_filter_prefix($f_key);
-            if ($f_value)
-              if (strpos($where_clause, 'WHERE') !== false) 
-                $where_clause .= " AND " . $f_key . " = '" . $f_value . "'";
-          } else
-            continue;
-        }
-      }
-    }
-  }
-
-  foreach ($FILTERS[$table_index] as $filters) {
-    if ($filters != $filter) {
-      $column = avc_remove_filter_prefix($filters);
-      $ret[] = $wpdb->get_results(
-        "SELECT $column FROM " . $wpdb->prefix . $table . $where_clause     
-      );
-    }
-  }
-  */
-
-  print_r($ret);
+    
   return $ret;
 }
 
@@ -215,25 +166,6 @@ function avc_prettify_single_relation($relation) {
   
   return $ret;
 }
-
-// Make a good looking relationships table
-function avc_prettify_relationships($relations) {
-  $ret = array();
-  
-  foreach ($relations as $relation) {
-    foreach ($relation as $r) {
-      $key = key($r);
-      $value = $r->$key;
-      if ($value) {
-        $ret[$key][] = $value;
-      }
-    }
-  } 
-  
-  print_r($ret);
-  return $ret;
-}
-
 
 
 // Get filters 
