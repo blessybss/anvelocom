@@ -94,22 +94,65 @@ function avc_get_filter_relationships($filter_values) {
   $ret = array();
   
   global $wpdb;
+  global $TABLES;
+  global $FILTERS;
   
   // Transform filter_values into an array
   $filters = explode(',', $filter_values);
   
-  // Get table name
-  $table = explode('-', $filters[0]);
-  $table_name = $wpdb->prefix . "filter_" . $table[0];
-    
+  
+  // Determine which filter is used, and connect with the underlying database table
+  $split = explode(':', $filters[0]); // anvelope-latime
+  $name = explode('-', $split[0]); // anvelope
+  $index = array_search($name[0], $TABLES); // 0
+  $filter_column_names = $FILTERS[$index]; // ['anvelope-latime', .... 'amvelope-brand']
+  $table = $wpdb->prefix . 'filter_' . $name[0]; // wp_filter_anvelope
+  
+  
+  // Initialize the return arrays
+  // - each array will contain all elements by default
+  // - later these will be intersected when looping through the filters
+  foreach ($filter_column_names as $filter_column_name) {
+    $column = avc_remove_filter_prefix($filter_column_name);
+    $ret[] = $wpdb->get_results(
+      "SELECT $column FROM " . $table     
+    );
+  }
+  
+  
   // Loop through all filters
   foreach ($filters as $filter) {
     // Get filter name and value
+    // returns: [0] => anvelope-latime, [1] => .33
     $split = explode(':', $filter);
+    $filter_name = $split[0]; // anvelope-latime
+    $filter_value = $split[1]; // .33
     
-    print_r($split);
+    if ($filter_value) {
+      // Do the query
+      $column = avc_remove_filter_prefix($filter_name);
+      $value = explode('.', $filter_value); 
+      
+      $relation = $wpdb->get_results(
+        "SELECT inaltime FROM " . $table . " WHERE " . $column . " ='" . $value[1] . "' "     
+      );
+      
+      print_r(avc_prettify_single_relation($relation));
+    }
+    
+    
+    
+    
+    /*
+    // Intersect return values
+    foreach ($filter_column_names as $filter_column_name) {
+      if ($filter_column_name != $filter_name) {
+        $ret[$filter_column_name] = array_intersect($ret[$filter_column_name]
+      }
+    }
+    */
   }
-  
+
 
   /*
   if (!empty($filtered_values_arr)) {
@@ -149,6 +192,19 @@ function avc_get_filter_relationships($filter_values) {
   return avc_prettify_relationships($ret);
 }
 
+// Make a good looking relationship
+// - ie transform an array of objects to simple values
+function avc_prettify_single_relation($relation) {
+  $ret = array();
+  
+  foreach ($relation as $r) {
+    $key = key($r);
+    $value = $r->$key;
+    $ret[] = $value;
+  }
+  
+  return $ret;
+}
 
 // Make a good looking relationships table
 function avc_prettify_relationships($relations) {
@@ -163,6 +219,8 @@ function avc_prettify_relationships($relations) {
       }
     }
   } 
+  
+  print_r($ret);
   return $ret;
 }
 
