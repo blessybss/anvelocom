@@ -229,6 +229,12 @@
       
       pointer-events: none; /* this is a must */
       cursor: pointer;
+      
+      @include below-tablet {
+        font-size: 100%;
+        padding: $pad/7 $pad/4;
+        top: -$pad - $pad/4;
+      }
     }
   }
   

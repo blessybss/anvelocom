@@ -707,6 +707,13 @@ html body.page main section#filters label.select:after {
   /* this is a must */
   cursor: pointer;
 }
+@media only screen and (max-width: 47.999em) {
+  html body.page main section#filters label.select:after {
+    font-size: 100%;
+    padding: 0.17857em 0.3125em;
+    top: -1.5625em;
+  }
+}
 html body.page main section#filters select {
   border: none;
   outline: 0;
@@ -911,10 +918,6 @@ html body {
   /* Content page
   */
 }
-html body .container #header {
-  /* Nav must be adjusted to the bordered header
-  */
-}
 html body .container #header h1 {
   padding: 0.625em;
   border: 1px solid;
@@ -924,8 +927,12 @@ html body .container #header nav {
   font-weight: bold;
   font-size: small;
   margin-top: 1.25em;
+  padding-top: 3px;
 }
 @media only screen and (max-width: 47.999em) {
+  html body .container #header nav {
+    padding-top: 0;
+  }
   html body .container #header nav.active {
     padding: 0.625em;
     border: 1px solid;
@@ -1217,6 +1224,7 @@ html body .container main section#intro figure figcaption {
   background: #1f1f1f;
   color: #f1f1f1;
   opacity: .9;
+  font-weight: bold;
 }
 html body .container main section#intro figure figcaption a {
   color: #f1f1f1;

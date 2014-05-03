@@ -368,7 +368,12 @@
   font-weight: bold;
   font-size: small;
   
+  margin-top: $pad;
+  padding-top: 3px;
+  
   @include below-tablet {
+    padding-top: 0;
+    
     &.active {
       @include sidebar($pad);
       
@@ -415,6 +420,8 @@
   @include color(invert);
   
   opacity: .9;
+  
+  font-weight: bold;
   
   @include mobile {
     border-width: 0;
@@ -473,11 +480,9 @@ html {
           @include bordered;
           border: 3px solid;
         }
-        /* Nav must be adjusted to the bordered header
-        */
+        
         nav {
           @include menu-anvelocom;
-          margin-top: $pad;
         }
       }
       

@@ -1,11 +1,11 @@
 /*
 Syntax error: Undefined variable: "$pad".
-        on line 442 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/theme.scss, in `bordered'
-        from line 473 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/theme.scss
+        on line 449 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/theme.scss, in `bordered'
+        from line 480 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/theme.scss
 
 Backtrace:
-/home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/theme.scss:442:in `bordered'
-/home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/theme.scss:473
+/home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/theme.scss:449:in `bordered'
+/home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/theme.scss:480
 /var/lib/gems/1.9.1/gems/sass-3.3.0.rc.3/lib/sass/script/tree/variable.rb:49:in `_perform'
 /var/lib/gems/1.9.1/gems/sass-3.3.0.rc.3/lib/sass/script/tree/node.rb:50:in `perform'
 /var/lib/gems/1.9.1/gems/sass-3.3.0.rc.3/lib/sass/script/tree/operation.rb:64:in `_perform'
@@ -134,4 +134,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$pad\".\A         on line 442 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/theme.scss, in `bordered'\A         from line 473 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/theme.scss"; }
+  content: "Syntax error: Undefined variable: \"$pad\".\A         on line 449 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/theme.scss, in `bordered'\A         from line 480 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/theme.scss"; }
