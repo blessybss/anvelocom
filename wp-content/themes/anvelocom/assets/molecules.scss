@@ -97,7 +97,7 @@
       - since isotope cannot handle this 100% full row (?) we will have to reduce column with with 1% to 17%
     */
     $gutter: $divident / 10;
-    $column-width: $divident - $gutter - 1;
+    $column-width: $divident - $gutter - 0.5;
     @return percentage($column-width/100);
   } @else {
     $gutter: $modulo;

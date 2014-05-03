@@ -568,7 +568,7 @@ html body.page main section {
   */
 }
 html body.page main section.articles article.thumb {
-  width: 17%;
+  width: 17.5%;
   margin-right: 2%;
   float: left;
   margin-bottom: 1.25em;
@@ -636,7 +636,7 @@ html body.page main section.articles article.thumb:nth-of-type(10) {
 }
 @media only screen and (max-width: 47.999em) {
   html body.page main section.articles article.thumb {
-    width: 44%;
+    width: 44.5%;
     margin-right: 5%;
     float: left;
   }
@@ -720,7 +720,7 @@ html body.page main section#filters select {
   padding: 0.3125em;
 }
 html body.page main section#filters ul li, html body.page main section#filters .select {
-  width: 17%;
+  width: 17.5%;
   margin-right: 2%;
   float: left;
 }
@@ -787,7 +787,7 @@ html body.page main section#filters ul li:nth-of-type(10), html body.page main s
 }
 @media only screen and (max-width: 47.999em) {
   html body.page main section#filters ul li, html body.page main section#filters .select {
-    width: 44%;
+    width: 44.5%;
     margin-right: 5%;
     float: left;
   }
@@ -1252,7 +1252,7 @@ html body.page .container main section#filters ul li {
   background: #1f1f1f;
   color: #f1f1f1;
   padding: 0.3125em;
-  width: calc(17% - 0.625em - 0px);
+  width: calc(17.5% - 0.625em - 0px);
 }
 html body.page .container main section#filters ul li a {
   color: #f1f1f1;
