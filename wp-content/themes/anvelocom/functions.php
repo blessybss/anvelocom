@@ -65,11 +65,11 @@ function get_filter_value($filter_meta, $article) {
 // - $sanitize, if the clas should be sanitized or not
 function get_article_class($filters, $article, $sanitize = true) {
   $klass = array();
-  
+
   foreach ($filters as $filter_meta) {
     $klass = array_merge($klass, get_filter_value($filter_meta, $article));
   }
-  
+
   if ($sanitize) {
     $klass = array_map("string_to_classname", $klass);
   }
@@ -85,7 +85,7 @@ function get_posts_from_category($category_slug, $how_many) {
   $c = get_category_by_slug($category_slug);
   if ($c) {
     $category_id = $c->term_id;
-    
+
     //$p = get_cat_ID(CATEGORY_PRODUS);
     return get_posts(array(
       'category__and' => array($category_id),
@@ -104,7 +104,7 @@ function get_children_categories($parent_slug) {
   $c = get_category_by_slug($parent_slug);
   if ($c) {
     $category_id = $c->term_id;
-    
+
     return get_categories(array(
       'child_of' => $category_id,
     ));
@@ -115,22 +115,19 @@ function get_children_categories($parent_slug) {
 // - returns the category slug
 function get_post_main_category_slug($post) {
   $post_categories = wp_get_post_categories($post->ID);
-  
+
   $post_category_slugs = array();
   foreach($post_categories as $c) {
 	  $cat = get_category($c);
 	  $post_category_slugs[] = $cat->slug;
   }
-  
-  
+
+
   global $SPECIAL_CATEGORIES;
-  //print_r($post_category_slugs);
-  //print_r($SPECIAL_CATEGORIES);
-  //print_r(array_intersect($post_category_slugs, $SPECIAL_CATEGORIES));
   $main_category = array_intersect($post_category_slugs, $SPECIAL_CATEGORIES);
   if (!empty($main_category)) {
-    //echo 'return:' . array_shift(array_values($main_category));
-    return array_shift(array_values($main_category));
+    $values = array_values($main_category);
+    return array_shift($values);
   }
 }
 
@@ -139,7 +136,7 @@ function get_post_main_category_slug($post) {
 function get_post_filters($main_category) {
   global $SPECIAL_CATEGORIES;
   global $FILTERS;
-  
+
   $index = array_search($main_category, $SPECIAL_CATEGORIES);
   return $FILTERS[$index];
 }
@@ -148,7 +145,7 @@ function get_post_filters($main_category) {
 // - ie 265/55/r18
 function get_product_dimension($post, $main_category, $sanitize = false) {
   $filters = get_post_filters($main_category);
-  
+
   // Merge filters into a string
   $filter_string = get_article_class($filters, $post, $sanitize);
   $filter_string = implode(' / ', $filter_string);
@@ -161,17 +158,17 @@ function get_product_dimension($post, $main_category, $sanitize = false) {
 function get_similar_posts($post, $main_category, $dimension) {
   $filters = get_post_filters($main_category);
   $posts = get_posts_from_category($main_category, -1);
-  
+
   $ret = array();
   foreach ($posts as $p) {
     $klass = get_article_class($filters, $p);
     $klass = implode(' / ', $klass);
-    
+
     if ( ($klass == $dimension) && ($p->ID != $post->ID)) {
       $ret[] = $p;
     }
   }
-  
+
   return $ret;
 }
 
@@ -181,7 +178,7 @@ function get_price($post) {
   $ret = array();
   $ret[] = get_post_meta($post, META_PRICE_SALES, true);
   $ret[] = get_post_meta($post, META_PRICE, true);
-  
+
   return array_filter(array_unique($ret));
 }
 
@@ -191,7 +188,7 @@ function get_price($post) {
 
 /* Get the content of About Us */
 function get_date_firma() {
-  $about_us = get_page_by_title(PAGE_ABOUT_US); 
+  $about_us = get_page_by_title(PAGE_ABOUT_US);
   if ($about_us) {
     $page_data = get_page($about_us);
     return $page_data->post_content;
@@ -209,31 +206,31 @@ function get_date_firma() {
 // - returns an array of urls
 function get_post_images($post_id) {
   $attachments = get_post_attachments($post_id);
-  
+
   $images = array();
-  
+
   // The featured image must be get separately
   // - if the featured image is already added to the Media Library the duplicates will be filtered out on return
   $images[] = get_post_featured_image_url($post_id, 'full');
-  
+
   if ($attachments) {
     foreach ($attachments as $attachment) {
-      $image = wp_get_attachment_image_src($attachment->ID, 'full');  
+      $image = wp_get_attachment_image_src($attachment->ID, 'full');
       $images[] = $image[0];
     }
   }
-  
+
   return array_unique($images);
 }
 
 
-/* Get a posts featured image url 
+/* Get a posts featured image url
   - The image size can be specified with Wordpress default parameters like thumbnail, medium, large, full
-  - The medium is resized to 700x700 
+  - The medium is resized to 700x700
   - The 700x700 size was choosen to be optimized for mobile and small tablets
 */
 function get_post_featured_image_url($post_id, $size = array(700, 700)) {
-  
+
   if ($size == 'medium') {
     $size = array(700, 700);
   }
@@ -274,16 +271,16 @@ function thumb_class($index) {
 
 // Get title for any page, post or archive
 function get_title() {
-  if (function_exists('is_tag') && is_tag()) { 
-    return 'Arhiva etichete &quot;' . $tag . '&quot;'; 
-  } elseif (is_archive()) { 
-    return wp_title('', false); 
-  } elseif (is_search()) { 
-    return 'Rezultatul cautarii pentru &quot;' . wp_specialchars($s) . '&quot;'; 
-  } elseif (!(is_404()) && (is_single()) || (is_page())) { 
-    return wp_title('', false); 
-  } elseif (is_404()) { 
-    return 'Pagina inexistenta'; 
+  if (function_exists('is_tag') && is_tag()) {
+    return 'Arhiva etichete &quot;' . $tag . '&quot;';
+  } elseif (is_archive()) {
+    return wp_title('', false);
+  } elseif (is_search()) {
+    return 'Rezultatul cautarii pentru &quot;' . wp_specialchars($s) . '&quot;';
+  } elseif (!(is_404()) && (is_single()) || (is_page())) {
+    return wp_title('', false);
+  } elseif (is_404()) {
+    return 'Pagina inexistenta';
   } elseif (is_home()) {
     return bloginfo('description');
   }
@@ -302,10 +299,10 @@ add_action('init', 'add_excerpt_to_pages');
 function add_excerpt_to_pages() {
 	add_post_type_support( 'page', 'excerpt' );
 }
-        
+
 
 /* Show the default image widget in the post editor */
-add_theme_support( 'post-thumbnails' ); 
+add_theme_support( 'post-thumbnails' );
 
 
 /* The main menu is now manageable via the Wordpress Admin Panel */
@@ -324,7 +321,7 @@ register_nav_menus();
 function string_to_classname($string) {
   $ret = '';
   $invalid_charachters = array(' ', ',', '~', '!', '@', '$', '%', '^', '&', '*', '(', ')', '_', '+', '-', '=', ',', '.', '/', ';', ':', '"', '?', '>', '<', '[', ']', '{', '}', '|', '`', '#');
-  
+
   if ($string) {
     $ret = str_replace($invalid_charachters, '-', strtolower($string));
   }

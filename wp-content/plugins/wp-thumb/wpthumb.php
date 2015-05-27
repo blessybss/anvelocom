@@ -4,7 +4,7 @@ Plugin Name: WP Thumb
 Plugin URI: https://github.com/humanmade/WPThumb
 Description: An on-demand image generation replacement for WordPress' image resizing.
 Author: Human Made Limited
-Version: 0.9
+Version: 0.10
 Author URI: http://www.hmn.md/
 */
 
@@ -35,6 +35,7 @@ define( 'WP_THUMB_URL', plugin_dir_url( __FILE__ ) );
 include_once( WP_THUMB_PATH . '/wpthumb.watermark.php' );
 include_once( WP_THUMB_PATH . '/wpthumb.background-fill.php' );
 include_once( WP_THUMB_PATH . '/wpthumb.crop-from-position.php' );
+include_once( WP_THUMB_PATH . '/wpthumb.shortcodes.php' );
 
 /**
  * Base WP_Thumb class
@@ -107,6 +108,7 @@ class WP_Thumb {
 	public function setFilePath( $file_path ) {
 
 		$upload_dir = self::uploadDir();
+		$this->_file_path = null;
 
 		if ( strpos( $file_path, self::get_home_path() ) === 0 ) {
 			  $this->file_path = $file_path;
@@ -193,13 +195,22 @@ class WP_Thumb {
 	 */
 	public function getFilePath() {
 
+		if ( ! empty( $this->_file_path ) )
+			return $this->_file_path;
+
 		if ( strpos( $this->file_path, '/' ) === 0 && ! file_exists( $this->file_path ) && $this->args['default'] )
+			$this->file_path = $this->args['default'];
+
+		elseif ( ( ! $this->file_path ) && $this->args['default'] && file_exists( $this->args['default'] ) )
 			$this->file_path = $this->args['default'];
 
         if ( $this->getArg( 'cache_with_query_params' ) )
             return $this->file_path;
 
-		return reset( explode( '?', $this->file_path ) );
+        $path_bits = explode( '?', $this->file_path );
+        $this->_file_path = reset( $path_bits );
+
+		return $this->_file_path;
 	}
 
 	/**
@@ -241,7 +252,7 @@ class WP_Thumb {
 			$ext = 'jpg';
 		}
 
-		return $ext;
+		return strtolower( $ext );
 
 	}
 
@@ -289,7 +300,14 @@ class WP_Thumb {
 		$upload_dir = self::uploadDir();
 
 		if ( strpos( $this->getFilePath(), $upload_dir['basedir'] ) === 0 ) :
-			$new_dir = $upload_dir['basedir'] . '/cache' . $upload_dir['subdir'] . '/' . $filename_nice;
+
+			$subdir = dirname( str_replace( $upload_dir['basedir'], '', $this->getFilePath() ) );
+			$new_dir = $upload_dir['basedir'] . '/cache' . $subdir . '/' . $filename_nice;
+
+		elseif ( strpos( $this->getFilePath(), WP_CONTENT_DIR ) === 0 ) :
+
+			$subdir = dirname( str_replace( WP_CONTENT_DIR, '', $this->getFilePath() ) );
+			$new_dir = $upload_dir['basedir'] . '/cache' . $subdir . '/' . $filename_nice;
 
 		elseif ( strpos( $this->getFilePath(), self::get_home_path() ) === 0 ) :
 			$new_dir = $upload_dir['basedir'] . '/cache/local';
@@ -373,7 +391,7 @@ class WP_Thumb {
 
 			return $this->returnImage();
 		}
-		
+
 		wp_mkdir_p( $this->getCacheFileDirectory() );
 
 		// Convert gif images to png before resizing
@@ -392,7 +410,7 @@ class WP_Thumb {
 		extract( $this->args );
 
 		// Cropping
-		if ( $crop_from_position && $crop_from_position !== array( 'center', 'center' ) ) :
+		if ( $crop && $crop_from_position && $crop_from_position !== array( 'center', 'center' ) ) :
 
 			$this->crop_from_position( $editor, $width, $height, $crop_from_position, $resize );
 
@@ -404,7 +422,7 @@ class WP_Thumb {
 			$this->crop_from_center( $editor, $width, $height );
 
 		else :
-			
+
 			$editor->resize( $width, $height );
 		endif;
 
@@ -451,22 +469,23 @@ class WP_Thumb {
 				$_height = $height;
 			    $_width = $height * $ratio1;
 			}
-			
+
 			$editor->resize( $_width, $_height );
 		}
 
 		$size = $editor->get_size();
 		$crop = array( 'x' => 0, 'y' => 0 );
 
-		if ( $position[0] == 'bottom' )
-			$crop['y'] = absint( $size['height'] - $height );
+		if ( $position[0] == 'right' )
+			$crop['x'] = absint( $size['width'] - $width );
 		else if ( $position[0] == 'center' )
+			$crop['x'] = intval( absint( $size['width'] - $width ) / 2 );
+
+		if ( $position[1] == 'bottom' )
+			$crop['y'] = absint( $size['height'] - $height );
+		else if ( $position[1] == 'center' )
 			$crop['y'] = intval( absint( $size['height'] - $height ) / 2 );
 
-		if ( $position[1] == 'right' )
-			$crop['x'] = absint( $size['width'] - $width );
-		else if ( $position[1] == 'center' )
-			$crop['x'] = intval( absint( $size['width'] - $width ) / 2 );
 
 		return $editor->crop( $crop['x'], $crop['y'], $width, $height );
 	}
@@ -579,35 +598,12 @@ function wpthumb_post_image( $null, $id, $args ) {
 
 	// check if $args is a WP Thumb argument list, or native WordPress one
 	// wp thumb looks like this: 'width=300&height=120&crop=1'
-	// native looks like 'thumbnail'...|array( 300, 300 )
+	// native looks like 'thumbnail'
 	if ( is_string( $args ) && ! strpos( (string) $args, '=' ) ) {
 
-		global $_wp_additional_image_sizes;
-
-		// Convert keyword sizes to heights & widths.
-		if ( $args == 'thumbnail' )
-			$new_args = array( 'width' => get_option('thumbnail_size_w'), 'height' => get_option('thumbnail_size_h'), 'crop' => get_option('thumbnail_crop') );
-
-		elseif ( $args == 'medium' )
-			$new_args = array( 'width' => get_option('medium_size_w'), 'height' => get_option('medium_size_h') );
-
-		elseif ( $args == 'large' )
-			$new_args = array( 'width' => get_option('large_size_w'), 'height' => get_option('large_size_h') );
-
-		elseif( ! empty( $_wp_additional_image_sizes ) && array_key_exists( $args, $_wp_additional_image_sizes ) )
-			$new_args = array( 'width' => $_wp_additional_image_sizes[$args]['width'], 'height' => $_wp_additional_image_sizes[$args]['height'], 'crop' => $_wp_additional_image_sizes[$args]['crop'], 'image_size' => $args );
-
-		elseif ( $args != ( $new_filter_args = apply_filters( 'wpthumb_create_args_from_size', $args ) ) )
-			$new_args = $new_filter_args;
-
-		else
-			$new_args = null;
-
-		if ( ! $new_args )
+		// if there are no "special" wpthumb args, then we shouldn' bother creating a WP Thumb, just use the WordPress one
+		if ( $args === ( $args = apply_filters( 'wpthumb_create_args_from_size', $args ) ) )
 			return $null;
-
-		$args = $new_args;
-
 	}
 
 	$args = wp_parse_args( $args );
@@ -618,7 +614,7 @@ function wpthumb_post_image( $null, $id, $args ) {
 	if ( ! empty( $args[1] ) )
 		$args['height'] = $args[1];
 
-	if ( empty( $args['crop_from_position'] ) )
+	if ( ! empty( $args['crop'] ) && $args['crop'] && empty( $args['crop_from_position'] ) )
 		 $args['crop_from_position'] = get_post_meta( $id, 'wpthumb_crop_pos', true );
 
 	if ( empty( $path ) )
@@ -626,7 +622,7 @@ function wpthumb_post_image( $null, $id, $args ) {
 
 	$path = apply_filters( 'wpthumb_post_image_path', $path, $id, $args );
 	$args = apply_filters( 'wpthumb_post_image_args', $args, $id );
-	
+
 	$image = new WP_Thumb( $path, $args );
 
 	$args = $image->getArgs();
