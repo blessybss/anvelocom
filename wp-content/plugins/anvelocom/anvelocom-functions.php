@@ -55,11 +55,62 @@ $TABLES = array('anvelope', 'jenti', 'tuning');
 
 
 // Functions for the admin interface
+// --------------------------------------------------------------------------------
+
 
 // Convert normal posts to eshop products
 function avc_eshop_convert() {
-  return 'convert..';
+  $ret = '';
+
+
+  //$s0 = 'a:8:{s:3:"sku";s:3:"001";s:8:"products";a:3:{i:1;a:4:{s:6:"option";s:7:"default";s:5:"price";s:3:"123";s:9:"saleprice";s:0:"";s:6:"stkqty";s:1:"8";}i:2;a:4:{s:6:"option";s:0:"";s:5:"price";s:0:"";s:9:"saleprice";s:0:"";s:6:"stkqty";s:0:"";}i:3;a:4:{s:6:"option";s:0:"";s:5:"price";s:0:"";s:9:"saleprice";s:0:"";s:6:"stkqty";s:0:"";}}s:11:"description";s:4:"test";s:8:"shiprate";s:1:"A";s:8:"featured";s:2:"no";s:4:"sale";s:2:"no";s:10:"cart_radio";s:1:"0";s:6:"optset";s:0:"";}';
+  //$s1 = 'a:8:{s:3:"sku";i:2104;s:8:"products";a:4:{s:6:"option";s:7:"default";s:5:"price";s:3:"695";s:9:"saleprice";i:0;s:6:"stkqty";s:1:"1";}s:11:"description";s:72:"Anvelope - Cauciucuri Off Road 225/75R16 BF Goodrich Mud Terrain T/A KM2";s:8:"shiprate";s:1:"A";s:8:"featured";s:2:"no";s:4:"sale";s:2:"no";s:10:"cart_radio";s:1:"0";s:6:"optset";s:0:"";}';
+  //$s = 's:346:"a:8:{s:8:"products";a:4:{s:6:"option";s:7:"default";s:5:"price";s:3:"695";s:9:"saleprice";i:0;s:6:"stkqty";s:1:"1";}s:3:"sku";i:2104;s:11:"description";s:72:"Anvelope - Cauciucuri Off Road 225/75R16 BF Goodrich Mud Terrain T/A KM2";s:8:"shiprate";s:1:"A";s:8:"featured";s:2:"no";s:4:"sale";s:2:"no";s:10:"cart_radio";s:1:"0";s:6:"optset";s:0:"";}";';
+  //$arr = unserialize(urldecode($s));
+  //var_dump($arr);
+
+
+  $articles = get_posts(array(
+    'posts_per_page' => -1,
+  ));
+
+  foreach ($articles as $article) {
+    //if ($article->ID == '2104') {
+      // Convert only posts which have 'Pret' set
+      $price = get_price($article->ID);
+      if (count($price) > 0) {
+
+        // Set up an Eshop product
+        $product = array();
+        $eshop = array();
+
+        $product['option'] = 'default';
+        $product['price'] = $price[1];
+        $product['saleprice'] = isset($price[0]) ? $price[0] : '0';
+        $product['stkqty'] = '1';
+
+        $eshop['sku'] = (string)$article->ID;
+        $eshop['products'] = array();
+        $eshop['products'][1] = $product;
+        $eshop['description'] = $article->post_title;
+        $eshop['shiprate'] = 'A';
+        $eshop['featured'] = 'no';
+        $eshop['sale'] = 'no';
+        $eshop['cart_radio'] = '0';
+        $eshop['optset'] = '';
+
+        // Save an Eshop product
+        update_post_meta($article->ID, '_eshop_product', $eshop);
+        update_post_meta($article->ID, '_eshop_stock', '1');
+
+        $ret .= ' OK ';
+      }
+    }
+  //}
+
+  return $ret;
 }
+
 
 
 // Generate relationships for filters
@@ -125,6 +176,9 @@ function avc_generate_relationships($index) {
 
 
 
+
+// General plugin functions
+// --------------------------------------------------------------------------------
 
 
 // Do the filtering on the user interface
