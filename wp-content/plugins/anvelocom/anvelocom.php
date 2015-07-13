@@ -82,7 +82,7 @@ function anvelocom_eshopconvert_page() { ?>
       //
       if (($_POST) && ($_POST['action'] == 'submit-form')) {
         if (wp_verify_nonce( $_POST['nonce'], 'anvelocom-convert' )) {
-          echo 'convert ...';
+          echo avc_eshop_convert();
         }
       }
     ?>
@@ -125,58 +125,7 @@ function anvelocom_anvelope_page() { ?>
         if (wp_verify_nonce( $_POST['nonce'], 'anvelocom' )) {
           $index = $_POST['index'];
 
-          // Get the filters
-          global $SPECIAL_CATEGORIES;
-          global $FILTERS;
-          global $TABLES;
-          $articles = get_posts_from_category($SPECIAL_CATEGORIES[$index], -1);
-          $filters = $FILTERS[$index];
-
-          global $wpdb;
-          $table = $wpdb->prefix . 'filter_' . $TABLES[$index];
-
-          // First remove all existing data ....
-          $ret = $wpdb->query(
-          	$wpdb->prepare(
-          		"TRUNCATE TABLE $table", array()
-          	)
-          );
-          echo ($ret != false) ? "OK " : "Error ";
-
-
-          // Now add relationships
-          $fields = '(';
-          foreach ($filters as $filter) {
-            $fields .= avc_remove_filter_prefix($filter) . ',';
-          }
-          $fields = rtrim($fields, ",") . ')';
-
-
-          foreach ($articles as $article) {
-            $relations = array();
-						$values = '(';
-            foreach ($filters as $filter) {
-							$filter_value = get_filter_value($filter, $article, true);
-							if ($filter_value)
-									$values .= '%s,';
-							else	$values .= '"NaV",'; //Not a value: property meta value not set... by iBB!
-              $relations = array_merge($relations, $filter_value);
-            }
-
-						$values = rtrim($values, ",") . ')';
-
-            // convert 10,5 to 10-5 and BF Goodrich to bf-goodrich to match HTML class name conventions in order to be usable with the Isotope plugin which filters through class names
-            $relations= array_map("string_to_classname", $relations);
-            if (!empty($relations)) {
-              $ret = $wpdb->query(
-              	$wpdb->prepare(
-              		"INSERT INTO $table $fields VALUES $values ", $relations
-              	)
-	            );
-	            echo ($ret != false) ? "OK " : "Error ";
-            }
-          }
-
+          echo avc_generate_relationships($index);
         }
       }
     ?>
