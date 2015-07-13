@@ -75,54 +75,52 @@ function avc_eshop_convert() {
   ));
 
   foreach ($articles as $article) {
-    //if ($article->ID == '2104') {
-      // Convert only posts which have 'Pret' set
-      $price = get_price($article->ID);
-      if (count($price) > 0) {
+    // Convert only posts which have 'Pret' set
+    $price = get_price_from_meta($article->ID);
+    if (count($price) > 0) {
 
-        // Set up an Eshop product
-        $product = array();
-        $eshop = array();
+      // Set up an Eshop product
+      $product = array();
+      $eshop = array();
 
-        $product['option'] = 'default';
-        $product['price'] = $price[1];
-        if (isset($price[0])) {
-          // Products on sale are marked featured so they can be filtered on the admin interface
-          $saleprice = (string)$price[0];
-          $featured = 'Yes';
-          $sale = 'yes';
-        } else {
-          $saleprice = '0';
-          $featured = 'no';
-          $sale = 'no';
-        }
-        $product['saleprice'] = $saleprice;
-        $product['stkqty'] = '1';
-
-        $eshop['sku'] = (string)$article->ID;
-        $eshop['products'] = array();
-        $eshop['products'][1] = $product;
-        $eshop['description'] = $article->post_title;
-        $eshop['shiprate'] = 'A';
-        $eshop['featured'] = $featured;
-        $eshop['sale'] = $sale;
-        $eshop['cart_radio'] = '0';
-        $eshop['optset'] = '';
-
-        // Save an Eshop product
-        update_post_meta($article->ID, '_eshop_product', $eshop);
-        update_post_meta($article->ID, '_eshop_stock', '1');
-
-        if ($sale == 'yes') {
-          update_post_meta($article->ID, '_eshop_sale', 'yes');
-          update_post_meta($article->ID, '_eshop_featured', 'Yes');
-        }
-
-
-        $ret .= ' OK ';
+      $product['option'] = 'default';
+      $product['price'] = $price[1];
+      if (isset($price[0])) {
+        // Products on sale are marked featured so they can be filtered on the admin interface
+        $saleprice = (string)$price[0];
+        $featured = 'Yes';
+        $sale = 'yes';
+      } else {
+        $saleprice = '0';
+        $featured = 'no';
+        $sale = 'no';
       }
+      $product['saleprice'] = $saleprice;
+      // Stock is not used here. It can be set on the admin interface.
+      $product['stkqty'] = '1';
+
+      $eshop['sku'] = (string)$article->ID;
+      $eshop['products'] = array();
+      $eshop['products'][1] = $product;
+      $eshop['description'] = $article->post_title;
+      $eshop['shiprate'] = 'A';
+      $eshop['featured'] = $featured;
+      $eshop['sale'] = $sale;
+      $eshop['cart_radio'] = '0';
+      $eshop['optset'] = '';
+
+      // Save an Eshop product
+      update_post_meta($article->ID, '_eshop_product', $eshop);
+      update_post_meta($article->ID, '_eshop_stock', '1');
+
+      if ($sale == 'yes') {
+        update_post_meta($article->ID, '_eshop_sale', 'yes');
+        update_post_meta($article->ID, '_eshop_featured', 'Yes');
+      }
+
+      $ret .= ' OK ';
     }
-  //}
+  }
 
   return $ret;
 }

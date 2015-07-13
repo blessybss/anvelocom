@@ -174,7 +174,9 @@ function get_similar_posts($post, $main_category, $dimension) {
 
 
 // Get product price
-function get_price($post) {
+// - getting product price from meta fields
+// - after adding the eshop plugin this becomes obsolete
+function get_price_from_meta($post) {
   $ret = array();
   $ret[] = get_post_meta($post, META_PRICE_SALES, true);
   $ret[] = get_post_meta($post, META_PRICE, true);
@@ -182,6 +184,32 @@ function get_price($post) {
   return array_filter(array_unique($ret));
 }
 
+
+// Get product price
+function get_price($product) {
+  $ret = array();
+  $default = $product['products'][1];
+
+  if ($default) {
+    $ret[] = $default['price'];
+    $ret[] = $default['saleprice'];
+  }
+
+  return array_filter(array_unique($ret));
+}
+
+
+// Get product stock
+function get_stock($product) {
+  $ret = 0;
+
+  $default = $product['products'][1];
+  if ($default) {
+    $ret = isset($default['stkqty']) ? $default['stkqty'] : 0;
+  }
+
+  return $ret;
+}
 
 
 
