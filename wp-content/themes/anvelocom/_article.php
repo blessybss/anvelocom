@@ -55,19 +55,21 @@
         <span><?php echo $dimension ?></span>
       </div>
 
-      <div id="stock">
-        <span class="stock__label">Stoc:</span>
-        <span class="stock__value"><?php echo $stock ?></span>
-        <?php if ($stock < 1) { ?>
-          <span class="stock--empty">
-            Anunta-ma cand va fi stoc
-          </span>
-        <?php } else { ?>
-          <div id="add-to-cart">
-            <?php echo do_shortcode('[eshop_addtocart]'); ?>
-          </div>
-        <?php } ?>
-      </div>
+      <?php if ($klass == 'product') { ?>
+        <div id="stock">
+          <span class="stock__label">Stoc:</span>
+          <span class="stock__value"><?php echo $stock ?></span>
+          <?php if ($stock < 1) { ?>
+            <span class="stock--empty">
+              Anunta-ma cand acest produs va fi stoc
+            </span>
+          <?php } else { ?>
+            <div id="add-to-cart">
+              <?php echo do_shortcode('[eshop_addtocart]'); ?>
+            </div>
+          <?php } ?>
+        </div>
+      <?php } ?>
 
       <div id="content">
         <?php

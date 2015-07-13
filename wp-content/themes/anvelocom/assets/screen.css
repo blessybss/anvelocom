@@ -1357,22 +1357,21 @@ html body.single-post main section#index article.product aside #price, html body
     width: calc(100% - 2.5em - 0px);
   }
 }
-html body.single-post main section#index article.product aside #stock form.eshop.addtocart {
-  margin: 0;
-  padding: 0;
+html body.single-post main section#index article.product aside #stock .stock--empty {
+  display: block;
+  margin-top: 1.25em;
 }
-html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset {
-  margin: 0;
-  padding: 0;
+html body.single-post main section#index article.product aside #stock #add-to-cart {
+  margin-top: 1.25em;
 }
 html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset legend, html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset .sgloptiondetails {
   display: none;
 }
-html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset .qty, html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset .iqty {
-  margin: 0;
-}
-html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset .eshopbutton {
-  background: red;
+@media only screen and (max-width: 24em) {
+  html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset .eshopbutton {
+    display: block;
+    margin-top: 1.25em;
+  }
 }
 html body.single-post main section#index article.product aside #content {
   width: 100%;
@@ -1587,7 +1586,7 @@ html body.single-post main section#index article.product aside #content li ul, h
 html body.single-post main section#index article.product aside #content img {
   display: none;
 }
-html body.single-post main section#index article.product aside #content form.eshop.addtocart {
+html body.single-post main section#index article.product aside #content form.eshop.addtocart, html body.single-post main section#index article.product aside #content .eshopnostock {
   display: none;
 }
 html body.page main #index article.thumb, html body.page main #index #comments {

@@ -9,7 +9,7 @@ Plugin Name: eShop for Wordpress
 Plugin URI: http://wordpress.org/extend/plugins/eshop/
 Description: The accessible shopping cart for WordPress 3.4 and above.
 Version: 6.3.12
-Author: Rich Pedley 
+Author: Rich Pedley
 Author URI: http://quirm.net/
 
     Copyright 2007-2015  R PEDLEY  (email : rich@quirm.net)
@@ -36,7 +36,7 @@ if (!function_exists('eshop_load_lang')) {
 	function eshop_load_lang(){
 		$eshoplanguage=apply_filters( 'eshop_language_dir', dirname( plugin_basename( __FILE__ ) ) );
 		load_plugin_textdomain('eshop', false, $eshoplanguage );
-		//grab all options here in one go 
+		//grab all options here in one go
 		$eshopoptions = get_option('eshop_plugin_settings');
 	}
 }
@@ -75,10 +75,10 @@ if (!function_exists('eshop_update_routine')) {
 		$eshopoptions = get_option('eshop_plugin_settings');
 		if(get_option('eshop_version')!='')
 			$eshopoptions['version']=get_option('eshop_version');
-		
+
 		if ( $eshopoptions['version']=='' || $eshopoptions['version'] >= ESHOP_VERSION )
 			return false;
-		
+
 		include_once('eshop-upgrade.php');
 	}
 }
@@ -131,7 +131,7 @@ if(is_admin()){
 	add_filter('query_vars', 'add_eshop_query_vars');
 	add_action('wp', 'eshop_pre_wp_head');
 	add_action('wp_print_scripts', 'eshop_wp_head_add');
-	add_action('wp_print_styles', 'eshop_stylesheet');
+	//add_action('wp_print_styles', 'eshop_stylesheet');
 	add_action('wp_head','eshop_ie_fix');
 	new eshop_search();
 	add_action('template_redirect','eshopgbase');
@@ -147,7 +147,7 @@ if(isset($eshopoptions['ajax_cart']) && 'yes' == $eshopoptions['ajax_cart']){
 	add_action('wp_ajax_nopriv_eshop_cart', 'eshop_cart_callback');
 	if ( isset( $_GET['eshoprandom'] ) )
  		add_action( 'template_redirect', 'eshop_random' );
- 	
+
 }
 //test/live mode
 add_action ('init','eshop_test_or_live');

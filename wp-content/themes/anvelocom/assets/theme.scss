@@ -242,25 +242,29 @@
     }
 
     #stock {
+      .stock--empty {
+        display: block;
+        margin-top: $pad;
+      }
+
+      #add-to-cart {
+        margin-top: $pad;
+      }
+
+
       // Style add to cart form
+      // - the original eshop css is commented out in the plugin
       form.eshop.addtocart {
-        margin: 0;
-        padding: 0;
-
         fieldset {
-          margin: 0;
-          padding: 0;
-
           legend, .sgloptiondetails {
             display: none;
           }
 
-          .qty, .iqty {
-            margin: 0;
-          }
-
           .eshopbutton {
-            background: red;
+            @include mobile {
+              display: block;
+              margin-top: $pad;
+            }
           }
         }
       }
@@ -274,8 +278,8 @@
         display: none;
       }
 
-      // Hide eshop inserted automatically by the plugin
-      form.eshop.addtocart {
+      // Hide eshop inserted data
+      form.eshop.addtocart , .eshopnostock {
         display: none;
       }
     }
