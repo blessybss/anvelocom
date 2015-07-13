@@ -357,4 +357,28 @@ function string_to_classname($string) {
 }
 
 
+
+
+/* Eshop helpers / setup / overwrites
+*/
+
+function eshop_filter_gettext($translation, $text, $domain) {
+
+  switch($translation) {
+    case '<abbr title="Quantity">Qty</abbr>:':
+      return 'Cantitate:';
+      break;
+    case 'Add to Cart':
+      return 'Adauga la cos';
+      break;
+  }
+
+  return $translation;
+}
+
+add_filter('gettext', 'eshop_filter_gettext', 10, 4);
+
+
+
+
 ?>

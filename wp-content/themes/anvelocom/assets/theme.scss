@@ -9,12 +9,12 @@
   article {
     &.thumb {
       height: auto !important;
-      
+
       figure {
         height: auto !important;
         border: none;
         padding: 0;
-        
+
         figcaption {
           display: none;
           margin: 0;
@@ -32,79 +32,79 @@
   article {
     &.thumb, &.product {
       height: 20em;
-      
+
       @include landscape {
         height: 21em;
       }
-      
+
       @include below-mobile-landscape {
         height: 24em;
       }
-      
+
       @include below-and-small-screen-portrait {
         height: 22em;
       }
-      
+
       @include below-and-normal-screen {
         height: 24em;
       }
-    
+
       figure {
         height: 18em;
-        
+
         @include landscape {
           height: 19em;
         }
-        
+
         @include below-mobile-landscape {
           height: 22em;
         }
-        
+
         @include below-and-small-screen-portrait {
           height: 20em;
         }
-        
+
         @include below-and-normal-screen {
           height: 22em;
         }
-        
+
         @include bordered(double);
-        
+
         position: relative;
-        
+
         div {
           max-height: 10em;
           overflow: hidden;
-          
+
           img {
             width: 100%;
           }
         }
-        
+
         figcaption {
           margin: $pad 0;
         }
       }
-      
+
       @if ($figcaption != true) {
         figcaption {
           display: none;
         }
       }
-      
+
       @if ($price != false) {
         aside {
           display: block;
           @include remove-title;
-          
+
           #dimension, #content {
             display: none;
           }
-          
+
           #price {
             display: block;
             @include price;
-            
+
             position: relative;
             top: -$pad - $pad/2;
             left: $pad/2;
@@ -112,7 +112,7 @@
         }
       }
     }
-    
+
     /* The first article as section title
     */
     &.title {
@@ -120,11 +120,11 @@
         display: block;
         @include bordered(double);
         height: 91%;
-        
+
         h3 {
           margin: $pad/2;
           height: 18em;
-          
+
           &:after {
             display: inline-block;
             content: $arrow-down;
@@ -135,18 +135,18 @@
           }
         }
       }
-      
+
       @include mobile {
         height: $pad*2;
-        
+
         header {
           border: none;
           padding: 0;
-          
+
           &:after {
             border: none;
           }
-          
+
           h3 {
             &:after {
               display: none;
@@ -155,29 +155,29 @@
         }
       }
     }
-    
+
     /* Hover on product thumb
     */
     &.thumb {
       figure {
         @include transition($easing);
-        
+
         &:after, div, figcaption {
           @include transition($easing);
         }
       }
     }
-    
+
     &.active {
       figure {
         background: #fff;
         border-color: lightgray;
         @include box-shadow($shadow);
-        
+
         div {
           max-height: 19em;
         }
-        
+
         figcaption {
           display: none;
         }
@@ -194,21 +194,21 @@
   @include bordered(double);
   padding: 0;
   width: col-resize(100%, 0, 4px);
-  
+
   header {
     display: none;
   }
-  
+
   figure {
     text-align: center;
     background: #fff;
     margin: 0;
     padding: $pad 0;
-    
+
     figcaption {
       display: none;
     }
-    
+
     @include mobile {
       div {
         img {
@@ -217,35 +217,65 @@
       }
     }
   }
-  
+
   aside {
     padding: $pad*2;
-    
+
     width: col-resize($major - 5%, $pad*4, 1px);
     @include below-small-screen {
       width: col-resize(100%, $pad*4, 1px);
-    } 
-  
+    }
+
     #price {
       @include price;
     }
-    
-    #price, #dimension {
+
+    #price, #dimension, #stock {
       @include block;
       @include bordered;
       width: 51%;
       margin-bottom: $pad;
-      
+
       @include mobile {
         width: col-resize(100%, $pad*2, 0px);
       }
     }
-    
+
+    #stock {
+      // Style add to cart form
+      form.eshop.addtocart {
+        margin: 0;
+        padding: 0;
+
+        fieldset {
+          margin: 0;
+          padding: 0;
+
+          legend, .sgloptiondetails {
+            display: none;
+          }
+
+          .qty, .iqty {
+            margin: 0;
+          }
+
+          .eshopbutton {
+            background: red;
+          }
+        }
+      }
+    }
+
     #content {
       @include block;
       @include body-text;
-      
+
       img {
+        display: none;
+      }
+
+      // Hide eshop inserted automatically by the plugin
+      form.eshop.addtocart {
         display: none;
       }
     }
@@ -256,19 +286,19 @@
 /* Display page content
 */
 @mixin page {
-  background: white; 
+  background: white;
   padding: $pad;
   width: col-resize(100%, $pad*2, 0px);
-  
+
   figure {
     display: none;
   }
-  
+
   aside {
     #price, #dimension {
       display: none;
     }
-    
+
     #content {
       img {
         width: 100%;
@@ -281,54 +311,54 @@
 @mixin comments {
   max-width: $body-text-width;
   margin: $pad 0;
-  
+
   background: #fff;
   padding: $pad;
   width: col-resize(100%, $pad*2, 0px);
-  
+
   @include form;
-  
+
   h3, h2 {
     margin-bottom: $pad;
   }
-  
+
   ol {
     li {
       margin-bottom: $pad;
       padding-bottom: $pad;
       border-bottom: 1px solid $gray;
-      
+
       @include body-text;
-      
+
       a {
         @include link($highlight);
       }
-      
+
       .reply {
         margin: $pad/2 0;
       }
-      
+
       .vcard {
         display: none;
       }
     }
-    
+
     &.children {
       margin: $pad;
     }
   }
-  
-  
+
+
   form {
     width: 60%;
-    
+
     @include mobile {
       width: 90%;
     }
-    
+
     input, textarea {
       margin-bottom: $pad/2;
-      
+
       &#submit {
         width: 15em;
       }
@@ -344,18 +374,18 @@
   padding: $padding;
   width: col-resize(100%, $padding*2, 2px);
   @include ul;
-  
+
   @include below-small-screen {
     margin-bottom: $pad;
   }
-  
+
   h3 {
     display: none;
   }
-  
+
   ul {
     @include ol-ul('-');
-    
+
     li {
       margin: $pad/2 0;
     }
@@ -367,16 +397,16 @@
 @mixin menu-anvelocom {
   font-weight: bold;
   font-size: small;
-  
+
   margin-top: $pad;
   padding-top: 3px;
-  
+
   @include below-tablet {
     padding-top: 0;
-    
+
     &.active {
       @include sidebar($pad);
-      
+
       ul {
         @include list-normal;
       }
@@ -390,13 +420,13 @@
 */
 @mixin price {
   @include list-inline;
-  
+
   li {
     &:nth-of-type(1) {
       font-weight: bold;
       margin-right: $pad/2;
     }
-    
+
     &:nth-of-type(2) {
       text-decoration: line-through;
       margin-right: 0;
@@ -413,16 +443,16 @@
   top: -$pad*2 - $pad/4;
   background: $background;
   display: inline-block;
-  
+
   @include bordered;
   border-width: $pad/4;
   padding: $pad;
   @include color(invert);
-  
+
   opacity: .9;
-  
+
   font-weight: bold;
-  
+
   @include mobile {
     border-width: 0;
     top: 0;
@@ -448,21 +478,21 @@
 @mixin bordered($type : simple) {
   padding: $pad/2;
   border: 1px solid;
-  
+
   @if ($type == double) {
     background: $background;
     position: relative;
-    
+
     &:after {
       content: '';
       padding: $pad/2;
       border: 1px solid;
-      
+
       top: $pad/2;
       left: $pad/2;
       width: col-resize(100%, $pad, 0px);
       height: col-resize(100%, $pad, 0px);
-      
+
       position: absolute;
       z-index: -1;
     }
@@ -480,39 +510,39 @@ html {
           @include bordered;
           border: 3px solid;
         }
-        
+
         nav {
           @include menu-anvelocom;
         }
       }
-      
+
       main {
         section {
           header {
             display: none;
           }
-            
+
           &.articles {
             @include thumb-anvelocom;
           }
-          
+
           &#intro {
             figure {
               img {
                 @include box-shadow($shadow-remove);
               }
-                
+
               figcaption {
                 @include black-background;
               }
             }
-            /* Figcaption has relative positioning with negative top margin 
+            /* Figcaption has relative positioning with negative top margin
             */
-            margin-bottom: 0; 
+            margin-bottom: 0;
           }
         }
       }
-      
+
       #footer {
         #company {
           @include address;
@@ -523,8 +553,8 @@ html {
         }
       }
     }
-    
-  
+
+
     /* Archives
     */
     &.page {
@@ -543,7 +573,7 @@ html {
                 }
               }
             }
-            
+
             &#filters {
               ul {
                 li {
@@ -557,7 +587,7 @@ html {
         }
       }
     }
-    
+
     /* Single product
     */
     &.single-post {
@@ -567,25 +597,25 @@ html {
           */
           header {
             display: block;
-            
+
             h2 {
               margin-bottom: $pad;
             }
           }
-          
+
           &#index {
             margin-bottom: $pad;
-            
+
             article.product {
               @include single;
             }
           }
         }
-        
+
       }
     }
-    
-    
+
+
     /* Content page
     */
     &.page {
@@ -595,20 +625,20 @@ html {
             float: left;
             @include body-text;
           }
-          
+
           article.thumb {
             @include page;
           }
-          
+
           #comments {
             @include comments;
           }
         }
-        
+
         #sidebar {
           @include sidebar;
           width: col-resize($minor - 5%, $pad*4, 2px);
-          
+
           @include below-small-screen {
             padding: $pad;
             width: col-resize(100%, $pad*2, 2px);
@@ -616,7 +646,6 @@ html {
         }
       }
     }
-  
+
   }
 }
-

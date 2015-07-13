@@ -368,12 +368,11 @@ html body .container #header nav:last-of-type {
     float: right;
   }
   html body .container #header nav:last-of-type:before {
-    content: "\2794";
+    content: "➔";
     font-size: 150%;
     display: block;
     -moz-transform: rotate(90deg);
     -ms-transform: rotate(90deg);
-    -o-transform: rotate(90deg);
     -webkit-transform: rotate(90deg);
     transform: rotate(90deg);
   }
@@ -548,12 +547,11 @@ html body .container #footer nav h2, html body .container #footer nav h3, html b
   display: none;
 }
 html body .container #footer nav:before {
-  content: "\2794";
+  content: "➔";
   font-size: 150%;
   display: block;
   -moz-transform: rotate(-90deg);
   -ms-transform: rotate(-90deg);
-  -o-transform: rotate(-90deg);
   -webkit-transform: rotate(-90deg);
   transform: rotate(-90deg);
 }
@@ -689,10 +687,9 @@ html body.page main section#filters #labels, html body.page main section#filters
   float: left;
 }
 html body.page main section#filters label.select:after {
-  content: "\2794";
+  content: "➔";
   -moz-transform: rotate(90deg);
   -ms-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
   -webkit-transform: rotate(90deg);
   transform: rotate(90deg);
   float: right;
@@ -963,7 +960,7 @@ html body .container #header nav {
     padding-left: 1.25em;
   }
   html body .container #header nav.active ul li:before {
-    content: "\271A";
+    content: "✚";
     /* making the content of the list perfectly align with numbering
       - <li> is relatively positioned
       - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
@@ -1156,7 +1153,7 @@ html body .container main section.articles article.title header h3 {
 }
 html body .container main section.articles article.title header h3:after {
   display: inline-block;
-  content: "\2794";
+  content: "➔";
   font-size: 150%;
   margin-left: 0.3125em;
   position: relative;
@@ -1203,7 +1200,7 @@ html body .container main section.articles article.active figure figcaption {
   display: none;
 }
 html body .container main section#intro {
-  /* Figcaption has relative positioning with negative top margin 
+  /* Figcaption has relative positioning with negative top margin
   */
   margin-bottom: 0;
 }
@@ -1239,7 +1236,7 @@ html body .container main section#intro figure figcaption a {
 }
 html body .container #footer #company address {
   font-size: small;
-  color: #bebebe;
+  color: #BEBEBE;
   max-width: 21.875em;
 }
 html body .container #footer #company address {
@@ -1347,7 +1344,7 @@ html body.single-post main section#index article.product aside #price li:nth-of-
   margin-right: 0;
   color: #f3aaaa;
 }
-html body.single-post main section#index article.product aside #price, html body.single-post main section#index article.product aside #dimension {
+html body.single-post main section#index article.product aside #price, html body.single-post main section#index article.product aside #dimension, html body.single-post main section#index article.product aside #stock {
   width: 100%;
   float: left;
   padding: 0.625em;
@@ -1356,9 +1353,26 @@ html body.single-post main section#index article.product aside #price, html body
   margin-bottom: 1.25em;
 }
 @media only screen and (max-width: 24em) {
-  html body.single-post main section#index article.product aside #price, html body.single-post main section#index article.product aside #dimension {
+  html body.single-post main section#index article.product aside #price, html body.single-post main section#index article.product aside #dimension, html body.single-post main section#index article.product aside #stock {
     width: calc(100% - 2.5em - 0px);
   }
+}
+html body.single-post main section#index article.product aside #stock form.eshop.addtocart {
+  margin: 0;
+  padding: 0;
+}
+html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset {
+  margin: 0;
+  padding: 0;
+}
+html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset legend, html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset .sgloptiondetails {
+  display: none;
+}
+html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset .qty, html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset .iqty {
+  margin: 0;
+}
+html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset .eshopbutton {
+  background: red;
 }
 html body.single-post main section#index article.product aside #content {
   width: 100%;
@@ -1413,7 +1427,7 @@ html body.single-post main section#index article.product aside #content ul li {
   padding-left: 1.25em;
 }
 html body.single-post main section#index article.product aside #content ul li:before {
-  content: "\271A";
+  content: "✚";
   /* making the content of the list perfectly align with numbering
     - <li> is relatively positioned
     - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
@@ -1471,7 +1485,7 @@ html body.single-post main section#index article.product aside #content table th
   padding-left: 0;
 }
 html body.single-post main section#index article.product aside #content table tbody td {
-  border-bottom: 1px solid #bebebe;
+  border-bottom: 1px solid #BEBEBE;
 }
 html body.single-post main section#index article.product aside #content figure img {
   -moz-box-shadow: 1px 0 #1f1f1f, 0 1px #1f1f1f, 2px 1px #1f1f1f, 1px 2px #1f1f1f, 3px 2px #1f1f1f, 2px 3px #1f1f1f, 4px 3px #1f1f1f, 3px 4px #1f1f1f, 5px 4px #1f1f1f, 4px 5px #1f1f1f;
@@ -1573,6 +1587,9 @@ html body.single-post main section#index article.product aside #content li ul, h
 html body.single-post main section#index article.product aside #content img {
   display: none;
 }
+html body.single-post main section#index article.product aside #content form.eshop.addtocart {
+  display: none;
+}
 html body.page main #index article.thumb, html body.page main #index #comments {
   float: left;
   max-width: 43.75em;
@@ -1625,7 +1642,7 @@ html body.page main #index article.thumb ul li, html body.page main #index #comm
   padding-left: 1.25em;
 }
 html body.page main #index article.thumb ul li:before, html body.page main #index #comments ul li:before {
-  content: "\271A";
+  content: "✚";
   /* making the content of the list perfectly align with numbering
     - <li> is relatively positioned
     - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
@@ -1683,7 +1700,7 @@ html body.page main #index article.thumb table thead th, html body.page main #in
   padding-left: 0;
 }
 html body.page main #index article.thumb table tbody td, html body.page main #index #comments table tbody td {
-  border-bottom: 1px solid #bebebe;
+  border-bottom: 1px solid #BEBEBE;
 }
 html body.page main #index article.thumb figure img, html body.page main #index #comments figure img {
   -moz-box-shadow: 1px 0 #1f1f1f, 0 1px #1f1f1f, 2px 1px #1f1f1f, 1px 2px #1f1f1f, 3px 2px #1f1f1f, 2px 3px #1f1f1f, 4px 3px #1f1f1f, 3px 4px #1f1f1f, 5px 4px #1f1f1f, 4px 5px #1f1f1f;
@@ -1849,7 +1866,7 @@ html body.page main #index #comments h3, html body.page main #index #comments h2
 html body.page main #index #comments ol li {
   margin-bottom: 1.25em;
   padding-bottom: 1.25em;
-  border-bottom: 1px solid #bebebe;
+  border-bottom: 1px solid #BEBEBE;
   max-width: 43.75em;
   line-height: 1.75;
   /* Headings
@@ -1900,7 +1917,7 @@ html body.page main #index #comments ol li ul li {
   padding-left: 1.25em;
 }
 html body.page main #index #comments ol li ul li:before {
-  content: "\271A";
+  content: "✚";
   /* making the content of the list perfectly align with numbering
     - <li> is relatively positioned
     - :the numbering (:before) is aboslutely positioned within <li> and fixed to left
@@ -1958,7 +1975,7 @@ html body.page main #index #comments ol li table thead th, html body.page main #
   padding-left: 0;
 }
 html body.page main #index #comments ol li table tbody td {
-  border-bottom: 1px solid #bebebe;
+  border-bottom: 1px solid #BEBEBE;
 }
 html body.page main #index #comments ol li figure img {
   -moz-box-shadow: 1px 0 #1f1f1f, 0 1px #1f1f1f, 2px 1px #1f1f1f, 1px 2px #1f1f1f, 3px 2px #1f1f1f, 2px 3px #1f1f1f, 4px 3px #1f1f1f, 3px 4px #1f1f1f, 5px 4px #1f1f1f, 4px 5px #1f1f1f;
@@ -2125,7 +2142,7 @@ html body.page main #sidebar ul li {
   padding-left: 1.25em;
 }
 html body.page main #sidebar ul li:before {
-  content: "\271A";
+  content: "✚";
   /* making the content of the list perfectly align with numbering
     - <li> is relatively positioned
     - :the numbering (:before) is aboslutely positioned within <li> and fixed to left

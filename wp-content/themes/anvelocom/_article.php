@@ -62,6 +62,10 @@
           <span class="stock--empty">
             Anunta-ma cand va fi stoc
           </span>
+        <?php } else { ?>
+          <div id="add-to-cart">
+            <?php echo do_shortcode('[eshop_addtocart]'); ?>
+          </div>
         <?php } ?>
       </div>
 
