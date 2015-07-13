@@ -86,7 +86,17 @@ function avc_eshop_convert() {
 
         $product['option'] = 'default';
         $product['price'] = $price[1];
-        $product['saleprice'] = isset($price[0]) ? $price[0] : '0';
+        if (isset($price[0])) {
+          // Products on sale are marked featured so they can be filtered on the admin interface
+          $saleprice = (string)$price[0];
+          $featured = 'Yes';
+          $sale = 'yes';
+        } else {
+          $saleprice = '0';
+          $featured = 'no';
+          $sale = 'no';
+        }
+        $product['saleprice'] = $saleprice;
         $product['stkqty'] = '1';
 
         $eshop['sku'] = (string)$article->ID;
@@ -94,14 +104,20 @@ function avc_eshop_convert() {
         $eshop['products'][1] = $product;
         $eshop['description'] = $article->post_title;
         $eshop['shiprate'] = 'A';
-        $eshop['featured'] = 'no';
-        $eshop['sale'] = 'no';
+        $eshop['featured'] = $featured;
+        $eshop['sale'] = $sale;
         $eshop['cart_radio'] = '0';
         $eshop['optset'] = '';
 
         // Save an Eshop product
         update_post_meta($article->ID, '_eshop_product', $eshop);
         update_post_meta($article->ID, '_eshop_stock', '1');
+
+        if ($sale == 'yes') {
+          update_post_meta($article->ID, '_eshop_sale', 'yes');
+          update_post_meta($article->ID, '_eshop_featured', 'Yes');
+        }
+
 
         $ret .= ' OK ';
       }
