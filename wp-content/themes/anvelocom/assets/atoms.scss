@@ -57,7 +57,7 @@ $breakpoint-large-screen: 90em !default; /* 1440px */
 	@media only screen and (max-width: $breakpoint-mobile) {
 		@content;
 	}
-} 
+}
 @mixin below-mobile-landscape {
 	@media only screen and (max-width: $breakpoint-mobile-landscape) and (orientation : landscape) {
 		@content;
@@ -145,7 +145,7 @@ $breakpoint-large-screen: 90em !default; /* 1440px */
 */
 .mobile {
   display: none;
-  
+
   @include below-tablet {
     display: block;
   }
@@ -153,7 +153,7 @@ $breakpoint-large-screen: 90em !default; /* 1440px */
 
 .desktop {
   display: block;
-  
+
   @include below-tablet {
     display: none;
   }
@@ -176,7 +176,7 @@ $line-height: 1.25; /* 20px, 1.25em */
   - it depends on font-size
   - font-size: 100% => this value is 1, font-size: 65% => this value is .65
 */
-$base-font-multiplier: 1; 
+$base-font-multiplier: 1;
 
 /* Line heights for headers and body text
   - See http://www.kaikkonendesign.fi/typography/#section/4
@@ -216,7 +216,7 @@ $highlight: #f3aaaa;
 $gray: #BEBEBE;
 $blue: #73A2C0;
 $brown: #C0A073;
-
+$green: #53A66B;
 
 /* Animations, decorations
 */
@@ -234,4 +234,3 @@ $arrow-right: '\21E2';
 /* in :before and :after usually the font size is larger for better visibility
 */
 $before-font-size: 150%;
-

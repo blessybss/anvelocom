@@ -369,7 +369,10 @@ function eshop_filter_gettext($translation, $text, $domain) {
       return 'Cantitate:';
       break;
     case 'Add to Cart':
-      return 'Adauga la cos';
+      return 'Adauga in cos';
+      break;
+    case 'Add selected item to your shopping basket':
+      return 'Adauga acest produs in cosul de cumparaturi';
       break;
   }
 

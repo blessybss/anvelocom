@@ -244,12 +244,27 @@
     #stock {
       .stock--empty {
         display: block;
-        margin-top: $pad;
+        margin-top: $pad / 2;
+      }
+
+      .stock__value {
+        width: $pad * 2;
+        text-align: center;
+        line-height: 2.5;
+        display: inline-block;
+        margin-left: 2.3em;
+        color: $background;
+        background: $color;
+        border: 1px solid;
       }
 
       #add-to-cart {
-        margin-top: $pad;
+        margin-top: $pad / 2;
       }
+
+
+      // Reset form
+      @include form;
 
 
       // Style add to cart form
@@ -260,14 +275,42 @@
             display: none;
           }
 
+          .qty, .iqty, .eshopbutton {
+            padding: 0;
+            line-height: 2.5;
+            width: auto;
+            margin-right: $pad / 2;
+            border: none;
+          }
+
+          .iqty {
+            width: $pad * 2;
+            text-align: center;
+            border: 2px solid;
+            font-weight: bold;
+            font-style: normal;
+          }
+
           .eshopbutton {
+            color: $background;
+            background: $green;
+            padding: 0 $pad / 2;
+            box-shadow: 1px 1px 0px $color, 2px 2px 0px $color;
+            border: 1px solid $green;
+
+            &:hover, &:active {
+              box-shadow: 1px 1px 0px $color, 2px 2px 0px $color, 3px 3px 0px $color;
+            }
+
             @include mobile {
               display: block;
-              margin-top: $pad;
+              margin-top: $pad / 2;
             }
           }
         }
       }
+
+
     }
 
     #content {

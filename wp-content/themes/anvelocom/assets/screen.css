@@ -1359,18 +1359,91 @@ html body.single-post main section#index article.product aside #price, html body
 }
 html body.single-post main section#index article.product aside #stock .stock--empty {
   display: block;
-  margin-top: 1.25em;
+  margin-top: 0.625em;
+}
+html body.single-post main section#index article.product aside #stock .stock__value {
+  width: 2.5em;
+  text-align: center;
+  line-height: 2.5;
+  display: inline-block;
+  margin-left: 2.3em;
+  color: #f1f1f1;
+  background: #1f1f1f;
+  border: 1px solid;
 }
 html body.single-post main section#index article.product aside #stock #add-to-cart {
-  margin-top: 1.25em;
+  margin-top: 0.625em;
+}
+html body.single-post main section#index article.product aside #stock form {
+  /* Reset */
+  /* Text */
+  /* Button */
+  /* Stretching and padding */
+}
+html body.single-post main section#index article.product aside #stock form input, html body.single-post main section#index article.product aside #stock form textarea, html body.single-post main section#index article.product aside #stock form select {
+  border: none;
+  outline: 0;
+  background: #f1f1f1;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+html body.single-post main section#index article.product aside #stock form input[type='text'], html body.single-post main section#index article.product aside #stock form input[type='email'], html body.single-post main section#index article.product aside #stock form input[type='password'], html body.single-post main section#index article.product aside #stock form textarea {
+  border: 1px solid #1f1f1f;
+  font-style: italic;
+}
+html body.single-post main section#index article.product aside #stock form input[type='submit'] {
+  text-transform: uppercase;
+  letter-spacing: 0.15625em;
+  border: 1px solid #1f1f1f;
+  cursor: pointer;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+html body.single-post main section#index article.product aside #stock form input[type='submit']:hover {
+  background: #f3aaaa;
+}
+html body.single-post main section#index article.product aside #stock form label, html body.single-post main section#index article.product aside #stock form input, html body.single-post main section#index article.product aside #stock form textarea {
+  width: 100%;
+  float: left;
+}
+html body.single-post main section#index article.product aside #stock form input, html body.single-post main section#index article.product aside #stock form textarea {
+  padding: 0.625em;
+  width: calc(100% - 1.25em);
 }
 html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset legend, html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset .sgloptiondetails {
   display: none;
 }
+html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset .qty, html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset .iqty, html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset .eshopbutton {
+  padding: 0;
+  line-height: 2.5;
+  width: auto;
+  margin-right: 0.625em;
+  border: none;
+}
+html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset .iqty {
+  width: 2.5em;
+  text-align: center;
+  border: 2px solid;
+  font-weight: bold;
+  font-style: normal;
+}
+html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset .eshopbutton {
+  color: #f1f1f1;
+  background: #53A66B;
+  padding: 0 0.625em;
+  box-shadow: 1px 1px 0px #1f1f1f, 2px 2px 0px #1f1f1f;
+  border: 1px solid #53A66B;
+}
+html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset .eshopbutton:hover, html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset .eshopbutton:active {
+  box-shadow: 1px 1px 0px #1f1f1f, 2px 2px 0px #1f1f1f, 3px 3px 0px #1f1f1f;
+}
 @media only screen and (max-width: 24em) {
   html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset .eshopbutton {
     display: block;
-    margin-top: 1.25em;
+    margin-top: 0.625em;
   }
 }
 html body.single-post main section#index article.product aside #content {
