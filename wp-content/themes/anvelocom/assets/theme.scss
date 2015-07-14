@@ -245,6 +245,11 @@
       .stock--empty {
         display: block;
         margin-top: $pad / 2;
+
+        a {
+          font-size: small;
+          text-decoration: underline;
+        }
       }
 
       .stock__value {

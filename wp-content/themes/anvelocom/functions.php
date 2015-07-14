@@ -188,11 +188,14 @@ function get_price_from_meta($post) {
 // Get product price
 function get_price($product) {
   $ret = array();
-  $default = $product['products'][1];
 
-  if ($default) {
-    $ret[] = $default['price'];
-    $ret[] = $default['saleprice'];
+  if ($product) {
+    $default = $product['products'][1];
+
+    if ($default) {
+      $ret[] = $default['price'];
+      $ret[] = $default['saleprice'];
+    }
   }
 
   return array_filter(array_unique($ret));
@@ -203,9 +206,11 @@ function get_price($product) {
 function get_stock($product) {
   $ret = 0;
 
-  $default = $product['products'][1];
-  if ($default) {
-    $ret = isset($default['stkqty']) ? $default['stkqty'] : 0;
+  if ($product) {
+    $default = $product['products'][1];
+    if ($default) {
+      $ret = isset($default['stkqty']) ? $default['stkqty'] : 0;
+    }
   }
 
   return $ret;

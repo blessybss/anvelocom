@@ -1361,6 +1361,10 @@ html body.single-post main section#index article.product aside #stock .stock--em
   display: block;
   margin-top: 0.625em;
 }
+html body.single-post main section#index article.product aside #stock .stock--empty a {
+  font-size: small;
+  text-decoration: underline;
+}
 html body.single-post main section#index article.product aside #stock .stock__value {
   width: 2.5em;
   text-align: center;

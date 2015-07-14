@@ -61,7 +61,7 @@
           <span class="stock__value"><?php echo $stock ?></span>
           <?php if ($stock < 1) { ?>
             <span class="stock--empty">
-              Anunta-ma cand acest produs va fi stoc
+              <a href="mailto:vanzari@anvelocom.ro?subject:Notificare stoc?body:Produs: <?php echo $link ?>" title="Notificare prin email">Doresc sa fiu notificat prin e-mail cand acest produs va fi din nou pe stoc.</a>
             </span>
           <?php } else { ?>
             <div id="add-to-cart">
