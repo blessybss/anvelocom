@@ -407,9 +407,9 @@ function eshop_filter_gettext($translation, $text, $domain) {
     case 'Your shopping cart is currently empty.':
       return "Cosul Dvs. este gol.";
       break;
-    case 'Proceed to Checkout &raquo;':
-      return "Finalizare comanda";
-      break;
+    //case 'Proceed to Checkout &raquo;':
+      //return "Finalizare comanda";
+      //break;
     case '&laquo; Continue Shopping':
       return "Inapoi la cumparaturi";
       break;
