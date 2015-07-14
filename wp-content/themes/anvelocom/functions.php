@@ -390,7 +390,7 @@ function eshop_filter_gettext($translation, $text, $domain) {
       return 'Adauga acest produs in cosul de cumparaturi';
       break;
     case 'Item Description':
-      return 'Produs';
+      return 'Produse';
       break;
     case '<abbr title="Quantity">Qty</abbr>':
       return 'Cant';
@@ -407,11 +407,17 @@ function eshop_filter_gettext($translation, $text, $domain) {
     case 'Your shopping cart is currently empty.':
       return "Cosul Dvs. este gol.";
       break;
+    case 'Proceed to Checkout &raquo;':
+      return "Finalizare comanda";
+      break;
+    case '&laquo; Continue Shopping':
+      return "Inapoi la cumparaturi";
+      break;
     case 'Error: That quantity is not available for that product.':
       return 'Aceasta cantitate depaseste stocul existent.';
       break;
     case 'Error: The quantity must contain numbers only, with a 999 maximum.':
-    case 'Error: The quantity must contain numbers only, with a maximum of 999.':
+    case 'Error: The quantity must contain numbers only, with a maximum of %s.':
       return "Cantitatea trebuie sa fie numar intre 1-999.";
       break;
   }

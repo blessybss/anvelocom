@@ -892,8 +892,10 @@ html body.page main #sidebar h2, html body.page main #sidebar h3, html body.page
 }
 html body.page-cos-cumparaturi main article aside #content table caption,
 html body.page-cos-cumparaturi main article aside #content #cartDelete img,
-html body.page-cos-cumparaturi main article aside #content .deletecartitem .hide {
-  display: none;
+html body.page-cos-cumparaturi main article aside #content .deletecartitem .hide,
+html body.page-cos-cumparaturi main article aside #content .rtnshopping,
+html body.page-cos-cumparaturi main article aside #content .related-posts {
+  display: none !important;
 }
 html body.page-cos-cumparaturi main article aside #content .deletecartitem input[type="image"],
 html body.page-cos-cumparaturi main article aside #content .cartopt .button {
@@ -902,31 +904,30 @@ html body.page-cos-cumparaturi main article aside #content .cartopt .button {
 html body.page-cos-cumparaturi main article aside #content #cartItem {
   padding-left: 0.3125em;
 }
-html body.page-cos-cumparaturi main article aside #content .cartopt {
-  width: 100%;
-  float: left;
-}
 html body.page-cos-cumparaturi main article aside #content .cartopt label {
   display: inline-block;
   margin-right: 1.25em;
   width: auto !important;
 }
 html body.page-cos-cumparaturi main article aside #content .cartopt label .button {
-  color: #f1f1f1;
-  background: #53A66B;
+  background: #f1f1f1;
+  color: #1f1f1f;
   padding: 0 0.625em;
   box-shadow: 1px 1px 0px #1f1f1f, 2px 2px 0px #1f1f1f;
-  border: 1px solid #53A66B;
+  border: 1px solid #1f1f1f;
   line-height: 2.5;
   cursor: pointer;
+  width: auto;
+  font-weight: bold;
 }
 html body.page-cos-cumparaturi main article aside #content .cartopt label .button:hover, html body.page-cos-cumparaturi main article aside #content .cartopt label .button:active {
   box-shadow: 1px 1px 0px #1f1f1f, 2px 2px 0px #1f1f1f, 3px 3px 0px #1f1f1f;
 }
+html body.page-cos-cumparaturi main article aside #content .cartopt label .button a {
+  background: #f1f1f1;
+  color: #1f1f1f;
+}
 html body.page-cos-cumparaturi main article aside #content .continue-proceed {
-  width: 100%;
-  float: left;
-  margin: 1.25em 0;
   margin: 0;
   display: block;
   list-style-type: none;
@@ -941,6 +942,27 @@ html body.page-cos-cumparaturi main article aside #content .continue-proceed li:
 }
 html body.page-cos-cumparaturi main article aside #content .continue-proceed li::before {
   content: '' !important;
+}
+html body.page-cos-cumparaturi main article aside #content .continue-proceed li.gotocheckout {
+  background: #53A66B;
+  color: #f1f1f1;
+  padding: 0 0.625em;
+  box-shadow: 1px 1px 0px #1f1f1f, 2px 2px 0px #1f1f1f;
+  border: 1px solid #1f1f1f;
+  line-height: 2.5;
+  cursor: pointer;
+  width: auto;
+  font-weight: bold;
+  float: right;
+  padding-left: 1.25em;
+  padding-right: 1.25em;
+}
+html body.page-cos-cumparaturi main article aside #content .continue-proceed li.gotocheckout:hover, html body.page-cos-cumparaturi main article aside #content .continue-proceed li.gotocheckout:active {
+  box-shadow: 1px 1px 0px #1f1f1f, 2px 2px 0px #1f1f1f, 3px 3px 0px #1f1f1f;
+}
+html body.page-cos-cumparaturi main article aside #content .continue-proceed li.gotocheckout a {
+  background: #53A66B;
+  color: #f1f1f1;
 }
 
 /* Special decorations for this site
@@ -1491,16 +1513,22 @@ html body.single-post main section#index article.product aside #stock form.eshop
   font-style: normal;
 }
 html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset .eshopbutton {
-  color: #f1f1f1;
   background: #53A66B;
+  color: #f1f1f1;
   padding: 0 0.625em;
   box-shadow: 1px 1px 0px #1f1f1f, 2px 2px 0px #1f1f1f;
-  border: 1px solid #53A66B;
+  border: 1px solid #1f1f1f;
   line-height: 2.5;
   cursor: pointer;
+  width: auto;
+  font-weight: bold;
 }
 html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset .eshopbutton:hover, html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset .eshopbutton:active {
   box-shadow: 1px 1px 0px #1f1f1f, 2px 2px 0px #1f1f1f, 3px 3px 0px #1f1f1f;
+}
+html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset .eshopbutton a {
+  background: #53A66B;
+  color: #f1f1f1;
 }
 @media only screen and (max-width: 24em) {
   html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset .eshopbutton {

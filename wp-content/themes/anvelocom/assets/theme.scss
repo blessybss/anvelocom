@@ -297,7 +297,7 @@
           }
 
           .eshopbutton {
-            @include button;
+            @include button($green, $background, $color);
 
             @include mobile {
               display: block;

@@ -138,8 +138,10 @@
 @mixin page-cos-cumparaturi {
   table caption,
   #cartDelete img,
-  .deletecartitem .hide {
-    display: none;
+  .deletecartitem .hide,
+  .rtnshopping,
+  .related-posts {
+    display: none !important;
   }
 
   .deletecartitem input[type="image"],
@@ -152,8 +154,6 @@
   }
 
   .cartopt {
-    @include block;
-
     label {
       display: inline-block;
       margin-right: $pad;
@@ -166,14 +166,18 @@
   }
 
   .continue-proceed {
-    @include block;
-    margin: $pad 0;
-
     @include list-inline;
 
     li {
       &::before {
         content: '' !important;
+      }
+
+      &.gotocheckout {
+        @include button($green, $background, $color);
+        float: right;
+        padding-left: $pad;
+        padding-right: $pad;
       }
     }
   }

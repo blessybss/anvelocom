@@ -528,17 +528,26 @@
 */
 
 
-@mixin button {
-  color: $background;
-  background: $green;
+@mixin button($b: $background, $c: $color, $shadow: $color) {
+  background: $b;
+  color: $c;
+
   padding: 0 $pad / 2;
-  box-shadow: 1px 1px 0px $color, 2px 2px 0px $color;
-  border: 1px solid $green;
+  box-shadow: 1px 1px 0px $shadow, 2px 2px 0px $shadow;
+  border: 1px solid $shadow;
   line-height: 2.5;
   cursor: pointer;
 
+  width: auto;
+  font-weight: bold;
+
   &:hover, &:active {
-    box-shadow: 1px 1px 0px $color, 2px 2px 0px $color, 3px 3px 0px $color;
+    box-shadow: 1px 1px 0px $shadow, 2px 2px 0px $shadow, 3px 3px 0px $shadow;
+  }
+
+  a {
+    background: $b;
+    color: $c;
   }
 }
 
