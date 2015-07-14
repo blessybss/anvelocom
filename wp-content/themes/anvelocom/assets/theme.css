@@ -1,23 +1,23 @@
 /*
 Error: Undefined variable: "$pad".
-        on line 531 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/theme.scss, in `bordered'
-        from line 562 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/theme.scss
+        on line 527 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/theme.scss, in `bordered'
+        from line 558 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/theme.scss
 
-526: 
-527: 
-528: /* Add border to text
-529: *\/
-530: @mixin bordered($type : simple) {
-531:   padding: $pad/2;
-532:   border: 1px solid;
-533: 
-534:   @if ($type == double) {
-535:     background: $background;
-536:     position: relative;
+522: 
+523: 
+524: /* Add border to text
+525: *\/
+526: @mixin bordered($type : simple) {
+527:   padding: $pad/2;
+528:   border: 1px solid;
+529: 
+530:   @if ($type == double) {
+531:     background: $background;
+532:     position: relative;
 
 Backtrace:
-/home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/theme.scss:531:in `bordered'
-/home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/theme.scss:562
+/home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/theme.scss:527:in `bordered'
+/home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/theme.scss:558
 /var/lib/gems/1.9.1/gems/sass-3.4.9/lib/sass/script/tree/variable.rb:49:in `_perform'
 /var/lib/gems/1.9.1/gems/sass-3.4.9/lib/sass/script/tree/node.rb:50:in `perform'
 /var/lib/gems/1.9.1/gems/sass-3.4.9/lib/sass/script/tree/operation.rb:64:in `_perform'
@@ -131,4 +131,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$pad\".\A         on line 531 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/theme.scss, in `bordered'\A         from line 562 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/theme.scss\A \A 526: \A 527: \A 528: /* Add border to text\A 529: */\A 530: @mixin bordered($type : simple) {\A 531:   padding: $pad/2;\A 532:   border: 1px solid;\A 533: \A 534:   @if ($type == double) {\A 535:     background: $background;\A 536:     position: relative;"; }
+  content: "Error: Undefined variable: \"$pad\".\A         on line 527 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/theme.scss, in `bordered'\A         from line 558 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/theme.scss\A \A 522: \A 523: \A 524: /* Add border to text\A 525: */\A 526: @mixin bordered($type : simple) {\A 527:   padding: $pad/2;\A 528:   border: 1px solid;\A 529: \A 530:   @if ($type == double) {\A 531:     background: $background;\A 532:     position: relative;"; }

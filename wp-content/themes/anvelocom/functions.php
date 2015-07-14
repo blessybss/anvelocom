@@ -362,6 +362,16 @@ function string_to_classname($string) {
 }
 
 
+// Add Page Slug to Body Class
+function add_slug_body_class( $classes ) {
+  global $post;
+  if ( isset( $post ) ) {
+    $classes[] = $post->post_type . '-' . $post->post_name;
+  }
+  return $classes;
+}
+add_filter( 'body_class', 'add_slug_body_class' );
+
 
 
 /* Eshop helpers / setup / overwrites
@@ -378,6 +388,31 @@ function eshop_filter_gettext($translation, $text, $domain) {
       break;
     case 'Add selected item to your shopping basket':
       return 'Adauga acest produs in cosul de cumparaturi';
+      break;
+    case 'Item Description':
+      return 'Produs';
+      break;
+    case '<abbr title="Quantity">Qty</abbr>':
+      return 'Cant';
+      break;
+    case 'Delete this item':
+      return 'Sterge din cos';
+      break;
+    case 'Update Cart':
+      return 'Actualizare cos';
+      break;
+    case 'Empty Cart':
+      return "Golire cos";
+      break;
+    case 'Your shopping cart is currently empty.':
+      return "Cosul Dvs. este gol.";
+      break;
+    case 'Error: That quantity is not available for that product.':
+      return 'Aceasta cantitate depaseste stocul existent.';
+      break;
+    case 'Error: The quantity must contain numbers only, with a 999 maximum.':
+    case 'Error: The quantity must contain numbers only, with a maximum of 999.':
+      return "Cantitatea trebuie sa fie numar intre 1-999.";
       break;
   }
 

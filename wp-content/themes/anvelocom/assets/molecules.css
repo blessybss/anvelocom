@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /* Groups of atoms which function together as a unit
-  -  “do one thing and do it well” 
+  -  “do one thing and do it well”
 */
 /* Navigational elements
 */
@@ -16,7 +16,7 @@
 /* Columns for the grid
   - calculates automatically the columns size and margin
   - the right margin of the last element in a row is set to zero
-  - $maximum sets how many articles will be displayed on a single page 
+  - $maximum sets how many articles will be displayed on a single page
 */
 /* Returns the with of a column in a grid
   - This is useful to resize other elements to the grid
@@ -71,6 +71,6 @@
 */
 /* Stretching child element to fill parent's width
 */
-/* Rem Unit font sizes with relative fallback http:/seesparkbox.com/foundry/scss_rem_mixin_now_with_a_better_fallback  
+/* Rem Unit font sizes with relative fallback http:/seesparkbox.com/foundry/scss_rem_mixin_now_with_a_better_fallback
 	Usage: @include font-size(1, large);
 */

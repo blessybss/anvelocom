@@ -127,7 +127,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* in :before and :after usually the font size is larger for better visibility
 */
 /* Groups of atoms which function together as a unit
-  -  “do one thing and do it well” 
+  -  “do one thing and do it well”
 */
 /* Navigational elements
 */
@@ -143,7 +143,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* Columns for the grid
   - calculates automatically the columns size and margin
   - the right margin of the last element in a row is set to zero
-  - $maximum sets how many articles will be displayed on a single page 
+  - $maximum sets how many articles will be displayed on a single page
 */
 /* Returns the with of a column in a grid
   - This is useful to resize other elements to the grid
@@ -198,7 +198,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 */
 /* Stretching child element to fill parent's width
 */
-/* Rem Unit font sizes with relative fallback http:/seesparkbox.com/foundry/scss_rem_mixin_now_with_a_better_fallback  
+/* Rem Unit font sizes with relative fallback http:/seesparkbox.com/foundry/scss_rem_mixin_now_with_a_better_fallback
 	Usage: @include font-size(1, large);
 */
 /* Groups of molecules (and possibly atoms) joined together to form distinct section of an interface.
@@ -237,7 +237,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* Templates mostly focus on content structure (such as character length, image size, etc) rather than the actual content.
   - they are wireframes describing the layout
 */
-/* An arrow 
+/* An arrow
   - to scroll to top of the page
   - or to reveal a menu
 */
@@ -246,6 +246,8 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 /* The filters
 */
 /* Remove a section or nav title required by HTML5 outliner
+*/
+/* Shopping cart page
 */
 html body {
   background: #f1f1f1;
@@ -258,6 +260,8 @@ html body {
   /* Single product
   */
   /* Content pages
+  */
+  /* Shopping cart page
   */
 }
 html body h1, html body h2, html body h3 {
@@ -562,7 +566,7 @@ html body .container #footer nav:before {
 }
 html body.page main section {
   /* The filters have relative posistioning with a negative top margin
-    - it's container bottom margin and the next container's top margin must be reset 
+    - it's container bottom margin and the next container's top margin must be reset
   */
 }
 html body.page main section.articles article.thumb {
@@ -842,7 +846,7 @@ html body.page main section#results h2, html body.page main section#results h3, 
   display: none;
 }
 html body.single-post main article.product {
-  /* The Golden Ratios 
+  /* The Golden Ratios
   */
 }
 html body.single-post main article.product figure {
@@ -863,7 +867,7 @@ html body.single-post main article.product aside {
   }
 }
 html body.page main {
-  /* The Golden Ratios 
+  /* The Golden Ratios
   */
 }
 html body.page main #index {
@@ -885,6 +889,58 @@ html body.page main #sidebar h2, html body.page main #sidebar h3, html body.page
     margin-right: 0;
     float: left;
   }
+}
+html body.page-cos-cumparaturi main article aside #content table caption,
+html body.page-cos-cumparaturi main article aside #content #cartDelete img,
+html body.page-cos-cumparaturi main article aside #content .deletecartitem .hide {
+  display: none;
+}
+html body.page-cos-cumparaturi main article aside #content .deletecartitem input[type="image"],
+html body.page-cos-cumparaturi main article aside #content .cartopt .button {
+  width: auto;
+}
+html body.page-cos-cumparaturi main article aside #content #cartItem {
+  padding-left: 0.3125em;
+}
+html body.page-cos-cumparaturi main article aside #content .cartopt {
+  width: 100%;
+  float: left;
+}
+html body.page-cos-cumparaturi main article aside #content .cartopt label {
+  display: inline-block;
+  margin-right: 1.25em;
+  width: auto !important;
+}
+html body.page-cos-cumparaturi main article aside #content .cartopt label .button {
+  color: #f1f1f1;
+  background: #53A66B;
+  padding: 0 0.625em;
+  box-shadow: 1px 1px 0px #1f1f1f, 2px 2px 0px #1f1f1f;
+  border: 1px solid #53A66B;
+  line-height: 2.5;
+  cursor: pointer;
+}
+html body.page-cos-cumparaturi main article aside #content .cartopt label .button:hover, html body.page-cos-cumparaturi main article aside #content .cartopt label .button:active {
+  box-shadow: 1px 1px 0px #1f1f1f, 2px 2px 0px #1f1f1f, 3px 3px 0px #1f1f1f;
+}
+html body.page-cos-cumparaturi main article aside #content .continue-proceed {
+  width: 100%;
+  float: left;
+  margin: 1.25em 0;
+  margin: 0;
+  display: block;
+  list-style-type: none;
+}
+html body.page-cos-cumparaturi main article aside #content .continue-proceed li {
+  display: inline-block;
+  float: left;
+  margin-right: 1.25em;
+}
+html body.page-cos-cumparaturi main article aside #content .continue-proceed li:last-of-type {
+  margin-right: 0;
+}
+html body.page-cos-cumparaturi main article aside #content .continue-proceed li::before {
+  content: '' !important;
 }
 
 /* Special decorations for this site
@@ -1440,6 +1496,8 @@ html body.single-post main section#index article.product aside #stock form.eshop
   padding: 0 0.625em;
   box-shadow: 1px 1px 0px #1f1f1f, 2px 2px 0px #1f1f1f;
   border: 1px solid #53A66B;
+  line-height: 2.5;
+  cursor: pointer;
 }
 html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset .eshopbutton:hover, html body.single-post main section#index article.product aside #stock form.eshop.addtocart fieldset .eshopbutton:active {
   box-shadow: 1px 1px 0px #1f1f1f, 2px 2px 0px #1f1f1f, 3px 3px 0px #1f1f1f;
@@ -1614,7 +1672,7 @@ html body.single-post main section#index article.product aside #content form inp
 html body.single-post main section#index article.product aside #content blockquote, html body.single-post main section#index article.product aside #content q {
   border-top: 1px solid;
   border-bottom: 1px solid;
-  /* Making room to the " sign 
+  /* Making room to the " sign
   */
   position: relative;
   float: left;
@@ -1829,7 +1887,7 @@ html body.page main #index article.thumb form input, html body.page main #index 
 html body.page main #index article.thumb blockquote, html body.page main #index article.thumb q, html body.page main #index #comments blockquote, html body.page main #index #comments q {
   border-top: 1px solid;
   border-bottom: 1px solid;
-  /* Making room to the " sign 
+  /* Making room to the " sign
   */
   position: relative;
   float: left;
@@ -2104,7 +2162,7 @@ html body.page main #index #comments ol li form input, html body.page main #inde
 html body.page main #index #comments ol li blockquote, html body.page main #index #comments ol li q {
   border-top: 1px solid;
   border-bottom: 1px solid;
-  /* Making room to the " sign 
+  /* Making room to the " sign
   */
   position: relative;
   float: left;
