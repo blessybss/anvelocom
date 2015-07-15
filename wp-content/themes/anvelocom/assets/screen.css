@@ -987,7 +987,8 @@ html body.page-finalizare-comanda main article aside #content .related-posts,
 html body.page-finalizare-comanda main article aside #content .shippingrow small,
 html body.page-finalizare-comanda main article aside #content label.finalize small,
 html body.page-finalizare-comanda main article aside #content .eshop.confirm .company,
-html body.page-finalizare-comanda main article aside #content .eshop.confirm .country {
+html body.page-finalizare-comanda main article aside #content .eshop.confirm .country,
+html body.page-finalizare-comanda main article aside #content .eshoperrors + .hr + .eshopcustdetails .fld0 {
   display: none;
 }
 html body.page-finalizare-comanda main article aside #content #cartItem {

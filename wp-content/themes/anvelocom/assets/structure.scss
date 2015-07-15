@@ -156,7 +156,8 @@
   .shippingrow small,
   label.finalize small,
   .eshop.confirm .company,
-  .eshop.confirm .country {
+  .eshop.confirm .country,
+  .eshoperrors + .hr + .eshopcustdetails .fld0 {
     display: none;
   }
 

@@ -1,23 +1,23 @@
 /*
 Error: Undefined mixin 'default-settings'.
-        on line 308 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/structure.scss, in `default-settings'
-        from line 308 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/structure.scss
+        on line 309 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/structure.scss, in `default-settings'
+        from line 309 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/structure.scss
 
-303: }
-304: 
+304: }
 305: 
-306: html {
-307:   body {
-308:     @include default-settings;
-309: 
-310:     .container {
-311:       @include container;
-312: 
-313:       #header, #footer {
+306: 
+307: html {
+308:   body {
+309:     @include default-settings;
+310: 
+311:     .container {
+312:       @include container;
+313: 
+314:       #header, #footer {
 
 Backtrace:
-/home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/structure.scss:308:in `default-settings'
-/home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/structure.scss:308
+/home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/structure.scss:309:in `default-settings'
+/home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/structure.scss:309
 /var/lib/gems/1.9.1/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:338:in `block in visit_mixin'
 /var/lib/gems/1.9.1/gems/sass-3.4.9/lib/sass/stack.rb:98:in `block in with_mixin'
 /var/lib/gems/1.9.1/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
@@ -81,4 +81,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined mixin 'default-settings'.\A         on line 308 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/structure.scss, in `default-settings'\A         from line 308 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/structure.scss\A \A 303: }\A 304: \A 305: \A 306: html {\A 307:   body {\A 308:     @include default-settings;\A 309: \A 310:     .container {\A 311:       @include container;\A 312: \A 313:       #header, #footer {"; }
+  content: "Error: Undefined mixin 'default-settings'.\A         on line 309 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/structure.scss, in `default-settings'\A         from line 309 of /home/cs/work/anvelocom/wp-content/themes/anvelocom/assets/structure.scss\A \A 304: }\A 305: \A 306: \A 307: html {\A 308:   body {\A 309:     @include default-settings;\A 310: \A 311:     .container {\A 312:       @include container;\A 313: \A 314:       #header, #footer {"; }
