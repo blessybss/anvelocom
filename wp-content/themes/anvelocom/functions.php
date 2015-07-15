@@ -495,6 +495,30 @@ function eshop_filter_gettext($translation, $text, $domain) {
     case '&laquo; Edit Details or Continue Shopping':
       return "&laquo; Schimbare date de livrare";
       break;
+    case 'There were some errors in the details you entered&#8230;':
+      return "Datele de livrare sunt incomplete:";
+      break;
+    case '<strong>First name</strong> - missing or incorrect.':
+      return "<strong>Nume</strong> - lipseste sau este incorect";
+      break;
+    case '<strong>Last name</strong> - missing or incorrect.':
+      return "<strong>Prenume</strong> - lipseste sau este incorect";
+      break;
+    case '<strong>Email address</strong> - missing or incorrect.':
+      return "<strong>Adresa email</strong> - lipseste sau este incorect";
+      break;
+    case '<strong>Phone Number</strong> - missing or incorrect':
+      return "<strong>Telefon</strong> - lipseste sau este incorect";
+      break;
+    case '<strong>Address</strong> - missing or incorrect.':
+      return "<strong>Adresa</strong> - lipseste sau este incorect";
+      break;
+    case '<strong>City or town</strong> - missing or incorrect.':
+      return "<strong>Oras</strong> - lipseste sau este incorect";
+      break;
+    case '<strong>Zip/Post code</strong> - missing or incorrect.':
+      return "<strong>Cod postal</strong> - lipseste sau este incorect";
+      break;
   }
 
   return $translation;

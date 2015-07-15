@@ -1090,7 +1090,8 @@ html body.page-finalizare-comanda main article aside #content #cTotal {
   font-weight: bold;
 }
 html body.page-finalizare-comanda main article aside #content ul.eshop.confirm li::before,
-html body.page-finalizare-comanda main article aside #content ul.eshop.confirmref li::before {
+html body.page-finalizare-comanda main article aside #content ul.eshop.confirmref li::before,
+html body.page-finalizare-comanda main article aside #content ul.eshoperrors li::before {
   content: '' !important;
 }
 html body.page-finalizare-comanda main article aside #content .eshop-confirm,
@@ -1100,6 +1101,16 @@ html body.page-finalizare-comanda main article aside #content .eshopcp3 {
 }
 html body.page-finalizare-comanda main article aside #content .eshopcheckoutconf {
   border: 1px solid;
+}
+html body.page-finalizare-comanda main article aside #content .eshoperror {
+  color: #F56262;
+}
+html body.page-finalizare-comanda main article aside #content .eshoperrors {
+  border: 1px solid #F56262;
+  color: #F56262;
+}
+html body.page-finalizare-comanda main article aside #content .eshoperrors li {
+  margin: 0.3125em 0;
 }
 
 /* Special decorations for this site

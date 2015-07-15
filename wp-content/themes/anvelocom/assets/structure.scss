@@ -218,7 +218,8 @@
   }
 
   ul.eshop.confirm,
-  ul.eshop.confirmref {
+  ul.eshop.confirmref,
+  ul.eshoperrors {
     li {
       &::before {
         content: '' !important;
@@ -235,6 +236,18 @@
     border: 1px solid;
   }
 
+  .eshoperror {
+    color: $red;
+  }
+
+  .eshoperrors {
+    border: 1px solid $red;
+    color: $red;
+
+    li {
+      margin: $pad/4 0;
+    }
+  }
 }
 
 
