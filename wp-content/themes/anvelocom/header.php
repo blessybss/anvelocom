@@ -57,7 +57,11 @@
         <h3>Contact</h3>
         <ul>
           <li>Tel: 0744-374-914</li>
-          <li><a href="https://www.facebook.com/Anvelocom" title="Anvelocom pe Facebook">Facebook</a></li>
+          <li>
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>/cos-cumparaturi/" title="Cos cumparaturi">
+              Cos (<?php echo get_myeshop_cart_itemcount() ?>)
+            </a>
+          </li>
         </ul>
       </nav>
     </header>

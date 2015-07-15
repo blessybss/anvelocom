@@ -377,6 +377,24 @@ add_filter( 'body_class', 'add_slug_body_class' );
 /* Eshop helpers / setup / overwrites
 */
 
+// Return the total amount of items in the shopping cart
+function get_myeshop_cart_itemcount(){
+  global $blog_id;
+  $total_items_in_cart = 0;
+
+  if(isset($_SESSION['eshopcart'.$blog_id])) {
+    $item_array = $_SESSION['eshopcart'.$blog_id];
+
+    foreach($item_array as $item) {
+      $total_items_in_cart = $total_items_in_cart + $item['qty'];
+    }
+  }
+
+  return $total_items_in_cart;
+}
+
+
+// Translate eshop
 function eshop_filter_gettext($translation, $text, $domain) {
 
   switch($translation) {
@@ -407,9 +425,9 @@ function eshop_filter_gettext($translation, $text, $domain) {
     case 'Your shopping cart is currently empty.':
       return "Cosul Dvs. este gol.";
       break;
-    //case 'Proceed to Checkout &raquo;':
-      //return "Finalizare comanda";
-      //break;
+    case 'Proceed to Checkout &raquo;':
+      return "Finalizare comanda";
+      break;
     case '&laquo; Continue Shopping':
       return "Inapoi la cumparaturi";
       break;
