@@ -263,6 +263,8 @@ html body {
   */
   /* Shopping cart page
   */
+  /* Checkout page
+  */
 }
 html body h1, html body h2, html body h3 {
   font-size: 20px;
@@ -963,6 +965,141 @@ html body.page-cos-cumparaturi main article aside #content .continue-proceed li.
 html body.page-cos-cumparaturi main article aside #content .continue-proceed li.gotocheckout a {
   background: #53A66B;
   color: #f1f1f1;
+}
+html body.page-finalizare-comanda main article aside #content #error .wpdberror,
+html body.page-finalizare-comanda main article aside #content table caption,
+html body.page-finalizare-comanda main article aside #content .custdetails > p,
+html body.page-finalizare-comanda main article aside #content #shiplegend,
+html body.page-finalizare-comanda main article aside #content input[name="eshop_shiptype"],
+html body.page-finalizare-comanda main article aside #content .eshopform span label[for="eshop_shiptype1"],
+html body.page-finalizare-comanda main article aside #content table.eshopshiprates thead,
+html body.page-finalizare-comanda main article aside #content .fld2 legend,
+html body.page-finalizare-comanda main article aside #content .fld2 .company,
+html body.page-finalizare-comanda main article aside #content .fld2 .address2,
+html body.page-finalizare-comanda main article aside #content .fld2 .state,
+html body.page-finalizare-comanda main article aside #content .fld2 .altstate,
+html body.page-finalizare-comanda main article aside #content .fld2 .country,
+html body.page-finalizare-comanda main article aside #content .fld3 legend,
+html body.page-finalizare-comanda main article aside #content .fld3 .eshopreference,
+html body.page-finalizare-comanda main article aside #content .fld6,
+html body.page-finalizare-comanda main article aside #content label[for="submitit"],
+html body.page-finalizare-comanda main article aside #content .related-posts,
+html body.page-finalizare-comanda main article aside #content .shippingrow small,
+html body.page-finalizare-comanda main article aside #content label.finalize small,
+html body.page-finalizare-comanda main article aside #content .eshop.confirm .company,
+html body.page-finalizare-comanda main article aside #content .eshop.confirm .country {
+  display: none;
+}
+html body.page-finalizare-comanda main article aside #content #cartItem {
+  padding-left: 0.3125em;
+}
+html body.page-finalizare-comanda main article aside #content .amts.lb {
+  text-align: right;
+}
+html body.page-finalizare-comanda main article aside #content label[for="eshop_shiptype1"] p, html body.page-finalizare-comanda main article aside #content label[for="eshop_shiptype1"] table {
+  display: inline-block;
+  width: auto;
+  float: left;
+}
+html body.page-finalizare-comanda main article aside #content label[for="eshop_shiptype1"] table {
+  float: right;
+  position: relative;
+  top: -1.25em;
+}
+html body.page-finalizare-comanda main article aside #content label[for="eshop_shiptype1"] table td {
+  padding: 0 1.25em 1.25em 0;
+}
+html body.page-finalizare-comanda main article aside #content #mainlegend {
+  width: 100%;
+  float: left;
+  width: calc(100% - 0.625em);
+  background: #1f1f1f;
+  color: #f1f1f1;
+  padding: 0.625em 0.3125em;
+  margin-bottom: 1.25em;
+}
+html body.page-finalizare-comanda main article aside #content #mainlegend a {
+  color: #f1f1f1;
+}
+html body.page-finalizare-comanda main article aside #content .buttonwrap .button,
+html body.page-finalizare-comanda main article aside #content .finalize .button {
+  background: #53A66B;
+  color: #f1f1f1;
+  padding: 0 0.625em;
+  box-shadow: 1px 1px 0px #1f1f1f, 2px 2px 0px #1f1f1f;
+  border: 1px solid #1f1f1f;
+  line-height: 2.5;
+  cursor: pointer;
+  width: auto;
+  font-weight: bold;
+}
+html body.page-finalizare-comanda main article aside #content .buttonwrap .button:hover, html body.page-finalizare-comanda main article aside #content .buttonwrap .button:active,
+html body.page-finalizare-comanda main article aside #content .finalize .button:hover,
+html body.page-finalizare-comanda main article aside #content .finalize .button:active {
+  box-shadow: 1px 1px 0px #1f1f1f, 2px 2px 0px #1f1f1f, 3px 3px 0px #1f1f1f;
+}
+html body.page-finalizare-comanda main article aside #content .buttonwrap .button a,
+html body.page-finalizare-comanda main article aside #content .finalize .button a {
+  background: #53A66B;
+  color: #f1f1f1;
+}
+html body.page-finalizare-comanda main article aside #content .continue-proceed,
+html body.page-finalizare-comanda main article aside #content .eshopcp3 {
+  margin: 0;
+  display: block;
+  list-style-type: none;
+}
+html body.page-finalizare-comanda main article aside #content .continue-proceed li,
+html body.page-finalizare-comanda main article aside #content .eshopcp3 li {
+  display: inline-block;
+  float: left;
+  margin-right: 1.25em;
+}
+html body.page-finalizare-comanda main article aside #content .continue-proceed li:last-of-type,
+html body.page-finalizare-comanda main article aside #content .eshopcp3 li:last-of-type {
+  margin-right: 0;
+}
+html body.page-finalizare-comanda main article aside #content .continue-proceed li,
+html body.page-finalizare-comanda main article aside #content .eshopcp3 li {
+  background: #f1f1f1;
+  color: #1f1f1f;
+  padding: 0 0.625em;
+  box-shadow: 1px 1px 0px #1f1f1f, 2px 2px 0px #1f1f1f;
+  border: 1px solid #1f1f1f;
+  line-height: 2.5;
+  cursor: pointer;
+  width: auto;
+  font-weight: bold;
+  font-size: small;
+}
+html body.page-finalizare-comanda main article aside #content .continue-proceed li::before,
+html body.page-finalizare-comanda main article aside #content .eshopcp3 li::before {
+  content: '' !important;
+}
+html body.page-finalizare-comanda main article aside #content .continue-proceed li:hover, html body.page-finalizare-comanda main article aside #content .continue-proceed li:active,
+html body.page-finalizare-comanda main article aside #content .eshopcp3 li:hover,
+html body.page-finalizare-comanda main article aside #content .eshopcp3 li:active {
+  box-shadow: 1px 1px 0px #1f1f1f, 2px 2px 0px #1f1f1f, 3px 3px 0px #1f1f1f;
+}
+html body.page-finalizare-comanda main article aside #content .continue-proceed li a,
+html body.page-finalizare-comanda main article aside #content .eshopcp3 li a {
+  background: #f1f1f1;
+  color: #1f1f1f;
+}
+html body.page-finalizare-comanda main article aside #content #cTotal {
+  font-weight: bold;
+}
+html body.page-finalizare-comanda main article aside #content ul.eshop.confirm li::before,
+html body.page-finalizare-comanda main article aside #content ul.eshop.confirmref li::before {
+  content: '' !important;
+}
+html body.page-finalizare-comanda main article aside #content .eshop-confirm,
+html body.page-finalizare-comanda main article aside #content .eshopcp3 {
+  width: 100%;
+  float: left;
+}
+html body.page-finalizare-comanda main article aside #content .eshopcheckoutconf {
+  border: 1px solid;
 }
 
 /* Special decorations for this site

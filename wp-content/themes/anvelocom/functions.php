@@ -438,6 +438,63 @@ function eshop_filter_gettext($translation, $text, $domain) {
     case 'Error: The quantity must contain numbers only, with a maximum of %s.':
       return "Cantitatea trebuie sa fie numar intre 1-999.";
       break;
+    case 'Total weight: ':
+      return "Greutate totala: ";
+      break;
+    case 'Please Enter Your Details':
+      return "Date de livrare";
+      break;
+    case 'First Name':
+      return "Nume";
+      break;
+    case 'Last Name':
+      return "Prenume";
+      break;
+    case 'Phone':
+      return "Telefon";
+      break;
+    case 'Address':
+      return "Adresa";
+      break;
+    case 'City or town':
+      return "Oras";
+      break;
+    case 'Zip/Post code':
+      return "Cod postal";
+      break;
+    case 'Comments or special instructions':
+      return "Instructiuni speciale";
+      break;
+    case 'Full name:':
+      return "Nume:";
+      break;
+    case 'Phone:':
+      return "Telefon:";
+      break;
+    case 'Address:':
+      return "Adresa:";
+      break;
+    case 'City or town:':
+      return "Oras:";
+      break;
+    case 'Zip/Post code:':
+      return "Cod postal:";
+      break;
+    case 'Comments or instructions:':
+      return "Instructiuni speciale:";
+      break;
+    case 'Proceed to Confirmation &raquo;':
+      return "Confirmare comanda";
+      break;
+    case '&laquo; Edit Cart or Continue Shopping':
+      return "&laquo; Modificare cos";
+      break;
+    case 'Total Order Charges':
+      return "Total comanda";
+      break;
+    case '&laquo; Edit Details or Continue Shopping':
+      return "&laquo; Schimbare date de livrare";
+      break;
   }
 
   return $translation;

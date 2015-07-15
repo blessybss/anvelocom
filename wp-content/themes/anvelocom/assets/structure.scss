@@ -133,6 +133,112 @@
 
 
 
+// Checkout page
+@mixin page-finalizare-comanda {
+  #error .wpdberror,
+  table caption,
+  .custdetails > p,
+  #shiplegend,
+  input[name="eshop_shiptype"],
+  .eshopform span label[for="eshop_shiptype1"],
+  table.eshopshiprates thead,
+  .fld2 legend,
+  .fld2 .company,
+  .fld2 .address2,
+  .fld2 .state,
+  .fld2 .altstate,
+  .fld2 .country,
+  .fld3 legend,
+  .fld3 .eshopreference,
+  .fld6,
+  label[for="submitit"],
+  .related-posts,
+  .shippingrow small,
+  label.finalize small,
+  .eshop.confirm .company,
+  .eshop.confirm .country {
+    display: none;
+  }
+
+  #cartItem {
+    padding-left: $pad / 4;
+  }
+
+  .amts.lb {
+    text-align: right;
+  }
+
+  label[for="eshop_shiptype1"] {
+    p, table {
+      display: inline-block;
+      width: auto;
+      float: left;
+    }
+
+    table {
+      float: right;
+      position: relative;
+      top: -$pad;
+
+      td {
+        padding: 0 $pad $pad 0;
+      }
+    }
+  }
+
+  #mainlegend {
+    @include block;
+    width: calc(100% - #{$pad / 2});
+    @include color(invert);
+    padding: $pad / 2 $pad / 4;
+    margin-bottom: $pad;
+  }
+
+  .buttonwrap .button,
+  .finalize .button {
+    @include button($green, $background, $color);
+  }
+
+  .continue-proceed,
+  .eshopcp3 {
+    @include list-inline;
+
+    li {
+      &::before {
+        content: '' !important;
+      }
+
+      @include button;
+      font-size: small;
+    }
+  }
+
+  #cTotal {
+    font-weight: bold;
+  }
+
+  ul.eshop.confirm,
+  ul.eshop.confirmref {
+    li {
+      &::before {
+        content: '' !important;
+      }
+    }
+  }
+
+  .eshop-confirm,
+  .eshopcp3 {
+    @include block;
+  }
+
+  .eshopcheckoutconf {
+    border: 1px solid;
+  }
+
+}
+
+
+
 /* Shopping cart page
 */
 @mixin page-cos-cumparaturi {
@@ -325,6 +431,14 @@ html {
     &.page-cos-cumparaturi {
       main article aside #content {
         @include page-cos-cumparaturi;
+      }
+    }
+
+    /* Checkout page
+    */
+    &.page-finalizare-comanda {
+      main article aside #content {
+        @include page-finalizare-comanda;
       }
     }
   }
