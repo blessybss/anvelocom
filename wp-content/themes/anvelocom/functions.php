@@ -193,8 +193,12 @@ function get_price($product) {
     $default = $product['products'][1];
 
     if ($default) {
+      $sale = $default['saleprice'];
+
+      if ($sale) {
+        $ret[] = $sale;
+      }
       $ret[] = $default['price'];
-      $ret[] = $default['saleprice'];
     }
   }
 
