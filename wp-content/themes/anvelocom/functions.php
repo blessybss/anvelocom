@@ -523,6 +523,18 @@ function eshop_filter_gettext($translation, $text, $domain) {
     case '<strong>Zip/Post code</strong> - missing or incorrect.':
       return "<strong>Cod postal</strong> - lipseste sau este incorect";
       break;
+    case 'Discount Code':
+      return "Cod cupon";
+      break;
+    case '<strong>Discount Code</strong> - is not valid.':
+      return "<strong>Cod cupon</strong> - este incorect";
+      break;
+    case 'Including Discount of <span>%s%%</span>':
+      return "Cu <span>%s%%</span> reducere prin cod cupon";
+      break;
+    case 'Discount Code <span>%s</span> has been applied to your cart.':
+      return "Codul cupon <strong>%s%</strong> este folosit la aceasta comanda.";
+      break;
   }
 
   return $translation;
