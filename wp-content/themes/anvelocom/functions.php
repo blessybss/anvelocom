@@ -220,6 +220,13 @@ function get_stock($product) {
   return $ret;
 }
 
+// Calculate shipping
+function calculate_shipping($weight) {
+  $shipping = 9 + ($weight - 1) * 0.8;
+  $ramburs = 3.5;
+  return ceil(($shipping + $ramburs) * 1.24);
+}
+
 
 
 

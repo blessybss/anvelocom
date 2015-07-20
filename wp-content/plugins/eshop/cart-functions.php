@@ -19,12 +19,12 @@ if (!function_exists('display_cart')) {
 		$tempshiparray=array();
 		//this checks for an empty cart, may not be required but leaving in just in case.
 		$eshopcartarray=$_SESSION['eshopcart'.$blog_id];
-	
+
 		if($change==true){
 			if(isset($_SESSION['eshop_discount'.$blog_id]))
 				unset($_SESSION['eshop_discount'.$blog_id]);
 		}
-		
+
 		foreach ($eshopcartarray as $productid => $opt){
 			if(is_array($opt)){
 				foreach($opt as $qty){
@@ -46,9 +46,9 @@ if (!function_exists('display_cart')) {
 			<tr class="thead">';
 			$echo .='<th id="cartItem'.$iswidget.'" class="nb">'.__('Item Description','eshop').'</th>
 			<th id="cartQty'.$iswidget.'" class="bt">'.__('<abbr title="Quantity">Qty</abbr>','eshop').'</th>';
-			
+
 			$totalstring = __('Sub-Total','eshop');
-			
+
 			$echo .= '<th id="cartTotal'.$iswidget.'" class="btbr">'.$totalstring.'</th>';
 			if(isset($eshopoptions['etax']))
 				$etax = $eshopoptions['etax'];
@@ -144,7 +144,7 @@ if (!function_exists('display_cart')) {
 					if(isset($disc_line))
 						$eline = $disc_line*$opt["qty"];
 					$echo.= "</td>\n<td headers=\"cartTotal$iswidget prod".$calt.$iswidget."\" class=\"amts\">".sprintf( __('%1$s%2$s','eshop'), $currsymbol, number_format_i18n($eline,__('2','eshop')))."</td>\n";
-					
+
 					//TAX
 					if(isset($eshopoptions['etax']))
 						$etax = $eshopoptions['etax'];
@@ -165,10 +165,10 @@ if (!function_exists('display_cart')) {
 						}else{
 							$echo.= '<td></td><td></td>';
 						}
-						
+
 					}
 					//
-					
+
 					if($iswidget=='' && $change == 'true'){
 						$eshopdeleteimage=apply_filters('eshop_delete_image',plugins_url('/eshop/no.png'));
 						$echo .='<td headers="cartDelete" class="deletecartitem"><label for="delete'.$productid.$iswidget.'" class="hide">'.__('Delete this item','eshop').'</label><input type="image" src="'.$eshopdeleteimage.'" id="delete'.$productid.$iswidget.'" name="eshopdeleteitem['.$productid.']" value="'.$opt["qty"].'" title="'.__('Delete this item','eshop').'"/></td>';
@@ -176,7 +176,7 @@ if (!function_exists('display_cart')) {
 					$echo .="</tr>\n";
 					if(isset($disc_line))
 						$sub_total+=$disc_line*$opt["qty"];
-					else		
+					else
 						$sub_total+=$line_total;
 					//weight
 					if(isset($opt['weight']))
@@ -193,7 +193,7 @@ if (!function_exists('display_cart')) {
 				$emptycell='<td headers="cartDelete" class="eshopempty"></td>';
 			else
 				$emptycell='';
-				
+
 			if(($pzone!='' && isset($taxtotal) && isset($eshopoptions['tax']) && $eshopoptions['tax']=='1') || ('yes' == $eshopoptions['downloads_only'] && isset($etax['unknown']) && $etax['unknown']!='')){
 				$emptycell='<td headers="subtotal carttaxamt" class="amts lb" colspan="2">'.sprintf( __('%1$s%2$s','eshop'), $currsymbol, number_format_i18n($taxtotal,__('2','eshop'))).'</td>';
 			}
@@ -250,7 +250,7 @@ if (!function_exists('display_cart')) {
 							$shiparray=array_unique($shiparray);
 							foreach ($shiparray as $nowt => $shipclass){
 								if($shipclass!='F'){
-									$shipzone='zone'.$pzone;						
+									$shipzone='zone'.$pzone;
 									$shipcost = $wpdb->get_var("SELECT $shipzone FROM $table2 WHERE class='A' and items='1' and rate_type='shipping' limit 1");
 									$shipping+=$shipcost;
 								}
@@ -261,8 +261,10 @@ if (!function_exists('display_cart')) {
 							if(sizeof($shiparray)<1)
 								$shiparray='';
 							$shipzone='zone'.$pzone;
-							$shipcost=$wpdb->get_var("SELECT $shipzone FROM $table2 where weight <= '$totalweight' && class='$shiparray' and rate_type='ship_weight' order by weight DESC limit 1");
-							$shipping+=$shipcost;
+							//$shipcost=$wpdb->get_var("SELECT $shipzone FROM $table2 where weight <= '$totalweight' && class='$shiparray' and rate_type='ship_weight' order by weight DESC limit 1");
+              // by cs
+              $shipping = calculate_shipping($totalweight);
+              $shipping+=$shipcost;
 							$_SESSION['eshopshiptype'.$blog_id]=$shiparray;
 					}
 
@@ -308,7 +310,7 @@ if (!function_exists('display_cart')) {
 				if(isset($taxtotal) && isset($eshopoptions['tax']) && $eshopoptions['tax']=='1'){
 					$excltax = __('(excl.tax)','eshop');
 				}
-				
+
 				$echo.= '<tr class="total"><th id="cTotal'.$iswidget.'" class="leftb">'.__('Total Order Charges','eshop')."</th>\n<td headers=\"cTotal$iswidget cartTotal$iswidget\"  colspan=\"2\" class = \"amts lb\"><strong>".sprintf( __('%1$s%2$s <span>%3$s</span>','eshop'), $currsymbol, number_format_i18n($final_price, __('2','eshop')),$excltax)."</strong></td>";
 				if(isset($shiptax) && isset($eshopoptions['tax']) && $eshopoptions['tax']=='1'){
 					$withtax = $final_price + $shiptax + $taxtotal;
@@ -325,7 +327,7 @@ if (!function_exists('display_cart')) {
 			$echo.= "</tbody></table>\n";
 			// display unset/update buttons
 			if($change == true){
-				$echo.= "<div class=\"cartopt\"><input type=\"hidden\" name=\"save\" value=\"true\" />\n<input type=\"hidden\" name=\"eshopnon\" value=\"set\" />\n"; 
+				$echo.= "<div class=\"cartopt\"><input type=\"hidden\" name=\"save\" value=\"true\" />\n<input type=\"hidden\" name=\"eshopnon\" value=\"set\" />\n";
 				$echo .= wp_nonce_field('eshop_add_product_cart','_wpnonce',true,false);
 				$echo.= "<p><label for=\"update\"><input type=\"submit\" class=\"button\" id=\"update\" name=\"update\" value=\"".__('Update Cart','eshop')."\" /></label>";
 				$echo.= "<label for=\"unset\"><input type=\"submit\" class=\"button\" id=\"unset\" name=\"unset\" value=\"".__('Empty Cart','eshop')."\" /></label></p>\n";
@@ -347,8 +349,8 @@ if (!function_exists('display_cart')) {
 		//test
 		if(isset($totalweight))
 			$_SESSION['eshop_totalweight'.$blog_id]['totalweight']=$totalweight;
-			
-			
+
+
 		if($iswidget=='w'){
 			$echo.= '<br /><a class="cartlink" href="'.get_permalink($eshopoptions['cart']).'">'.__('Edit Cart','eshop').'</a>';
 			$echo .='<br /><a class="checkoutlink" href="'.get_permalink($eshopoptions['checkout']).'">'.__('Checkout','eshop').'</a>';
@@ -389,7 +391,7 @@ if (!function_exists('calculate_total')) {
 					$data['addoprice']=$addtoprice;
 					$data=eshop_parse_optsets($data);
 					$addtoprice=$data['addoprice'];
-				}			
+				}
 				$price=$price+(($opt['price']+$addtoprice)*$opt['qty']);
 			}
 		}
@@ -424,7 +426,7 @@ if (!function_exists('is_discountable')) {
 		$percent=apply_filters('eshop_is_discountable',$percent);
 		if($percent != 0)
 			return $percent;
-		//check for 
+		//check for
 		if(isset($_SESSION['eshop_discount'.$blog_id]) && eshop_discount_codes_check()){
 			$chkcode=valid_eshop_discount_code($_SESSION['eshop_discount'.$blog_id]);
 			if($chkcode && apply_eshop_discount_code('discount')>0)
@@ -438,7 +440,7 @@ if (!function_exists('is_discountable')) {
 			krsort($edisc);
 			foreach ($edisc as $amt => $percent) {
 				if($amt <= $total)
-					return $percent;	
+					return $percent;
 			}
 			$percent=0;
 		}
@@ -458,7 +460,7 @@ if (!function_exists('is_shipfree')) {
 		}
 		if($amt!='' && $amt <= $total)
 			$shipfree = true;
-		
+
 		return apply_filters('eshop_is_shipfree',$shipfree, $total);
 	}
 }
@@ -494,11 +496,11 @@ if (!function_exists('apply_eshop_discount_code')) {
 			if($disc=='discount'){
 				switch($row->dtype){
 					case '1':
-						if($row->remain=='' || $row->remain>0) 
+						if($row->remain=='' || $row->remain>0)
 							return $row->percent;
 						break;
 					case '2':
-						if($row->enddate>=$now) 
+						if($row->enddate>=$now)
 							return $row->percent;
 						break;
 					case '3':
@@ -535,11 +537,11 @@ if (!function_exists('valid_eshop_discount_code')) {
 		if(is_object($row)){
 			switch ($row->dtype){
 				case '1':
-					if($row->remain=='' || $row->remain>0) 
+					if($row->remain=='' || $row->remain>0)
 						return true;
 					break;
 				case '2':
-					if($row->enddate>=$now) 
+					if($row->enddate>=$now)
 						return true;
 					break;
 				case '3':
@@ -567,14 +569,14 @@ if (!function_exists('eshop_get_tax_rate')) {
 	function eshop_get_tax_rate($band, $pzone){
 		global $wpdb, $blog_id, $eshopoptions;
 		$area='country';
-		
+
 		if('yes' != $eshopoptions['hide_shipping'] && (isset($_SESSION['shiptocountry'.$blog_id]) && $_SESSION['shiptocountry'.$blog_id] == $eshopoptions['location'])||(isset($_POST['country']) && $_POST['country'] == $eshopoptions['location'])){
 			$area='state';
 		}
-		
+
 		//if(isset($_SESSION['shiptocountry'.$blog_id]) && $_SESSION['shiptocountry'.$blog_id] == $eshopoptions['location'])
 		//	$area='state';
-		
+
 		//rehash the zone to make sure we're picking up the correct tax rates!
 		$tablecountries=$wpdb->prefix.'eshop_countries';
 		$tablestates=$wpdb->prefix.'eshop_states';
@@ -669,7 +671,7 @@ if (!function_exists('eshopCartFields')) {
 				$oset=array();
 				$optings=unserialize($opt['optset']);
 				foreach($optings as $foo=>$opst){
-					if(!isset($opst['type']) || (isset($opst['text']) && $opst['text']!='')) 
+					if(!isset($opst['type']) || (isset($opst['text']) && $opst['text']!=''))
 						$qb[]="id=$opst[id]";
 				}
 
@@ -699,21 +701,21 @@ if (!function_exists('eshopTaxCartFields')) {
 		global $blog_id, $eshopoptions;
 		if(!isset($eshopoptions['tax']) || $eshopoptions['tax']=='0')
 			return "<input type=\"hidden\" name=\"$name\" value=\"$value\" />\n";
-		
+
 		$echo='';
 		$eshopcartarray=$_SESSION['eshopcart'.$blog_id];
 		$x=0;
 		$taxamt=0;
 		switch ($combine){
 			case '0': //no just return 1 line for total tax
-				if($name == 'amount'){				
+				if($name == 'amount'){
 					foreach ($eshopcartarray as $productid => $opt){
 						if(isset($opt['tax_amt']))
 							$taxamt += $opt['tax_amt'];
 					}
 					$echo .= "<input type=\"hidden\" name=\"tax\" value=\"".$taxamt."\" />\n";
 				}
-				
+
 				$echo .= "<input type=\"hidden\" name=\"$name\" value=\"$value\" />\n";
 				break;
 			case '1': //add tax to amount
@@ -762,13 +764,13 @@ if (!function_exists('eshopShipTaxAmt')) {
 			return;
 		if(!isset($eshopoptions['tax']) || $eshopoptions['tax']=='0')
 			return number_format($_SESSION['shipping'.$blog_id]['cost'],2);
-		
+
 		//if(isset($_SESSION['shipping'.$blog_id]['cost']))
 			$shipping=$_SESSION['shipping'.$blog_id]['cost'];
-		
+
 		if(isset($_SESSION['shipping'.$blog_id]['tax']))
 			$shipping += $_SESSION['shipping'.$blog_id]['tax'];
-			
+
 		return number_format($shipping,2);
 
 	}
@@ -830,8 +832,8 @@ if (!function_exists('orderhandle')) {
 			$user_id=$current_user->ID;
 		}
 		if(!isset($eshopoptions['users'])) $user_id='0';
-		
-	
+
+
 		//$wpdb->show_errors();
 		if (get_magic_quotes_gpc()) {
 			$espost=stripslashes_array($espost);
@@ -914,7 +916,7 @@ if (!function_exists('orderhandle')) {
 		}else{
 			$ship_state=$state;
 		}
-		
+
 		if(empty($espost['ship_state']) && !empty($espost['ship_altstate']))
 			$ship_state=esc_sql($espost['ship_altstate']);
 
@@ -953,8 +955,8 @@ if (!function_exists('orderhandle')) {
 		if($eshopching!=$checkid){
 			$query1=$wpdb->query("INSERT INTO $detailstable
 				(checkid, first_name, last_name,company,email,phone, address1, address2, city,
-				state, zip, country, reference, ship_name,ship_company,ship_phone, 
-				ship_address, ship_city, ship_postcode,	ship_state, ship_country, 
+				state, zip, country, reference, ship_name,ship_company,ship_phone,
+				ship_address, ship_city, ship_postcode,	ship_state, ship_country,
 				custom_field,transid,edited,comments,thememo,paidvia,affiliate,user_id,admin_note,user_notes)VALUES(
 				'$checkid',
 				'$first_name',
@@ -987,11 +989,11 @@ if (!function_exists('orderhandle')) {
 				'$user_id',
 				'',''
 					);");
-					
-			
+
+
 			$i=1;
 			//this is here to generate just one code per order
-			$code=eshop_random_code(); 
+			$code=eshop_random_code();
 			while($i<=$espost['numberofproducts']){
 				//test
 				$addoprice=0;
@@ -1007,7 +1009,7 @@ if (!function_exists('orderhandle')) {
 				if(isset($eshopoptions['tax']) && $eshopoptions['tax']=='1'){
 					$chk_tax='tax_'.$i;
 					$chk_tax_rate='tax_rate_'.$i;
-					if(isset($espost[$chk_tax])){				
+					if(isset($espost[$chk_tax])){
 						$tax_amt=esc_sql($espost[$chk_tax]);
 						$tax_rate=esc_sql($espost[$chk_tax_rate]);
 					}
@@ -1047,7 +1049,7 @@ if (!function_exists('orderhandle')) {
 					//there are downloads.
 					$queryitem=$wpdb->query("INSERT INTO $itemstable
 					(checkid, item_id,item_qty,item_amt,tax_rate,tax_amt,optname,post_id,option_id,down_id,optsets,weight)values(
-					'$checkid','$item_id','$item_qty','$item_amt', '$tax_rate', '$tax_amt', 
+					'$checkid','$item_id','$item_qty','$item_amt', '$tax_rate', '$tax_amt',
 					'$optname','$post_id','$option_id',
 					'$dlchk','$optset','$weight');");
 
@@ -1072,7 +1074,7 @@ if (!function_exists('orderhandle')) {
 				}else{
 					$queryitem=$wpdb->query("INSERT INTO $itemstable
 					(checkid, item_id,item_qty,item_amt,tax_rate,tax_amt,optname,post_id,option_id,optsets,weight)values(
-					'$checkid','$item_id','$item_qty','$item_amt','$tax_rate', '$tax_amt', 
+					'$checkid','$item_id','$item_qty','$item_amt','$tax_rate', '$tax_amt',
 					'$optname','$post_id','$option_id','$optset','$weight');");
 				}
 				$i++;
@@ -1095,7 +1097,7 @@ if (!function_exists('orderhandle')) {
 				$postage_name=stripslashes(esc_attr($typearr[$st])).' ';
 			}
 			$postage_name.=__('Shipping','eshop');
-			$querypostage=$wpdb->query("INSERT INTO  $itemstable 
+			$querypostage=$wpdb->query("INSERT INTO  $itemstable
 					(checkid, item_id,item_qty,item_amt,tax_rate,tax_amt,optsets)values(
 					'$checkid',
 					'$postage_name',
@@ -1114,11 +1116,11 @@ if (!function_exists('orderhandle')) {
 
 					$remaining=$wpdb->get_var("SELECT remain FROM $disctable where disccode='$discvalid' && dtype!='2' && dtype!='5' limit 1");
 					//reduce remaining
-					if(is_numeric($remaining) && $remaining!='')			
+					if(is_numeric($remaining) && $remaining!='')
 						$wpdb->query("UPDATE $disctable SET remain=remain-1 where disccode='$discvalid' limit 1");
 				}
 			}
-			
+
 			do_action('eshoporderhandle',$espost,$checkid);
 		}
 	}
@@ -1165,7 +1167,7 @@ if (!function_exists('eshop_only_downloads')) {
 		$num=0;
 		$items=0;
 		$eshopcartarray=$_SESSION['eshopcart'.$blog_id];
-		
+
 		foreach ($eshopcartarray as $productid => $opt){
 			$post_id=$opt['postid'];
 			$option=$opt['option'];
@@ -1179,7 +1181,7 @@ if (!function_exists('eshop_only_downloads')) {
 		}
 		if($num==$items)
 			return true;
-		
+
 		return false;
 	}
 }
@@ -1194,7 +1196,7 @@ if (!function_exists('eshop_rtn_order_details')) {
 	address
 	extras - comments/reference/PO
 	contact info
-	
+
 	suitable for emailing.
 	*/
 	function eshop_rtn_order_details($checkid){
@@ -1217,7 +1219,7 @@ if (!function_exists('eshop_rtn_order_details')) {
 		}
 		if(!isset($status))
 			return;
-		
+
 		if($status=='Completed'){$status=__('Order Received','eshop');}
 		if($status=='Pending' || $status=='Waiting'){$status=__('Pending Payment','eshop');}
 		$contact=$cart=$address=$extras= '';
@@ -1268,7 +1270,7 @@ if (!function_exists('eshop_rtn_order_details')) {
 
 		$cart.= __('Total','eshop').' '.sprintf( __('%1$s%2$s','eshop'), $currsymbol, number_format_i18n($total, __('2','eshop')))."\n";
 		$thisdate = eshop_real_date($custom);
-		
+
 		$cart.= "\n".__('Order placed on','eshop')." ".$thisdate."\n";
 		foreach($dquery as $drow){
 			$address.= "\n".__('Mailing Address:','eshop')."\n".$drow->address1.", ".$drow->address2."\n";
@@ -1281,7 +1283,7 @@ if (!function_exists('eshop_rtn_order_details')) {
 			$qccode=esc_sql($drow->country);
 			$qcountry = $wpdb->get_var("SELECT country FROM $ctable WHERE code='$qccode' limit 1");
 			$address.= $qcountry."\n";
-		
+
 			$contact.= __('Phone:','eshop').' '.$drow->phone."\n";
 			$contact.= __('Email:','eshop').' '.$drow->email."\n";
 
@@ -1397,10 +1399,10 @@ if (!function_exists('eshop_random_code')) {
 		$password = "";
 		//characters allowed
 		//lower case l, upper case O, number 1 and number 0 have been removed for clarity
-		$allowed = __('abcdefghijkmnopqrstuvwxyz23456789ABCDEFGHIJKLMNPQRSTUVWXYZ','eshop');    
-		$i = 0; 
+		$allowed = __('abcdefghijkmnopqrstuvwxyz23456789ABCDEFGHIJKLMNPQRSTUVWXYZ','eshop');
+		$i = 0;
 		// Loop until password string is the required length
-		while ($i < $length){  
+		while ($i < $length){
 		// Select random character allowed string
 			$char = substr($allowed, mt_rand(0, strlen($allowed)-1), 1);
 		// Add random character to password string
@@ -1449,7 +1451,7 @@ if (!function_exists('eshop_download_the_product')) {
 								header("Pragma: public"); // required
 								header("Expires: 0");
 								header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
-								header("Cache-Control: private",false); // required for certain browsers 
+								header("Cache-Control: private",false); // required for certain browsers
 								header("Content-Type: application/force-download");
 								// it even allows spaces in filenames
 								header('Content-Disposition: attachment; filename="'.$item.'"');
@@ -1469,9 +1471,9 @@ if (!function_exists('eshop_download_the_product')) {
 					}
 				}
 			}else{
-			
+
 				eshop_multi_download($email,$code,true);
-		
+
 			}
 		}
 		return;
@@ -1487,7 +1489,7 @@ if (!function_exists('eshop_multi_download')){
 		$table = $wpdb->prefix ."eshop_downloads";
 		$ordertable = $wpdb->prefix ."eshop_download_orders";
 		$dir_upload = eshop_download_directory();
-		
+
 		$date=date("Y-m-d");
 		$backupfilename=get_bloginfo('name').'-'.$date.'.zip';
 		$test = new zip_file($backupfilename);
@@ -1639,7 +1641,7 @@ if (!function_exists('eshop_show_extra_links')) {
 				$xtralinks.='<a href="'.get_permalink($eshopoptions['xtra_help']).'"'.$linkattr.'>'.$ptitle->post_title.'</a>, ';
 			}
 		}
-		
+
 		if($xtralinks!=''){
 			return '('.substr($xtralinks, 0, -2).')';
 		}else{
@@ -1792,7 +1794,7 @@ if (!function_exists('eshop_saleprice_error')) {
 	}
 }
 if (!function_exists('eshop_error_message')) {
-	function eshop_error_message($num){ 
+	function eshop_error_message($num){
 		$messages=array(
 		'1'=> __('Stock Available not set, as all details were not filled in.','eshop'),
 		'2'=> __('Price incorrect, please only enter a numeric value.','eshop'),
@@ -1815,7 +1817,7 @@ if (!function_exists('eshop_error_message')) {
 	}
 }
 if (!function_exists('eshop_wp_version')) {
-	function eshop_wp_version($req){ 
+	function eshop_wp_version($req){
 		global $wp_version;
 		if (version_compare($wp_version, $req, '>=')) {
 			// version x or higher
@@ -1846,12 +1848,12 @@ if (!function_exists('eshop_cart_process')) {
 			unset($_SESSION['items'.$blog_id]);
 			$_POST['save']='false';
 		}
-		if(isset($eshopoptions['min_qty']) && $eshopoptions['min_qty']!='') 
+		if(isset($eshopoptions['min_qty']) && $eshopoptions['min_qty']!='')
 			$min=$eshopoptions['min_qty'];
-		if(isset($eshopoptions['max_qty']) && $eshopoptions['max_qty']!='') 
+		if(isset($eshopoptions['max_qty']) && $eshopoptions['max_qty']!='')
 			$max=$eshopoptions['max_qty'];
 		if(!isset($_POST['save'])){
-			//on windows this check isn't working correctly, so I've added ==0 
+			//on windows this check isn't working correctly, so I've added ==0
 			if (get_magic_quotes_gpc()) {
 //				$_COOKIE = stripslashes_array($_COOKIE);
 				$_FILES = stripslashes_array($_FILES);
@@ -1906,14 +1908,14 @@ if (!function_exists('eshop_cart_process')) {
 					$dlchk=$eshop_product['products'][$option]['download'];
 				if($dlchk!='')	$pclas='F';
 				$iprice= $eshop_product['products'][$option]['price'];
-				if(isset($eshopoptions['sale_prices']) && $eshopoptions['sale_prices'] == 1 
-				&& isset($eshopoptions['sale']) && 'yes' == $eshopoptions['sale']  
+				if(isset($eshopoptions['sale_prices']) && $eshopoptions['sale_prices'] == 1
+				&& isset($eshopoptions['sale']) && 'yes' == $eshopoptions['sale']
 				&& isset($eshop_product['products'][$option]['saleprice']) && $eshop_product['products'][$option]['saleprice']!=''
 				&& isset($eshop_product['sale']) && $eshop_product['sale']=='yes'){
 					$iprice=$eshop_product['products'][$option]['saleprice'];
 				}
-				
-				
+
+
 				if($iprice==''){
 					$error='<p><strong class="eshoperror error">'.__('Error: That product is currently not available.','eshop').'</strong></p>';
 					$option=$_POST['option']='';
@@ -2011,7 +2013,7 @@ if (!function_exists('eshop_cart_process')) {
 				}else{
 					$_SESSION['eshopcart'.$blog_id][$identifier]['qty']=$qty;
 				}
-				
+
 				$_SESSION['lastproduct'.$blog_id]=$postid;
 				$_SESSION['eshopcart'.$blog_id][$identifier]['item']=$item;
 				$_SESSION['eshopcart'.$blog_id][$identifier]['option']=stripslashes($option);
@@ -2059,14 +2061,14 @@ if (!function_exists('eshop_cart_process')) {
 			if(isset($_POST['save'])){
 				$save=$_POST['save'];
 			}
-			
+
 			//this bit is possibly not required
 			if(isset($productid)){
 				//new item selected ******* may need checking
 				$_SESSION['final_price'.$blog_id] = calculate_price();
 				$_SESSION['items'.$blog_id] = calculate_items();
 			}
-			
+
 			if(isset($_POST['eshopdeleteitem'])){
 				foreach($_POST['eshopdeleteitem'] as $chkey=>$chkval){
 					$tochkkey=$chkey;
@@ -2076,9 +2078,9 @@ if (!function_exists('eshop_cart_process')) {
 						$tochkqty=-1;
 				}
 			}
-			if(isset($eshopoptions['min_qty']) && $eshopoptions['min_qty']!='') 
+			if(isset($eshopoptions['min_qty']) && $eshopoptions['min_qty']!='')
 				$min=$eshopoptions['min_qty'];
-			if(isset($eshopoptions['max_qty']) && $eshopoptions['max_qty']!='') 
+			if(isset($eshopoptions['max_qty']) && $eshopoptions['max_qty']!='')
 				$max=$eshopoptions['max_qty'];
 
 			if(isset($min) && isset($_POST['qty']) && $_POST['qty'] < $min){
@@ -2107,7 +2109,7 @@ if (!function_exists('eshop_cart_process')) {
 								if(isset($tochkkey) && $tochkkey==$key && $tochkqty==$qty){
 									$qty=0;
 								}
-								if($qty=="0"){							
+								if($qty=="0"){
 									unset($_SESSION['eshopcart'.$blog_id][$productid]);
 								}else{
 									$postid=$eshopid=$_SESSION['eshopcart'.$blog_id][$productid]['postid'];
@@ -2160,7 +2162,7 @@ if (!function_exists('eshop_cart_process')) {
 			unset($_SESSION['eshopcart'.$blog_id]);
 			unset($_SESSION['final_price'.$blog_id]);
 			unset($_SESSION['items'.$blog_id]);
-			
+
 		}
 	}
 }
@@ -2191,14 +2193,14 @@ if (!function_exists('eshop_mg_process_product')) {
 				//add 1 to number of purchases here (duplication but left in)
 				$wpdb->query("UPDATE $producttable SET purchases=purchases+$uqty where title='$grabit->title' && files='$grabit->files' limit 1");
 				$chkit= $wpdb->get_var("SELECT purchases FROM $stocktable WHERE post_id='$pid'");
-				if($chkit!=''){	
+				if($chkit!=''){
 					$wpdb->query("UPDATE $stocktable set purchases=purchases+$uqty where post_id=$pid && option_id=$optid");
 				}else{
 					$wpdb->query("INSERT INTO $stocktable (available, purchases, post_id, option_id) VALUES ('0','$uqty','$pid', '$optid')");
 				}
 			}else{
 				$chkit= $wpdb->get_var("SELECT purchases FROM $stocktable WHERE post_id='$pid' && option_id=$optid");
-				if($chkit!=''){						
+				if($chkit!=''){
 					$wpdb->query("UPDATE $stocktable set available=available-$uqty, purchases=purchases+$uqty where post_id=$pid && option_id=$optid");
 				}else{
 					$wpdb->query("INSERT INTO $stocktable (available, purchases, post_id, option_id) VALUES ('0','$uqty','$pid', '$optid')");
@@ -2217,14 +2219,14 @@ if (!function_exists('eshop_contains')) {
      */
     function eshop_contains($haystack, $needle){
         $pos = strpos($haystack, $needle);
-        
+
         if ($pos === false) {
             return false;
         }
         else {
             return true;
         }
-    }   
+    }
 }
 if (!function_exists('eshop_send_customer_email')) {
     function eshop_send_customer_email($checked, $mg_id){
@@ -2296,7 +2298,7 @@ if (!function_exists('eshop_admin_bar_menu')) {
 			$title=__('eShop Test Mode','eshop');
 		else
 			$title=__('eShop is Live','eshop');
-		
+
 		/* Add the Blog Info menu */
 		$wp_admin_bar->add_menu( array( 'id' => 'eshopadminbar', 'title' => $title, 'href' => get_option( 'siteurl' ).'/wp-admin/options-general.php?page=eshop-settings.php' ) );
 	}
@@ -2355,7 +2357,7 @@ if (!function_exists('eshop_read_filesize')){
 if (!function_exists('get_eshop_product')) {
 	function get_eshop_product($id=''){
 		/*
-		attempt to allow people to access product info correctly - currently not showing absolutely 
+		attempt to allow people to access product info correctly - currently not showing absolutely
 		everything but may suffice.
 		*/
 		global $wpdb, $post, $wp_query,$eshopoptions;
@@ -2388,7 +2390,7 @@ if (!function_exists('get_eshop_product')) {
 					unset($eshop_product['products'][$i]['download']);
 			}
 		}
-		
+
 		if(isset($eshop_product['optset'])){
 			$osets=$eshop_product['optset'];
 			if(is_array($osets)){
@@ -2437,12 +2439,12 @@ if (!function_exists('eshop_parse_optsets')){
 		$oset=$qb=array();
 		$optings=unserialize($opt['optset']);
 		//then sort it how we want.
-		$optings=eshop_subval_sort($optings,'id'); 
+		$optings=eshop_subval_sort($optings,'id');
 		$c=0;
 		if(isset($newoptings)) unset($newoptings);
 
 		foreach($optings as $foo=>$opst){
-			if(!isset($opst['type']) 
+			if(!isset($opst['type'])
 			|| (($opst['type']=='2' || $opst['type']=='3') && (isset($opst['text']) && trim($opst['text'])!=''))
 			){
 				$newoptings[]=$optings[$c];
@@ -2510,14 +2512,14 @@ if (!function_exists('eshop_real_date')){
 if (!function_exists('eshop_orderhandle_process')) {
  	function eshop_orderhandle_process($espost=''){
  		global $blog_id,$eshopoptions,$wpdb,$wp_query,$_POST;
- 		
+
  		if(isset($wp_query->query_vars['eshopaction']) && $wp_query->query_vars['eshopaction']=='redirect'){
  			$espost=$_POST;
- 			
+
  			if(isset($espost['eshop_payment'])){
 				$_SESSION['eshop_payment'.$blog_id]=preg_replace('/[^a-zA-Z0-9\-_]/','',$espost['eshop_payment']);
-				$paymentmethod=$_SESSION['eshop_payment'.$blog_id];	
-				
+				$paymentmethod=$_SESSION['eshop_payment'.$blog_id];
+
 				if(isset($eshopoptions['zero']) && $eshopoptions['zero']=='1'){
 					if($espost['amount']=='0' && $_SESSION['final_price'.$blog_id]== '0')
 						$paymentmethod=$espost['eshop_payment']=$_SESSION['eshop_payment'.$blog_id]='cash';

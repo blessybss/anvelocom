@@ -1,7 +1,7 @@
 <?php
 if ('checkout.php' == basename($_SERVER['SCRIPT_FILENAME']))
      die ('<h2>Direct File Access Prohibited</h2>');
-     
+
 if(!defined('ESHOP_PATH'))
 	define( 'ESHOP_PATH', plugin_dir_path(__FILE__) );
 
@@ -30,7 +30,7 @@ if (!function_exists('eshopShowform')) {
 			$reqdvalues[]=$k->area;
 	}
 	$linkattr=apply_filters('eShopCheckoutLinksAttr','');
-	
+
 	$reqdarray=apply_filters('eshopCheckoutReqd', $reqdvalues );
 
 	$xtralinks=eshop_show_extra_links();
@@ -40,7 +40,7 @@ if (!function_exists('eshopShowform')) {
 	<p><small class="privacy"><span class="reqd" title="Asterisk">*</span> '.__('Denotes Required Field ','eshop').'
 	'.__($xtralinks,'eshop').'</small></p>
 	<form action="'.get_permalink($eshopoptions['checkout']).'" method="post" class="eshop eshopform">';
-	
+
 	if($eshopoptions['shipping']=='4' && 'no' == $eshopoptions['downloads_only'] && !eshop_only_downloads()){
 		//only for ship by weight
 		$echo.='<fieldset class="eshop fld0"><legend id="shiplegend">'. __('Please Choose Shipping','eshop').eshop_checkreqd($reqdarray,'shipping').'</legend>';
@@ -59,7 +59,7 @@ if (!function_exists('eshopShowform')) {
 		foreach ($typearr as $k=>$type){
 			$k++;
 			$query=$wpdb->get_results("SELECT * from $dtable  where weight<='$cartweight' &&  class='$k' && rate_type='ship_weight' order by weight DESC limit 1");
-			if(count($query)==0) 
+			if(count($query)==0)
 				continue;
 			if($query['0']->maxweight!='' && $cartweight > $query['0']->maxweight)
 				continue;
@@ -78,7 +78,7 @@ if (!function_exists('eshopShowform')) {
 			$eshopshiptableinner.='</tr>
 			</thead>
 			<tbody>';
-			
+
 			$x=1;
 			foreach ($query as $row){
 				$alt = ($x % 2) ? '' : ' class="alt"';
@@ -86,19 +86,19 @@ if (!function_exists('eshopShowform')) {
 				<tr'.$alt.'>';
 				for($z=1;$z<=$eshopoptions['numb_shipzones'];$z++){
 					$y='zone'.$z;
-					$eshopshiptableinner.='<td headers="'.$eshopletter.$y.'" class="'.$y.'">'.sprintf( __('%1$s%2$s','eshop'), $currsymbol, $row->$y).'</td>';
+					$eshopshiptableinner.='<td headers="'.$eshopletter.$y.'" class="'.$y.'">'.sprintf( __('%1$s%2$s','eshop'), $currsymbol, calculate_shipping($cartweight)).'</td>';
 				}
 				$eshopshiptableinner.='</tr>';
 				$x++;
 			}
 			$eshopletter++;
 			$eshopshiptableinner.='</tbody></table>'."\n";
-			
+
 			if($row->area=='country')
 				$eshopshiptableheadtext = sprintf( __('%1$s <small>%2$s</small>','eshop'),stripslashes(esc_attr($type)), __('(Shipping Zones by Country)','eshop'));
 			else
 				$eshopshiptableheadtext = sprintf( __('%1$s <small>%2$s</small>','eshop'),stripslashes(esc_attr($type)), __('(Shipping Zones by State/County/Province)','eshop'));
-			
+
 			if(isset($row->maxweight) && $row->maxweight!='')
 				$eshopshiptableheadtext .= ' '.sprintf( __('Max. Weight %1$s %2$s','eshop'),$row->maxweight,$eshopoptions['weight_unit']);
 			if($first=='1' && $stype==''){
@@ -106,7 +106,7 @@ if (!function_exists('eshopShowform')) {
 				$first=0;
 			}
 			$eshopshiptablehead='<span><input class="rad" type="radio" name="eshop_shiptype" value="'.$k.'" id="eshop_shiptype'.$k.'"'.checked($stype,$k,false).' /> <label for="eshop_shiptype'.$k.'">'.$eshopshiptableheadtext.'</label></span>';
-			
+
 			$eshopshiptable .= $eshopshiptablehead.$eshopshiptableinner;
 
 		}
@@ -116,11 +116,11 @@ if (!function_exists('eshopShowform')) {
 			$echo .= '<input type="hidden" name="eshop_shiptype" value="0" id="eshop_shiptype0" />';
 		$echo .='</fieldset>';
 	}
-	
+
 	//for display:
 	$first_name=esc_html((stripslashes(trim($first_name))),'1');
 	$last_name=esc_html((stripslashes(trim($last_name))),'1');
-	
+
 	$echo.='<fieldset class="eshop fld1"><legend id="mainlegend">'. __('Please Enter Your Details','eshop').'</legend>
 	<fieldset class="eshop fld2">';
 	if('no' == $eshopoptions['downloads_only']){
@@ -156,7 +156,7 @@ if (!function_exists('eshopShowform')) {
 		}else{
 			$stateList=$wpdb->get_results("SELECT id,code,stateName,list FROM $table ORDER BY list,stateName",ARRAY_A);
 		}
-		
+
 		if(sizeof($stateList)>0){
 			$echo .='<span class="state"><label for="state">'.__('State/County/Province','eshop').eshop_checkreqd($reqdarray,'state').'</label>
 			  <select class="med pointer" name="state" id="state">';
@@ -217,7 +217,7 @@ if (!function_exists('eshopShowform')) {
 		$echo.= "</select></span>";
 	}
 	$echo .="</fieldset>";
-	
+
 	$echo = apply_filters('eshopaddtocheckout',$echo);
 
 	if('yes' != $eshopoptions['hide_addinfo']){
@@ -358,7 +358,7 @@ if (!function_exists('eshopShowform')) {
 			}
 		}
 		$echo .="</ul>\n";
-		$echo .= eshopCartFields();	
+		$echo .= eshopCartFields();
 		$echo .="</fieldset>\n";
 	}
 	if('yes' == $eshopoptions['tandc_use']){
@@ -379,7 +379,7 @@ if (!function_exists('eshopShowform')) {
 	if('no' == $eshopoptions['downloads_only']){
 			$echo .='<label for="submitit"><small id="eshopshowshipcost">'.__('<strong>Note:</strong> Submit to show shipping charges.','eshop').'</small></label><br />';
 	}
-		
+
 	$echo .= '<input type="hidden" name="amount" value="'.$final_price.'" />';
 
 	$echo .='<span class="buttonwrap"><input type="submit" class="button" id="submitit" name="submit" value="'.__('Proceed to Confirmation &raquo;','eshop').'" /></span>
@@ -389,7 +389,7 @@ if (!function_exists('eshopShowform')) {
 	';
 	if(get_bloginfo('version')<'2.5.1')
 		remove_filter('the_content', 'wpautop');
-		
+
 	return $echo;
 	}
 }
@@ -405,7 +405,7 @@ if (!function_exists('eshop_checkout')) {
 		include_once ESHOP_PATH."cart-functions.php";
 		if(isset($espost['eshop_payment']))
 			$_SESSION['eshop_payment'.$blog_id]=preg_replace('/[^a-zA-Z0-9\-_]/','',$espost['eshop_payment']);
-			
+
 		if(!isset($_SESSION['eshop_payment'.$blog_id])){
 			$paymentmethod='paypal';
 		}else{
@@ -435,7 +435,7 @@ if (!function_exists('eshop_checkout')) {
 			$productidkeys=trim($productidkeys);
 			//reqd for shipping - finds the correct state for working out shipping, and set things up for later usage.
 			if(isset($espost['ship_name'])){
-				if($espost['ship_name']!='' || $espost['ship_address']!='' 
+				if($espost['ship_name']!='' || $espost['ship_address']!=''
 				|| $espost['ship_city']!='' || $espost['ship_postcode']!=''
 				|| $espost['ship_company']!='' || $espost['ship_phone']!=''
 				|| $espost['ship_country']!='' || $espost['ship_state']!=''){
@@ -516,7 +516,7 @@ if (!function_exists('eshop_checkout')) {
 					$pzone=$eshopoptions['unknown_state'];
 				}
 			}
-			
+
 			$_SESSION['shiptocountry'.$blog_id] = $eshopoptions['location'];
 			if(isset($espost['ship_country']) && $espost['ship_country']!=''){
 				$_SESSION['shiptocountry'.$blog_id] = $espost['ship_country'];
@@ -632,7 +632,7 @@ if (!function_exists('eshop_checkout')) {
 				$reqdvalues[]=$k->area;
 		}
 		$linkattr=apply_filters('eShopCheckoutLinksAttr','');
-			
+
 		$reqdarray=apply_filters('eshopCheckoutReqd', $reqdvalues );
 
 		if($eshopoptions['shipping']=='4' && 'no' == $eshopoptions['downloads_only'] && !isset($espost['eshop_shiptype']) && !eshop_only_downloads()){
@@ -674,7 +674,7 @@ if (!function_exists('eshop_checkout')) {
 					$error.= '<li>'.__('<strong>City or town</strong> - missing or incorrect.','eshop').'</li>';
 				}
 		}
-		
+
 		if(eshop_checkreqd($reqdarray,'state')){
 			if(isset($espost['state']) && $espost['state']=='' &&  $espost['altstate']==''){
 				$error.= '<li>'.__('<strong>State/County/Province</strong> - missing or incorrect.','eshop').'</li>';
@@ -717,14 +717,14 @@ if (!function_exists('eshop_checkout')) {
 		//add in error checking for any new values here
 		$temperror=apply_filters('eshoperrorcheckout',$espost);
 		if(!is_array($temperror)) $error .= $temperror;
-		
+
 		////////////////////////////////////////////////
 		if('yes' == $eshopoptions['tandc_use']){
 			if(!isset($espost['eshop_tandc'])){
 				$error.= '<li><strong>'.$eshopoptions['tandc'].'</strong>'.__(' - not checked.','eshop').'</li>';
 			}
 		}
-			
+
 		if(!isset($espost['eshop_payment'])){
 			$error.= '<li>'.__('You have not chosen a <strong>payment option</strong>.','eshop').'</li>';
 		}
@@ -836,7 +836,7 @@ if (!function_exists('eshop_checkout')) {
 						$echoit.= "<li class=\"state\"><span class=\"items\">".__('State/County/Province:','eshop')."</span> ".$espost['altstate']."</li>\n";
 					elseif($qstate!='')
 						$echoit.= "<li class=\"state\"><span class=\"items\">".__('State/County/Province:','eshop')."</span> ".$qstate."</li>\n";
-										
+
 					$echoit.= "<li class=\"zip\"><span class=\"items\">".__('Zip/Post code:','eshop')."</span> ".$espost['zip']."</li>\n";
 					$qccode=esc_sql($espost['country']);
 					$qcountry = $wpdb->get_var("SELECT country FROM $ctable WHERE code='$qccode' limit 1");
@@ -892,7 +892,7 @@ if (!function_exists('eshop_checkout')) {
 				$echoit.= "\n";
 				$echoit .= "</div>\n";
 			}
-			
+
 			//add to a session to store address:
 			$_SESSION['addy'.$blog_id]['first_name']=$espost['first_name'];
 			$_SESSION['addy'.$blog_id]['last_name']=$espost['last_name'];
@@ -927,7 +927,7 @@ if (!function_exists('eshop_checkout')) {
 				$_SESSION['addy'.$blog_id]['state']=$espost['state'];
 			else
 				$_SESSION['addy'.$blog_id]['state']='';
-		
+
 			if(isset($espost['altstate']) && $espost['altstate']!='')
 				$_SESSION['addy'.$blog_id]['state']=$espost['altstate'];
 			if(isset($espost['zip']))
@@ -950,7 +950,7 @@ if (!function_exists('eshop_checkout')) {
 				$_SESSION['addy'.$blog_id]['comments']=$espost['comments'];
 			else
 				$_SESSION['addy'.$blog_id]['comments']='';
-			
+
 			if(!isset($_SESSION['shipping'.$blog_id]))$_SESSION['shipping'.$blog_id]['cost']=$shipping;
 /*
 			//grab all the POST variables and store in cookie
@@ -990,7 +990,7 @@ if (!function_exists('eshop_checkout')) {
 				$stateList = $wpdb->get_var("SELECT id FROM $table WHERE code='$li' limit 1");
 			    $state = $stateList;
 			}
-			
+
 			if(isset($_SESSION['addy'.$blog_id]['altstate']))
 				$altstate=$_SESSION['addy'.$blog_id]['altstate'];
 			else
@@ -1021,7 +1021,7 @@ if (!function_exists('eshop_checkout')) {
 					$ship_state = $stateSList;
 				}
 			}
-			
+
 			if(isset($_SESSION['addy'.$blog_id]['ship_altstate']))
 				$ship_altstate=$_SESSION['addy'.$blog_id]['ship_altstate'];
 			else
@@ -1036,7 +1036,7 @@ if (!function_exists('eshop_checkout')) {
 			$state=$altstate=$zip=$ship_name=$ship_company='';
 			$ship_phone=$ship_address=$ship_city=$ship_postcode='';
 			$ship_country=$ship_state=$ship_altstate=$comments='';
-/*			
+/*
 			$eshopsetcookie=apply_filters('eshop_use_cookie',true);
 			if(isset($_COOKIE["eshopcart"]) && calculate_items()!=0 && $eshopsetcookie==true){
 				$crumbs=eshop_break_cookie($_COOKIE["eshopcart"]);
@@ -1058,7 +1058,7 @@ if (!function_exists('eshop_checkout')) {
 					$email=esc_attr($current_user->user_email);
 				}
 			}
-			
+
 			if($state=='' && isset($eshopoptions['shipping_state_selected']))
 				$state=$eshopoptions['shipping_state_selected'];
 			if($country=='' && isset($eshopoptions['shipping_country_selected']))
