@@ -9,6 +9,16 @@
 <?php if ($articles) { ?>
 
   <section id="<?php echo $id ?>" class="articles">
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "ItemList",
+      "url": "<?php echo $link ?>",
+      "numberOfItems": "<?php echo count($articles) ?>",
+      "name": "<?php echo $title ?>"
+    }
+    </script>
+
     <header>
       <h2>
         <?php

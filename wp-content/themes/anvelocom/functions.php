@@ -220,11 +220,29 @@ function get_stock($product) {
   return $ret;
 }
 
+
+
 // Calculate shipping
 function calculate_shipping($weight) {
   $shipping = 9 + ($weight - 1) * 0.8;
   $ramburs = 3.5;
   return ceil(($shipping + $ramburs) * 1.24);
+}
+
+
+// Get product brand
+function get_product_brand($post) {
+  $brand = '';
+  $brand = get_post_meta($post, META_ANVELOPE_BRAND, true);
+  return $brand;
+}
+
+
+// Get product model
+function get_product_model($post) {
+  $model = '';
+  $model = get_post_meta($post, META_ANVELOPE_PROFIL, true);
+  return $model;
 }
 
 

@@ -24,6 +24,34 @@
 
       $main_category = get_post_main_category_slug($article);
       $dimension = get_product_dimension($article, $main_category);
+
+      ?>
+      <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "Product",
+        "name": "<?php echo $title ?>",
+        "offers": {
+          "@type": "Offer",
+          "availability": "http://schema.org/InStock",
+          "price": "<?php echo $price[0] ?>",
+          "priceCurrency": "RON",
+          "itemCondition": "http://schema.org/NewCondition"
+        },
+        "brand": {
+          "@type": "Organization",
+          "name": "<?php echo get_product_brand($article->ID); ?>"
+        },
+        "manufacturer": {
+          "@type": "Organization",
+          "name": "<?php echo get_product_brand($article->ID); ?>"
+        },
+        "model": "<?php echo get_product_model($article->ID); ?>",
+        "productID": "<?php echo $article->ID ?>",
+        "sku": "<?php echo $article->ID ?>"
+      }
+      </script>
+      <?php
     }
     ?>
 
