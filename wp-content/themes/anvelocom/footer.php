@@ -3,22 +3,22 @@
 <footer id="footer">
   <div id="company">
     <h1>
-      <a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+      <a itemprop="url" class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
         <?php bloginfo('name'); ?>
       </a>
     </h1>
-    <p>
+    <p itemprop="description">
       <?php bloginfo('description'); ?>
     </p>
     <address>
       <?php echo get_date_firma(); ?>
-      
+
       <p>
-        © 2013 Anvelocom. Toate drepturile rezervate. <a href="http://www.anpc.gov.ro/" title="Protectia consumatorilor">Protectia consumatorilor</a>. 
+        © 2013 Anvelocom. Toate drepturile rezervate. <a href="http://www.anpc.gov.ro/" title="Protectia consumatorilor">Protectia consumatorilor</a>.
       </p>
     </address>
   </div>
-  
+
   <nav>
     <h3>Go top</h3>
   </nav>
@@ -35,9 +35,9 @@
 
 <!-- Site specific scripts built on jQuery -->
 <script src="<?php echo get_template_directory_uri(); ?>/assets/jquery.anvelocom.js"></script>
- 
- 
-   
+
+
+
 </div> <!-- container -->
 </body>
 </html>
