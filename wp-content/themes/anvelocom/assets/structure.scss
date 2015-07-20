@@ -157,8 +157,12 @@
   label.finalize small,
   .eshop.confirm .company,
   .eshop.confirm .country,
-  .eshoperrors + .hr + .eshopcustdetails .fld0 {
-    display: none;
+  .eshoperrors + .hr + .eshopcustdetails .fld0,
+  .fld4 .ship_company,
+  .fld4 .ship_state,
+  .fld4 .ship_altstate,
+  .fld4 .shipcountry {
+    display: none !important;
   }
 
   #cartItem {
@@ -220,7 +224,8 @@
 
   ul.eshop.confirm,
   ul.eshop.confirmref,
-  ul.eshoperrors {
+  ul.eshoperrors,
+  ul.confirmship {
     li {
       &::before {
         content: '' !important;
@@ -247,6 +252,59 @@
 
     li {
       margin: $pad/4 0;
+    }
+  }
+
+
+  fieldset.fld4 legend,
+  .fld3 label {
+    font-weight: bold;
+    cursor: pointer;
+
+    &:before {
+      display: inline-block;
+      content: '+';
+      margin-right: $pad / 2;
+      font-size: 150%;
+    }
+  }
+
+
+  fieldset.fld4 {
+    margin: $pad / 2 0;
+
+    span {
+      @include block;
+      display: none;
+
+      &.shippostcode {
+        margin-bottom: $pad * 2;
+      }
+    }
+
+    &.active {
+      span {
+        display: block;
+      }
+    }
+  }
+
+  .fld3 {
+    margin: $pad / 2 0;
+
+    label {
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    textarea {
+      display: none;
+    }
+
+    &.active {
+      textarea {
+        display: block;
+      }
     }
   }
 }

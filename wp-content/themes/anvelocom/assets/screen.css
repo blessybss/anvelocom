@@ -988,8 +988,12 @@ html body.page-finalizare-comanda main article aside #content .shippingrow small
 html body.page-finalizare-comanda main article aside #content label.finalize small,
 html body.page-finalizare-comanda main article aside #content .eshop.confirm .company,
 html body.page-finalizare-comanda main article aside #content .eshop.confirm .country,
-html body.page-finalizare-comanda main article aside #content .eshoperrors + .hr + .eshopcustdetails .fld0 {
-  display: none;
+html body.page-finalizare-comanda main article aside #content .eshoperrors + .hr + .eshopcustdetails .fld0,
+html body.page-finalizare-comanda main article aside #content .fld4 .ship_company,
+html body.page-finalizare-comanda main article aside #content .fld4 .ship_state,
+html body.page-finalizare-comanda main article aside #content .fld4 .ship_altstate,
+html body.page-finalizare-comanda main article aside #content .fld4 .shipcountry {
+  display: none !important;
 }
 html body.page-finalizare-comanda main article aside #content #cartItem {
   padding-left: 0.3125em;
@@ -1092,7 +1096,8 @@ html body.page-finalizare-comanda main article aside #content #cTotal {
 }
 html body.page-finalizare-comanda main article aside #content ul.eshop.confirm li::before,
 html body.page-finalizare-comanda main article aside #content ul.eshop.confirmref li::before,
-html body.page-finalizare-comanda main article aside #content ul.eshoperrors li::before {
+html body.page-finalizare-comanda main article aside #content ul.eshoperrors li::before,
+html body.page-finalizare-comanda main article aside #content ul.confirmship li::before {
   content: '' !important;
 }
 html body.page-finalizare-comanda main article aside #content .eshop-confirm,
@@ -1112,6 +1117,45 @@ html body.page-finalizare-comanda main article aside #content .eshoperrors {
 }
 html body.page-finalizare-comanda main article aside #content .eshoperrors li {
   margin: 0.3125em 0;
+}
+html body.page-finalizare-comanda main article aside #content fieldset.fld4 legend,
+html body.page-finalizare-comanda main article aside #content .fld3 label {
+  font-weight: bold;
+  cursor: pointer;
+}
+html body.page-finalizare-comanda main article aside #content fieldset.fld4 legend:before,
+html body.page-finalizare-comanda main article aside #content .fld3 label:before {
+  display: inline-block;
+  content: '+';
+  margin-right: 0.625em;
+  font-size: 150%;
+}
+html body.page-finalizare-comanda main article aside #content fieldset.fld4 {
+  margin: 0.625em 0;
+}
+html body.page-finalizare-comanda main article aside #content fieldset.fld4 span {
+  width: 100%;
+  float: left;
+  display: none;
+}
+html body.page-finalizare-comanda main article aside #content fieldset.fld4 span.shippostcode {
+  margin-bottom: 2.5em;
+}
+html body.page-finalizare-comanda main article aside #content fieldset.fld4.active span {
+  display: block;
+}
+html body.page-finalizare-comanda main article aside #content .fld3 {
+  margin: 0.625em 0;
+}
+html body.page-finalizare-comanda main article aside #content .fld3 label {
+  font-weight: bold;
+  cursor: pointer;
+}
+html body.page-finalizare-comanda main article aside #content .fld3 textarea {
+  display: none;
+}
+html body.page-finalizare-comanda main article aside #content .fld3.active textarea {
+  display: block;
 }
 
 /* Special decorations for this site

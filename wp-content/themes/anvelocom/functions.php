@@ -467,7 +467,7 @@ function eshop_filter_gettext($translation, $text, $domain) {
       return "Cod postal";
       break;
     case 'Comments or special instructions':
-      return "Instructiuni speciale";
+      return "Date firma (pentru persoane juridice)";
       break;
     case 'Full name:':
       return "Nume:";
@@ -485,7 +485,7 @@ function eshop_filter_gettext($translation, $text, $domain) {
       return "Cod postal:";
       break;
     case 'Comments or instructions:':
-      return "Instructiuni speciale:";
+      return "Date firma (pentru persoane juridice):";
       break;
     case 'Proceed to Confirmation &raquo;':
       return "Confirmare comanda";
@@ -534,6 +534,15 @@ function eshop_filter_gettext($translation, $text, $domain) {
       break;
     case 'Discount Code <span>%s</span> has been applied to your cart.':
       return "Codul cupon <strong>%s%</strong> este folosit la aceasta comanda.";
+      break;
+    case 'Shipping address (if different)':
+      return "Adresa de livrare (daca este altul decat Datele de livrare)";
+      break;
+    case 'Name':
+      return "Nume";
+      break;
+    case 'Zip/Post Code':
+      return "Cod postal";
       break;
   }
 
