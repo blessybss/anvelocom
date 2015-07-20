@@ -557,6 +557,10 @@ html {
         h1 {
           @include bordered;
           border: 3px solid;
+
+          img {
+            display: none;
+          }
         }
 
         nav {

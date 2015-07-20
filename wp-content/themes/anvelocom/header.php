@@ -49,10 +49,11 @@
     <div class="container">
 
     <header id="header" role="banner">
-      <h1>
-        <a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+      <h1 itemscope itemtype="http://schema.org/Organization">
+        <a itemprop="url" class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
           <?php bloginfo('name'); ?>
         </a>
+        <img itemprop="logo" src="<?php echo get_template_directory_uri(); ?>/assets/anvelocom-logo.png" title="Anvelocom logo">
       </h1>
 
       <?php include '_navigation.php'; ?>

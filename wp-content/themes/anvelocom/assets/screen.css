@@ -1191,6 +1191,9 @@ html body .container #header h1 {
   border: 1px solid;
   border: 3px solid;
 }
+html body .container #header h1 img {
+  display: none;
+}
 html body .container #header nav {
   font-weight: bold;
   font-size: small;
