@@ -38,6 +38,10 @@
 	  <link rel="author" href="humans.txt" />
 
 
+    <!-- Google Analytics -->
+    <?php include_once("ga.php") ?>
+
+
 	  <?php wp_head(); ?>
   </head>
 
