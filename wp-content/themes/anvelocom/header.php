@@ -48,12 +48,11 @@
   <body <?php body_class(); ?>>
     <div class="container">
 
-    <header id="header" role="banner" itemscope itemtype="http://schema.org/Organization" itemref="company">
+    <header id="header" role="banner">
       <h1>
         <a class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
           <?php bloginfo('name'); ?>
         </a>
-        <img itemprop="logo" src="<?php echo get_template_directory_uri(); ?>/assets/anvelocom-logo.png" title="Anvelocom logo">
       </h1>
 
       <?php include '_navigation.php'; ?>
@@ -61,7 +60,7 @@
       <nav id="contact">
         <h3>Contact</h3>
         <ul>
-          <li>Tel: <span itemprop="telephone">0744-374-914</span></li>
+          <li>Tel: 0744-374-914</li>
           <li>
             <a href="<?php echo esc_url( home_url( '/' ) ); ?>/cos-cumparaturi/" title="Cos cumparaturi">
               Cos (<?php echo get_myeshop_cart_itemcount() ?>)

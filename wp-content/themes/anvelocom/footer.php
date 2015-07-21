@@ -1,13 +1,34 @@
 </main>
 
 <footer id="footer">
+
+    <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "name": "Anvelocom",
+      "description": "<?php bloginfo('description'); ?>",
+      "telephone": "+40-744-374-914",
+      "email": "vanzari@anvelocom.ro",
+      "logo": "<?php echo get_template_directory_uri(); ?>/assets/anvelocom-logo.png",
+      "url": "<?php echo esc_url( home_url( '/' ) ); ?>",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Brasov, Romania",
+        "postalCode": "500398",
+        "streetAddress": "Bd. Alexandru Vlahuta, Nr. 59"
+      }
+    }
+    </script>
+
+
   <div id="company">
     <h1>
-      <a itemprop="url" class="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
+      <aclass="home-link" href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" rel="home">
         <?php bloginfo('name'); ?>
       </a>
     </h1>
-    <p itemprop="description">
+    <p>
       <?php bloginfo('description'); ?>
     </p>
     <address>
