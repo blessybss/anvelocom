@@ -31,6 +31,10 @@
         "@context": "http://schema.org",
         "@type": "Product",
         "name": "<?php echo $title ?>",
+        "description": "<?php echo $article->post_excerpt; ?>",
+        "image": "<?php echo $img ?>",
+        "productID": "<?php echo $article->ID ?>",
+        "sku": "<?php echo $article->ID ?>",
         "offers": {
           "@type": "Offer",
           "availability": "http://schema.org/InStock",
@@ -46,9 +50,7 @@
           "@type": "Organization",
           "name": "<?php echo get_product_brand($article->ID); ?>"
         },
-        "model": "<?php echo get_product_model($article->ID); ?>",
-        "productID": "<?php echo $article->ID ?>",
-        "sku": "<?php echo $article->ID ?>"
+        "model": "<?php echo get_product_model($article->ID); ?>"
       }
       </script>
       <?php

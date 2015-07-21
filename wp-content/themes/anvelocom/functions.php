@@ -233,7 +233,20 @@ function calculate_shipping($weight) {
 // Get product brand
 function get_product_brand($post) {
   $brand = '';
+
+  // Anvelope
   $brand = get_post_meta($post, META_ANVELOPE_BRAND, true);
+
+  // Jenti
+  if ($brand == '') {
+    $brand = get_post_meta($post, META_JENTI_BRAND, true);
+  }
+
+  // Tuning
+  if ($brand == '') {
+    $brand = get_post_meta($post, META_TUNING_BRAND, true);
+  }
+
   return $brand;
 }
 
@@ -241,7 +254,15 @@ function get_product_brand($post) {
 // Get product model
 function get_product_model($post) {
   $model = '';
+
+  // Anvelope
   $model = get_post_meta($post, META_ANVELOPE_PROFIL, true);
+
+  // Tuning
+  if ($model == '') {
+    $model = get_post_meta($post, META_TUNING_MODEL, true);
+  }
+
   return $model;
 }
 

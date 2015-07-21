@@ -53,19 +53,7 @@
             comments_template();
           }
         endwhile;
-        ?>
-
-        <script type="application/ld+json">
-        {
-          "@context": "http://schema.org",
-          "@type": "ItemList",
-          "url": "<?php echo home_url( add_query_arg( NULL, NULL ) ); ?>",
-          "numberOfItems": "<?php echo $index ?>",
-          "name": "<?php single_cat_title( '', true ); ?>"
-        }
-        </script>
-
-        <?php
+        
 		  } else {
 		    include '_not-found.php';
 		  }

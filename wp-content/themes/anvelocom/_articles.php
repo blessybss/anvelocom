@@ -9,15 +9,17 @@
 <?php if ($articles) { ?>
 
   <section id="<?php echo $id ?>" class="articles">
-    <script type="application/ld+json">
-    {
-      "@context": "http://schema.org",
-      "@type": "ItemList",
-      "url": "<?php echo $link ?>",
-      "numberOfItems": "<?php echo count($articles) ?>",
-      "name": "<?php echo $title ?>"
-    }
-    </script>
+    <?php if (count($articles) > 1) { ?>
+      <script type="application/ld+json">
+      {
+        "@context": "http://schema.org",
+        "@type": "ItemList",
+        "url": "<?php echo $link ?>",
+        "numberOfItems": "<?php echo count($articles) ?>",
+        "name": "<?php echo ucwords(str_replace('-', ' ', $title)) ?>"
+      }
+      </script>
+    <?php } ?>
 
     <header>
       <h2>
