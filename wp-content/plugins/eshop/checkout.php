@@ -418,8 +418,45 @@ if (!function_exists('eshop_checkout')) {
 		$eshopmgincpath=apply_filters('eshop_mg_inc_path',ESHOP_PATH.$paymentmethod.'.php',$paymentmethod);
 		// if everything went ok do the following, hopefully the rest won't happen!
 		if(isset($_GET['eshopaction'])){
+
+      error_log('eshopaction');
+      error_log(print_r($espost, true));
+
+      // by cs
+      // Google Analytics
+      ?>
+
+      <script>
+        alert('cart:' + <?php echo $espost['shipping_1'] ?>);
+
+        ga('require', 'ecommerce');
+
+        ga('ecommerce:addTransaction', {
+          'id': '1234',                     // Transaction ID. Required.
+          'revenue': '11.99',               // Grand Total.
+          'shipping': '5',                  // Shipping.
+          'tax': '1.29' ,                   // Tax.
+          'currency': 'RON'
+        });
+
+        ga('ecommerce:addItem', {
+          'id': '1234',                     // Transaction ID. Required.
+          'name': 'Fluffy Pink Bunnies',    // Product name. Required.
+          'sku': 'DD23444',                 // SKU/code.
+          'category': 'Party Toys',         // Category or variation.
+          'price': '11.99',                 // Unit price.
+          'quantity': '1'                   // Quantity.
+        });
+
+        //ga('ecommerce:send');
+
+        ga('ecommerce:clear');
+      </script>
+      <?php
+
+
 			if($_GET['eshopaction']=='success'){
-				include_once($eshopmgincpath);
+        include_once($eshopmgincpath);
 			}
 		}
 		//filter for plugin merchant gateways
@@ -427,7 +464,7 @@ if (!function_exists('eshop_checkout')) {
 		if(file_exists($eshopmgincidxpath))
 			include_once($eshopmgincidxpath);
 
-		if(isset($_SESSION['eshopcart'.$blog_id])){
+  		if(isset($_SESSION['eshopcart'.$blog_id])){
 			$shopcart=$_SESSION['eshopcart'.$blog_id];
 			$numberofproducts=sizeof($_SESSION['eshopcart'.$blog_id]);
 			$keys = array_keys($_SESSION['eshopcart'.$blog_id]);

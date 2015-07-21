@@ -38,14 +38,14 @@ switch ($eshopaction) {
 			break;
 
 		//enters all the data into the database
-		$cash = $eshopoptions['cash']; 
+		$cash = $eshopoptions['cash'];
 		//this may not work
 		if(!isset($espost['RefNr'])){
 			$espost['RefNr']=uniqid(rand());
 			$ecash->ipn_data['RefNr']=$espost['RefNr'];
 		}
 		$checkid=md5($espost['RefNr']);
-		foreach ($_REQUEST as $field=>$value) { 
+		foreach ($_REQUEST as $field=>$value) {
 		  $ecash->ipn_data["$field"] = $value;
       	}
       	//but this should
@@ -74,7 +74,7 @@ switch ($eshopaction) {
 		//the magic bit  + creating the subject for our email.
 		$ok='no';
 		if($astatus=='Pending'){
-			$subject .=__("Completed Payment",'eshop');	
+			$subject .=__("Completed Payment",'eshop');
 			$ok='yes';
 			eshop_mg_process_product($txn_id,$checkid,'Waiting');
 			eshop_send_customer_email($checkid, '5');
@@ -98,7 +98,7 @@ switch ($eshopaction) {
 
 
 		/* ############### */
-		$p = new cash_class; 
+		$p = new cash_class;
 		if($eshopoptions['cart_success']!=''){
 			$ilink=add_query_arg('eshopaction','success',get_permalink($eshopoptions['cart_success']));
 		}else{
@@ -106,14 +106,14 @@ switch ($eshopaction) {
 		}
 		$p->cash_url = $ilink;     // cash url
 		$echoit.=$p->eshop_submit_cash_post($espost);
-		//$p->dump_fields();      // for debugging, output a table of all the fields
-		
+		//$p->dump_fields();      // for debugging, output a table of all the field
+
 		break;
-        
+
    case 'process':      // Process and order...
-	
+
       /****** The order has not gone into the database at this point ******/
-      
+
 		//goes direct to this script as nothing needs showing on screen.
 		$p->add_field('shipping_1', eshopShipTaxAmt());
 		$sttable=$wpdb->prefix.'eshop_states';

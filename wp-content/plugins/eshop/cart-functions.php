@@ -264,7 +264,7 @@ if (!function_exists('display_cart')) {
 							//$shipcost=$wpdb->get_var("SELECT $shipzone FROM $table2 where weight <= '$totalweight' && class='$shiparray' and rate_type='ship_weight' order by weight DESC limit 1");
               // by cs
               $shipping = calculate_shipping($totalweight);
-              $shipping+=$shipcost;
+              // by cs $shipping+=$shipcost;
 							$_SESSION['eshopshiptype'.$blog_id]=$shiparray;
 					}
 
