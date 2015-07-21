@@ -318,3 +318,50 @@
 )
 
 [21-Jul-2015 14:32:37 UTC] PHP Notice:  Undefined offset: 0 in /home/cs/work/anvelocom/wp-content/themes/anvelocom/_article.php on line 41
+[21-Jul-2015 15:05:11 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:05:11 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:05:11 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:05:11 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:05:11 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:05:11 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:05:11 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:05:11 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:05:11 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:05:11 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:05:16 UTC] PHP Notice:  Undefined offset: 0 in /home/cs/work/anvelocom/wp-content/themes/anvelocom/_article.php on line 41
+[21-Jul-2015 15:05:17 UTC] PHP Notice:  Undefined offset: 0 in /home/cs/work/anvelocom/wp-content/themes/anvelocom/_article.php on line 41
+[21-Jul-2015 15:05:34 UTC] PHP Notice:  Undefined offset: 0 in /home/cs/work/anvelocom/wp-content/themes/anvelocom/_article.php on line 41
+[21-Jul-2015 15:05:38 UTC] PHP Notice:  Undefined offset: 0 in /home/cs/work/anvelocom/wp-content/themes/anvelocom/_article.php on line 41
+[21-Jul-2015 15:05:39 UTC] PHP Notice:  Undefined offset: 0 in /home/cs/work/anvelocom/wp-content/themes/anvelocom/_article.php on line 41
+[21-Jul-2015 15:07:30 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:07:30 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:07:30 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:07:30 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:07:30 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:07:30 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:07:30 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:07:30 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:07:30 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:07:30 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:07:35 UTC] PHP Notice:  Undefined offset: 0 in /home/cs/work/anvelocom/wp-content/themes/anvelocom/_article.php on line 41
+[21-Jul-2015 15:07:37 UTC] PHP Notice:  Undefined offset: 0 in /home/cs/work/anvelocom/wp-content/themes/anvelocom/_article.php on line 41
+[21-Jul-2015 15:07:51 UTC] PHP Notice:  Undefined offset: 0 in /home/cs/work/anvelocom/wp-content/themes/anvelocom/_article.php on line 41
+[21-Jul-2015 15:07:59 UTC] PHP Notice:  Undefined offset: 0 in /home/cs/work/anvelocom/wp-content/themes/anvelocom/_article.php on line 41
+[21-Jul-2015 15:07:59 UTC] products:ga('ecommerce:addItem', {'id': 'aaa','name': 'Anvelope - Cauciucuri Off Road 225/75R16 BF Goodrich Mud Terrain T/A KM2','sku': '2104','price': '695.00','quantity': '1','category': 'anvelope-auto-offroad',}); 
+[21-Jul-2015 15:07:59 UTC] PHP Notice:  Undefined offset: 0 in /home/cs/work/anvelocom/wp-content/themes/anvelocom/_article.php on line 41
+[21-Jul-2015 15:12:16 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:12:16 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:12:16 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:12:16 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:12:16 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:12:16 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:12:16 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:12:16 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:12:16 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:12:16 UTC] PHP Notice:  Undefined variable: stkarr in /home/cs/work/anvelocom/wp-content/plugins/eshop/cart-functions.php on line 2386
+[21-Jul-2015 15:12:20 UTC] PHP Notice:  Undefined offset: 0 in /home/cs/work/anvelocom/wp-content/themes/anvelocom/_article.php on line 41
+[21-Jul-2015 15:12:22 UTC] PHP Notice:  Undefined offset: 0 in /home/cs/work/anvelocom/wp-content/themes/anvelocom/_article.php on line 41
+[21-Jul-2015 15:12:38 UTC] PHP Notice:  Undefined offset: 0 in /home/cs/work/anvelocom/wp-content/themes/anvelocom/_article.php on line 41
+[21-Jul-2015 15:12:51 UTC] PHP Notice:  Undefined offset: 0 in /home/cs/work/anvelocom/wp-content/themes/anvelocom/_article.php on line 41
+[21-Jul-2015 15:12:51 UTC] products:ga('ecommerce:addItem', {'id': 'aaa','name': 'Anvelope - Cauciucuri Off Road 225/75R16 BF Goodrich Mud Terrain T/A KM2','sku': '2104','price': '695.00','quantity': '1','category': 'anvelope-auto-offroad'}); 
+[21-Jul-2015 15:12:51 UTC] PHP Notice:  Undefined offset: 0 in /home/cs/work/anvelocom/wp-content/themes/anvelocom/_article.php on line 41

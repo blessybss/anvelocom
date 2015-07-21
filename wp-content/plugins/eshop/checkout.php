@@ -419,37 +419,47 @@ if (!function_exists('eshop_checkout')) {
 		// if everything went ok do the following, hopefully the rest won't happen!
 		if(isset($_GET['eshopaction'])){
 
-      error_log('eshopaction');
-      error_log(print_r($espost, true));
-
       // by cs
       // Google Analytics
+
+      $order_id = 'aaa';
+      $revenue = $espost['amount'];
+      $shipping = $espost['shipping_1'];
+
+      $products = '';
+      for ($i = 1; $i <= $espost['numberofproducts']; $i++) {
+        $products .= "ga('ecommerce:addItem', {";
+        $products .= "'id': '" . $order_id . "',";
+        $products .= "'name': '" . $espost['item_name_' . $i] . "',";
+        $products .= "'sku': '" . $espost['postid_' . $i] . "',";
+        $products .= "'price': '" . $espost['amount_' . $i] . "',";
+        $products .= "'quantity': '" . $espost['quantity_' . $i] . "',";
+        $post = get_post($espost['postid_' . $i]);
+        $products .= "'category': '" . get_post_main_category_slug($post) . "',";
+        $products .= "'currency': 'RON'";
+        $products .= "}); ";
+      }
+
+      error_log('products:' . $products);
       ?>
 
       <script>
-        alert('cart:' + <?php echo $espost['shipping_1'] ?>);
+        //alert('cart');
+        //console.log('products:' + <?php echo $products; ?>);
 
         ga('require', 'ecommerce');
 
         ga('ecommerce:addTransaction', {
-          'id': '1234',                     // Transaction ID. Required.
-          'revenue': '11.99',               // Grand Total.
-          'shipping': '5',                  // Shipping.
-          'tax': '1.29' ,                   // Tax.
+          'id': '<?php echo $order_id ?>',                     // Transaction ID. Required.
+          'revenue': '<?php echo $revenue ?>',               // Grand Total.
+          'shipping': '<?php echo $shipping ?>',                  // Shipping.
+          'tax': '0' ,                   // Tax.
           'currency': 'RON'
         });
 
-        ga('ecommerce:addItem', {
-          'id': '1234',                     // Transaction ID. Required.
-          'name': 'Fluffy Pink Bunnies',    // Product name. Required.
-          'sku': 'DD23444',                 // SKU/code.
-          'category': 'Party Toys',         // Category or variation.
-          'price': '11.99',                 // Unit price.
-          'quantity': '1'                   // Quantity.
-        });
+        <?php echo $products; ?>
 
-        //ga('ecommerce:send');
-
+        ga('ecommerce:send');
         ga('ecommerce:clear');
       </script>
       <?php
