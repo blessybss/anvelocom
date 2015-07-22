@@ -440,7 +440,7 @@ if (!function_exists('eshop_checkout')) {
         $products .= "}); ";
       }
 
-      error_log('products:' . $products);
+      //error_log('products:' . $products);
       ?>
 
       <script>
