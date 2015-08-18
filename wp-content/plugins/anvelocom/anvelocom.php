@@ -7,6 +7,7 @@
   Author: Csongor Bartus
   Author URI: http://its-csongor.com
   License: GPL2
+  test of pull request
 */
 
 
